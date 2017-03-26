@@ -1,0 +1,102 @@
+100196781;Rua Aldeia dos Lavradores;False
+100196785;;False
+100196798;Túnel da Costa;False
+100196799;Rua Manuel Joaquim Fernandes dos Santos;False
+101625501;Rua Vasco da Gama;False
+101625506;Rua Fábrica da Cerâmica;True
+101625510;Rua Gil Vicente;True
+101625516;Rotunda do Bombeiro;True
+101627683;Rua da Igreja;True
+101627687;Rua de António Nobre;True
+101627690;Avenida Primavera;True
+101627692;;False
+101627694;;False
+101627703;Rua 5 de Outubro;False
+101628475;Travessa São Lourenço;False
+101628476;Rua Padre Avelino da Assunção;False
+101628477;Rua São Lourenço;False
+101629933;Rua Padre Moutinho de Ascenção;False
+101629934;Rua Central da Fonte;False
+101629938;;True
+101629939;Rua São Silvestre;True
+101629940;Rua Nova da Fonte;True
+101629942;Rua Comandante Capas Peneda;True
+101629943;Rua Doutor Alberto Lemos;True
+101629947;Rua Nossa Senhora de Fátima;True
+101629949;;True
+101629951;Rua Fontes Pereira de Melo;True
+101630653;Rua 5 de Outubro;True
+101630656;Travessa Comandante Capas Peneda;True
+101633029;Praceta José Joaquim Ribeiro Teles;False
+101633040;Praceta Dom António Ferreira Gomes;False
+101633048;;False
+101633057;Rua Sacadura Cabral;False
+101633061;Rua Dom António Ferreira Gomes;False
+101633062;Rua Escola da Costa;False
+101693984;Rua Nova da Fonte;False
+101693988;;False
+101694017;;False
+101694020;Rua do Aterro;False
+101694045;Rua Doutor Luís Ramos;False
+101694053;Rua da Costa;False
+102067087;Rua Doutor Joaquim Maia Aguiar;False
+102067094;Rua Almeida Garrett;True
+102493021;Travessa da Costa;True
+102493022;;True
+102493027;Rua 5 de Outubro;False
+102493030;Rua Particular da Costa;False
+102493032;Rua Nova de Sonhos;False
+102493034;Rua 5 de Outubro;False
+102493520;Rua de Bernadim Ribeiro;False
+102493521;;False
+102493522;;False
+102493524;;False
+102494929;Travessa 5 de Outubro;False
+102783701;;False
+103190584;Travessa Doutor Luís Ramos;False
+103190585;Rua da Fonte;False
+103190587;Rua Miguel Bombarda;False
+103190590;Rua Infante Dom Henrique;False
+103192997;;False
+103192998;Rua Ermesinde Sport Club;False
+103193000;Rua de Arregades;False
+103193001;Rua da Lameira;False
+103193013;;False
+103318687;;False
+103318689;Rua da Igreja;True
+103318692;Rua José Joaquim Ribeiro Teles;True
+151430440;Rua Manuel Joaquim Fernandes dos Santos;True
+151431015;;True
+151431096;;False
+160173421;;False
+169771390;Rua 5 de Outubro;False
+169771391;Rua 5 de Outubro;False
+169771394;Rua 5 de Outubro;False
+169771395;Rua 5 de Outubro;False
+169771397;Rua Alberto Ribeiro;False
+169771398;Rua Fontes Pereira de Melo;False
+169771399;Rua Fontes Pereira de Melo;False
+169771400;Rua Manuel Joaquim Fernandes dos Santos;False
+169771401;Rua Manuel Joaquim Fernandes dos Santos;False
+169771402;Rua da Costa;False
+169771403;Rua da Costa;False
+169771430;;False
+211466026;Rua José Joaquim Ribeiro Teles;False
+211466027;Rua Dom António Castro Meireles;False
+332348161;Rua Dom António Ferreira Gomes;False
+332348162;Rua Dom António Ferreira Gomes;False
+332348163;Rua Dom António Ferreira Gomes;False
+332348164;Rua Dom António Ferreira Gomes;False
+332348165;Rua Dom António Ferreira Gomes;False
+332348166;Rua Dom António Ferreira Gomes;False
+332348167;Rua Dom António Ferreira Gomes;False
+332348168;Rua Dom António Ferreira Gomes;False
+332348169;Rua Dom António Ferreira Gomes;False
+332348170;Rua Gil Vicente;False
+332348171;Rua Gil Vicente;False
+332348225;;False
+424920648;;True
+466704793;;False
+466704794;;False
+466704795;;False
+466704796;Rua Ermesinde Sport Club;False
