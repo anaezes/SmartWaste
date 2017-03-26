@@ -32,7 +32,7 @@ void exercicio1()
 	gv->addNode(1);
 	gv->addEdge(0, 0, 1, EdgeType::UNDIRECTED);
 
-    doSleep(); // use sleep(1) in linux ; Sleep(2000) on Windows
+    doSleep();
 
 	gv->removeEdge(0);
 	gv->removeNode(1);
@@ -236,11 +236,49 @@ void exercicio3()
 
 	gv->rearrange();
 }
+/**
+ * Exemplo de como usar a API:
+ *
+ */
+
+void myExample() {
+
+    // criar um novo grafo
+    GraphViewer *gv = new GraphViewer(600, 600, true);
+
+    // configuraçoes da janela de visualizaçao
+    gv->setBackground("background.jpg");
+    gv->createWindow(600, 600);
+    gv->defineEdgeDashed(true);
+
+    //define a cor de TODOS os elementos por defeito
+    //no entanto mais tarde ser alterado um em especifico
+    gv->defineVertexColor("blue");
+    gv->defineEdgeColor("black");
+
+    gv->addNode(0);
+    gv->addNode(1);
+
+    //altera a cor do no de id = 1
+    gv->setVertexColor(1, "green");
+
+    // Com direçao: DIRECTED
+    // Sem direçao: UNDIRECTED
+    gv->addEdge(0, 0, 1, EdgeType::DIRECTED);
+
+    gv->defineEdgeCurved(true);
+
+    //atualiza a visualizaçao
+    gv->rearrange();
+}
+
 
 int main() {
 	//exercicio1();
-	exercicio2();
+	//exercicio2();
 	//exercicio3();
+
+    myExample();
 	getchar();
 	return 0;
 }
