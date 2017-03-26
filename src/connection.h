@@ -1,4 +1,4 @@
-﻿#ifndef _CONNECTION_
+#ifndef _CONNECTION_
 #define _CONNECTION_
 
 #include <cstdio>
@@ -20,16 +20,16 @@
 using namespace std;
 
 class Connection {
- public:
-  Connection(short port);
+public:
+    Connection(short port);
 
-  bool sendMsg(string msg);
-  string readLine();
- private: 
+    bool sendMsg(string msg);
+    string readLine();
+private:
 #ifdef linux
-  int sock;
+    int sock;
 #else
-  SOCKET sock;
+    SOCKET sock;
 #endif
 };
 
