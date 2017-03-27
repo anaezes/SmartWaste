@@ -44,7 +44,7 @@ class Graph {
 public:
     Graph(GraphViewer*);
     bool addVertex(const T &in);
-    bool addEdge(const T &sourc, const T &dest, double w, bool isUndirected);
+    bool addEdge(const T &edgeId, const T &sourc, const T &dest, double w, bool isUndirected);
     bool removeVertex(const T &in);
     bool removeEdge(const T &sourc, const T &dest);
     vector<T> dfs() const;
@@ -105,15 +105,24 @@ bool Graph<T>::removeVertex(const T &in) {
 }
 
 template <class T>
-bool Graph<T>::addEdge(const T &sourc, const T &dest, double w, bool isUndirected)
+bool Graph<T>::addEdge(const T &edgeId, const T &sourc, const T &dest, double w, bool isUndirected)
 {
+    cout << "add edge: " << endl;
     addEdge(sourc, dest,  w);
     if(isUndirected) {
-        addEdge(dest, dest, w);
-        gv->addEdge(sourc, dest, 1, EdgeType::UNDIRECTED);
+        cout << "UNDIRECTED" << endl << endl;
+        addEdge(dest, sourc, w);
+        gv->addEdge(edgeId, sourc, dest,EdgeType::UNDIRECTED);
+
+        //para diferenciar
+        gv->setVertexColor(sourc, RED);
+        gv->setVertexColor(dest, RED);
     }
-    else
-        gv->addEdge(sourc, dest, 1, EdgeType::DIRECTED);
+    else {
+        cout << "DIRECTED" << endl << endl;
+        gv->addEdge(edgeId, sourc, dest, EdgeType::DIRECTED);
+        gv->setVertexColor(sourc, "green");
+    }
 }
 
 template <class T>

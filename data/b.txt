@@ -1,0 +1,6 @@
+5
+1;West 49th Street;False
+2;East 46th Street;False
+3;West 50th Street;True
+4;East 48th Street;True
+5;East 52nd Street;False
