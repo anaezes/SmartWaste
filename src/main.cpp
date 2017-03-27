@@ -8,7 +8,6 @@
 #include "Graph.h"
 #include "Utils.h"
 
-
 using namespace std;
 
 /**
@@ -21,10 +20,8 @@ bool readFile(const string &fileName, vector<string> &fileLines) {
     /* try to open the file */
     cFile.open(fileName.c_str());
 
-    if(!cFile.is_open()) {
-        cout << "nao abriu" << endl ;
+    if(!cFile.is_open())
         return false;
-    }
     else
     {   /* Read file content */
         while(getline(cFile, line))
@@ -34,6 +31,9 @@ bool readFile(const string &fileName, vector<string> &fileLines) {
     }
 }
 
+/**
+* Read a txt file of nodes
+**/
 bool readNodesFile(string nodesFile, Graph<int> graph, map<long, std::pair<double, double>> nodeCoordinates) {
     vector<string> nodeLines;
 
@@ -78,10 +78,12 @@ bool readNodesFile(string nodesFile, Graph<int> graph, map<long, std::pair<doubl
         pair<double, double > coordinates = make_pair(latitude_in_radians, longitude_in_radians);
         nodeCoordinates.insert(pair<long,pair<double, double>>(nodeId, coordinates));
     }
-
     return true;
 }
 
+/**
+* Reads a text file of information of edges: saves edge id and if it's undirected or not.
+**/
 bool readRoadsFile(string roadsFile, map<long, bool> &roadsInfoMap) {
     vector<string> roadsLines;
     if (!readFile(roadsFile, roadsLines))
@@ -126,6 +128,9 @@ bool readRoadsFile(string roadsFile, map<long, bool> &roadsInfoMap) {
     return true;
 }
 
+/**
+* Read a txt file - add edge to a graph
+**/
 bool readInfoFile(string infoFile, Graph<int> graph, map<long, bool> &roadsInfoMap, const map<long, std::pair<double, double>> &nodeCoordinates) {
     vector<string> infoLines;
     if (!readFile(infoFile, infoLines))
@@ -170,15 +175,9 @@ bool readInfoFile(string infoFile, Graph<int> graph, map<long, bool> &roadsInfoM
 
         double dist = Utils::distance_km(sourceCoords.first, sourceCoords.second, destCoords.first, destCoords.second);
 
-
-        cout << "edge id    " << edgeId << endl;
-        cout << "node dest id    " << nodeDestId << endl;
-        cout << "node source id    " << nodeSourceId << endl << endl;
-
-
         graph.addEdge(nodeDestId, nodeSourceId, dist, roadsInfoMap.find(edgeId)->second);
-
     }
+    return true;
 }
 
 GraphViewer* initViewer() {
@@ -194,7 +193,7 @@ GraphViewer* initViewer() {
 }
 
 int main() {
-    //read txt files
+
     string nodesFile = "./data/A2.txt";
     GraphViewer *gv = initViewer();
     Graph<int> graph(gv);
