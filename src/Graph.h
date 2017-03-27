@@ -40,10 +40,11 @@ class Graph {
     vector<Vertex<T> *> vertexSet;
     void dfs(Vertex<T> *v, vector<T> &res) const;
     GraphViewer *gv;
+    bool addEdge(const T &sourc, const T &dest, double w);
 public:
     Graph(GraphViewer*);
     bool addVertex(const T &in);
-    bool addEdge(const T &sourc, const T &dest, double w);
+    bool addEdge(const T &sourc, const T &dest, double w, bool isUndirected);
     bool removeVertex(const T &in);
     bool removeEdge(const T &sourc, const T &dest);
     vector<T> dfs() const;
@@ -51,6 +52,7 @@ public:
     int maxNewChildren(Vertex<T> *v, T &inf) const;
     vector<Vertex<T> * > getVertexSet() const;
     int getNumVertex() const;
+
 };
 
 template <class T>
@@ -103,6 +105,18 @@ bool Graph<T>::removeVertex(const T &in) {
 }
 
 template <class T>
+bool Graph<T>::addEdge(const T &sourc, const T &dest, double w, bool isUndirected)
+{
+    addEdge(sourc, dest,  w);
+    if(isUndirected) {
+        addEdge(dest, dest, w);
+        gv->addEdge(sourc, dest, 1, EdgeType::UNDIRECTED);
+    }
+    else
+        gv->addEdge(sourc, dest, 1, EdgeType::DIRECTED);
+}
+
+template <class T>
 bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
     typename vector<Vertex<T>*>::iterator it= vertexSet.begin();
     typename vector<Vertex<T>*>::iterator ite= vertexSet.end();
@@ -117,6 +131,7 @@ bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
     }
     if (found!=2) return false;
     vS->addEdge(vD,w);
+
     return true;
 }
 

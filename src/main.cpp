@@ -130,50 +130,54 @@ bool readInfoFile(string infoFile, Graph<int> graph, map<long, bool> &roadsInfoM
     vector<string> infoLines;
     if (!readFile(infoFile, infoLines))
         return false;
-    else {
-        int nLines;
-        stringstream ss(infoLines[0]);
-        ss >> nLines;
 
-        for (int i = 1; i <= nLines; i++) {
-            size_t pos;
-            size_t j    = 0;
-            string substring;
-            string line = infoLines[i];
+    int nLines;
+    stringstream ss(infoLines[0]);
+    ss >> nLines;
 
-            long edgeId, nodeSourceId, nodeDestId;
+    for (int i = 1; i <= nLines; i++) {
+        size_t pos;
+        size_t j    = 0;
+        string substring;
+        string line = infoLines[i];
 
-            pos = line.find(';');
-            while (pos != string::npos) {
-                substring = line.substr(0, pos);
-                stringstream ss(substring);
+        long edgeId, nodeSourceId, nodeDestId;
 
-                switch (j) {
-                    case 0:
-                        ss >> edgeId;
-                        break;
-                    case 1:
-                        ss >> nodeSourceId;
-                        break;
-                    case 2:
-                        ss >> nodeDestId;
-                        break;
-                }
+        pos = line.find(';');
+        while (pos != string::npos) {
+            substring = line.substr(0, pos);
+            stringstream ss(substring);
 
-                line = line.substr(pos + 2, line.length());
-                pos  = line.find(';');
-                j++;
+            switch (j) {
+                case 0:
+                    ss >> edgeId;
+                    break;
+                case 1:
+                    ss >> nodeSourceId;
+                    break;
+                case 2:
+                    ss >> nodeDestId;
+                    break;
             }
 
-            std::pair<double, double> destCoords = nodeCoordinates.find(nodeDestId)->second;
-            std::pair<double, double> sourceCoords = nodeCoordinates.find(nodeSourceId)->second;
-
-            double dist = Utils::distance_km(sourceCoords.first, sourceCoords.second, destCoords.first, destCoords.second);
-
-            if (roadsInfoMap.find(edgeId)->second == true)
-                graph.addEdge(nodeDestId, nodeSourceId, dist);
-            graph.addEdge(nodeSourceId, nodeDestId, dist);
+            line = line.substr(pos + 2, line.length());
+            pos  = line.find(';');
+            j++;
         }
+
+        std::pair<double, double> destCoords = nodeCoordinates.find(nodeDestId)->second;
+        std::pair<double, double> sourceCoords = nodeCoordinates.find(nodeSourceId)->second;
+
+        double dist = Utils::distance_km(sourceCoords.first, sourceCoords.second, destCoords.first, destCoords.second);
+
+
+        cout << "edge id    " << edgeId << endl;
+        cout << "node dest id    " << nodeDestId << endl;
+        cout << "node source id    " << nodeSourceId << endl << endl;
+
+
+        graph.addEdge(nodeDestId, nodeSourceId, dist, roadsInfoMap.find(edgeId)->second);
+
     }
 }
 
@@ -183,7 +187,6 @@ GraphViewer* initViewer() {
     gv->setBackground("background.jpg");
     gv->createWindow(1000, 1000);
     gv->defineEdgeDashed(true);
-
     gv->defineVertexColor("blue");
     gv->defineEdgeColor("black");
 
@@ -205,7 +208,7 @@ int main() {
     gv->rearrange();
 
     std::map<long, bool> roadsInfoMap;
-    string roadsFile = "../data/B2.txt";
+    string roadsFile = "./data/B2.txt";
     if(!readRoadsFile(roadsFile, roadsInfoMap))
     {
         cout << "Error to read B2.txt!";
@@ -213,10 +216,10 @@ int main() {
     }
 
 
-    string infoFile = "../data/C2.txt";
+    string infoFile = "./data/C2.txt";
     if(!readInfoFile(infoFile, graph, roadsInfoMap, nodeCoordinates))
     {
-        cout << "Error to read B2.txt!";
+        cout << "Error to read C2.txt!";
         return 1;
     }
 
