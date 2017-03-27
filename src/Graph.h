@@ -15,15 +15,12 @@ using namespace std;
 template <class T>
 class Vertex {
     T info;
-    double longitude_in_radians;
-    double latitude_in_radians;
     vector<Edge<T>  > adj;
     bool visited;
     void addEdge(Vertex<T> *dest, double w);
     bool removeEdgeTo(Vertex<T> *d);
 public:
     Vertex(T in);
-    Vertex(T id, double longitude_in_radians, double latitude_in_radians);
     friend class Graph<T>;
 };
 
@@ -46,7 +43,6 @@ class Graph {
 public:
     Graph(GraphViewer*);
     bool addVertex(const T &in);
-    bool addVertex(const T &in, double longitude_in_radians, double latitude_in_radians);
     bool addEdge(const T &sourc, const T &dest, double w);
     bool removeVertex(const T &in);
     bool removeEdge(const T &sourc, const T &dest);
@@ -81,17 +77,6 @@ bool Graph<T>::addVertex(const T &in) {
     for (; it!=ite; it++)
         if ((*it)->info == in) return false;
     Vertex<T> *v1 = new Vertex<T>(in);
-    vertexSet.push_back(v1);
-    return true;
-}
-
-template <class T>
-bool Graph<T>::addVertex(const T &in, double longitude_in_radians, double latitude_in_radians) {
-    typename vector<Vertex<T>*>::iterator it= vertexSet.begin();
-    typename vector<Vertex<T>*>::iterator ite= vertexSet.end();
-    for (; it!=ite; it++)
-        if ((*it)->info == in) return false;
-    Vertex<T> *v1 = new Vertex<T>(in, longitude_in_radians, latitude_in_radians);
     vertexSet.push_back(v1);
     gv->addNode(in);
     return true;
@@ -253,14 +238,6 @@ bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
 
 template <class T>
 Vertex<T>::Vertex(T in):info(in), visited(false) {}
-
-template <class T>
-Vertex<T>::Vertex(T id, double longitude_in_radians, double latitude_in_radians):
-        info(id), visited(false)
-{
-    this->latitude_in_radians = latitude_in_radians;
-    this->longitude_in_radians = longitude_in_radians;
-}
 
 template <class T>
 void Vertex<T>::addEdge(Vertex<T> *dest, double w) {
