@@ -1,0 +1,97 @@
+10503402;Rua Alexandre Herculano;True
+106554891;;False
+106554901;Rotunda do Hospital;False
+106554902;;False
+106554906;Avenida Doutor Urze Pires;False
+106554907;Avenida Doutor Urze Pires;False
+106554916;;False
+106554920;;False
+106554928;;False
+106554929;;False
+123336887;Rua da Biblioteca;False
+123336890;;False
+123336896;;False
+123336897;;False
+124062870;;False
+124062877;Rua Doutor Raul Rego;False
+126637441;;False
+126637447;;True
+126637455;;True
+126637458;;False
+130229172;Rua Dom Luis;False
+130229180;Rua do Beato Bento de Castro;False
+133041173;;False
+133041181;;False
+133041187;;False
+133041188;;False
+133041191;Rua Damião de Góis;False
+133041192;;False
+133041197;;False
+133041198;;False
+133041203;Avenida Ilha do Sal;False
+133041207;;False
+133041215;;False
+133041217;Avenida Ilha do Sal;False
+133041219;;False
+133041223;;False
+133041225;;False
+136229276;;False
+136229279;;False
+136229281;;False
+136229283;;False
+136229284;;False
+136229288;;False
+136229289;;False
+136229294;;False
+136229296;;False
+136229305;;False
+136229306;;False
+136229307;;False
+136276800;Rua Eça de Queirós;False
+136276802;Rua do Mercado;False
+136276805;;False
+136276806;;False
+136276817;;False
+136276821;Alameda Nossa Senhora de Fatima;False
+136276825;;False
+136276829;;False
+155849882;;False
+184402634;;False
+184402636;;False
+184402637;;False
+184402641;;False
+184402642;;False
+184402648;Rua Fonte do Paço;False
+184402650;;False
+184403019;;False
+184403057;;False
+184403093;;False
+184403099;;False
+184403194;Avenida Dom Nuno Álvares Pereira;False
+184403200;Avenida Dom Nuno Álvares Pereira;False
+274894950;Rua Doutor Luis Olaio;False
+275523158;Rua Doutor Francisco Sá Carneiro;False
+283712866;;False
+283712867;;False
+290165714;Rua Almeida Pessanha;False
+290165715;Rua Almeida Pessanha;False
+304305826;;False
+307860141;;True
+307860666;;False
+307865328;Alameda Nossa Senhora de Fatima;False
+307865329;;True
+334612971;Rua do Beato Bento de Castro;True
+374096229;Rua Dona Joana Alexandrina da Costa;True
+392534502;Rua Doutor Águedo de Oliveira;True
+392534503;Rua das Piscinas;True
+392534504;Rua das Piscinas;True
+392534505;Rua do Padrão Norte;True
+392534523;Rua Padre António Vieira;True
+392695116;Rua Pereira Charula;True
+392695117;Rua Viriato Martins;True
+399551469;Rua Abade Baçal;True
+399551470;Rua dos Segadores;True
+433873770;;True
+462846386;Avenida Dom Nuno Álvares Pereira;False
+462846387;Avenida Doutor Urze Pires;False
+462846388;Avenida Dom Nuno Álvares Pereira;False
