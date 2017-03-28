@@ -11,6 +11,14 @@
 using namespace std;
 
 /**
+ * Para ler os ficheiros:
+ * A1, B1, C1 - Nova Iorque
+ * A2, B2, C2 - Macedo
+ * A3, B3, C3 - Porto
+ * */
+
+
+/**
 * Read a file to a vector of lines
 **/
 bool readFile(const string &fileName, vector<string> &fileLines) {
@@ -200,10 +208,10 @@ bool readInfoFile(string infoFile, Graph<int> graph, map<long, bool> &roadsInfoM
 }
 
 GraphViewer* initViewer() {
-    GraphViewer *gv = new GraphViewer(600, 600, true);
+    GraphViewer *gv = new GraphViewer(1000, 900, true);
 
     gv->setBackground("background.jpg");
-    gv->createWindow(1000, 1000);
+    gv->createWindow(1000, 900);
     //gv->defineEdgeDashed(true);
     gv->defineVertexColor("blue");
     gv->defineEdgeColor("black");
@@ -213,31 +221,30 @@ GraphViewer* initViewer() {
 
 int main() {
 
-    string nodesFile = "./data/A1.txt";
+    string nodesFile = "./data/A3.txt";
     GraphViewer *gv = initViewer();
     Graph<int> graph(gv);
     std::map<long, std::pair< double, double>> nodeCoordinates;
     if(!readNodesFile(nodesFile, nodeCoordinates))
     {
-        cout << "Error to read A1.txt!";
+        cout << "Error to read A3.txt!";
         return 1;
     }
 
     gv->rearrange();
 
     std::map<long, bool> roadsInfoMap;
-    string roadsFile = "./data/B1.txt";
+    string roadsFile = "./data/B3.txt";
     if(!readRoadsFile(roadsFile, roadsInfoMap))
     {
-        cout << "Error to read B1.txt!";
+        cout << "Error to read B3.txt!";
         return 1;
     }
-
-
-    string infoFile = "./data/C1.txt";
+    
+    string infoFile = "./data/C3.txt";
     if(!readInfoFile(infoFile, graph, roadsInfoMap, nodeCoordinates))
     {
-        cout << "Error to read C1.txt!";
+        cout << "Error to read C3.txt!";
         return 1;
     }
 
