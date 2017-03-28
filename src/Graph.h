@@ -107,10 +107,8 @@ bool Graph<T>::removeVertex(const T &in) {
 template <class T>
 bool Graph<T>::addEdge(const T &edgeId, const T &sourc, const T &dest, double w, bool isUndirected)
 {
-    cout << "add edge: " << endl;
     addEdge(sourc, dest,  w);
     if(isUndirected) {
-        cout << "UNDIRECTED" << endl << endl;
         addEdge(dest, sourc, w);
         gv->addEdge(edgeId, sourc, dest,EdgeType::UNDIRECTED);
 
@@ -119,7 +117,6 @@ bool Graph<T>::addEdge(const T &edgeId, const T &sourc, const T &dest, double w,
         gv->setVertexColor(dest, RED);
     }
     else {
-        cout << "DIRECTED" << endl << endl;
         gv->addEdge(edgeId, sourc, dest, EdgeType::DIRECTED);
         gv->setVertexColor(sourc, "green");
     }

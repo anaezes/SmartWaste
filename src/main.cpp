@@ -34,7 +34,7 @@ bool readFile(const string &fileName, vector<string> &fileLines) {
 /**
 * Read a txt file of nodes
 **/
-bool readNodesFile(string nodesFile, Graph<int> graph, map<long, std::pair<double, double>> nodeCoordinates) {
+bool readNodesFile(string nodesFile, map<long, std::pair< double, double>> &nodeCoordinates) {
     vector<string> nodeLines;
 
     if (!readFile(nodesFile, nodeLines))
@@ -51,7 +51,8 @@ bool readNodesFile(string nodesFile, Graph<int> graph, map<long, std::pair<doubl
         string line = nodeLines[i];
 
         long nodeId;
-        double longitude_in_radians, latitude_in_radians;
+        double longitude_in_radians = 0.0;
+        double latitude_in_radians= 0.0 ;
 
         pos = line.find(';');
         while (pos != string::npos) {
@@ -71,12 +72,14 @@ bool readNodesFile(string nodesFile, Graph<int> graph, map<long, std::pair<doubl
             }
 
             line = line.substr(pos + 1, line.length());
-            pos = line.find(';');
             j++;
+            if(j!=4)
+                pos  = line.find(';');
+            else
+                pos  = line.find('\r');
         }
-
-        pair<double, double > coordinates = make_pair(latitude_in_radians, longitude_in_radians);
-        nodeCoordinates.insert(pair<long,pair<double, double>>(nodeId, coordinates));
+        pair< double, double > coordinates = make_pair(latitude_in_radians, longitude_in_radians);
+        nodeCoordinates.insert(pair<long,pair< double,  double>>(nodeId, coordinates));
     }
     return true;
 }
@@ -122,8 +125,6 @@ bool readRoadsFile(string roadsFile, map<long, bool> &roadsInfoMap) {
                 pos  = line.find(';');
             else
                 pos  = line.find('\r');
-
-
         }
         roadsInfoMap.insert(pair<long,bool>(edgeId,isUndirected));
     }
@@ -133,7 +134,7 @@ bool readRoadsFile(string roadsFile, map<long, bool> &roadsInfoMap) {
 /**
 * Read a txt file - add edge to a graph
 **/
-bool readInfoFile(string infoFile, Graph<int> graph, map<long, bool> &roadsInfoMap, const map<long, std::pair<double, double>> &nodeCoordinates) {
+bool readInfoFile(string infoFile, Graph<int> graph, map<long, bool> &roadsInfoMap, const map<long, std::pair< double, double>> &nodeCoordinates) {
     vector<string> infoLines;
     if (!readFile(infoFile, infoLines))
         return false;
@@ -175,11 +176,11 @@ bool readInfoFile(string infoFile, Graph<int> graph, map<long, bool> &roadsInfoM
             j++;
         }
 
-        std::pair<double, double> destCoords = nodeCoordinates.find(nodeDestId)->second;
-        std::pair<double, double> sourceCoords = nodeCoordinates.find(nodeSourceId)->second;
+        std::pair<long double, long double> destCoords = nodeCoordinates.find(nodeDestId)->second;
+        std::pair<long double, long double> sourceCoords = nodeCoordinates.find(nodeSourceId)->second;
+
         double currDistance = Utils::distance_km(sourceCoords.first, sourceCoords.second, destCoords.first, destCoords.second);
 
-        cout << "currEdgeId: " << currEdgeId << endl;
         if(currEdgeId == edgeId) {
             dist += currDistance;
             lastNodeId = nodeDestId;
@@ -194,8 +195,6 @@ bool readInfoFile(string infoFile, Graph<int> graph, map<long, bool> &roadsInfoM
             currEdgeId = edgeId;
             firstNodeId = nodeSourceId;
         }
-
-
     }
     return true;
 }
@@ -205,7 +204,7 @@ GraphViewer* initViewer() {
 
     gv->setBackground("background.jpg");
     gv->createWindow(1000, 1000);
-    gv->defineEdgeDashed(true);
+    //gv->defineEdgeDashed(true);
     gv->defineVertexColor("blue");
     gv->defineEdgeColor("black");
 
@@ -217,8 +216,8 @@ int main() {
     string nodesFile = "./data/A1.txt";
     GraphViewer *gv = initViewer();
     Graph<int> graph(gv);
-    std::map<long, std::pair<double, double>> nodeCoordinates;
-    if(!readNodesFile(nodesFile, graph, nodeCoordinates))
+    std::map<long, std::pair< double, double>> nodeCoordinates;
+    if(!readNodesFile(nodesFile, nodeCoordinates))
     {
         cout << "Error to read A1.txt!";
         return 1;
