@@ -56,5 +56,9 @@ namespace Utils {
 
         return result;
     }
+
+    int normalizeInt(long id, long minId) {
+        return (id-minId)%INT_MAX;
+    }
 }
 

@@ -15,7 +15,8 @@ template <class T> class Graph;
 
 using namespace std;
 
-static const int RESOLUCAO = 600;
+static const int X_RES = 2000;
+static const int Y_RES = 1000;
 
 template <class T>
 class Vertex {
@@ -101,8 +102,8 @@ bool Graph<T>::addVertex(const T &in, std::pair<double, double> coords) {
     Vertex<T> *v1 = new Vertex<T>(in);
     vertexSet.push_back(v1);
 
-    int x = Utils::getScreenXCoord(coords.second, this->longitudeMin, this->longitudeMax,RESOLUCAO);
-    int y = Utils::getScreenYCoord(coords.first, this->latitudeMin, this->latitudeMax, RESOLUCAO);
+    int x = Utils::getScreenXCoord(coords.second, this->longitudeMin, this->longitudeMax,X_RES);
+    int y = Utils::getScreenYCoord(coords.first, this->latitudeMin, this->latitudeMax, Y_RES);
     gv->addNode(in, x, y);
     return true;
 }
