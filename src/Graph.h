@@ -7,10 +7,15 @@
 #include <vector>
 #include <queue>
 
+#include "Utils.h"
+#include "graphviewer.h"
+
 template <class T> class Edge;
 template <class T> class Graph;
 
 using namespace std;
+
+static const int RESOLUCAO = 600;
 
 template <class T>
 class Vertex {
@@ -41,9 +46,13 @@ class Graph {
     void dfs(Vertex<T> *v, vector<T> &res) const;
     GraphViewer *gv;
     bool addEdge(const T &sourc, const T &dest, double w);
+    long double latitudeMin;
+    long double longitudeMin;
+    long double latitudeMax;
+    long double longitudeMax;
 public:
     Graph(GraphViewer*);
-    bool addVertex(const T &in);
+    bool addVertex(const T &in, std::pair< double, double> coords);
     bool addEdge(const T &edgeId, const T &sourc, const T &dest, double w, bool isUndirected);
     bool removeVertex(const T &in);
     bool removeEdge(const T &sourc, const T &dest);
@@ -52,15 +61,26 @@ public:
     int maxNewChildren(Vertex<T> *v, T &inf) const;
     vector<Vertex<T> * > getVertexSet() const;
     int getNumVertex() const;
-
+    void setMinCoords(const long double &lat, const long double &lon);
+    void setMaxCoords(const long double &lat, const long double &lon);
 };
+
+template <class T>
+void Graph<T>::setMinCoords(const long double &lat, const long double &lon) {
+    this->latitudeMin = lat;
+    this->longitudeMin = lon;
+}
+
+template <class T>
+void Graph<T>::setMaxCoords(const long double &lat, const long double &lon){
+    this->latitudeMax = lat;
+    this->longitudeMax = lon;
+}
 
 template <class T>
 Graph<T>::Graph(GraphViewer* gv) :
         gv(gv)
-{
-
-}
+{}
 
 template <class T>
 int Graph<T>::getNumVertex() const {
@@ -73,16 +93,20 @@ vector<Vertex<T> * > Graph<T>::getVertexSet() const {
 }
 
 template <class T>
-bool Graph<T>::addVertex(const T &in) {
+bool Graph<T>::addVertex(const T &in, std::pair<double, double> coords) {
     typename vector<Vertex<T>*>::iterator it= vertexSet.begin();
     typename vector<Vertex<T>*>::iterator ite= vertexSet.end();
     for (; it!=ite; it++)
         if ((*it)->info == in) return false;
     Vertex<T> *v1 = new Vertex<T>(in);
     vertexSet.push_back(v1);
-    gv->addNode(in);
+
+    int x = Utils::getScreenXCoord(coords.second, this->longitudeMin, this->longitudeMax,RESOLUCAO);
+    int y = Utils::getScreenYCoord(coords.first, this->latitudeMin, this->latitudeMax, RESOLUCAO);
+    gv->addNode(in, x, y);
     return true;
 }
+
 
 template <class T>
 bool Graph<T>::removeVertex(const T &in) {

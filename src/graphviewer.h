@@ -29,13 +29,14 @@
 #define LIGHT_GRAY "LIGHT_GRAY"
 #define MAGENTA "MAGENTA"
 
+
 /**
  * Classe que guarda o grafo e o representa. Todas as suas funções retornam um booleano a indicar
  * se a sua execução decorreu ou não com sucesso.
  */
 class GraphViewer {
 public:
-    /**
+     /**
      * Variável que guarda a próxima porta que o programa vai usar. O valor inicial é 7772.
      */
     static short port;
