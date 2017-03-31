@@ -167,7 +167,6 @@ bool readInfoFile(string infoFile, Graph<long>& graph, map<long, bool> &roadsInf
 
         std::pair<int, int> destCoords = nodeCoordinates.find(nodeSourceId)->second;
         std::pair<int, int> sourceCoords = nodeCoordinates.find(nodeDestId)->second;
-
         int weight = Utils::distance_km(sourceCoords.first, sourceCoords.second, destCoords.first, destCoords.second);
 
         graph.addEdge(edgeId, nodeSourceId, nodeDestId, weight, roadsInfoMap.find(edgeId)->second);
