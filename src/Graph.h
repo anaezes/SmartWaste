@@ -15,7 +15,7 @@ template <class T> class Graph;
 
 using namespace std;
 
-static const int X_RES = 2000;
+static const int X_RES = 1000;
 static const int Y_RES = 1000;
 
 template <class T>
@@ -47,14 +47,10 @@ class Graph {
     void dfs(Vertex<T> *v, vector<T> &res) const;
     GraphViewer *gv;
     bool addEdge(const T &sourc, const T &dest, double w);
-    long double latitudeMin;
-    long double longitudeMin;
-    long double latitudeMax;
-    long double longitudeMax;
 public:
     Graph(GraphViewer*);
     bool addVertex(const T &in, std::pair< double, double> coords);
-    bool addEdge(const T &edgeId, const T &sourc, const T &dest, double w, bool isUndirected);
+    bool addEdge(const T &edgeId, const T &sourc, const T &dest, int w, bool isUndirected);
     bool removeVertex(const T &in);
     bool removeEdge(const T &sourc, const T &dest);
     vector<T> dfs() const;
@@ -65,18 +61,6 @@ public:
     void setMinCoords(const long double &lat, const long double &lon);
     void setMaxCoords(const long double &lat, const long double &lon);
 };
-
-template <class T>
-void Graph<T>::setMinCoords(const long double &lat, const long double &lon) {
-    this->latitudeMin = lat;
-    this->longitudeMin = lon;
-}
-
-template <class T>
-void Graph<T>::setMaxCoords(const long double &lat, const long double &lon){
-    this->latitudeMax = lat;
-    this->longitudeMax = lon;
-}
 
 template <class T>
 Graph<T>::Graph(GraphViewer* gv) :
@@ -102,9 +86,8 @@ bool Graph<T>::addVertex(const T &in, std::pair<double, double> coords) {
     Vertex<T> *v1 = new Vertex<T>(in);
     vertexSet.push_back(v1);
 
-    int x = Utils::getScreenXCoord(coords.second, this->longitudeMin, this->longitudeMax,X_RES);
-    int y = Utils::getScreenYCoord(coords.first, this->latitudeMin, this->latitudeMax, Y_RES);
-    gv->addNode(in, x, y);
+    gv->addNode(in, coords.second, coords.first);
+    gv->setVertexLabel(in, ".");
     return true;
 }
 
@@ -130,12 +113,13 @@ bool Graph<T>::removeVertex(const T &in) {
 }
 
 template <class T>
-bool Graph<T>::addEdge(const T &edgeId, const T &sourc, const T &dest, double w, bool isUndirected)
+bool Graph<T>::addEdge(const T &edgeId, const T &sourc, const T &dest, int w, bool isUndirected)
 {
     addEdge(sourc, dest,  w);
     if(isUndirected) {
         addEdge(dest, sourc, w);
-        gv->addEdge(edgeId, sourc, dest,EdgeType::UNDIRECTED);
+        gv->addEdge(edgeId, sourc, dest, EdgeType::UNDIRECTED);
+        gv->setEdgeLabel(edgeId, to_string(w));
 
         //para diferenciar
         gv->setVertexColor(sourc, RED);
@@ -144,6 +128,9 @@ bool Graph<T>::addEdge(const T &edgeId, const T &sourc, const T &dest, double w,
     else {
         gv->addEdge(edgeId, sourc, dest, EdgeType::DIRECTED);
         gv->setVertexColor(sourc, "green");
+        gv->setVertexLabel(sourc, " ");
+        gv->setVertexLabel(dest, " ");
+        gv->setEdgeLabel(edgeId, to_string(w));
     }
 }
 

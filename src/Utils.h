@@ -10,7 +10,7 @@
 #include <climits>
 
 namespace Utils {
-    long double distance_km(long double, long double, long double, long double);
+    int distance_km(int y1, int x1, int y2, int x2);
 
     int getScreenXCoord(const long double &lon, const long double &longitudeMin, const long double &longitudeMax, const int &resolucao);
 
