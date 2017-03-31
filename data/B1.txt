@@ -1,75 +1,68 @@
-74
-5670114;West 49th Street;False
-5670225;East 46th Street;False
-5670867;West 50th Street;False
-5671629;East 48th Street;False
-5672118;East 52nd Street;False
-5672149;East 44th Street;False
-5673063;East 47th Street;False
-5673480;;False
-5673497;East 50th Street;False
-22916381;Park Avenue;False
-44165033;Park Avenue;False
-46240204;Park Avenue;False
-46520921;Vanderbilt Avenue;True
-46521465;Park Avenue;False
-46521998;East 53rd Street;False
-46522001;East 46th Street;False
-46522002;East 49th Street;False
-46522003;East 50th Street;False
-46522007;East 45th Street;False
-46538335;West 51st Street;False
-46538375;West 52nd Street;False
-68674962;Park Avenue;False
-169267540;East 48th Street;False
-169267541;2nd Avenue;False
-169267542;2nd Avenue;False
-169267544;East 49th Street;False
-196117039;Lexington Avenue;False
-226041006;East 48th Street;False
-226041007;East 48th Street;False
-226041008;East 51st Street;False
-226041011;East 54th Street;False
-226041013;East 55th Street;False
-359180980;Park Avenue;False
-359180981;Park Avenue;False
-359180982;Park Avenue;False
-379749110;;False
-384178816;5th Avenue;False
-394715085;;False
-394715087;;False
-420281338;East 53rd Street;False
-420281339;Madison Avenue;False
-420356172;Madison Avenue;False
-420356173;Madison Avenue;False
-420496090;East 46th Street;False
-420902878;East 46th Street;False
-420902883;East 46th Street;False
-420906743;Madison Avenue;False
-420906747;Madison Avenue;False
-420906748;Madison Avenue;False
-420906753;Madison Avenue;False
-420906755;Madison Avenue;False
-439768850;East 48th Street;False
-441405435;Madison Avenue;False
-441405436;East 50th Street;False
-455122830;East 55th Street;False
-458166897;3rd Avenue;False
-458177130;East 45th Street;False
-458177131;East 45th Street;False
-458177133;Lexington Avenue;False
-458180181;East 46th Street;False
-458180182;Madison Avenue;False
-458180184;East 49th Street;False
-458180185;Madison Avenue;False
-458180186;East 49th Street;False
-458180187;Lexington Avenue;False
-458180188;East 50th Street;False
-458180189;Lexington Avenue;False
-458180190;5th Avenue;False
-458180191;5th Avenue;False
-458180192;East 53rd Street;False
-458180193;Lexington Avenue;False
-458180194;East 54th Street;False
-458180195;Lexington Avenue;False
-458180200;Lexington Avenue;False
+67
+1;a ;True
+2;a ;False
+3;a ;True
+4;a ;False
+5;a ;True
+6;a ;True
+7;a ;False
+8;a ;True
+9;a ;False
+10;a ;False
+11;a ;False
+12;a ;False
+13;a ;True
+14;a ;True
+15;a ;True
+16;a ;True
+17;a ;True
+18;a ;False
+19;a ;False
+20;a ;False
+21;a ;False
+22;a ;False
+23;a ;True
+24;a ;True
+25;a ;True
+26;a ;False
+27;a ;True
+28;a ;True
+29;a ;True
+30;a ;False
+31;a ;True
+32;a ;True
+33;a ;False
+34;a ;True
+35;a ;True
+36;a ;False
+37;a ;False
+38;a ;False
+39;a ;False
+40;a ;False
+41;a ;True
+42;a ;True
+43;a ;True
+44;a ;True
+45;a ;False
+46;a ;True
+47;a ;True
+48;a ;True
+49;a ;True
+50;a ;False
+51;a ;False
+52;a ;True
+53;a ;True
+54;a ;True
+55;a ;False
+56;a ;False
+57;a ;True
+58;a ;True
+59;a ;True
+60;a ;False
+61;a ;True
+62;a ;True
+63;a ;False
+64;a ;False
+65;a ;True
+66;a ;False
+67;a ;True

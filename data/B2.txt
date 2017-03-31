@@ -1,164 +1,60 @@
-163
-10503083;;False
-10503364;;False
-10503402;Rua Alexandre Herculano;True
-10503956;Avenida Doutor Urze Pires;False
-106554891;;False
-106554901;Rotunda do Hospital;False
-106554902;;False
-106554906;Avenida Doutor Urze Pires;False
-106554907;Avenida Doutor Urze Pires;False
-106554916;;False
-106554920;;False
-106554928;;False
-106554929;;False
-106554930;Avenida Doutor Urze Pires;False
-119959605;;False
-119959608;Rua do Sabor;False
-123336887;Rua da Biblioteca;False
-123336890;;False
-123336896;;False
-123336897;;False
-124062866;;False
-124062870;;False
-124062873;Rua João Lopes;False
-124062874;;False
-124062875;;False
-124062876;Rua Duarte Moreno;False
-124062877;Rua Doutor Raul Rego;False
-124062878;Rua do Sol;False
-124062879;Rua das Estevas;False
-124062880;;False
-126637441;;False
-126637447;;True
-126637455;;True
-126637458;;False
-126637480;;False
-130229172;Rua Dom Luis;False
-130229180;Rua do Beato Bento de Castro;False
-133041173;;False
-133041175;;False
-133041178;Rotunda dos Cavaleiros;False
-133041181;;False
-133041183;;False
-133041187;;False
-133041188;;False
-133041191;Rua Damião de Góis;False
-133041192;;False
-133041193;Avenida Ilha do Sal;False
-133041197;;False
-133041198;;False
-133041203;Avenida Ilha do Sal;False
-133041204;;False
-133041207;;False
-133041209;;False
-133041211;;False
-133041215;;False
-133041217;Avenida Ilha do Sal;False
-133041219;;False
-133041221;Avenida Ilha do Sal;False
-133041223;;False
-133041225;;False
-133133079;;False
-133133096;Rua Engenheiro Moura Pegado;False
-136229274;Rau João Gonçalves;False
-136229275;Rua do Azibo;False
-136229276;;False
-136229277;;False
-136229279;;False
-136229280;;False
-136229281;;False
-136229282;;False
-136229283;;False
-136229284;;False
-136229285;;False
-136229286;Avenida Ilha do Sal;False
-136229287;;False
-136229288;;False
-136229289;;False
-136229290;;False
-136229291;;False
-136229292;;False
-136229294;;False
-136229296;;False
-136229297;;False
-136229299;;False
-136229301;Rua Vila Cordeiro;False
-136229302;;False
-136229304;;False
-136229305;;False
-136229306;;False
-136229307;;False
-136276800;Rua Eça de Queirós;False
-136276802;Rua do Mercado;False
-136276803;;False
-136276804;;False
-136276805;;False
-136276806;;False
-136276808;;False
-136276817;;False
-136276821;Alameda Nossa Senhora de Fatima;False
-136276824;;False
-136276825;;False
-136276827;;False
-136276829;;False
-155849882;;False
-180798701;Rua Manuel António Vasconcelos;True
-184402602;Avenida Doutor Urze Pires;False
-184402603;Avenida Doutor Urze Pires;False
-184402604;Avenida Doutor Urze Pires;False
-184402605;Avenida Doutor Urze Pires;False
-184402634;;False
-184402636;;False
-184402637;;False
-184402641;;False
-184402642;;False
-184402648;Rua Fonte do Paço;False
-184402650;;False
-184403019;;False
-184403057;;False
-184403093;;False
-184403099;;False
-184403194;Avenida Dom Nuno Álvares Pereira;False
-184403200;Avenida Dom Nuno Álvares Pereira;False
-274894950;Rua Doutor Luis Olaio;False
-275523158;Rua Doutor Francisco Sá Carneiro;False
-283712866;;False
-283712867;;False
-290165714;Rua Almeida Pessanha;False
-290165715;Rua Almeida Pessanha;False
-304305826;;False
-307860141;;True
-307860666;;False
-307862648;;False
-307862649;;True
-307865328;Alameda Nossa Senhora de Fatima;False
-307865329;;True
-307866193;;True
-311020691;;False
-311020692;;False
-311020694;;False
-311020695;;False
-334612971;Rua do Beato Bento de Castro;True
-348789089;;False
-374096229;Rua Dona Joana Alexandrina da Costa;False
-392534502;Rua Doutor Águedo de Oliveira;False
-392534503;Rua das Piscinas;False
-392534504;Rua das Piscinas;False
-392534505;Rua do Padrão Norte;False
-392534523;Rua Padre António Vieira;False
-392695116;Rua Pereira Charula;False
-392695117;Rua Viriato Martins;False
-399551469;Rua Abade Baçal;False
-399551470;Rua dos Segadores;False
-433870471;;False
-433870472;;False
-433870473;Rua Damião de Góis;False
-433870476;Rua Damião de Góis;False
-433870478;;False
-433870479;;False
-433870480;;False
-433873770;;False
-462846386;Avenida Dom Nuno Álvares Pereira;False
-462846387;Avenida Doutor Urze Pires;False
-462846388;Avenida Dom Nuno Álvares Pereira;False
+59
+1;a ;True
+2;a ;True
+3;a ;True
+4;a ;True
+5;a ;True
+6;a ;True
+7;a ;False
+8;a ;True
+9;a ;False
+10;a ;False
+11;a ;False
+12;a ;False
+13;a ;True
+14;a ;True
+15;a ;True
+16;a ;True
+17;a ;True
+18;a ;False
+19;a ;True
+20;a ;False
+21;a ;True
+22;a ;False
+23;a ;True
+24;a ;True
+25;a ;True
+26;a ;False
+27;a ;True
+28;a ;True
+29;a ;True
+30;a ;False
+31;a ;True
+32;a ;True
+33;a ;False
+34;a ;True
+35;a ;True
+36;a ;False
+37;a ;False
+38;a ;True
+39;a ;False
+40;a ;False
+41;a ;True
+42;a ;True
+43;a ;True
+44;a ;True
+45;a ;False
+46;a ;True
+47;a ;True
+48;a ;True
+49;a ;True
+50;a ;False
+51;a ;False
+52;a ;True
+53;a ;True
+54;a ;True
+55;a ;False
+56;a ;False
+57;a ;True
+58;a ;True
+59;a ;True
