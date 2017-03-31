@@ -42,7 +42,7 @@ bool readFile(const string &fileName, vector<string> &fileLines) {
 /**
 * Read a txt file of nodes
 **/
-bool readNodesFile(string nodesFile, map<long, std::pair< int, int>> &nodeCoordinates, Graph<long> &graph) {
+bool readNodesFile(string nodesFile, map<int, std::pair< int, int>> &nodeCoordinates, Graph<int> &graph) {
     vector<string> nodeLines;
 
     if (!readFile(nodesFile, nodeLines))
@@ -83,7 +83,7 @@ bool readNodesFile(string nodesFile, map<long, std::pair< int, int>> &nodeCoordi
 /**
 * Reads a text file of information of edges: saves edge id and if it's undirected or not.
 **/
-bool readRoadsFile(string roadsFile, map<long, bool> &roadsInfoMap) {
+bool readRoadsFile(string roadsFile, map<int, bool> &roadsInfoMap) {
     vector<string> roadsLines;
     if (!readFile(roadsFile, roadsLines))
         return false;
@@ -123,8 +123,8 @@ bool readRoadsFile(string roadsFile, map<long, bool> &roadsInfoMap) {
 /**
 * Read a txt file - add edge to a graph
 **/
-bool readInfoFile(string infoFile, Graph<long>& graph, map<long, bool> &roadsInfoMap,
-                  const map<long, std::pair< int, int>> &nodeCoordinates) {
+bool readInfoFile(string infoFile, Graph<int>& graph, map<int, bool> &roadsInfoMap,
+                  const map<int, std::pair< int, int>> &nodeCoordinates) {
     vector<string> infoLines;
     if (!readFile(infoFile, infoLines))
         return false;
@@ -134,42 +134,34 @@ bool readInfoFile(string infoFile, Graph<long>& graph, map<long, bool> &roadsInf
     ss >> nLines;
 
     for (int i = 1; i <= nLines; i++) {
-        size_t pos;
-        size_t j = 0;
         string substring;
         string line = infoLines[i];
 
-        long edgeId, nodeSourceId, nodeDestId;
+        int edgeId, nodeSourceId, nodeDestId;
 
-        srand (time(NULL));
+        for (int i = 1; i <= nLines; i++) {
+            string substring;
+            string line = infoLines[i];
 
-        pos = line.find(';');
-        while (pos != string::npos) {
-            substring = line.substr(0, pos);
-            stringstream ss(substring);
+            vector<string> lineParts = Utils::splitLine(infoLines[i], ';');
+            ss.clear();
+            ss.str(lineParts[0]);
+            ss >> edgeId;
 
-            switch (j) {
-                case 0:
-                    ss >> edgeId;
-                    break;
-                case 1:
-                    ss >> nodeSourceId;
-                    break;
-                case 2:
-                    ss >> nodeDestId;
-                    break;
-            }
+            ss.clear();
+            ss.str(lineParts[1]);
+            ss >> nodeSourceId;
 
-            line = line.substr(pos + 1, line.length());
-            pos  = line.find(';');
-            j++;
+            ss.clear();
+            ss.str(lineParts[2]);
+            ss >> nodeDestId;
+
+            std::pair<int, int> destCoords = nodeCoordinates.find(nodeSourceId)->second;
+            std::pair<int, int> sourceCoords = nodeCoordinates.find(nodeDestId)->second;
+            int weight = Utils::distance_km(sourceCoords.first, sourceCoords.second, destCoords.first, destCoords.second);
+
+            graph.addEdge(edgeId, nodeSourceId, nodeDestId, weight, roadsInfoMap.find(edgeId)->second);
         }
-
-        std::pair<int, int> destCoords = nodeCoordinates.find(nodeSourceId)->second;
-        std::pair<int, int> sourceCoords = nodeCoordinates.find(nodeDestId)->second;
-        int weight = Utils::distance_km(sourceCoords.first, sourceCoords.second, destCoords.first, destCoords.second);
-
-        graph.addEdge(edgeId, nodeSourceId, nodeDestId, weight, roadsInfoMap.find(edgeId)->second);
     }
     return true;
 }
@@ -185,31 +177,22 @@ GraphViewer* initViewer() {
 }
 
 int main() {
-
     string nodesFile = "./data/A2.txt";
+    string roadsFile = "./data/B2.txt";
+    string infoFile = "./data/C2.txt";
+
     GraphViewer *gv = initViewer();
-    Graph<long> graph(gv);
-    std::map<long, std::pair< int, int>> nodeCoordinates;
-    if(!readNodesFile(nodesFile, nodeCoordinates, graph))
+    Graph<int> graph(gv);
+
+    std::map<int, std::pair< int, int>> nodeCoordinates;
+    std::map<int, bool> roadsInfoMap;
+
+    if(!readNodesFile(nodesFile, nodeCoordinates, graph) || !readRoadsFile(roadsFile, roadsInfoMap)
+       || !readInfoFile(infoFile, graph, roadsInfoMap, nodeCoordinates))
     {
-        cout << "Error to read A2.txt!";
+        cout << "Error to read a file!";
         return 1;
     }
-
-       std::map<long, bool> roadsInfoMap;
-       string roadsFile = "./data/B2.txt";
-       if(!readRoadsFile(roadsFile, roadsInfoMap))
-       {
-           cout << "Error to read B2.txt!";
-           return 1;
-       }
-
-       string infoFile = "./data/C2.txt";
-       if(!readInfoFile(infoFile, graph, roadsInfoMap, nodeCoordinates))
-       {
-           cout << "Error to read C2.txt!";
-           return 1;
-       }
 
     return 0;
 }
