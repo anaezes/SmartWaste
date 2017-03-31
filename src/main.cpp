@@ -175,7 +175,7 @@ GraphViewer* initViewer() {
     return gv;
 }
 
-int initGraphs(Graph<int> &graph, map<int, std::pair< int, int>> &nodeCoordinates, map<int, bool> &roadsInfoMap) {
+bool initGraphs(Graph<int> &graph, map<int, std::pair< int, int>> &nodeCoordinates, map<int, bool> &roadsInfoMap) {
     string nodesFile = "./data/A2.txt";
     string roadsFile = "./data/B2.txt";
     string infoFile = "./data/C2.txt";
@@ -184,10 +184,44 @@ int initGraphs(Graph<int> &graph, map<int, std::pair< int, int>> &nodeCoordinate
        || !readInfoFile(infoFile, graph, roadsInfoMap, nodeCoordinates))
     {
         cout << "Error to read a file!";
-        return 1;
+        return false;
     }
 
-    return 0;
+    return true;
+}
+
+int showMenu() {
+    cout << endl << "Please choose an option: " << endl << endl;
+    cout << "1. Generate a test case" << endl;
+    cout << "2. Compute solution" << endl;
+    cout << "3. Quit " << endl << endl;
+
+    cout << ">";
+    int option;
+    cin >> option;
+    return option;
+}
+
+void generateRandomCases(Graph<int> &graph, vector<int> &fullNodes)
+{
+    srand(time(NULL));
+    int num = rand() % 5 + 1;
+    int i = 0;
+    while(i < num) {
+        int id = rand() % 32 + 1;
+        if (id != 13) {
+            graph.getGV()->setVertexColor(id, RED);
+            fullNodes.push_back(id);
+            i++;
+        }
+    }
+}
+
+void computeSolution(Graph<int> &graph, vector<int> &fullNodes) {
+
+    for(size_t i = 0; i < fullNodes.size(); i++) {
+
+    }
 }
 
 int main() {
@@ -195,7 +229,25 @@ int main() {
     Graph<int> graph(gv);
     std::map<int, std::pair< int, int>> nodeCoordinates;
     std::map<int, bool> roadsInfoMap;
-    initGraphs(graph, nodeCoordinates, roadsInfoMap);
 
-    return 0;
+    if(!initGraphs(graph, nodeCoordinates, roadsInfoMap))
+        return 1;
+
+    vector<int> fullNodes;
+    while(true) {
+        int option = showMenu();
+        switch (option) {
+            case 1:
+                generateRandomCases(graph, fullNodes);
+                break;
+            case 2:
+                computeSolution(graph, fullNodes);
+                break;
+            case 3:
+                graph.getGV()->closeWindow();
+                return 0;
+        }
+        graph.getGV()->rearrange();
+    }
 }
+

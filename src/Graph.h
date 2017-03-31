@@ -187,7 +187,14 @@ public:
     int edgeCost(int vOrigIndex, int vDestIndex);
     vector<T> getfloydWarshallPath(const T &origin, const T &dest);
     void getfloydWarshallPathAux(int index1, int index2, vector<T> & res);
+
+    GraphViewer* getGV();
 };
+
+template <class T>
+GraphViewer* Graph<T>::getGV(){
+    return gv;
+}
 
 template <class T>
 Graph<T>::Graph(GraphViewer* gv) :
@@ -267,12 +274,9 @@ bool Graph<T>::addEdge(const T &edgeId, const T &sourc, const T &dest, int w, bo
         addEdge(dest, sourc, w);
         gv->addEdge(edgeId, sourc, dest, EdgeType::UNDIRECTED);
         gv->setEdgeLabel(edgeId, to_string(w));
-        gv->setVertexColor(sourc, GRAY);
-        gv->setVertexColor(dest, GRAY);
     }
     else {
         gv->addEdge(edgeId, sourc, dest, EdgeType::DIRECTED);
-        gv->setVertexColor(sourc, GRAY);
         gv->setEdgeLabel(edgeId, to_string(w));
     }
 }
