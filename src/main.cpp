@@ -136,7 +136,6 @@ bool readInfoFile(string infoFile, Graph<int>& graph, map<int, bool> &roadsInfoM
     for (int i = 1; i <= nLines; i++) {
         string substring;
         string line = infoLines[i];
-
         int edgeId, nodeSourceId, nodeDestId;
 
         for (int i = 1; i <= nLines; i++) {
@@ -167,25 +166,19 @@ bool readInfoFile(string infoFile, Graph<int>& graph, map<int, bool> &roadsInfoM
 }
 
 GraphViewer* initViewer() {
-    GraphViewer *gv = new GraphViewer(1000, 1000, false);
-    gv->setBackground("background.jpg");
-    gv->createWindow(2000, 1000);
-    gv->defineVertexColor("blue");
-    gv->defineEdgeColor("black");
+    GraphViewer *gv = new GraphViewer(1000, 500, false);
+    gv->setBackground("./images/background.jpg");
+    gv->createWindow(1000, 500);
+    gv->defineVertexColor(GRAY);
+    gv->defineEdgeColor(DARK_GRAY);
 
     return gv;
 }
 
-int main() {
+int initGraphs(Graph<int> &graph, map<int, std::pair< int, int>> &nodeCoordinates, map<int, bool> &roadsInfoMap) {
     string nodesFile = "./data/A2.txt";
     string roadsFile = "./data/B2.txt";
     string infoFile = "./data/C2.txt";
-
-    GraphViewer *gv = initViewer();
-    Graph<int> graph(gv);
-
-    std::map<int, std::pair< int, int>> nodeCoordinates;
-    std::map<int, bool> roadsInfoMap;
 
     if(!readNodesFile(nodesFile, nodeCoordinates, graph) || !readRoadsFile(roadsFile, roadsInfoMap)
        || !readInfoFile(infoFile, graph, roadsInfoMap, nodeCoordinates))
@@ -193,6 +186,16 @@ int main() {
         cout << "Error to read a file!";
         return 1;
     }
+
+    return 0;
+}
+
+int main() {
+    GraphViewer *gv = initViewer();
+    Graph<int> graph(gv);
+    std::map<int, std::pair< int, int>> nodeCoordinates;
+    std::map<int, bool> roadsInfoMap;
+    initGraphs(graph, nodeCoordinates, roadsInfoMap);
 
     return 0;
 }
