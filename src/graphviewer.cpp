@@ -265,3 +265,9 @@ bool GraphViewer::setEdgeFlow(int id, int flow) {
 bool GraphViewer::rearrange() {
     return con->sendMsg("rearrange\n");
 }
+
+bool GraphViewer::setVertexAllColor(int nVertex, string color) {
+    for(size_t i = 0; i < nVertex; i++){
+        this->setVertexColor(i+1, color);
+    }
+}

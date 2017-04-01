@@ -189,7 +189,8 @@ int showMenu() {
     cout << "1. Generate a test case" << endl;
     cout << "2. Compute solution" << endl;
     cout << "3. Reset" << endl;
-    cout << "4. Quit " << endl << endl;
+    cout << "4. Graph connectivity" << endl;
+    cout << "5. Quit " << endl << endl;
 
     cout << ">";
     int option;
@@ -207,6 +208,7 @@ void generateRandomCases(Graph<int> &graph, vector<int> &fullNodes)
         if (id != 13 && std::find(fullNodes.begin(), fullNodes.end(), id) == fullNodes.end()) {
             graph.getGV()->setVertexColor(id, RED);
             fullNodes.push_back(id);
+            cout << "id " << i << ": " << id << endl;
             i++;
         }
     }
@@ -241,11 +243,18 @@ void addPath(vector<int> &pathSolution, const vector<int> &newPath) {
     }
 }
 
-void computeSolution(Graph<int> &graph, vector<int> &fullNodes) {
+void computeSolution(Graph<int> &graph, vector<int> &fullNodes2) {
     int sourceId = 13;
     int firstSourceId = sourceId;
     int lastSourceId = 0;
     vector<int> pathSolution;
+
+    vector<int> fullNodes;
+    fullNodes.push_back(20);
+    fullNodes.push_back(12);
+    graph.getGV()->setVertexColor(20, RED);
+    graph.getGV()->setVertexColor(12, RED);
+    graph.getGV()->rearrange();
 
     int i = 0;
     while(!fullNodes.empty()) {
@@ -281,6 +290,24 @@ void resetGraph(const Graph<int> &graph){
     }
 }
 
+void verifyConnectivity(const Graph<int> &graph){
+    cout << endl << "Analyzing..." << endl ;
+    double average = 0;
+    for(size_t i = 0; i < graph.getNumVertex(); i++) {
+        graph.getGV()->setVertexColor(graph.getVertex(i+1)->getInfo(), BLUE);
+        vector<int> bfs = graph.bfs(graph.getVertex(i+1));
+        graph.getGV()->rearrange();
+        double connectivity = (double) 1 * bfs.size() / graph.getNumVertex();
+        average += connectivity;
+        sleep(3);
+        graph.getGV()->setVertexAllColor(graph.getNumVertex(), GRAY);
+        graph.getGV()->rearrange();
+    }
+    average /= graph.getNumVertex();
+    cout << endl << "Average of connectivity: " << average << endl;
+    sleep(3);
+}
+
 int main() {
     GraphViewer *gv = initViewer();
     Graph<int> graph(gv);
@@ -306,6 +333,9 @@ int main() {
                 graph.getGV()->rearrange();
                 break;
             case 4:
+                verifyConnectivity(graph);
+                break;
+            case 5:
                 graph.getGV()->closeWindow();
                 return 0;
         }

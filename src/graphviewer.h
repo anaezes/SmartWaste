@@ -314,6 +314,8 @@ public:
      */
     bool rearrange();
 
+    bool setVertexAllColor(int nVertex, string color);
+
 #ifdef linux
     static pid_t procId;
 #endif

@@ -209,6 +209,7 @@ public:
     GraphViewer* getGV() const;
     int getEdge(const T &source, const T &dest);
     vector<Edge<T>> getEdges() const;
+    void resetVisited() const;
 };
 
 template <class T>
@@ -391,6 +392,7 @@ void Graph<T>::dfs(Vertex<T> *v,vector<T> &res) const {
             //cout << "ok ";
             dfs(it->dest, res);
         }
+    resetVisited();
 }
 
 template <class T>
@@ -409,10 +411,12 @@ vector<T> Graph<T>::bfs(Vertex<T> *v) const {
             Vertex<T> *d = it->dest;
             if (d->visited==false) {
                 d->visited=true;
+                gv->setVertexColor(d->getInfo(), RED);
                 q.push(d);
             }
         }
     }
+    resetVisited();
     return res;
 }
 
@@ -811,6 +815,11 @@ void Graph<T>::floydWarshallShortestPath() {
             }
 
 }
-
+template<class T>
+void Graph<T>::resetVisited() const{
+    for(unsigned int i = 0; i < vertexSet.size(); i++) {
+        vertexSet[i]->visited = false;
+    }
+}
 
 #endif /* GRAPH_H_ */
