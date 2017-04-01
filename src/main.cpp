@@ -5,18 +5,12 @@
 #include <map>
 #include <limits>
 #include <ctime>
+#include <algorithm>
 
 #include "graphviewer.h"
 #include "Graph.h"
 
 using namespace std;
-
-/**
- * Para ler os ficheiros:
- * A1, B1, C1 - Nova Iorque
- * A2, B2, C2 - Macedo
- * A3, B3, C3 - PortoP
- * */
 
 /**
 * Read a file to a vector of lines
@@ -194,7 +188,8 @@ int showMenu() {
     cout << endl << "Please choose an option: " << endl << endl;
     cout << "1. Generate a test case" << endl;
     cout << "2. Compute solution" << endl;
-    cout << "3. Quit " << endl << endl;
+    cout << "3. Reset" << endl;
+    cout << "4. Quit " << endl << endl;
 
     cout << ">";
     int option;
@@ -209,7 +204,7 @@ void generateRandomCases(Graph<int> &graph, vector<int> &fullNodes)
     int i = 0;
     while(i < num) {
         int id = rand() % 32 + 1;
-        if (id != 13) {
+        if (id != 13 && std::find(fullNodes.begin(), fullNodes.end(), id) == fullNodes.end()) {
             graph.getGV()->setVertexColor(id, RED);
             fullNodes.push_back(id);
             i++;
@@ -273,7 +268,16 @@ void computeSolution(Graph<int> &graph, vector<int> &fullNodes) {
         graph.getGV()->setEdgeThickness(edgeId, 5);
         graph.getGV()->setVertexColor(graph.getVertex(pathSolution[i])->getInfo(), GRAY);
         graph.getGV()->rearrange();
-        sleep(1);
+        sleep(2);
+    }
+}
+
+void resetGraph(const Graph<int> &graph){
+    vector<Edge<int>> edges = graph.getEdges();
+    for(size_t i = 0; i < edges.size(); i++) {
+            int edgeInfo = edges[i].getInfo();
+            graph.getGV()->setEdgeColor(edgeInfo, DARK_GRAY);
+            graph.getGV()->setEdgeThickness(edgeInfo, 1);
     }
 }
 
@@ -298,6 +302,10 @@ int main() {
                 computeSolution(graph, fullNodes);
                 break;
             case 3:
+                resetGraph(graph);
+                graph.getGV()->rearrange();
+                break;
+            case 4:
                 graph.getGV()->closeWindow();
                 return 0;
         }

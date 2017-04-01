@@ -41,7 +41,7 @@ public:
     Vertex(T in);
     friend class Graph<T>;
 
-    void addEdge(T infoEdge, Vertex<T> *dest, double w);
+    Edge<T> addEdge(T infoEdge, Vertex<T> *dest, double w);
     bool removeEdgeTo(Vertex<T> *d);
 
     T getInfo() const;
@@ -53,8 +53,14 @@ public:
     bool operator<(const Vertex<T> vertex);
 
     Vertex* path;
+    vector<Edge<T>  > getEdges();
 };
 
+
+template <class T>
+vector<Edge<T>  > Vertex<T>::getEdges() {
+    return adj;
+}
 
 template <class T>
 struct vertex_greater_than {
@@ -87,9 +93,10 @@ Vertex<T>::Vertex(T in): info(in), visited(false), processing(false), indegree(0
 
 
 template <class T>
-void Vertex<T>::addEdge(T info, Vertex<T> *dest, double w) {
+Edge<T> Vertex<T>::addEdge(T info, Vertex<T> *dest, double w) {
     Edge<T> edgeD(info, dest,w);
     adj.push_back(edgeD);
+    return edgeD;
 }
 
 //--
@@ -129,9 +136,15 @@ class Edge {
 public:
     Edge(T i, Vertex<T> *d, double w);
     T getInfo();
+    Vertex<T> * getDest();
     friend class Graph<T>;
     friend class Vertex<T>;
 };
+
+template <class T>
+Vertex<T> * Edge<T>::getDest() {
+    return dest;
+}
 
 template <class T>
 Edge<T>::Edge(T i, Vertex<T> *d, double w): info(i), dest(d), weight(w){}
@@ -140,9 +153,6 @@ template <class T>
 T Edge<T>::getInfo(){
     return info;
 }
-
-
-
 
 
 /* ================================================================================================
@@ -154,6 +164,7 @@ class Graph {
     GraphViewer *gv;
     vector<Vertex<T> *> vertexSet;
     void dfs(Vertex<T> *v, vector<T> &res) const;
+    vector<Edge<T>> edges;
 
     int numCycles;
     void dfsVisit(Vertex<T> *v);
@@ -195,9 +206,15 @@ public:
     vector<T> getfloydWarshallPath(const T &origin, const T &dest);
     void getfloydWarshallPathAux(int index1, int index2, vector<T> & res);
 
-    GraphViewer* getGV();
+    GraphViewer* getGV() const;
     int getEdge(const T &source, const T &dest);
+    vector<Edge<T>> getEdges() const;
 };
+
+template <class T>
+vector<Edge<T>> Graph<T>::getEdges() const {
+    return edges;
+}
 
 template <class T>
 int Graph<T>::getEdge(const T &source, const T &dest) {
@@ -214,18 +231,14 @@ int Graph<T>::getEdge(const T &source, const T &dest) {
 return -1;
 }
 
-
-
-
-
 template <class T>
-GraphViewer* Graph<T>::getGV(){
+GraphViewer* Graph<T>::getGV() const {
     return gv;
 }
 
 template <class T>
 Graph<T>::Graph(GraphViewer* gv) :
-        gv(gv)
+        gv(gv), edges()
 {}
 
 template <class T>
@@ -323,7 +336,8 @@ bool Graph<T>::addEdge(const T &edgeId, const T &sourc, const T &dest, double w)
     }
     if (found!=2) return false;
     vD->indegree++;
-    vS->addEdge(edgeId, vD,w);
+    Edge<T> aux = vS->addEdge(edgeId, vD,w);
+    this->edges.push_back(aux);
 
     return true;
 }
