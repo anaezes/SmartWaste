@@ -41,7 +41,7 @@ public:
     Vertex(T in);
     friend class Graph<T>;
 
-    void addEdge(Vertex<T> *dest, double w);
+    void addEdge(T infoEdge, Vertex<T> *dest, double w);
     bool removeEdgeTo(Vertex<T> *d);
 
     T getInfo() const;
@@ -87,8 +87,8 @@ Vertex<T>::Vertex(T in): info(in), visited(false), processing(false), indegree(0
 
 
 template <class T>
-void Vertex<T>::addEdge(Vertex<T> *dest, double w) {
-    Edge<T> edgeD(dest,w);
+void Vertex<T>::addEdge(T info, Vertex<T> *dest, double w) {
+    Edge<T> edgeD(info, dest,w);
     adj.push_back(edgeD);
 }
 
@@ -125,14 +125,21 @@ template <class T>
 class Edge {
     Vertex<T> * dest;
     double weight;
+    T info;
 public:
-    Edge(Vertex<T> *d, double w);
+    Edge(T i, Vertex<T> *d, double w);
+    T getInfo();
     friend class Graph<T>;
     friend class Vertex<T>;
 };
 
 template <class T>
-Edge<T>::Edge(Vertex<T> *d, double w): dest(d), weight(w){}
+Edge<T>::Edge(T i, Vertex<T> *d, double w): info(i), dest(d), weight(w){}
+
+template <class T>
+T Edge<T>::getInfo(){
+    return info;
+}
 
 
 
@@ -156,7 +163,7 @@ class Graph {
     int ** W;   //weight
     int ** P;   //path
 
-    bool addEdge(const T &sourc, const T &dest, double w);
+    bool addEdge(const T &edgeId, const T &sourc, const T &dest, double w);
 
 public:
     Graph(GraphViewer*);
@@ -189,7 +196,27 @@ public:
     void getfloydWarshallPathAux(int index1, int index2, vector<T> & res);
 
     GraphViewer* getGV();
+    int getEdge(const T &source, const T &dest);
 };
+
+template <class T>
+int Graph<T>::getEdge(const T &source, const T &dest) {
+    Vertex<T>* tmp = getVertex(source);
+
+    typename vector<Edge<T> >::iterator it=  tmp->adj.begin();
+    typename vector<Edge<T> >::iterator ite= tmp->adj.end();
+
+    while(it!=ite) {
+        if((*it).dest->getInfo() == dest)
+            return (*it).getInfo();
+        it++;
+    }
+return -1;
+}
+
+
+
+
 
 template <class T>
 GraphViewer* Graph<T>::getGV(){
@@ -269,9 +296,9 @@ bool Graph<T>::removeVertex(const T &in) {
 template <class T>
 bool Graph<T>::addEdge(const T &edgeId, const T &sourc, const T &dest, int w, bool isUndirected)
 {
-    addEdge(sourc, dest,  w);
+    addEdge(edgeId, sourc, dest,  w);
     if(isUndirected) {
-        addEdge(dest, sourc, w);
+        addEdge(edgeId, dest, sourc, w);
         gv->addEdge(edgeId, sourc, dest, EdgeType::UNDIRECTED);
         gv->setEdgeLabel(edgeId, to_string(w));
     }
@@ -282,7 +309,7 @@ bool Graph<T>::addEdge(const T &edgeId, const T &sourc, const T &dest, int w, bo
 }
 
 template <class T>
-bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
+bool Graph<T>::addEdge(const T &edgeId, const T &sourc, const T &dest, double w) {
     typename vector<Vertex<T>*>::iterator it= vertexSet.begin();
     typename vector<Vertex<T>*>::iterator ite= vertexSet.end();
     int found=0;
@@ -296,7 +323,7 @@ bool Graph<T>::addEdge(const T &sourc, const T &dest, double w) {
     }
     if (found!=2) return false;
     vD->indegree++;
-    vS->addEdge(vD,w);
+    vS->addEdge(edgeId, vD,w);
 
     return true;
 }
@@ -554,14 +581,12 @@ vector<T> Graph<T>::getfloydWarshallPath(const T &origin, const T &dest){
             originIndex = i;
         if(vertexSet[i]->info == dest)
             destinationIndex = i;
-
         if(originIndex != -1 && destinationIndex != -1)
             break;
     }
 
 
     vector<T> res;
-
     //se nao foi encontrada solucao possivel, retorna lista vazia
     if(W[originIndex][destinationIndex] == INT_INFINITY)
         return res;
@@ -572,16 +597,12 @@ vector<T> Graph<T>::getfloydWarshallPath(const T &origin, const T &dest){
     if(P[originIndex][destinationIndex] != -1)
     {
         int intermedIndex = P[originIndex][destinationIndex];
-
         getfloydWarshallPathAux(originIndex, intermedIndex, res);
-
         res.push_back(vertexSet[intermedIndex]->info);
-
         getfloydWarshallPathAux(intermedIndex,destinationIndex, res);
     }
 
     res.push_back(vertexSet[destinationIndex]->info);
-
 
     return res;
 }
@@ -594,9 +615,7 @@ void Graph<T>::getfloydWarshallPathAux(int index1, int index2, vector<T> & res)
     if(P[index1][index2] != -1)
     {
         getfloydWarshallPathAux(index1, P[index1][index2], res);
-
         res.push_back(vertexSet[P[index1][index2]]->info);
-
         getfloydWarshallPathAux(P[index1][index2],index2, res);
     }
 }
@@ -661,7 +680,6 @@ void Graph<T>::bellmanFordShortestPath(const T &s) {
 
 template<class T>
 void Graph<T>::dijkstraShortestPath(const T &s) {
-
     for(unsigned int i = 0; i < vertexSet.size(); i++) {
         vertexSet[i]->path = NULL;
         vertexSet[i]->dist = INT_INFINITY;
@@ -670,10 +688,8 @@ void Graph<T>::dijkstraShortestPath(const T &s) {
 
     Vertex<T>* v = getVertex(s);
     v->dist = 0;
-
     vector< Vertex<T>* > pq;
     pq.push_back(v);
-
     make_heap(pq.begin(), pq.end());
 
 
@@ -736,7 +752,6 @@ void printSquareArray(int ** arr, unsigned int size)
         {
             if(i == 0)
                 cout <<  " " << k+1 << " ";
-
             if(arr[k][i] == INT_INFINITY)
                 cout << " - ";
             else

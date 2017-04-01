@@ -217,10 +217,63 @@ void generateRandomCases(Graph<int> &graph, vector<int> &fullNodes)
     }
 }
 
+int computeNextVertex(Graph<int> &graph, vector<int> &fullNodes){
+
+    int distMin = INT_MAX;
+    int vertexDistMinIndex = 0;
+
+    typename vector<Vertex<int>*>::iterator it = graph.getVertexSet().begin();
+    typename vector<Vertex<int>*>::iterator ite = graph.getVertexSet().end();
+
+    while(it!=ite) {
+        for(size_t j = 0; j < fullNodes.size(); j++) {
+            if((*it)->getInfo() == fullNodes[j]){
+                if((*it)->getDist() < distMin) {
+                    distMin = (*it)->getDist();
+                    vertexDistMinIndex = j ;
+                }
+            }
+        }
+        it++;
+    }
+
+    return vertexDistMinIndex;
+}
+
+void addPath(vector<int> &pathSolution, const vector<int> &newPath) {
+    for(size_t i = 0; i < newPath.size(); i++) {
+        pathSolution.push_back(newPath[i]);
+    }
+}
+
 void computeSolution(Graph<int> &graph, vector<int> &fullNodes) {
+    int sourceId = 13;
+    int firstSourceId = sourceId;
+    int lastSourceId = 0;
+    vector<int> pathSolution;
 
-    for(size_t i = 0; i < fullNodes.size(); i++) {
+    int i = 0;
+    while(!fullNodes.empty()) {
+        graph.dijkstraShortestPath(sourceId);
+        lastSourceId = sourceId;
+        int sourceIndex = computeNextVertex(graph, fullNodes);
+        sourceId = fullNodes[sourceIndex];
+        fullNodes.erase(fullNodes.begin()+sourceIndex);
+        addPath(pathSolution, graph.getPath(lastSourceId, sourceId));
+        i++;
+    }
 
+    graph.dijkstraShortestPath(sourceId);
+    addPath(pathSolution, graph.getPath(sourceId, firstSourceId));
+
+    for(size_t i = 0; i < pathSolution.size()-1; i++)
+    {
+        int edgeId = graph.getEdge(graph.getVertex(pathSolution[i])->getInfo(), graph.getVertex(pathSolution[i+1])->getInfo());
+        graph.getGV()->setEdgeColor(edgeId, RED);
+        graph.getGV()->setEdgeThickness(edgeId, 5);
+        graph.getGV()->setVertexColor(graph.getVertex(pathSolution[i])->getInfo(), GRAY);
+        graph.getGV()->rearrange();
+        sleep(1);
     }
 }
 
@@ -239,6 +292,7 @@ int main() {
         switch (option) {
             case 1:
                 generateRandomCases(graph, fullNodes);
+                graph.getGV()->rearrange();
                 break;
             case 2:
                 computeSolution(graph, fullNodes);
@@ -247,7 +301,6 @@ int main() {
                 graph.getGV()->closeWindow();
                 return 0;
         }
-        graph.getGV()->rearrange();
     }
 }
 
