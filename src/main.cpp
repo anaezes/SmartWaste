@@ -159,6 +159,10 @@ bool readInfoFile(string infoFile, Graph<int>& graph, map<int, bool> &roadsInfoM
     return true;
 }
 
+
+/**
+* Init GraphViewer
+**/
 GraphViewer* initViewer() {
     GraphViewer *gv = new GraphViewer(1000, 500, false);
     gv->setBackground("./images/background.jpg");
@@ -169,6 +173,9 @@ GraphViewer* initViewer() {
     return gv;
 }
 
+/**
+* charge txt files in graph
+**/
 bool initGraphs(Graph<int> &graph, map<int, std::pair< int, int>> &nodeCoordinates, map<int, bool> &roadsInfoMap) {
     string nodesFile = "./data/A2.txt";
     string roadsFile = "./data/B2.txt";
@@ -184,6 +191,9 @@ bool initGraphs(Graph<int> &graph, map<int, std::pair< int, int>> &nodeCoordinat
     return true;
 }
 
+/**
+* show menu to user
+**/
 int showMenu() {
     cout << endl << "Please choose an option: " << endl << endl;
     cout << "1. Generate a test case" << endl;
@@ -198,6 +208,9 @@ int showMenu() {
     return option;
 }
 
+/**
+* Generate random test cases
+**/
 void generateRandomCases(Graph<int> &graph, vector<int> &fullNodes)
 {
     srand(time(NULL));
@@ -213,6 +226,9 @@ void generateRandomCases(Graph<int> &graph, vector<int> &fullNodes)
     }
 }
 
+/**
+* Return the next garbage colector to visit (closest the current souce)
+**/
 int computeNextVertex(Graph<int> &graph, vector<int> &fullNodes) {
     int distMin = INT_MAX;
     int vertexDistMinIndex = 0;
@@ -227,12 +243,20 @@ int computeNextVertex(Graph<int> &graph, vector<int> &fullNodes) {
     return vertexDistMinIndex;
 }
 
+
+/**
+* Add computed path so the solution
+**/
 void addPath(vector<int> &pathSolution, const vector<int> &newPath) {
     for(size_t i = 0; i < newPath.size(); i++) {
         pathSolution.push_back(newPath[i]);
     }
 }
 
+
+/**
+* main of compute solution
+**/
 void computeSolution(Graph<int> &graph, vector<int> &fullNodes) {
     int sourceId = 13;
     int firstSourceId = sourceId;
@@ -254,9 +278,12 @@ void computeSolution(Graph<int> &graph, vector<int> &fullNodes) {
         i++;
     }
 
+    // go back to the initial node
     graph.dijkstraShortestPath(sourceId);
     addPath(pathSolution, graph.getPath(sourceId, firstSourceId));
 
+
+    //display solution
     for(size_t i = 0; i < pathSolution.size()-1; i++)
     {
         int edgeId = graph.getEdge(graph.getVertex(pathSolution[i])->getInfo(), graph.getVertex(pathSolution[i+1])->getInfo());
@@ -268,6 +295,9 @@ void computeSolution(Graph<int> &graph, vector<int> &fullNodes) {
     }
 }
 
+/**
+* clear the display
+**/
 void resetGraph(const Graph<int> &graph){
     vector<Edge<int>> edges = graph.getEdges();
     for(size_t i = 0; i < edges.size(); i++) {
@@ -275,20 +305,36 @@ void resetGraph(const Graph<int> &graph){
         graph.getGV()->setEdgeColor(edgeInfo, DARK_GRAY);
         graph.getGV()->setEdgeThickness(edgeInfo, 1);
     }
+    int nNodes = graph.getNumVertex();
+    for(size_t i = 0; i < nNodes; i++) {
+        graph.getGV()->setVertexColor(i+1, GRAY);
+    }
+    graph.getGV()->rearrange();
 }
 
+void paintNodes(vector<int> nodes, const Graph<int> &graph, int source){
+    for(size_t i = 0; i < nodes.size(); i++) {
+        if(nodes[i] != source)
+        graph.getGV()->setVertexColor(nodes[i], RED);
+    }
+    graph.getGV()->rearrange();
+}
+
+/**
+* Analyze the connectivity of the graph
+**/
 void verifyConnectivity(const Graph<int> &graph){
     cout << endl << "Analyzing..." << endl ;
     double average = 0;
     for(size_t i = 0; i < graph.getNumVertex(); i++) {
-        graph.getGV()->setVertexColor(graph.getVertex(i+1)->getInfo(), BLUE);
+        int source = graph.getVertex(i+1)->getInfo();
+        graph.getGV()->setVertexColor(source, BLUE);
         vector<int> bfs = graph.bfs(graph.getVertex(i+1));
-        graph.getGV()->rearrange();
+        paintNodes(bfs, graph, source);
         double connectivity = (double) 1 * bfs.size() / graph.getNumVertex();
         average += connectivity;
-        sleep(3);
-        graph.getGV()->setVertexAllColor(graph.getNumVertex(), GRAY);
-        graph.getGV()->rearrange();
+        sleep(1);
+        resetGraph(graph);
     }
     average /= graph.getNumVertex();
     cout << endl << "Average of connectivity: " << average << endl;
@@ -317,7 +363,6 @@ int main() {
                 break;
             case 3:
                 resetGraph(graph);
-                graph.getGV()->rearrange();
                 break;
             case 4:
                 verifyConnectivity(graph);

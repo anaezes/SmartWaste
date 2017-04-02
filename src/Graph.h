@@ -411,7 +411,6 @@ vector<T> Graph<T>::bfs(Vertex<T> *v) const {
             Vertex<T> *d = it->dest;
             if (d->visited==false) {
                 d->visited=true;
-                gv->setVertexColor(d->getInfo(), RED);
                 q.push(d);
             }
         }
