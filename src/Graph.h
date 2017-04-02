@@ -200,7 +200,7 @@ public:
 
     //exercicio 6
     void bellmanFordShortestPath(const T &s);
-    void dijkstraShortestPath(const T &s);
+    void dijkstraShortestPath(const T &s) const;
     void floydWarshallShortestPath();
     int edgeCost(int vOrigIndex, int vDestIndex);
     vector<T> getfloydWarshallPath(const T &origin, const T &dest);
@@ -697,7 +697,7 @@ void Graph<T>::bellmanFordShortestPath(const T &s) {
 
 
 template<class T>
-void Graph<T>::dijkstraShortestPath(const T &s) {
+void Graph<T>::dijkstraShortestPath(const T &s) const {
     for(unsigned int i = 0; i < vertexSet.size(); i++) {
         vertexSet[i]->path = NULL;
         vertexSet[i]->dist = INT_INFINITY;

@@ -208,32 +208,22 @@ void generateRandomCases(Graph<int> &graph, vector<int> &fullNodes)
         if (id != 13 && std::find(fullNodes.begin(), fullNodes.end(), id) == fullNodes.end()) {
             graph.getGV()->setVertexColor(id, RED);
             fullNodes.push_back(id);
-            cout << "id " << i << ": " << id << endl;
             i++;
         }
     }
 }
 
-int computeNextVertex(Graph<int> &graph, vector<int> &fullNodes){
-
+int computeNextVertex(Graph<int> &graph, vector<int> &fullNodes) {
     int distMin = INT_MAX;
     int vertexDistMinIndex = 0;
-
-    typename vector<Vertex<int>*>::iterator it = graph.getVertexSet().begin();
-    typename vector<Vertex<int>*>::iterator ite = graph.getVertexSet().end();
-
-    while(it!=ite) {
-        for(size_t j = 0; j < fullNodes.size(); j++) {
-            if((*it)->getInfo() == fullNodes[j]){
-                if((*it)->getDist() < distMin) {
-                    distMin = (*it)->getDist();
-                    vertexDistMinIndex = j ;
-                }
-            }
+    int nodeDist;
+    for(size_t j = 0; j < fullNodes.size(); j++) {
+        nodeDist = graph.getVertex(fullNodes[j])->getDist();
+        if (nodeDist < distMin) {
+            distMin            = nodeDist;
+            vertexDistMinIndex = j;
         }
-        it++;
     }
-
     return vertexDistMinIndex;
 }
 
@@ -243,24 +233,21 @@ void addPath(vector<int> &pathSolution, const vector<int> &newPath) {
     }
 }
 
-void computeSolution(Graph<int> &graph, vector<int> &fullNodes2) {
+void computeSolution(Graph<int> &graph, vector<int> &fullNodes) {
     int sourceId = 13;
     int firstSourceId = sourceId;
     int lastSourceId = 0;
     vector<int> pathSolution;
-
-    vector<int> fullNodes;
-    fullNodes.push_back(20);
-    fullNodes.push_back(12);
-    graph.getGV()->setVertexColor(20, RED);
-    graph.getGV()->setVertexColor(12, RED);
-    graph.getGV()->rearrange();
 
     int i = 0;
     while(!fullNodes.empty()) {
         graph.dijkstraShortestPath(sourceId);
         lastSourceId = sourceId;
         int sourceIndex = computeNextVertex(graph, fullNodes);
+        if(sourceIndex == -1) {
+            cout << "ERROR" << endl;
+            return;
+        }
         sourceId = fullNodes[sourceIndex];
         fullNodes.erase(fullNodes.begin()+sourceIndex);
         addPath(pathSolution, graph.getPath(lastSourceId, sourceId));
@@ -277,16 +264,16 @@ void computeSolution(Graph<int> &graph, vector<int> &fullNodes2) {
         graph.getGV()->setEdgeThickness(edgeId, 5);
         graph.getGV()->setVertexColor(graph.getVertex(pathSolution[i])->getInfo(), GRAY);
         graph.getGV()->rearrange();
-        sleep(2);
+        sleep(1);
     }
 }
 
 void resetGraph(const Graph<int> &graph){
     vector<Edge<int>> edges = graph.getEdges();
     for(size_t i = 0; i < edges.size(); i++) {
-            int edgeInfo = edges[i].getInfo();
-            graph.getGV()->setEdgeColor(edgeInfo, DARK_GRAY);
-            graph.getGV()->setEdgeThickness(edgeInfo, 1);
+        int edgeInfo = edges[i].getInfo();
+        graph.getGV()->setEdgeColor(edgeInfo, DARK_GRAY);
+        graph.getGV()->setEdgeThickness(edgeInfo, 1);
     }
 }
 
