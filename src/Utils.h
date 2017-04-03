@@ -24,7 +24,7 @@
 
 namespace Utils {
 
-    void doSleep(double s);
+    void doSleep(int s);
 
     int distance_km(int y1, int x1, int y2, int x2);
 

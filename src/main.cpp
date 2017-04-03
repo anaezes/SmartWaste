@@ -12,6 +12,7 @@
 
 using namespace std;
 
+
 /**
 * Read a file to a vector of lines
 **/
@@ -218,7 +219,7 @@ void generateRandomCases(Graph<int> &graph, vector<int> &fullNodes)
     int i = 0;
     while(i < num) {
         int id = rand() % 32 + 1;
-        if (id != 13 && std::find(fullNodes.begin(), fullNodes.end(), id) == fullNodes.end()) {
+        if (id != nodeCentral && id != nodeTrucks && std::find(fullNodes.begin(), fullNodes.end(), id) == fullNodes.end()) {
             graph.getGV()->setVertexColor(id, RED);
             fullNodes.push_back(id);
             i++;
@@ -258,8 +259,7 @@ void addPath(vector<int> &pathSolution, const vector<int> &newPath) {
 * main of compute solution
 **/
 void computeSolution(Graph<int> &graph, vector<int> &fullNodes) {
-    int sourceId = 13;
-    int firstSourceId = sourceId;
+    int sourceId = nodeTrucks;
     int lastSourceId = 0;
     vector<int> pathSolution;
 
@@ -278,9 +278,9 @@ void computeSolution(Graph<int> &graph, vector<int> &fullNodes) {
         i++;
     }
 
-    // go back to the initial node
+    // go back to the central
     graph.dijkstraShortestPath(sourceId);
-    addPath(pathSolution, graph.getPath(sourceId, firstSourceId));
+    addPath(pathSolution, graph.getPath(sourceId, nodeCentral));
 
 
     //display solution
@@ -291,7 +291,7 @@ void computeSolution(Graph<int> &graph, vector<int> &fullNodes) {
         graph.getGV()->setEdgeThickness(edgeId, 5);
         graph.getGV()->setVertexColor(graph.getVertex(pathSolution[i])->getInfo(), GRAY);
         graph.getGV()->rearrange();
-        Utils::doSleep(1);
+        Utils::doSleep(1000);
     }
 }
 
@@ -316,7 +316,7 @@ void paintNodes(vector<int> nodes, const Graph<int> &graph, int source){
     for(size_t i = 0; i < nodes.size(); i++) {
         if(nodes[i] != source)
         graph.getGV()->setVertexColor(nodes[i], RED);
-        Utils::doSleep(0.05);
+        Utils::doSleep(50);
         graph.getGV()->rearrange();
     }
 }
@@ -334,12 +334,12 @@ void verifyConnectivity(const Graph<int> &graph){
         paintNodes(bfs, graph, source);
         double connectivity = (double) 1 * bfs.size() / graph.getNumVertex();
         average += connectivity;
-        Utils::doSleep(1);
+        Utils::doSleep(1000);
         resetGraph(graph);
     }
     average /= graph.getNumVertex();
     cout << endl << "Average of connectivity: " << average << endl;
-    Utils::doSleep(3);
+    Utils::doSleep(3000);
 }
 
 int main() {

@@ -22,6 +22,9 @@ const int NOT_VISITED = 0;
 const int BEING_VISITED = 1;
 const int DONE_VISITED = 2;
 const int INT_INFINITY = INT_MAX;
+static const int nodeTrucks = 13;
+static const int nodeCentral = 20;
+
 
 /*
  * ================================================================================================
@@ -272,8 +275,11 @@ bool Graph<T>::addVertex(const T &in, std::pair<double, double> coords) {
     Vertex<T> *v1 = new Vertex<T>(in);
     vertexSet.push_back(v1);
 
-    if(in == 13)
-        gv->setVertexIcon(13, "./images/reciclagem.png");
+    if(in == nodeCentral)
+        gv->setVertexIcon(nodeCentral, "./images/reciclagem.png");
+
+    if(in == nodeTrucks)
+        gv->setVertexIcon(nodeTrucks, "./images/truck.png");
 
     gv->addNode(in, coords.second, coords.first);
     gv->setVertexLabel(in, ".");

@@ -9,11 +9,11 @@
 
 namespace Utils {
 
-    void doSleep(double s) {
+    void doSleep(int s) {
 #ifdef linux
-        usleep(s*1000000);
+        usleep(s*1000);
 #else
-        Sleep(s*1000);
+        Sleep(s);
 #endif
     }
 
