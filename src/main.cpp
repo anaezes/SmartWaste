@@ -6,12 +6,16 @@
 #include <limits>
 #include <ctime>
 #include <algorithm>
+#include <chrono>
 
 #include "graphviewer.h"
 #include "Graph.h"
 
-using namespace std;
+#define DIJKSTRA 0
+#define FLOYDWARSHALL 1
+#define NUM_TESTS 100
 
+using namespace std;
 
 /**
 * Read a file to a vector of lines
@@ -197,14 +201,19 @@ bool initGraphs(Graph<int> &graph, map<int, std::pair< int, int>> &nodeCoordinat
 **/
 int showMenu() {
     cout << endl << "Please choose an option: " << endl << endl;
-    cout << "Generate a test case" << endl;
+    cout << "Generate a test case:" << endl;
     cout << "1. Simple case" << endl;
     cout << "2. Recycling case" << endl << endl;
 
-    cout << "3. Compute solution" << endl;
-    cout << "4. Reset" << endl;
-    cout << "5. Graph connectivity" << endl;
-    cout << "6. Quit " << endl << endl;
+    cout << "Compute solution:" << endl;
+    cout << "3. Dijkstra" << endl;
+    cout << "4. Floyd Warshall" << endl<< endl;
+
+    cout << "5. Time comparison of Dijkstra and Floyd Warshall" << endl << endl;
+
+    cout << "6. Graph connectivity" << endl;
+    cout << "7. Reset" << endl;
+    cout << "8. Quit " << endl << endl;
 
     cout << ">";
     int option;
@@ -301,26 +310,33 @@ void resetNode(Graph<int> &graph, int currentNode, string color) {
 /**
 * main of compute solution
 **/
-void computeSolution(Graph<int> &graph, vector<int> &fullNodes, string colorEdge) {
-    vector<int> fullNodesCopy = fullNodes;
+void computeSolution(Graph<int> &graph, vector<int> &fullNodes, string colorEdge, int type) {
     int sourceId = nodeTrucks;
     int lastSourceId = 0;
     vector<int> pathSolution;
     int truckContains = 0;
     int auxId;
 
-    int i = 0;
     while(!fullNodes.empty() && (truckContains+CONTAINER_CAPACITY <= TRUCK_CAPACITY)) {
-        graph.dijkstraShortestPath(sourceId);
+
+        if(type == DIJKSTRA)
+            graph.dijkstraShortestPath(sourceId);
+        else
+            graph.floydWarshallShortestPath();
+
         lastSourceId = sourceId;
         int sourceIndex = computeNextVertex(graph, fullNodes);
         sourceId = fullNodes[sourceIndex];
         fullNodes.erase(fullNodes.begin()+sourceIndex);
-        addPath(pathSolution, graph.getPath(lastSourceId, sourceId));
+
+        if(type == DIJKSTRA)
+            addPath(pathSolution, graph.getPath(lastSourceId, sourceId));
+        else
+            addPath(pathSolution, graph.getfloydWarshallPath(lastSourceId, sourceId));
+
         truckContains += CONTAINER_CAPACITY;
         if(truckContains >= TRUCK_CAPACITY)
             auxId = pathSolution.size();
-        i++;
     }
 
     // go back to the central
@@ -337,19 +353,19 @@ void computeSolution(Graph<int> &graph, vector<int> &fullNodes, string colorEdge
         graph.getGV()->rearrange();
         Utils::doSleep(1000);
 
-        if(i+1 == auxId && truckContains >= TRUCK_CAPACITY)
+        if(i+1 == auxId && truckContains >= TRUCK_CAPACITY) {
             cout << "Truck is full!" << endl;
+        }
     }
 
     if(!fullNodes.empty())
-        computeSolution(graph, fullNodes, colorEdge);
-
+        computeSolution(graph, fullNodes, colorEdge, type);
 }
 
-void computeSolutionRecycling(Graph<int> &graph, vector<int> &fullNodesPaper, vector<int> &fullNodesGlass, vector<int> &fullNodesPlastic) {
-    computeSolution(graph, fullNodesPaper, BLUE);
-    computeSolution(graph, fullNodesGlass, GREEN);
-    computeSolution(graph, fullNodesPlastic, YELLOW);
+void computeSolutionRecycling(Graph<int> &graph, vector<int> &fullNodesPaper, vector<int> &fullNodesGlass, vector<int> &fullNodesPlastic, int type) {
+    computeSolution(graph, fullNodesPaper, BLUE, type);
+    computeSolution(graph, fullNodesGlass, GREEN, type);
+    computeSolution(graph, fullNodesPlastic, YELLOW, type);
 }
 
 /**
@@ -376,7 +392,6 @@ void resetDisplay(const Graph<int> &graph) {
 * clear the display and reset variables for new tests
 **/
 void resetGraph(const Graph<int> &graph, vector<int> &fullNodes, vector<int> &fullNodesPaper, vector<int> &fullNodesGlass, vector<int> &fullNodesPlastic) {
-
     resetDisplay(graph);
 
     //reset vectors full and reset state of node
@@ -398,7 +413,9 @@ void resetGraph(const Graph<int> &graph, vector<int> &fullNodes, vector<int> &fu
     fullNodesPlastic.clear();
 }
 
-
+/**
+* Auxiliary method of analyze the connectivity of the graph
+**/
 void paintNodes(vector<int> nodes, const Graph<int> &graph, int source){
     for(size_t i = 0; i < nodes.size(); i++) {
         if(nodes[i] != source)
@@ -428,6 +445,77 @@ void verifyConnectivity(const Graph<int> &graph){
     cout << endl << "Average of connectivity: " << average << endl;
     Utils::doSleep(3000);
 }
+
+
+void auxTimeComparison(Graph<int> graph, vector<int> fullNodes, const int &type) {
+    int sourceId = nodeTrucks;
+    int lastSourceId = 0;
+    vector<int> pathSolution;
+    int truckContains = 0;
+
+    while(!fullNodes.empty() && (truckContains+CONTAINER_CAPACITY <= TRUCK_CAPACITY)) {
+
+        if(type == DIJKSTRA)
+            graph.dijkstraShortestPath(sourceId);
+        else
+            graph.floydWarshallShortestPath();
+
+        lastSourceId = sourceId;
+        int sourceIndex = computeNextVertex(graph, fullNodes);
+        sourceId = fullNodes[sourceIndex];
+        fullNodes.erase(fullNodes.begin()+sourceIndex);
+
+        if(type == DIJKSTRA)
+            addPath(pathSolution, graph.getPath(lastSourceId, sourceId));
+        else
+            addPath(pathSolution, graph.getfloydWarshallPath(lastSourceId, sourceId));
+
+        truckContains += CONTAINER_CAPACITY;
+    }
+
+    // go back to the central
+    graph.dijkstraShortestPath(sourceId);
+    addPath(pathSolution, graph.getPath(sourceId, NODE_CENTRAL));
+}
+
+void timeComparison(Graph<int> &graph) {
+    auto elapsedDijkstra = 0;
+    auto elapsedFloyd = 0;
+
+    for(int i = 0; i < NUM_TESTS ; i++) {
+        vector<int> fullNodesPaper;
+        vector<int> fullNodesGlass;
+        vector<int> fullNodesPlastic;
+
+        generateRandomCasesRecycling(graph, fullNodesPaper, fullNodesGlass, fullNodesPlastic);
+
+        auto startDijkstra = std::chrono::system_clock::now();
+        auxTimeComparison(graph, fullNodesPaper, DIJKSTRA);
+        auxTimeComparison(graph, fullNodesGlass, DIJKSTRA);
+        auxTimeComparison(graph, fullNodesPlastic, DIJKSTRA);
+        auto endDijkstra = std::chrono::system_clock::now();
+        elapsedDijkstra = elapsedDijkstra + std::chrono::duration_cast<std::chrono::milliseconds>(endDijkstra - startDijkstra).count();
+
+        auto startFloyd = std::chrono::system_clock::now();
+        auxTimeComparison(graph, fullNodesPaper, FLOYDWARSHALL);
+        auxTimeComparison(graph, fullNodesGlass, FLOYDWARSHALL);
+        auxTimeComparison(graph, fullNodesPlastic, FLOYDWARSHALL);
+        auto endFloyd = std::chrono::system_clock::now();
+        elapsedFloyd = elapsedFloyd + std::chrono::duration_cast<std::chrono::milliseconds>(endFloyd - startFloyd).count();
+
+        resetDisplay(graph);
+    }
+
+    double averageDijkstra = elapsedDijkstra/NUM_TESTS;
+    cout << "Average time Dijkstra: " << averageDijkstra << endl;
+
+    double averageFloyd = elapsedFloyd/NUM_TESTS;
+    cout << "Average time Floyd Warshall: " << averageFloyd << endl;
+
+    Utils::doSleep(2000);
+}
+
+
 
 int main() {
     srand(time(NULL));
@@ -460,21 +548,34 @@ int main() {
                 break;
             case 3:
                 if(!recyclingCase)
-                    computeSolution(graph, fullNodes, RED);
+                    computeSolution(graph, fullNodes, RED, DIJKSTRA);
                 else
-                    computeSolutionRecycling(graph, fullNodesPaper, fullNodesGlass, fullNodesPlastic);
+                    computeSolutionRecycling(graph, fullNodesPaper, fullNodesGlass, fullNodesPlastic, DIJKSTRA);
                 break;
             case 4:
-                resetGraph(graph, fullNodes, fullNodesPaper, fullNodesGlass, fullNodesPlastic);
-                recyclingCase = false;
+                if(!recyclingCase)
+                    computeSolution(graph, fullNodes, RED, FLOYDWARSHALL);
+                else
+                    computeSolutionRecycling(graph, fullNodesPaper, fullNodesGlass, fullNodesPlastic, FLOYDWARSHALL);
                 break;
             case 5:
                 resetDisplay(graph);
-                verifyConnectivity(graph);
+                timeComparison(graph);
                 break;
             case 6:
+                resetDisplay(graph);
+                verifyConnectivity(graph);
+                break;
+            case 7:
+                resetGraph(graph, fullNodes, fullNodesPaper, fullNodesGlass, fullNodesPlastic);
+                recyclingCase = false;
+                break;
+            case 8:
                 graph.getGV()->closeWindow();
                 return 0;
+            default:
+                cout << "Option not Valid... try again." << endl;
+                sleep(1);
         }
     }
 }
