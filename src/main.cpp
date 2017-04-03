@@ -355,19 +355,49 @@ void computeSolutionRecycling(Graph<int> &graph, vector<int> &fullNodesPaper, ve
 /**
 * clear the display
 **/
-void resetGraph(const Graph<int> &graph){
+
+void resetDisplay(const Graph<int> &graph) {
     vector<Edge<int>> edges = graph.getEdges();
     for(size_t i = 0; i < edges.size(); i++) {
         int edgeInfo = edges[i].getInfo();
         graph.getGV()->setEdgeColor(edgeInfo, DARK_GRAY);
         graph.getGV()->setEdgeThickness(edgeInfo, 1);
     }
+
     int nNodes = graph.getNumVertex();
     for(size_t i = 0; i < nNodes; i++) {
         graph.getGV()->setVertexColor(i+1, GRAY);
     }
     graph.getGV()->rearrange();
 }
+
+
+/**
+* clear the display and reset variables for new tests
+**/
+void resetGraph(const Graph<int> &graph, vector<int> &fullNodes, vector<int> &fullNodesPaper, vector<int> &fullNodesGlass, vector<int> &fullNodesPlastic) {
+
+    resetDisplay(graph);
+
+    //reset vectors full and reset state of node
+    if(!fullNodesPaper.empty())
+        for(size_t i = 0; i < fullNodesPaper.size(); i++)
+            graph.getVertex(fullNodesPaper[i])->setPaperFull(false);
+
+    if(!fullNodesGlass.empty())
+        for(size_t i = 0; i < fullNodesGlass.size(); i++)
+            graph.getVertex(fullNodesGlass[i])->setGlassFull(false);
+
+    if(!fullNodesPlastic.empty())
+        for(size_t i = 0; i < fullNodesPlastic.size(); i++)
+            graph.getVertex(fullNodesPlastic[i])->setPlasticFull(false);
+
+    fullNodes.clear();
+    fullNodesPaper.clear();
+    fullNodesGlass.clear();
+    fullNodesPlastic.clear();
+}
+
 
 void paintNodes(vector<int> nodes, const Graph<int> &graph, int source){
     for(size_t i = 0; i < nodes.size(); i++) {
@@ -392,7 +422,7 @@ void verifyConnectivity(const Graph<int> &graph){
         double connectivity = (double) 1 * bfs.size() / graph.getNumVertex();
         average += connectivity;
         Utils::doSleep(1000);
-        resetGraph(graph);
+        resetDisplay(graph);
     }
     average /= graph.getNumVertex();
     cout << endl << "Average of connectivity: " << average << endl;
@@ -435,14 +465,11 @@ int main() {
                     computeSolutionRecycling(graph, fullNodesPaper, fullNodesGlass, fullNodesPlastic);
                 break;
             case 4:
-                resetGraph(graph);
-                fullNodes.clear();
-                fullNodesPaper.clear();
-                fullNodesGlass.clear();
-                fullNodesPlastic.clear();
+                resetGraph(graph, fullNodes, fullNodesPaper, fullNodesGlass, fullNodesPlastic);
                 recyclingCase = false;
                 break;
             case 5:
+                resetDisplay(graph);
                 verifyConnectivity(graph);
                 break;
             case 6:
