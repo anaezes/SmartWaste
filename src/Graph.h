@@ -23,7 +23,10 @@ const int BEING_VISITED = 1;
 const int DONE_VISITED = 2;
 const int INT_INFINITY = INT_MAX;
 static const int nodeTrucks = 13;
+static const int truckCapacity = 1000;
+static const int containerCapacity = 200;
 static const int nodeCentral = 20;
+static string colorEdgesPath = RED;
 
 
 /*

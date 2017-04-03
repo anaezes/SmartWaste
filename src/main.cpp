@@ -262,19 +262,17 @@ void computeSolution(Graph<int> &graph, vector<int> &fullNodes) {
     int sourceId = nodeTrucks;
     int lastSourceId = 0;
     vector<int> pathSolution;
+    int truckContains = 0;
 
     int i = 0;
-    while(!fullNodes.empty()) {
+    while(!fullNodes.empty() && (truckContains+containerCapacity <= truckCapacity)) {
         graph.dijkstraShortestPath(sourceId);
         lastSourceId = sourceId;
         int sourceIndex = computeNextVertex(graph, fullNodes);
-        if(sourceIndex == -1) {
-            cout << "ERROR" << endl;
-            return;
-        }
         sourceId = fullNodes[sourceIndex];
         fullNodes.erase(fullNodes.begin()+sourceIndex);
         addPath(pathSolution, graph.getPath(lastSourceId, sourceId));
+        truckContains += containerCapacity;
         i++;
     }
 
@@ -282,17 +280,25 @@ void computeSolution(Graph<int> &graph, vector<int> &fullNodes) {
     graph.dijkstraShortestPath(sourceId);
     addPath(pathSolution, graph.getPath(sourceId, nodeCentral));
 
-
     //display solution
     for(size_t i = 0; i < pathSolution.size()-1; i++)
     {
         int edgeId = graph.getEdge(graph.getVertex(pathSolution[i])->getInfo(), graph.getVertex(pathSolution[i+1])->getInfo());
-        graph.getGV()->setEdgeColor(edgeId, RED);
+        graph.getGV()->setEdgeColor(edgeId, colorEdgesPath);
         graph.getGV()->setEdgeThickness(edgeId, 5);
         graph.getGV()->setVertexColor(graph.getVertex(pathSolution[i])->getInfo(), GRAY);
         graph.getGV()->rearrange();
         Utils::doSleep(1000);
+
+        if(i == 0 && truckContains >= truckCapacity)
+            cout << "Truck is full!" << endl;
     }
+
+    if(!fullNodes.empty()) {
+        colorEdgesPath = YELLOW;
+        computeSolution(graph, fullNodes);
+    }
+    else colorEdgesPath = RED;
 }
 
 /**
