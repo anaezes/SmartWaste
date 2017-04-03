@@ -197,11 +197,14 @@ bool initGraphs(Graph<int> &graph, map<int, std::pair< int, int>> &nodeCoordinat
 **/
 int showMenu() {
     cout << endl << "Please choose an option: " << endl << endl;
-    cout << "1. Generate a test case" << endl;
-    cout << "2. Compute solution" << endl;
-    cout << "3. Reset" << endl;
-    cout << "4. Graph connectivity" << endl;
-    cout << "5. Quit " << endl << endl;
+    cout << "Generate a test case" << endl;
+    cout << "1. Simple case" << endl;
+    cout << "2. Recycling case" << endl << endl;
+
+    cout << "3. Compute solution" << endl;
+    cout << "4. Reset" << endl;
+    cout << "5. Graph connectivity" << endl;
+    cout << "6. Quit " << endl << endl;
 
     cout << ">";
     int option;
@@ -212,19 +215,36 @@ int showMenu() {
 /**
 * Generate random test cases
 **/
-void generateRandomCases(Graph<int> &graph, vector<int> &fullNodes)
+void generateRandomCases(Graph<int> &graph, vector<int> &fullNodes, string color)
 {
-    srand(time(NULL));
     int num = rand() % 5 + 1;
     int i = 0;
     while(i < num) {
         int id = rand() % 32 + 1;
         if (id != nodeCentral && id != nodeTrucks && std::find(fullNodes.begin(), fullNodes.end(), id) == fullNodes.end()) {
-            graph.getGV()->setVertexColor(id, RED);
+            graph.getGV()->setVertexColor(id, color);
             fullNodes.push_back(id);
             i++;
         }
     }
+}
+
+void printNodes(const vector<int> &fullNodes) {
+    for(size_t i = 0; i < fullNodes.size(); i++)
+        cout << fullNodes[i] << " ";
+
+    cout << endl;
+}
+
+
+void generateRandomCasesRecycling(Graph<int> &graph, vector<int> &fullNodesPaper, vector<int> &fullNodesGlass, vector<int> &fullNodesPlastic)
+{
+    generateRandomCases(graph, fullNodesPaper, BLUE);
+    cout << "paper: " ; printNodes(fullNodesPaper);
+    generateRandomCases(graph, fullNodesGlass, GREEN);
+    cout << "glass: " ; printNodes(fullNodesGlass);
+    generateRandomCases(graph, fullNodesPlastic, YELLOW);
+    cout << "plastic: " ; printNodes(fullNodesPlastic);
 }
 
 /**
@@ -237,7 +257,7 @@ int computeNextVertex(Graph<int> &graph, vector<int> &fullNodes) {
     for(size_t j = 0; j < fullNodes.size(); j++) {
         nodeDist = graph.getVertex(fullNodes[j])->getDist();
         if (nodeDist < distMin) {
-            distMin            = nodeDist;
+            distMin = nodeDist;
             vertexDistMinIndex = j;
         }
     }
@@ -254,11 +274,19 @@ void addPath(vector<int> &pathSolution, const vector<int> &newPath) {
     }
 }
 
+void resetNode(Graph<int> &graph, vector<int> &fullNodes, int currentNode) {
+    for(size_t i = 0; i < fullNodes.size(); i++) {
+        if(fullNodes[i] == currentNode) {
+            graph.getGV()->setVertexColor(graph.getVertex(currentNode)->getInfo(), GRAY);
+        }
+    }
+}
 
 /**
 * main of compute solution
 **/
-void computeSolution(Graph<int> &graph, vector<int> &fullNodes) {
+void computeSolution(Graph<int> &graph, vector<int> &fullNodes, string colorEdge) {
+    vector<int> fullNodesCopy = fullNodes;
     int sourceId = nodeTrucks;
     int lastSourceId = 0;
     vector<int> pathSolution;
@@ -284,9 +312,9 @@ void computeSolution(Graph<int> &graph, vector<int> &fullNodes) {
     for(size_t i = 0; i < pathSolution.size()-1; i++)
     {
         int edgeId = graph.getEdge(graph.getVertex(pathSolution[i])->getInfo(), graph.getVertex(pathSolution[i+1])->getInfo());
-        graph.getGV()->setEdgeColor(edgeId, colorEdgesPath);
+        graph.getGV()->setEdgeColor(edgeId, colorEdge);
         graph.getGV()->setEdgeThickness(edgeId, 5);
-        graph.getGV()->setVertexColor(graph.getVertex(pathSolution[i])->getInfo(), GRAY);
+        resetNode(graph, fullNodesCopy, pathSolution[i]); // e necessario mudar para apenas pintar o que nao tiver nos outros fullNodes
         graph.getGV()->rearrange();
         Utils::doSleep(1000);
 
@@ -294,11 +322,15 @@ void computeSolution(Graph<int> &graph, vector<int> &fullNodes) {
             cout << "Truck is full!" << endl;
     }
 
-    if(!fullNodes.empty()) {
-        colorEdgesPath = YELLOW;
-        computeSolution(graph, fullNodes);
-    }
-    else colorEdgesPath = RED;
+    if(!fullNodes.empty())
+        computeSolution(graph, fullNodes, colorEdge);
+
+}
+
+void computeSolutionRecycling(Graph<int> &graph, vector<int> &fullNodesPaper, vector<int> &fullNodesGlass, vector<int> &fullNodesPlastic) {
+    computeSolution(graph, fullNodesPaper, BLUE);
+    computeSolution(graph, fullNodesGlass, GREEN);
+    computeSolution(graph, fullNodesPlastic, YELLOW);
 }
 
 /**
@@ -349,6 +381,7 @@ void verifyConnectivity(const Graph<int> &graph){
 }
 
 int main() {
+    srand(time(NULL));
     GraphViewer *gv = initViewer();
     Graph<int> graph(gv);
     std::map<int, std::pair< int, int>> nodeCoordinates;
@@ -358,24 +391,41 @@ int main() {
         return 1;
 
     vector<int> fullNodes;
+    vector<int> fullNodesPaper;
+    vector<int> fullNodesGlass;
+    vector<int> fullNodesPlastic;
+    bool recyclingCase = false;
 
     while(true) {
         int option = showMenu();
         switch (option) {
             case 1:
-                generateRandomCases(graph, fullNodes);
+                generateRandomCases(graph, fullNodes, RED);
+                recyclingCase = false;
                 graph.getGV()->rearrange();
                 break;
             case 2:
-                computeSolution(graph, fullNodes);
+                generateRandomCasesRecycling(graph, fullNodesPaper, fullNodesGlass, fullNodesPlastic);
+                recyclingCase = true;
+                graph.getGV()->rearrange();
                 break;
             case 3:
-                resetGraph(graph);
+                if(!recyclingCase)
+                    computeSolution(graph, fullNodes, RED);
+                else
+                    computeSolutionRecycling(graph, fullNodesPaper, fullNodesGlass, fullNodesPlastic);
                 break;
             case 4:
-                verifyConnectivity(graph);
+                resetGraph(graph);
+                fullNodes.clear();
+                fullNodesPaper.clear();
+                fullNodesGlass.clear();
+                fullNodesPlastic.clear();
                 break;
             case 5:
+                verifyConnectivity(graph);
+                break;
+            case 6:
                 graph.getGV()->closeWindow();
                 return 0;
         }

@@ -27,6 +27,7 @@ static const int truckCapacity = 1000;
 static const int containerCapacity = 200;
 static const int nodeCentral = 20;
 static string colorEdgesPath = RED;
+static string colorNode = GRAY;
 
 
 /*
