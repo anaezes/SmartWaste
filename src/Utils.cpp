@@ -13,7 +13,7 @@ namespace Utils {
 #ifdef linux
         usleep(s*1000000);
 #else
-        sleep(s*1000);
+        Sleep(s*1000);
 #endif
     }
 

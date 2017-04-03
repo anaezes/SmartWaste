@@ -352,6 +352,7 @@ int main() {
         return 1;
 
     vector<int> fullNodes;
+
     while(true) {
         int option = showMenu();
         switch (option) {
