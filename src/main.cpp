@@ -221,7 +221,7 @@ void generateRandomCases(Graph<int> &graph, vector<int> &fullNodes, string color
     int i = 0;
     while(i < num) {
         int id = rand() % 32 + 1;
-        if (id != nodeCentral && id != nodeTrucks && std::find(fullNodes.begin(), fullNodes.end(), id) == fullNodes.end()) {
+        if (id != NODE_CENTRAL && id != nodeTrucks && std::find(fullNodes.begin(), fullNodes.end(), id) == fullNodes.end()) {
             graph.getGV()->setVertexColor(id, color);
             fullNodes.push_back(id);
             i++;
@@ -229,22 +229,27 @@ void generateRandomCases(Graph<int> &graph, vector<int> &fullNodes, string color
     }
 }
 
-void printNodes(const vector<int> &fullNodes) {
-    for(size_t i = 0; i < fullNodes.size(); i++)
-        cout << fullNodes[i] << " ";
-
-    cout << endl;
+void setNodesState(Graph<int> &graph, const vector<int> &fullNodes, string color) {
+    Vertex<int>* v;
+    for(size_t i = 0; i < fullNodes.size(); i++) {
+        v = graph.getVertex(fullNodes[i]);
+        if(color == BLUE)
+            v->setPaperFull(true);
+        else if(color == GREEN)
+            v->setGlassFull(true);
+        else
+            v->setPlasticFull(true);
+    }
 }
 
 
-void generateRandomCasesRecycling(Graph<int> &graph, vector<int> &fullNodesPaper, vector<int> &fullNodesGlass, vector<int> &fullNodesPlastic)
-{
+void generateRandomCasesRecycling(Graph<int> &graph, vector<int> &fullNodesPaper, vector<int> &fullNodesGlass, vector<int> &fullNodesPlastic) {
     generateRandomCases(graph, fullNodesPaper, BLUE);
-    cout << "paper: " ; printNodes(fullNodesPaper);
+    setNodesState(graph, fullNodesPaper, BLUE);
     generateRandomCases(graph, fullNodesGlass, GREEN);
-    cout << "glass: " ; printNodes(fullNodesGlass);
+    setNodesState(graph, fullNodesGlass, GREEN);
     generateRandomCases(graph, fullNodesPlastic, YELLOW);
-    cout << "plastic: " ; printNodes(fullNodesPlastic);
+    setNodesState(graph, fullNodesPlastic, YELLOW);
 }
 
 /**
@@ -269,16 +274,27 @@ int computeNextVertex(Graph<int> &graph, vector<int> &fullNodes) {
 * Add computed path so the solution
 **/
 void addPath(vector<int> &pathSolution, const vector<int> &newPath) {
-    for(size_t i = 0; i < newPath.size(); i++) {
+    for(size_t i = 0; i < newPath.size(); i++)
         pathSolution.push_back(newPath[i]);
-    }
 }
 
-void resetNode(Graph<int> &graph, vector<int> &fullNodes, int currentNode) {
-    for(size_t i = 0; i < fullNodes.size(); i++) {
-        if(fullNodes[i] == currentNode) {
-            graph.getGV()->setVertexColor(graph.getVertex(currentNode)->getInfo(), GRAY);
-        }
+void resetNode(Graph<int> &graph, int currentNode, string color) {
+    Vertex<int>* v = graph.getVertex(currentNode);
+    if(color == BLUE && (v->isGlassFull() || v->isPlasticFull())) {
+        v->setPaperFull(false);
+        if(v->isGlassFull())
+            graph.getGV()->setVertexColor(v->getInfo(), GREEN);
+        else if(v->isPlasticFull())
+            graph.getGV()->setVertexColor(v->getInfo(), YELLOW);
+    }
+    else if( color == GREEN && v->isPlasticFull()) {
+        v->setGlassFull(false);
+        graph.getGV()->setVertexColor(v->getInfo(), YELLOW);
+    }
+    else {
+        if(color == YELLOW)
+            v->setPlasticFull(false);
+        graph.getGV()->setVertexColor(v->getInfo(), GRAY);
     }
 }
 
@@ -291,22 +307,25 @@ void computeSolution(Graph<int> &graph, vector<int> &fullNodes, string colorEdge
     int lastSourceId = 0;
     vector<int> pathSolution;
     int truckContains = 0;
+    int auxId;
 
     int i = 0;
-    while(!fullNodes.empty() && (truckContains+containerCapacity <= truckCapacity)) {
+    while(!fullNodes.empty() && (truckContains+CONTAINER_CAPACITY <= TRUCK_CAPACITY)) {
         graph.dijkstraShortestPath(sourceId);
         lastSourceId = sourceId;
         int sourceIndex = computeNextVertex(graph, fullNodes);
         sourceId = fullNodes[sourceIndex];
         fullNodes.erase(fullNodes.begin()+sourceIndex);
         addPath(pathSolution, graph.getPath(lastSourceId, sourceId));
-        truckContains += containerCapacity;
+        truckContains += CONTAINER_CAPACITY;
+        if(truckContains >= TRUCK_CAPACITY)
+            auxId = pathSolution.size();
         i++;
     }
 
     // go back to the central
     graph.dijkstraShortestPath(sourceId);
-    addPath(pathSolution, graph.getPath(sourceId, nodeCentral));
+    addPath(pathSolution, graph.getPath(sourceId, NODE_CENTRAL));
 
     //display solution
     for(size_t i = 0; i < pathSolution.size()-1; i++)
@@ -314,11 +333,11 @@ void computeSolution(Graph<int> &graph, vector<int> &fullNodes, string colorEdge
         int edgeId = graph.getEdge(graph.getVertex(pathSolution[i])->getInfo(), graph.getVertex(pathSolution[i+1])->getInfo());
         graph.getGV()->setEdgeColor(edgeId, colorEdge);
         graph.getGV()->setEdgeThickness(edgeId, 5);
-        resetNode(graph, fullNodesCopy, pathSolution[i]); // e necessario mudar para apenas pintar o que nao tiver nos outros fullNodes
+        resetNode(graph, pathSolution[i], colorEdge);
         graph.getGV()->rearrange();
         Utils::doSleep(1000);
 
-        if(i == 0 && truckContains >= truckCapacity)
+        if(i+1 == auxId && truckContains >= TRUCK_CAPACITY)
             cout << "Truck is full!" << endl;
     }
 
@@ -353,7 +372,7 @@ void resetGraph(const Graph<int> &graph){
 void paintNodes(vector<int> nodes, const Graph<int> &graph, int source){
     for(size_t i = 0; i < nodes.size(); i++) {
         if(nodes[i] != source)
-        graph.getGV()->setVertexColor(nodes[i], RED);
+            graph.getGV()->setVertexColor(nodes[i], RED);
         Utils::doSleep(50);
         graph.getGV()->rearrange();
     }
@@ -421,6 +440,7 @@ int main() {
                 fullNodesPaper.clear();
                 fullNodesGlass.clear();
                 fullNodesPlastic.clear();
+                recyclingCase = false;
                 break;
             case 5:
                 verifyConnectivity(graph);

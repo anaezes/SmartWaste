@@ -22,12 +22,11 @@ const int NOT_VISITED = 0;
 const int BEING_VISITED = 1;
 const int DONE_VISITED = 2;
 const int INT_INFINITY = INT_MAX;
-static const int nodeTrucks = 13;
-static const int truckCapacity = 1000;
-static const int containerCapacity = 200;
-static const int nodeCentral = 20;
-static string colorEdgesPath = RED;
-static string colorNode = GRAY;
+
+#define nodeTrucks 13
+#define NODE_CENTRAL 20
+#define TRUCK_CAPACITY 1000
+#define CONTAINER_CAPACITY 200
 
 
 /*
@@ -43,6 +42,10 @@ class Vertex {
     bool processing;
     int indegree;
     double dist;
+
+    bool paperState;
+    bool glassState;
+    bool plasticState;
 public:
 
     Vertex(T in);
@@ -61,6 +64,13 @@ public:
 
     Vertex* path;
     vector<Edge<T>  > getEdges();
+
+    bool isPaperFull() const;
+    bool isGlassFull() const;
+    bool isPlasticFull() const;
+    bool setPaperFull(bool b);
+    bool setGlassFull(bool b);
+    bool setPlasticFull(bool b);
 };
 
 
@@ -92,10 +102,12 @@ bool Vertex<T>::removeEdgeTo(Vertex<T> *d) {
     return false;
 }
 
-//atualizado pelo exercício 5
 template <class T>
 Vertex<T>::Vertex(T in): info(in), visited(false), processing(false), indegree(0), dist(0) {
     path = NULL;
+    paperState = false;
+    glassState = false;
+    plasticState = false;
 }
 
 
@@ -128,6 +140,35 @@ int Vertex<T>::getIndegree() const {
     return this->indegree;
 }
 
+template <class T>
+bool Vertex<T>::isPaperFull() const {
+    return paperState;
+}
+
+template <class T>
+bool Vertex<T>::isGlassFull() const {
+    return glassState;
+}
+
+template <class T>
+bool Vertex<T>::isPlasticFull() const{
+    return plasticState;
+}
+
+template <class T>
+bool Vertex<T>::setPaperFull(bool b) {
+    paperState = b;
+}
+
+template <class T>
+bool Vertex<T>::setGlassFull(bool b) {
+    glassState = b;
+}
+
+template <class T>
+bool Vertex<T>::setPlasticFull(bool b) {
+    plasticState = b;
+}
 
 
 
@@ -279,8 +320,8 @@ bool Graph<T>::addVertex(const T &in, std::pair<double, double> coords) {
     Vertex<T> *v1 = new Vertex<T>(in);
     vertexSet.push_back(v1);
 
-    if(in == nodeCentral)
-        gv->setVertexIcon(nodeCentral, "./images/reciclagem.png");
+    if(in == NODE_CENTRAL)
+        gv->setVertexIcon(NODE_CENTRAL, "./images/reciclagem.png");
 
     if(in == nodeTrucks)
         gv->setVertexIcon(nodeTrucks, "./images/truck.png");
