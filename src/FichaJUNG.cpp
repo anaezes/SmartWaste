@@ -1,24 +1,15 @@
 #include <cstdio>
 #include "graphviewer.h"
 #include <fstream>
-#include <iostream>
 #include <sstream>
 
 void exercicio1();
 void exercicio2();
 void exercicio3();
 
-void doSleep() {
-#ifdef linux
-    sleep(1);
-#else
-    sleep(2000);
-#endif
-}
-
 void exercicio1()
 {
-    GraphViewer *gv = new GraphViewer(600, 600, true);
+   /* GraphViewer *gv = new GraphViewer(600, 600, true);
 
     gv->setBackground("background.jpg");
 
@@ -56,13 +47,13 @@ void exercicio1()
 
     gv->setEdgeDashed(1, false);
 
-    gv->rearrange();
+    gv->rearrange();*/
 
 }
 
 void exercicio2()
 {
-    GraphViewer *gv = new GraphViewer(600, 600, false);
+    /*GraphViewer *gv = new GraphViewer(600, 600, false);
 
     gv->createWindow(600, 600);
 
@@ -158,12 +149,12 @@ void exercicio2()
         gv->addEdge(20, 11, 20, EdgeType::UNDIRECTED);
         gv->addEdge(21, 11, 21, EdgeType::UNDIRECTED);
         gv->rearrange();
-    }
+    }*/
 }
 
 void exercicio3()
 {
-    GraphViewer *gv = new GraphViewer(600, 600, false);
+  /*  GraphViewer *gv = new GraphViewer(600, 600, false);
 
     gv->createWindow(600, 600);
 
@@ -234,7 +225,7 @@ void exercicio3()
 
     inFile.close();
 
-    gv->rearrange();
+    gv->rearrange();*/
 }
 /**
  * Exemplo de como usar a API:
@@ -243,7 +234,7 @@ void exercicio3()
 
 void myExample() {
 
-    // criar um novo grafo
+    /*// criar um novo grafo
     GraphViewer *gv = new GraphViewer(600, 600, true);
 
     // configuraçoes da janela de visualizaçao
@@ -269,7 +260,7 @@ void myExample() {
     gv->defineEdgeCurved(true);
 
     //atualiza a visualizaçao
-    gv->rearrange();
+    gv->rearrange();*/
 }
 /*
 

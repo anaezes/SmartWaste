@@ -1,10 +1,22 @@
 //
 // Created by ana on 27-03-2017.
 //
-#include <math.h>
 #include "Utils.h"
 
+
+
+
+
 namespace Utils {
+
+    void doSleep(double s) {
+#ifdef linux
+        usleep(s*1000000);
+#else
+        sleep(s*1000);
+#endif
+    }
+
 /**
  * calculate haversine distance for linear distance // coordinates in radians
  * */
@@ -20,12 +32,12 @@ namespace Utils {
     }
 
     int getScreenXCoord(const long double &lon, const long double &longitudeMin, const long double &longitudeMax, const int &resolucao) {
-            return floor(((lon-longitudeMin)*resolucao/(longitudeMax-longitudeMin)));
+        return floor(((lon-longitudeMin)*resolucao/(longitudeMax-longitudeMin)));
 
     }
 
     int getScreenYCoord(const long double &lat, const long double &latitudeMin, const long double &latitudeMax, const int &resolucao) {
-       return resolucao-floor(((lat-latitudeMin)*resolucao/(latitudeMax-latitudeMin)));
+        return resolucao-floor(((lat-latitudeMin)*resolucao/(latitudeMax-latitudeMin)));
     }
 
     std::vector<std::string> splitLine(std::string str, char c) {
