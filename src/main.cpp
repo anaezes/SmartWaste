@@ -202,18 +202,18 @@ bool initGraphs(Graph<int> &graph, map<int, std::pair< int, int>> &nodeCoordinat
 int showMenu() {
     cout << endl << "Please choose an option: " << endl << endl;
     cout << "Generate a test case:" << endl;
-    cout << "1. Simple case" << endl;
-    cout << "2. Recycling case" << endl << endl;
+    cout << "  1. Simple case" << endl;
+    cout << "  2. Recycling case" << endl << endl;
 
     cout << "Compute solution:" << endl;
-    cout << "3. Dijkstra" << endl;
-    cout << "4. Floyd Warshall" << endl<< endl;
+    cout << "  3. Dijkstra" << endl;
+    cout << "  4. Floyd Warshall" << endl<< endl;
 
-    cout << "5. Time comparison of Dijkstra and Floyd Warshall" << endl << endl;
+    cout << "  5. Time comparison of Dijkstra and Floyd Warshall" << endl << endl;
 
-    cout << "6. Graph connectivity" << endl;
-    cout << "7. Reset" << endl;
-    cout << "8. Quit " << endl << endl;
+    cout << "  6. Graph connectivity" << endl;
+    cout << "  7. Reset" << endl;
+    cout << "  8. Quit " << endl << endl;
 
     cout << ">";
     int option;
@@ -307,6 +307,42 @@ void resetNode(Graph<int> &graph, int currentNode, string color) {
     }
 }
 
+
+/**
+* Display solution
+**/
+void  displaySolution(Graph<int> &graph, vector<int> pathSolution, int auxId, int truckContains, string colorEdge) {
+
+    cout << ">>>> An empty truck";
+    if(colorEdge == BLUE)
+        cout << " of paper";
+    else if(colorEdge == GREEN)
+        cout << " of glass";
+    else if(colorEdge == YELLOW)
+        cout << " of plastic";
+    cout << " is on the way..." << endl;
+
+    for(size_t i = 0; i < pathSolution.size()-1; i++)
+    {
+        int edgeId = graph.getEdge(graph.getVertex(pathSolution[i])->getInfo(), graph.getVertex(pathSolution[i+1])->getInfo());
+        graph.getGV()->setEdgeColor(edgeId, colorEdge);
+        graph.getGV()->setEdgeThickness(edgeId, 5);
+        resetNode(graph, pathSolution[i], colorEdge);
+        graph.getGV()->rearrange();
+        Utils::doSleep(1000);
+
+        if(i+1 == auxId && truckContains >= TRUCK_CAPACITY) {
+            cout << ">>>> Truck";
+            if(colorEdge == BLUE)
+                cout << " of paper";
+            else if(colorEdge == GREEN)
+                cout << " of glass";
+            else if(colorEdge == YELLOW)
+                cout << " of plastic";
+            cout << " is full!" << endl;
+        }
+    }
+}
 /**
 * main of compute solution
 **/
@@ -343,20 +379,7 @@ void computeSolution(Graph<int> &graph, vector<int> &fullNodes, string colorEdge
     graph.dijkstraShortestPath(sourceId);
     addPath(pathSolution, graph.getPath(sourceId, NODE_CENTRAL));
 
-    //display solution
-    for(size_t i = 0; i < pathSolution.size()-1; i++)
-    {
-        int edgeId = graph.getEdge(graph.getVertex(pathSolution[i])->getInfo(), graph.getVertex(pathSolution[i+1])->getInfo());
-        graph.getGV()->setEdgeColor(edgeId, colorEdge);
-        graph.getGV()->setEdgeThickness(edgeId, 5);
-        resetNode(graph, pathSolution[i], colorEdge);
-        graph.getGV()->rearrange();
-        Utils::doSleep(1000);
-
-        if(i+1 == auxId && truckContains >= TRUCK_CAPACITY) {
-            cout << "Truck is full!" << endl;
-        }
-    }
+    displaySolution(graph, pathSolution, auxId, truckContains, colorEdge);
 
     if(!fullNodes.empty())
         computeSolution(graph, fullNodes, colorEdge, type);
@@ -371,7 +394,6 @@ void computeSolutionRecycling(Graph<int> &graph, vector<int> &fullNodesPaper, ve
 /**
 * clear the display
 **/
-
 void resetDisplay(const Graph<int> &graph) {
     vector<Edge<int>> edges = graph.getEdges();
     for(size_t i = 0; i < edges.size(); i++) {
@@ -381,9 +403,8 @@ void resetDisplay(const Graph<int> &graph) {
     }
 
     int nNodes = graph.getNumVertex();
-    for(size_t i = 0; i < nNodes; i++) {
+    for(size_t i = 0; i < nNodes; i++)
         graph.getGV()->setVertexColor(i+1, GRAY);
-    }
     graph.getGV()->rearrange();
 }
 
@@ -575,7 +596,7 @@ int main() {
                 return 0;
             default:
                 cout << "Option not Valid... try again." << endl;
-                sleep(1);
+                Utils::doSleep(1000);
         }
     }
 }
