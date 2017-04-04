@@ -181,10 +181,10 @@ GraphViewer* initViewer() {
 /**
 * charge txt files in graph
 **/
-bool initGraphs(Graph<int> &graph, map<int, std::pair< int, int>> &nodeCoordinates, map<int, bool> &roadsInfoMap) {
-    string nodesFile = "./data/A2.txt";
-    string roadsFile = "./data/B2.txt";
-    string infoFile = "./data/C2.txt";
+bool initGraph(Graph<int> &graph, map<int, std::pair<int, int>> &nodeCoordinates, map<int, bool> &roadsInfoMap) {
+    string nodesFile = "./data/A1.txt";
+    string roadsFile = "./data/B1.txt";
+    string infoFile = "./data/C1.txt";
 
     if(!readNodesFile(nodesFile, nodeCoordinates, graph) || !readRoadsFile(roadsFile, roadsInfoMap)
        || !readInfoFile(infoFile, graph, roadsInfoMap, nodeCoordinates))
@@ -226,14 +226,21 @@ int showMenu() {
 **/
 void generateRandomCases(Graph<int> &graph, vector<int> &fullNodes, string color)
 {
-    int num = rand() % 5 + 1;
+    int num = rand() % 5 + 2;
     int i = 0;
     while(i < num) {
         int id = rand() % 32 + 1;
-        if (id != NODE_CENTRAL && id != nodeTrucks && std::find(fullNodes.begin(), fullNodes.end(), id) == fullNodes.end()) {
+        if (id != NODE_CENTRAL && id != nodeTrucks && (std::find(fullNodes.begin(), fullNodes.end(), id) == fullNodes.end())) {
+            cout << id << endl;
             graph.getGV()->setVertexColor(id, color);
             fullNodes.push_back(id);
             i++;
+        }
+
+        if(fullNodes.size() == graph.getNumVertex()-2)
+        {
+            cout << "All containers are full!" << endl;
+            return;
         }
     }
 }
@@ -253,12 +260,12 @@ void setNodesState(Graph<int> &graph, const vector<int> &fullNodes, string color
 
 
 void generateRandomCasesRecycling(Graph<int> &graph, vector<int> &fullNodesPaper, vector<int> &fullNodesGlass, vector<int> &fullNodesPlastic) {
-    generateRandomCases(graph, fullNodesPaper, BLUE);
-    setNodesState(graph, fullNodesPaper, BLUE);
-    generateRandomCases(graph, fullNodesGlass, GREEN);
-    setNodesState(graph, fullNodesGlass, GREEN);
     generateRandomCases(graph, fullNodesPlastic, YELLOW);
     setNodesState(graph, fullNodesPlastic, YELLOW);
+    generateRandomCases(graph, fullNodesGlass, GREEN);
+    setNodesState(graph, fullNodesGlass, GREEN);
+    generateRandomCases(graph, fullNodesPaper, BLUE);
+    setNodesState(graph, fullNodesPaper, BLUE);
 }
 
 /**
@@ -287,22 +294,30 @@ void addPath(vector<int> &pathSolution, const vector<int> &newPath) {
         pathSolution.push_back(newPath[i]);
 }
 
-void resetNode(Graph<int> &graph, int currentNode, string color) {
+void resetNode(Graph<int> &graph, int currentNode, string color, int i, int auxId) {
     Vertex<int>* v = graph.getVertex(currentNode);
-    if(color == BLUE && (v->isGlassFull() || v->isPlasticFull())) {
+
+    if(i+1 == auxId)
+        return;
+
+    if(color == BLUE) {
         v->setPaperFull(false);
         if(v->isGlassFull())
             graph.getGV()->setVertexColor(v->getInfo(), GREEN);
         else if(v->isPlasticFull())
             graph.getGV()->setVertexColor(v->getInfo(), YELLOW);
+        else
+            graph.getGV()->setVertexColor(v->getInfo(), GRAY);
     }
-    else if( color == GREEN && v->isPlasticFull()) {
+    else if( color == GREEN) {
         v->setGlassFull(false);
-        graph.getGV()->setVertexColor(v->getInfo(), YELLOW);
+        if(v->isPlasticFull())
+            graph.getGV()->setVertexColor(v->getInfo(), YELLOW);
+        else
+            graph.getGV()->setVertexColor(v->getInfo(), GRAY);
     }
     else {
-        if(color == YELLOW)
-            v->setPlasticFull(false);
+        v->setPlasticFull(false);
         graph.getGV()->setVertexColor(v->getInfo(), GRAY);
     }
 }
@@ -327,7 +342,7 @@ void  displaySolution(Graph<int> &graph, vector<int> pathSolution, int auxId, in
         int edgeId = graph.getEdge(graph.getVertex(pathSolution[i])->getInfo(), graph.getVertex(pathSolution[i+1])->getInfo());
         graph.getGV()->setEdgeColor(edgeId, colorEdge);
         graph.getGV()->setEdgeThickness(edgeId, 5);
-        resetNode(graph, pathSolution[i], colorEdge);
+        resetNode(graph, pathSolution[i], colorEdge, i, auxId);
         graph.getGV()->rearrange();
         Utils::doSleep(1000);
 
@@ -353,12 +368,13 @@ void computeSolution(Graph<int> &graph, vector<int> &fullNodes, string colorEdge
     int truckContains = 0;
     int auxId;
 
+    if(type == FLOYDWARSHALL)
+        graph.floydWarshallShortestPath();
+
     while(!fullNodes.empty() && (truckContains+CONTAINER_CAPACITY <= TRUCK_CAPACITY)) {
 
         if(type == DIJKSTRA)
             graph.dijkstraShortestPath(sourceId);
-        else
-            graph.floydWarshallShortestPath();
 
         lastSourceId = sourceId;
         int sourceIndex = computeNextVertex(graph, fullNodes);
@@ -463,7 +479,8 @@ void verifyConnectivity(const Graph<int> &graph){
         resetDisplay(graph);
     }
     average /= graph.getNumVertex();
-    cout << endl << "Average of connectivity: " << average << endl;
+    average *= 100;
+    cout << endl << "Average of connectivity: " << average << " %" << endl;
     Utils::doSleep(3000);
 }
 
@@ -474,12 +491,14 @@ void auxTimeComparison(Graph<int> graph, vector<int> fullNodes, const int &type)
     vector<int> pathSolution;
     int truckContains = 0;
 
+    if(type == FLOYDWARSHALL)
+        graph.floydWarshallShortestPath();
+
+
     while(!fullNodes.empty() && (truckContains+CONTAINER_CAPACITY <= TRUCK_CAPACITY)) {
 
         if(type == DIJKSTRA)
             graph.dijkstraShortestPath(sourceId);
-        else
-            graph.floydWarshallShortestPath();
 
         lastSourceId = sourceId;
         int sourceIndex = computeNextVertex(graph, fullNodes);
@@ -537,7 +556,6 @@ void timeComparison(Graph<int> &graph) {
 }
 
 
-
 int main() {
     srand(time(NULL));
     GraphViewer *gv = initViewer();
@@ -545,7 +563,7 @@ int main() {
     std::map<int, std::pair< int, int>> nodeCoordinates;
     std::map<int, bool> roadsInfoMap;
 
-    if(!initGraphs(graph, nodeCoordinates, roadsInfoMap))
+    if(!initGraph(graph, nodeCoordinates, roadsInfoMap))
         return 1;
 
     vector<int> fullNodes;
