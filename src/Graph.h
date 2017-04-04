@@ -320,12 +320,6 @@ bool Graph<T>::addVertex(const T &in, std::pair<double, double> coords) {
     Vertex<T> *v1 = new Vertex<T>(in);
     vertexSet.push_back(v1);
 
-    if(in == NODE_CENTRAL)
-        gv->setVertexIcon(NODE_CENTRAL, "./images/reciclagem.png");
-
-    if(in == nodeTrucks)
-        gv->setVertexIcon(nodeTrucks, "./images/truck.png");
-
     gv->addNode(in, coords.second, coords.first);
     gv->setVertexLabel(in, ".");
     return true;
