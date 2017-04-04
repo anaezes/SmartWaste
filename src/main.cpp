@@ -494,7 +494,7 @@ void paintNodes(vector<int> nodes, const Graph<int> &graph, int source){
     for(size_t i = 0; i < nodes.size(); i++) {
         if(nodes[i] != source)
             graph.getGV()->setVertexColor(nodes[i], RED);
-        Utils::doSleep(50);
+        Utils::doSleep(15);
         graph.getGV()->rearrange();
     }
 }
@@ -512,7 +512,7 @@ void verifyConnectivity(const Graph<int> &graph){
         paintNodes(bfs, graph, source);
         double connectivity = (double) 1 * bfs.size() / graph.getNumVertex();
         average += connectivity;
-        Utils::doSleep(1000);
+        Utils::doSleep(100);
         resetDisplay(graph);
     }
     average /= graph.getNumVertex();
@@ -523,7 +523,7 @@ void verifyConnectivity(const Graph<int> &graph){
 
 
 void auxTimeComparison(Graph<int> graph, vector<int> fullNodes, const int &type) {
-    int sourceId = nodeTrucks;
+    int sourceId = NODE_TRUCKS;
     int lastSourceId = 0;
     vector<int> pathSolution;
     int truckContains = 0;

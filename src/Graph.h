@@ -23,7 +23,7 @@ const int BEING_VISITED = 1;
 const int DONE_VISITED = 2;
 const int INT_INFINITY = INT_MAX;
 
-#define nodeTrucks 13
+#define NODE_TRUCKS 13
 #define NODE_CENTRAL 20
 #define TRUCK_CAPACITY 1000
 #define CONTAINER_CAPACITY 200
