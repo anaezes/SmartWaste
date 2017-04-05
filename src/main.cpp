@@ -13,7 +13,7 @@
 
 #define DIJKSTRA 0
 #define FLOYDWARSHALL 1
-#define NUM_TESTS 100
+#define NUM_TESTS 10
 
 using namespace std;
 
@@ -182,9 +182,9 @@ GraphViewer* initViewer() {
 * charge txt files in graph
 **/
 bool initGraph(Graph<int> &graph, map<int, std::pair<int, int>> &nodeCoordinates, map<int, bool> &roadsInfoMap) {
-    string nodesFile = "./data/A2.txt";
-    string roadsFile = "./data/B2.txt";
-    string infoFile = "./data/C2.txt";
+    string nodesFile = "./data/A1_test.txt";
+    string roadsFile = "./data/B1_test.txt";
+    string infoFile = "./data/C1_test.txt";
 
     if(!readNodesFile(nodesFile, nodeCoordinates, graph) || !readRoadsFile(roadsFile, roadsInfoMap)
        || !readInfoFile(infoFile, graph, roadsInfoMap, nodeCoordinates))
@@ -226,13 +226,13 @@ int showMenu() {
 **/
 void generateRandomCases(Graph<int> &graph, vector<int> &fullNodes, string color, const vector<int> &garages, const vector<int> &centrals)
 {
-    int num = rand() % 6 + 2;
+    int num = rand() % 15 + 2;
     int i = 0;
     while(i < num) {
-        int id = rand() % 32 + 1;
+        int id = rand() % graph.getNumVertex() + 1;
         if ((std::find(fullNodes.begin(), fullNodes.end(), id) == fullNodes.end()) && (std::find(garages.begin(), garages.end(), id) == garages.end())
             && (std::find(centrals.begin(), centrals.end(), id) == centrals.end())) {
-            graph.getGV()->setVertexColor(id, color);
+            //graph.getGV()->setVertexColor(id, color);
             fullNodes.push_back(id);
             i++;
         }
@@ -555,36 +555,47 @@ void auxTimeComparison(Graph<int> graph, vector<int> fullNodes, const int &type)
     addPath(pathSolution, graph.getPath(sourceId, NODE_CENTRAL));
 }
 
+void generateRandomCasesSimple(Graph<int> &graph, vector<int> &fullNodes, const vector<int> &garages, const vector<int> &centrals)
+{
+    int num = rand() % 15 + 2;
+    int i = 0;
+    while(i < num) {
+        int id = rand() % graph.getNumVertex() + 1;
+        if ((std::find(fullNodes.begin(), fullNodes.end(), id) == fullNodes.end()) && (std::find(garages.begin(), garages.end(), id) == garages.end())
+            && (std::find(centrals.begin(), centrals.end(), id) == centrals.end())) {
+            fullNodes.push_back(id);
+            i++;
+        }
+    }
+}
+
 void timeComparison(Graph<int> &graph) {
     auto elapsedDijkstra = 0;
     auto elapsedFloyd = 0;
     vector<int> garages;
     vector<int> centrals;
-    garages.push_back(13);
-    centrals.push_back(20);
+    garages.push_back(1);
+    garages.push_back(155);
+    garages.push_back(300);
+    centrals.push_back(2);
+    centrals.push_back(145);
+    centrals.push_back(290);
 
     for(int i = 0; i < NUM_TESTS ; i++) {
-        vector<int> fullNodesPaper;
-        vector<int> fullNodesGlass;
-        vector<int> fullNodesPlastic;
+        vector<int> fullNodes;
 
-        generateRandomCasesRecycling(graph, fullNodesPaper, fullNodesGlass, fullNodesPlastic, garages, centrals);
+        generateRandomCasesSimple(graph, fullNodes, garages, centrals);
 
         auto startDijkstra = std::chrono::system_clock::now();
-        auxTimeComparison(graph, fullNodesPaper, DIJKSTRA);
-        auxTimeComparison(graph, fullNodesGlass, DIJKSTRA);
-        auxTimeComparison(graph, fullNodesPlastic, DIJKSTRA);
+        auxTimeComparison(graph, fullNodes, DIJKSTRA);
         auto endDijkstra = std::chrono::system_clock::now();
         elapsedDijkstra = elapsedDijkstra + std::chrono::duration_cast<std::chrono::milliseconds>(endDijkstra - startDijkstra).count();
 
         auto startFloyd = std::chrono::system_clock::now();
-        auxTimeComparison(graph, fullNodesPaper, FLOYDWARSHALL);
-        auxTimeComparison(graph, fullNodesGlass, FLOYDWARSHALL);
-        auxTimeComparison(graph, fullNodesPlastic, FLOYDWARSHALL);
+        auxTimeComparison(graph, fullNodes, FLOYDWARSHALL);
         auto endFloyd = std::chrono::system_clock::now();
         elapsedFloyd = elapsedFloyd + std::chrono::duration_cast<std::chrono::milliseconds>(endFloyd - startFloyd).count();
 
-        resetDisplay(graph);
     }
 
     double averageDijkstra = elapsedDijkstra/NUM_TESTS;
