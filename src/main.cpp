@@ -232,18 +232,29 @@ int showMenu() {
     return option;
 }
 
+
+void paintNodes(const Graph<int> &graph, const vector<int> &fullNodes, const string &color){
+    for(size_t i = 0; i < fullNodes.size(); i++) {
+        graph.getGV()->setVertexColor(fullNodes[i], color);
+    }
+}
+
 /**
 * Generate random test cases
 **/
-void generateRandomCases(Graph<int> &graph, vector<int> &fullNodes, string color, const vector<int> &garages, const vector<int> &centrals)
+void generateRandomCases(Graph<int> &graph, vector<int> &fullNodes, const vector<int> &garages, const vector<int> &centrals, int optionGraph)
 {
-    int num = rand() % 6 + 2;
+    int num;
+    if(optionGraph == 1)
+        num = rand() % 6 + 2;
+    else
+        num = rand() % 40 + 10;
+
     int i = 0;
     while(i < num) {
         int id = rand() % graph.getNumVertex() + 1;
         if ((std::find(fullNodes.begin(), fullNodes.end(), id) == fullNodes.end()) && (std::find(garages.begin(), garages.end(), id) == garages.end())
             && (std::find(centrals.begin(), centrals.end(), id) == centrals.end())) {
-            graph.getGV()->setVertexColor(id, color);
             fullNodes.push_back(id);
             i++;
         }
@@ -271,13 +282,16 @@ void setNodesState(Graph<int> &graph, const vector<int> &fullNodes, string color
 
 
 void generateRandomCasesRecycling(Graph<int> &graph, vector<int> &fullNodesPaper, vector<int> &fullNodesGlass, vector<int> &fullNodesPlastic,
-                                  const vector<int> &garages, const vector<int> &centrals) {
-    generateRandomCases(graph, fullNodesPlastic, YELLOW, garages, centrals);
+                                  const vector<int> &garages, const vector<int> &centrals, int graphOption) {
+    generateRandomCases(graph, fullNodesPlastic, garages, centrals, graphOption);
     setNodesState(graph, fullNodesPlastic, YELLOW);
-    generateRandomCases(graph, fullNodesGlass, GREEN, garages, centrals);
+    paintNodes(graph, fullNodesPlastic, YELLOW);
+    generateRandomCases(graph, fullNodesGlass, garages, centrals, graphOption);
     setNodesState(graph, fullNodesGlass, GREEN);
-    generateRandomCases(graph, fullNodesPaper, BLUE, garages, centrals);
+    paintNodes(graph, fullNodesGlass, GREEN);
+    generateRandomCases(graph, fullNodesPaper, garages, centrals, graphOption);
     setNodesState(graph, fullNodesPaper, BLUE);
+    paintNodes(graph, fullNodesPaper, BLUE);
 }
 
 /**
@@ -338,7 +352,7 @@ void resetNode(Graph<int> &graph, int currentNode, string color, int i, int auxI
 /**
 * Display solution
 **/
-void  displaySolution(Graph<int> &graph, vector<int> pathSolution, int auxId, int truckContains, string colorEdge) {
+void  displaySolution(Graph<int> &graph, vector<int> pathSolution, int auxId, int truckContains, string colorEdge, int optionGraph) {
 
     cout << ">>>> An empty truck";
     if(colorEdge == BLUE)
@@ -356,7 +370,10 @@ void  displaySolution(Graph<int> &graph, vector<int> pathSolution, int auxId, in
         graph.getGV()->setEdgeThickness(edgeId, 5);
         resetNode(graph, pathSolution[i], colorEdge, i, auxId);
         graph.getGV()->rearrange();
-        Utils::doSleep(1000);
+        if(optionGraph == 1)
+            Utils::doSleep(500);
+        else
+            Utils::doSleep(100);
 
         if(i+1 == auxId && truckContains >= TRUCK_CAPACITY) {
             cout << ">>>> Truck";
@@ -406,7 +423,40 @@ int switchGarage(const Graph<int> &graph, const vector<int> &fullNodes, const ve
 /**
 * main of compute solution
 **/
-void computeSolution(Graph<int> &graph, vector<int> &fullNodes, string colorEdge, int type, const vector<int> &garages, const vector<int> &centrals) {
+void computeSolutionFloydWarshall(Graph<int> &graph, vector<int> &fullNodes, string colorEdge, const vector<int> &garages, const vector<int> &centrals, int optionGraph) {
+    int lastSourceId = 0;
+    vector<int> pathSolution;
+    int truckContains = 0;
+    int auxId;
+
+    int sourceId = switchGarage(graph, fullNodes, garages); // -> MODIFY THIS
+    graph.floydWarshallShortestPath();
+
+    while(!fullNodes.empty() && (truckContains+CONTAINER_CAPACITY <= TRUCK_CAPACITY)) {
+
+        lastSourceId = sourceId;
+        int sourceIndex = computeNextVertex(graph, fullNodes);
+        sourceId = fullNodes[sourceIndex];
+        fullNodes.erase(fullNodes.begin()+sourceIndex);
+        addPath(pathSolution, graph.getfloydWarshallPath(lastSourceId, sourceId));
+
+        truckContains += CONTAINER_CAPACITY;
+        if(truckContains >= TRUCK_CAPACITY)
+            auxId = pathSolution.size();
+    }
+
+    // go back to the central -> MODIFY THIS
+    graph.dijkstraShortestPath(sourceId);
+    int centralId = switchCentral(graph, centrals);
+    addPath(pathSolution, graph.getPath(sourceId, centralId));
+
+    displaySolution(graph, pathSolution, auxId, truckContains, colorEdge, optionGraph);
+
+    if(!fullNodes.empty())
+        computeSolutionFloydWarshall(graph, fullNodes, colorEdge, garages, centrals, optionGraph);
+}
+
+void computeSolutionDikstra(Graph<int> &graph, vector<int> &fullNodes, string colorEdge, const vector<int> &garages, const vector<int> &centrals, int optionGraph) {
     int lastSourceId = 0;
     vector<int> pathSolution;
     int truckContains = 0;
@@ -414,23 +464,14 @@ void computeSolution(Graph<int> &graph, vector<int> &fullNodes, string colorEdge
 
     int sourceId = switchGarage(graph, fullNodes, garages);
 
-    if(type == FLOYDWARSHALL)
-        graph.floydWarshallShortestPath();
-
     while(!fullNodes.empty() && (truckContains+CONTAINER_CAPACITY <= TRUCK_CAPACITY)) {
-
-        if(type == DIJKSTRA)
-            graph.dijkstraShortestPath(sourceId);
-
+        graph.dijkstraShortestPath(sourceId);
         lastSourceId = sourceId;
         int sourceIndex = computeNextVertex(graph, fullNodes);
         sourceId = fullNodes[sourceIndex];
         fullNodes.erase(fullNodes.begin()+sourceIndex);
 
-        if(type == DIJKSTRA)
             addPath(pathSolution, graph.getPath(lastSourceId, sourceId));
-        else
-            addPath(pathSolution, graph.getfloydWarshallPath(lastSourceId, sourceId));
 
         truckContains += CONTAINER_CAPACITY;
         if(truckContains >= TRUCK_CAPACITY)
@@ -442,17 +483,23 @@ void computeSolution(Graph<int> &graph, vector<int> &fullNodes, string colorEdge
     int centralId = switchCentral(graph, centrals);
     addPath(pathSolution, graph.getPath(sourceId, centralId));
 
-    displaySolution(graph, pathSolution, auxId, truckContains, colorEdge);
+    displaySolution(graph, pathSolution, auxId, truckContains, colorEdge, optionGraph);
 
     if(!fullNodes.empty())
-        computeSolution(graph, fullNodes, colorEdge, type, garages, centrals);
+        computeSolutionDikstra(graph, fullNodes, colorEdge, garages, centrals, optionGraph);
 }
 
 void computeSolutionRecycling(Graph<int> &graph, vector<int> &fullNodesPaper, vector<int> &fullNodesGlass, vector<int> &fullNodesPlastic,
-                              int type, const vector<int> &garages, const vector<int> &centrals) {
-    computeSolution(graph, fullNodesPaper, BLUE, type, garages, centrals);
-    computeSolution(graph, fullNodesGlass, GREEN, type, garages, centrals);
-    computeSolution(graph, fullNodesPlastic, YELLOW, type, garages, centrals);
+                              int type, const vector<int> &garages, const vector<int> &centrals, int  optionGraph) {
+    if(type == DIJKSTRA) {
+        computeSolutionDikstra(graph, fullNodesPaper, BLUE, garages, centrals, optionGraph);
+        computeSolutionDikstra(graph, fullNodesGlass, GREEN, garages, centrals, optionGraph);
+        computeSolutionDikstra(graph, fullNodesPlastic, YELLOW, garages, centrals, optionGraph);
+    } else {
+        computeSolutionFloydWarshall(graph, fullNodesPaper, BLUE, garages, centrals, optionGraph);
+        computeSolutionFloydWarshall(graph, fullNodesGlass, GREEN, garages, centrals, optionGraph);
+        computeSolutionFloydWarshall(graph, fullNodesPlastic, YELLOW, garages, centrals, optionGraph);
+    }
 }
 
 /**
@@ -533,11 +580,12 @@ void verifyConnectivity(const Graph<int> &graph){
 }
 
 
-void auxTimeComparison(Graph<int> graph, vector<int> fullNodes, const int &type) {
-    int sourceId = NODE_TRUCKS;
+void auxTimeComparisonSimpleGraph(Graph<int> graph, vector<int> fullNodes, const int &type, const vector<int> &garages, const vector<int> &centrals) {
     int lastSourceId = 0;
     vector<int> pathSolution;
     int truckContains = 0;
+
+    int sourceId = switchGarage(graph, fullNodes, garages);
 
     if(type == FLOYDWARSHALL)
         graph.floydWarshallShortestPath();
@@ -566,7 +614,7 @@ void auxTimeComparison(Graph<int> graph, vector<int> fullNodes, const int &type)
     addPath(pathSolution, graph.getPath(sourceId, NODE_CENTRAL));
 }
 
-void timeComparison(Graph<int> &graph) {
+void timeComparisonSimpleGraph(Graph<int> &graph) {
     auto elapsedDijkstra = 0;
     auto elapsedFloyd = 0;
     vector<int> garages;
@@ -579,19 +627,19 @@ void timeComparison(Graph<int> &graph) {
         vector<int> fullNodesGlass;
         vector<int> fullNodesPlastic;
 
-        generateRandomCasesRecycling(graph, fullNodesPaper, fullNodesGlass, fullNodesPlastic, garages, centrals);
+        generateRandomCasesRecycling(graph, fullNodesPaper, fullNodesGlass, fullNodesPlastic, garages, centrals, 1);
 
         auto startDijkstra = std::chrono::system_clock::now();
-        auxTimeComparison(graph, fullNodesPaper, DIJKSTRA);
-        auxTimeComparison(graph, fullNodesGlass, DIJKSTRA);
-        auxTimeComparison(graph, fullNodesPlastic, DIJKSTRA);
+        auxTimeComparisonSimpleGraph(graph, fullNodesPaper, DIJKSTRA, garages, centrals);
+        auxTimeComparisonSimpleGraph(graph, fullNodesGlass, DIJKSTRA, garages, centrals);
+        auxTimeComparisonSimpleGraph(graph, fullNodesPlastic, DIJKSTRA, garages, centrals);
         auto endDijkstra = std::chrono::system_clock::now();
         elapsedDijkstra = elapsedDijkstra + std::chrono::duration_cast<std::chrono::milliseconds>(endDijkstra - startDijkstra).count();
 
         auto startFloyd = std::chrono::system_clock::now();
-        auxTimeComparison(graph, fullNodesPaper, FLOYDWARSHALL);
-        auxTimeComparison(graph, fullNodesGlass, FLOYDWARSHALL);
-        auxTimeComparison(graph, fullNodesPlastic, FLOYDWARSHALL);
+        auxTimeComparisonSimpleGraph(graph, fullNodesPaper, FLOYDWARSHALL, garages, centrals);
+        auxTimeComparisonSimpleGraph(graph, fullNodesGlass, FLOYDWARSHALL, garages, centrals);
+        auxTimeComparisonSimpleGraph(graph, fullNodesPlastic, FLOYDWARSHALL, garages, centrals);
         auto endFloyd = std::chrono::system_clock::now();
         elapsedFloyd = elapsedFloyd + std::chrono::duration_cast<std::chrono::milliseconds>(endFloyd - startFloyd).count();
 
@@ -607,37 +655,81 @@ void timeComparison(Graph<int> &graph) {
     Utils::doSleep(2000);
 }
 
+void timeComparisonComplexGraph(Graph<int> &graph, vector<int> garages, vector<int> centrals) {
+    auto elapsedDijkstra = 0;
+    auto elapsedFloyd = 0;
+    garages.push_back(13);
+    centrals.push_back(20);
+
+    for(int i = 0; i < NUM_TESTS ; i++) {
+        vector<int> fullNodes;
+
+        generateRandomCases(graph, fullNodes, garages, centrals, 2);
+
+        auto startDijkstra = std::chrono::system_clock::now();
+        auxTimeComparisonSimpleGraph(graph, fullNodes, DIJKSTRA, garages, centrals);
+        auto endDijkstra = std::chrono::system_clock::now();
+        elapsedDijkstra = elapsedDijkstra + std::chrono::duration_cast<std::chrono::milliseconds>(endDijkstra - startDijkstra).count();
+
+        auto startFloyd = std::chrono::system_clock::now();
+        auxTimeComparisonSimpleGraph(graph, fullNodes, FLOYDWARSHALL, garages, centrals);
+        auto endFloyd = std::chrono::system_clock::now();
+        elapsedFloyd = elapsedFloyd + std::chrono::duration_cast<std::chrono::milliseconds>(endFloyd - startFloyd).count();
+    }
+
+    double averageDijkstra = elapsedDijkstra/NUM_TESTS;
+    cout << "Average time Dijkstra: " << averageDijkstra << endl;
+
+    double averageFloyd = elapsedFloyd/NUM_TESTS;
+    cout << "Average time Floyd Warshall: " << averageFloyd << endl;
+
+    Utils::doSleep(2000);
+}
+
 void initGaragesAndCentrals(Graph<int> &graph, vector<int> &garages, vector<int> &centrals) {
-    int numGarages = rand() % 2 + 1;
+    int numGarages;
+    int numCentrals;
+
+    if(graph.getNumVertex() == 32) {
+        numGarages = rand() % 2 + 1;
+        numCentrals = rand() % 2 + 1;
+    }
+    else {
+        numGarages = rand() % 30 + 20;
+        numCentrals = rand() % 30 + 20;
+    }
+
     int i = 0;
     while(i < numGarages) {
-        int id = rand() % 32 + 1;
+        int id = rand() % graph.getNumVertex() + 1;
         if (std::find(garages.begin(), garages.end(), id) == garages.end()) {
             graph.getGV()->setVertexIcon(id, "./images/truck.png");
             garages.push_back(id);
             i++;
         }
     }
-    int numCentrals = rand() % 2 + 1;
+
     i = 0;
     while(i < numCentrals) {
-        int id = rand() % 32 + 1;
+        int id = rand() % graph.getNumVertex() + 1;
         if (std::find(garages.begin(), garages.end(), id) == garages.end() && std::find(centrals.begin(), centrals.end(), id) == centrals.end() ) {
             graph.getGV()->setVertexIcon(id, "./images/reciclagem.png");
             centrals.push_back(id);
             i++;
         }
     }
+
+    graph.getGV()->rearrange();
 }
 
-int mainSmartWaste(int option) {
+int mainSmartWaste(int optionGraph) {
     srand(time(NULL));
     GraphViewer *gv = initViewer();
     Graph<int> graph(gv);
     std::map<int, std::pair< int, int>> nodeCoordinates;
     std::map<int, bool> roadsInfoMap;
 
-    if(!initGraph(graph, nodeCoordinates, roadsInfoMap, option))
+    if(!initGraph(graph, nodeCoordinates, roadsInfoMap, optionGraph))
         return 1;
 
     vector<int> garages;
@@ -654,30 +746,34 @@ int mainSmartWaste(int option) {
         int option = showMenu();
         switch (option) {
             case 1:
-                generateRandomCases(graph, fullNodes, RED, garages, centrals);
+                generateRandomCases(graph, fullNodes, garages, centrals, optionGraph);
+                paintNodes(graph, fullNodes, RED);
                 recyclingCase = false;
                 graph.getGV()->rearrange();
                 break;
             case 2:
-                generateRandomCasesRecycling(graph, fullNodesPaper, fullNodesGlass, fullNodesPlastic, garages, centrals);
+                generateRandomCasesRecycling(graph, fullNodesPaper, fullNodesGlass, fullNodesPlastic, garages, centrals, optionGraph);
                 recyclingCase = true;
                 graph.getGV()->rearrange();
                 break;
             case 3:
                 if(!recyclingCase)
-                    computeSolution(graph, fullNodes, RED, DIJKSTRA, garages, centrals);
+                    computeSolutionDikstra(graph, fullNodes, RED, garages, centrals, optionGraph);
                 else
-                    computeSolutionRecycling(graph, fullNodesPaper, fullNodesGlass, fullNodesPlastic, DIJKSTRA, garages, centrals);
+                    computeSolutionRecycling(graph, fullNodesPaper, fullNodesGlass, fullNodesPlastic, DIJKSTRA, garages, centrals, optionGraph);
                 break;
             case 4:
                 if(!recyclingCase)
-                    computeSolution(graph, fullNodes, RED, FLOYDWARSHALL, garages, centrals);
+                    computeSolutionFloydWarshall(graph, fullNodes, RED, garages, centrals, optionGraph);
                 else
-                    computeSolutionRecycling(graph, fullNodesPaper, fullNodesGlass, fullNodesPlastic, FLOYDWARSHALL, garages, centrals);
+                    computeSolutionRecycling(graph, fullNodesPaper, fullNodesGlass, fullNodesPlastic, FLOYDWARSHALL, garages, centrals, optionGraph);
                 break;
             case 5:
                 resetDisplay(graph);
-                timeComparison(graph);
+                if(optionGraph == 1)
+                    timeComparisonSimpleGraph(graph);
+                else
+                    timeComparisonComplexGraph(graph, garages, centrals);
                 break;
             case 6:
                 resetDisplay(graph);
