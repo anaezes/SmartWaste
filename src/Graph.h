@@ -321,7 +321,7 @@ bool Graph<T>::addVertex(const T &in, std::pair<double, double> coords) {
     vertexSet.push_back(v1);
 
     gv->addNode(in, coords.second, coords.first);
-    gv->setVertexLabel(in, ".");
+    //gv->setVertexLabel(in, ".");
     return true;
 }
 
