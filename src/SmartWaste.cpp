@@ -71,6 +71,8 @@ void SmartWaste::generateRandomCases(vector<int> &fullNodes)
     int num;
     if(graph.getNumVertex() == SMALLGRAPHSIZE)
         num = rand() % 6 + 2;
+    else if(graph.getNumVertex() == MIDDLEGRAPHSIZE)
+        num = rand() % 20 + 5;
     else
         num = rand() % 40 + 10;
 
@@ -188,8 +190,10 @@ void SmartWaste::displaySolution(vector<int> pathSolution, int lastNodeId, int t
         graph.getGV()->rearrange();
         if(graph.getNumVertex() == SMALLGRAPHSIZE)
             Utils::doSleep(500);
+        else if(graph.getNumVertex() == MIDDLEGRAPHSIZE)
+            Utils::doSleep(300);
         else
-            Utils::doSleep(100);
+            Utils::doSleep(200);
 
         if(i+1 == lastNodeId && truckContains >= TRUCK_CAPACITY) {
             cout << ">>>> Truck";
