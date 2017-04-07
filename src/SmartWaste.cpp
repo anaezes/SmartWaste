@@ -435,7 +435,6 @@ void SmartWaste::timeComparison() {
 
     int num_tests = 10;
     cout << "Number of cases to generate: " << endl << ">";
-    int option;
     cin >> num_tests;
 
     for(int i = 0; i < num_tests; i++) {
