@@ -253,12 +253,18 @@ public:
     int edgeCost(int vOrigIndex, int vDestIndex);
     vector<T> getfloydWarshallPath(const T &origin, const T &dest);
     void getfloydWarshallPathAux(int index1, int index2, vector<T> & res);
+    int getWeightFloydWarshall(int index1, int index2);
 
     GraphViewer* getGV() const;
     int getEdge(const T &source, const T &dest);
     vector<Edge<T>> getEdges() const;
     void resetVisited() const;
 };
+
+template <class T>
+int Graph<T>::getWeightFloydWarshall(int index1, int index2) {
+    return W[index1][index2];
+}
 
 template <class T>
 vector<Edge<T>> Graph<T>::getEdges() const {
