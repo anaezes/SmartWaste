@@ -18,8 +18,6 @@
 #include "graphviewer.h"
 #include "Graph.h"
 
-#define NUM_TESTS       10
-
 #define SMALLGRAPHSIZE  32
 #define MIDDLEGRAPHSIZE 156
 #define BIGGRAPHSIZE    300
@@ -142,7 +140,6 @@ public:
      * @param full nodes of paper
      * @param full nodes of glass
      * @param full nodes of plastic
-     * @param type : Floyd Warshall or Dikstra
      * */
     void computeSolutionRecycling(vector<int> &fullNodesPaper, vector<int> &fullNodesGlass, vector<int> &fullNodesPlastic);
 

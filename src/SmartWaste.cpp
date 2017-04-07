@@ -4,8 +4,7 @@
 
 #include "SmartWaste.h"
 
-SmartWaste::SmartWaste(GraphViewer *gv) : graph(gv), garages(), centrals() {
-}
+SmartWaste::SmartWaste(GraphViewer *gv) : graph(gv), garages(), centrals() {}
 
 void SmartWaste::initGaragesAndCentrals() {
     vector<int> garages;
@@ -443,7 +442,6 @@ void SmartWaste::timeComparison() {
 
     for(int i = 0; i < num_tests; i++) {
         vector<int> fullNodes;
-
         generateRandomCases(fullNodes);
 
         auto startDijkstra = std::chrono::system_clock::now();
@@ -460,7 +458,7 @@ void SmartWaste::timeComparison() {
     double averageDijkstra = elapsedDijkstra/num_tests;
     cout << "Average time Dijkstra: " << averageDijkstra << endl;
 
-    double averageFloyd = elapsedFloyd/NUM_TESTS;
+    double averageFloyd = elapsedFloyd/num_tests;
     cout << "Average time Floyd Warshall: " << averageFloyd << endl;
 
     Utils::doSleep(2000);
