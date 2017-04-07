@@ -798,7 +798,7 @@ int Graph<T>::edgeCost(int vOrigIndex, int vDestIndex)
 }
 
 
-void printSquareArray(int ** arr, unsigned int size)
+/*void printSquareArray(int ** arr, unsigned int size)
 {
     for(unsigned int k = 0; k < size; k++)
     {
@@ -822,7 +822,7 @@ void printSquareArray(int ** arr, unsigned int size)
 
         cout << endl;
     }
-}
+}*/
 
 
 template<class T>

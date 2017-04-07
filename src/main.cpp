@@ -224,7 +224,7 @@ int showMenu() {
 
     cout << "  6. Graph connectivity" << endl;
     cout << "  7. Reset" << endl;
-    cout << "  8. Quit " << endl << endl;
+    cout << "  8. Back " << endl << endl;
 
     cout << ">";
     int option;
@@ -471,7 +471,7 @@ void computeSolutionDikstra(Graph<int> &graph, vector<int> &fullNodes, string co
         sourceId = fullNodes[sourceIndex];
         fullNodes.erase(fullNodes.begin()+sourceIndex);
 
-            addPath(pathSolution, graph.getPath(lastSourceId, sourceId));
+        addPath(pathSolution, graph.getPath(lastSourceId, sourceId));
 
         truckContains += CONTAINER_CAPACITY;
         if(truckContains >= TRUCK_CAPACITY)
@@ -560,18 +560,26 @@ void paintNodes(vector<int> nodes, const Graph<int> &graph, int source){
 /**
 * Analyze the connectivity of the graph
 **/
-void verifyConnectivity(const Graph<int> &graph){
+void verifyConnectivity(const Graph<int> &graph, int optionGraph){
     cout << endl << "Analyzing..." << endl ;
     double average = 0;
     for(size_t i = 0; i < graph.getNumVertex(); i++) {
         int source = graph.getVertex(i+1)->getInfo();
-        graph.getGV()->setVertexColor(source, BLUE);
+
+        if(optionGraph == 1)
+            graph.getGV()->setVertexColor(source, BLUE);
+
         vector<int> bfs = graph.bfs(graph.getVertex(i+1));
-        paintNodes(bfs, graph, source);
+        if(optionGraph == 1)
+            paintNodes(bfs, graph, source);
+
         double connectivity = (double) 1 * bfs.size() / graph.getNumVertex();
         average += connectivity;
-        Utils::doSleep(100);
-        resetDisplay(graph);
+
+        if(optionGraph == 1) {
+            Utils::doSleep(100);
+            resetDisplay(graph);
+        }
     }
     average /= graph.getNumVertex();
     average *= 100;
@@ -583,15 +591,13 @@ void verifyConnectivity(const Graph<int> &graph){
 void auxTimeComparisonSimpleGraph(Graph<int> graph, vector<int> fullNodes, const int &type, const vector<int> &garages, const vector<int> &centrals) {
     int lastSourceId = 0;
     vector<int> pathSolution;
-    int truckContains = 0;
 
     int sourceId = switchGarage(graph, fullNodes, garages);
 
     if(type == FLOYDWARSHALL)
         graph.floydWarshallShortestPath();
 
-
-    while(!fullNodes.empty() && (truckContains+CONTAINER_CAPACITY <= TRUCK_CAPACITY)) {
+    while(!fullNodes.empty()) {
 
         if(type == DIJKSTRA)
             graph.dijkstraShortestPath(sourceId);
@@ -605,8 +611,6 @@ void auxTimeComparisonSimpleGraph(Graph<int> graph, vector<int> fullNodes, const
             addPath(pathSolution, graph.getPath(lastSourceId, sourceId));
         else
             addPath(pathSolution, graph.getfloydWarshallPath(lastSourceId, sourceId));
-
-        truckContains += CONTAINER_CAPACITY;
     }
 
     // go back to the central
@@ -769,15 +773,18 @@ int mainSmartWaste(int optionGraph) {
                     computeSolutionRecycling(graph, fullNodesPaper, fullNodesGlass, fullNodesPlastic, FLOYDWARSHALL, garages, centrals, optionGraph);
                 break;
             case 5:
-                resetDisplay(graph);
-                if(optionGraph == 1)
+
+                if(optionGraph == 1) {
+                    resetDisplay(graph);
                     timeComparisonSimpleGraph(graph);
+                }
                 else
                     timeComparisonComplexGraph(graph, garages, centrals);
                 break;
             case 6:
-                resetDisplay(graph);
-                verifyConnectivity(graph);
+                if(optionGraph == 1)
+                    resetDisplay(graph);
+                verifyConnectivity(graph, optionGraph);
                 break;
             case 7:
                 resetGraph(graph, fullNodes, fullNodesPaper, fullNodesGlass, fullNodesPlastic);
