@@ -24,16 +24,28 @@
 
 namespace Utils {
 
+    /**
+    * @brief Do sleep according to the operating system
+    * @param s
+    * */
     void doSleep(int s);
 
-    int distance_km(int y1, int x1, int y2, int x2);
+    /**
+    * @brief calculate  distance
+    * @param x1
+    * @param x2
+    * @param y1
+    * @param y2
+    * @return distance
+    * */
+    int distance(int y1, int x1, int y2, int x2);
 
-    int getScreenXCoord(const long double &lon, const long double &longitudeMin, const long double &longitudeMax, const int &resolucao);
-
-    int getScreenYCoord(const long double &lat, const long double &latitudeMin, const long double &latitudeMax, const int &resolucao);
-
-    int normalizeInt(long id,long minId);
-
+    /**
+    * @brief split one line in vector of strings
+    * @param str
+    * @param c
+    * @return vector of strings
+    * */
     std::vector<std::string> splitLine(std::string str, char c);
 }
 
