@@ -168,7 +168,7 @@ bool readInfoFile(string infoFile, SmartWaste &smartWaste, map<int, bool> &roads
 
             std::pair<int, int> destCoords = nodeCoordinates.find(nodeSourceId)->second;
             std::pair<int, int> sourceCoords = nodeCoordinates.find(nodeDestId)->second;
-            int weight = Utils::distance_km(sourceCoords.first, sourceCoords.second, destCoords.first, destCoords.second);
+            int weight = Utils::distance(sourceCoords.first, sourceCoords.second, destCoords.first, destCoords.second);
 
             smartWaste.getGraph()->addEdge(edgeId, nodeSourceId, nodeDestId, weight, roadsInfoMap.find(edgeId)->second);
         }
