@@ -1,0 +1,9 @@
+<map id="SmartWaste::auxTimeComparisonDijkstra" name="SmartWaste::auxTimeComparisonDijkstra">
+<area shape="rect" id="node2" href="$classSmartWaste.html#aae9728f175078ad6323c67fb0b0afce0" title="Choose the closest garage of trucks depending on the full containers with Dikstra algorithm..." alt="" coords="276,35,459,77"/>
+<area shape="rect" id="node3" href="$classGraph.html#a3631bce147c033119e2d328848effd43" title="Graph::dijkstraShortestPath" alt="" coords="525,21,707,48"/>
+<area shape="rect" id="node5" href="$classSmartWaste.html#a5d8ac088738eff0f301a44468e64cd1a" title="Return the next garbage colector to visit (closest the current souce) " alt="" coords="507,123,725,149"/>
+<area shape="rect" id="node6" href="$classSmartWaste.html#aa55aa107bef64f322ea140103888c40b" title="Add computed path so the solution. " alt="" coords="292,152,443,179"/>
+<area shape="rect" id="node7" href="$classGraph.html#ab4054ca572c10669dd3e05d6d41c116c" title="Graph::getPath" alt="" coords="561,177,671,204"/>
+<area shape="rect" id="node8" href="$classSmartWaste.html#a12ed73d4cb4116b279676f0393aa6c3b" title="Choose the nearest recycling central with Dikstra algorithm. " alt="" coords="276,254,459,295"/>
+<area shape="rect" id="node4" href="$classGraph.html#a08a95472b0d9bd7321660940807af060" title="Graph::getVertex" alt="" coords="773,123,895,149"/>
+</map>

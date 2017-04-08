@@ -1,0 +1,5 @@
+<map id="GraphViewer::setEdgeLabel" name="GraphViewer::setEdgeLabel">
+<area shape="rect" id="node2" href="$classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="237,31,387,57"/>
+<area shape="rect" id="node3" href="$connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="474,5,541,32"/>
+<area shape="rect" id="node4" href="$classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="435,56,580,83"/>
+</map>

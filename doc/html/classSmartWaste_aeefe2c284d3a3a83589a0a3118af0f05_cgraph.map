@@ -1,0 +1,6 @@
+<map id="SmartWaste::setNodesState" name="SmartWaste::setNodesState">
+<area shape="rect" id="node2" href="$classGraph.html#a08a95472b0d9bd7321660940807af060" title="Graph::getVertex" alt="" coords="257,5,378,32"/>
+<area shape="rect" id="node3" href="$classVertex.html#abaa14f0eb05160c748f546a633d5f747" title="Vertex::setPaperFull" alt="" coords="247,56,388,83"/>
+<area shape="rect" id="node4" href="$classVertex.html#afb52dac3ee15e789262358e2eb13b1d1" title="Vertex::setGlassFull" alt="" coords="247,107,388,133"/>
+<area shape="rect" id="node5" href="$classVertex.html#aacb83d390255533c113c36f177ecaf51" title="Vertex::setPlasticFull" alt="" coords="244,157,391,184"/>
+</map>

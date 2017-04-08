@@ -1,0 +1,4 @@
+<map id="SmartWaste::switchGarageDikstra" name="SmartWaste::switchGarageDikstra">
+<area shape="rect" id="node2" href="$classGraph.html#a3631bce147c033119e2d328848effd43" title="Graph::dijkstraShortestPath" alt="" coords="236,5,419,32"/>
+<area shape="rect" id="node3" href="$classGraph.html#a08a95472b0d9bd7321660940807af060" title="Graph::getVertex" alt="" coords="467,31,588,57"/>
+</map>

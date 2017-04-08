@@ -1,0 +1,210 @@
+\hypertarget{classVertex}{}\section{Vertex$<$ T $>$ Class Template Reference}
+\label{classVertex}\index{Vertex$<$ T $>$@{Vertex$<$ T $>$}}
+
+
+{\ttfamily \#include $<$Graph.\+h$>$}
+
+
+
+Collaboration diagram for Vertex$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{classVertex__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classVertex_afcbdd4d4198b672356559cb8fa088408}{Vertex} (T in)
+\item 
+\hyperlink{classEdge}{Edge}$<$ T $>$ \hyperlink{classVertex_af36d7a9c333b841815cef357be1741d9}{add\+Edge} (T info\+Edge, \hyperlink{classVertex}{Vertex}$<$ T $>$ $\ast$dest, double w)
+\item 
+T \hyperlink{classVertex_a5880b4b252ae6818819c2f9645784b59}{get\+Info} () const 
+\item 
+int \hyperlink{classVertex_a3379c6cbcf1eaacc098381e3557a0b52}{get\+Dist} () const 
+\item 
+bool \hyperlink{classVertex_a7091b26f281a5041b1775a3d3f9cb7a6}{operator$<$} (const \hyperlink{classVertex}{Vertex}$<$ T $>$ vertex)
+\item 
+vector$<$ \hyperlink{classEdge}{Edge}$<$ T $>$ $>$ \hyperlink{classVertex_afc92f748469ed118f4a850cff31ae5b9}{get\+Edges} ()
+\item 
+bool \hyperlink{classVertex_ab96d7c8040c493d263993597b1cfad1f}{is\+Paper\+Full} () const 
+\item 
+bool \hyperlink{classVertex_aba8dc4e4450dbd6d697062ebd0ce17b1}{is\+Glass\+Full} () const 
+\item 
+bool \hyperlink{classVertex_a89b18f6ce97bc743e50a1552c44fa336}{is\+Plastic\+Full} () const 
+\item 
+bool \hyperlink{classVertex_abaa14f0eb05160c748f546a633d5f747}{set\+Paper\+Full} (bool b)
+\item 
+bool \hyperlink{classVertex_afb52dac3ee15e789262358e2eb13b1d1}{set\+Glass\+Full} (bool b)
+\item 
+bool \hyperlink{classVertex_aacb83d390255533c113c36f177ecaf51}{set\+Plastic\+Full} (bool b)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classVertex}{Vertex} $\ast$ \hyperlink{classVertex_abd40febd917aa25add6bd42237c8463a}{path}
+\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+T \hyperlink{classVertex_a415d7811eef6cdd992f0dca1f35a49cd}{info}
+\item 
+vector$<$ \hyperlink{classEdge}{Edge}$<$ T $>$ $>$ \hyperlink{classVertex_a5d9dfdd2caee11e300ff5142799345a1}{adj}
+\item 
+bool \hyperlink{classVertex_a187a2fe4ff50261cf3c15b8cda7dfc56}{visited}
+\item 
+bool \hyperlink{classVertex_ae575d4b9a6b1ada3f9626c458c060f54}{processing}
+\item 
+int \hyperlink{classVertex_ab29ac1b694fc673ba26cfc6d3e9bda13}{indegree}
+\item 
+double \hyperlink{classVertex_a08a2b813e77f97aa8b6c1d252e5417f7}{dist}
+\item 
+bool \hyperlink{classVertex_a4e60ef51bac5518a768c94cbe5e3a3a1}{paper\+State}
+\item 
+bool \hyperlink{classVertex_ab35cb5fe44be9ef7385a2714a4b45e11}{glass\+State}
+\item 
+bool \hyperlink{classVertex_a2eb25055ba8814fbea5d3f782b464a3c}{plastic\+State}
+\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classVertex_aefa9b76cd57411c5354e5620dc2d84dd}{Graph$<$ T $>$}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Vertex@{Vertex}!Vertex@{Vertex}}
+\index{Vertex@{Vertex}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{Vertex(\+T in)}{Vertex(T in)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Vertex}$<$ T $>$\+::{\bf Vertex} (
+\begin{DoxyParamCaption}
+\item[{T}]{in}
+\end{DoxyParamCaption}
+)}\hypertarget{classVertex_afcbdd4d4198b672356559cb8fa088408}{}\label{classVertex_afcbdd4d4198b672356559cb8fa088408}
+
+
+\subsection{Member Function Documentation}
+\index{Vertex@{Vertex}!add\+Edge@{add\+Edge}}
+\index{add\+Edge@{add\+Edge}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{add\+Edge(\+T info\+Edge, Vertex$<$ T $>$ $\ast$dest, double w)}{addEdge(T infoEdge, Vertex< T > *dest, double w)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Edge}$<$ T $>$ {\bf Vertex}$<$ T $>$\+::add\+Edge (
+\begin{DoxyParamCaption}
+\item[{T}]{info\+Edge, }
+\item[{{\bf Vertex}$<$ T $>$ $\ast$}]{dest, }
+\item[{double}]{w}
+\end{DoxyParamCaption}
+)}\hypertarget{classVertex_af36d7a9c333b841815cef357be1741d9}{}\label{classVertex_af36d7a9c333b841815cef357be1741d9}
+\index{Vertex@{Vertex}!get\+Dist@{get\+Dist}}
+\index{get\+Dist@{get\+Dist}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{get\+Dist() const }{getDist() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ int {\bf Vertex}$<$ T $>$\+::get\+Dist (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classVertex_a3379c6cbcf1eaacc098381e3557a0b52}{}\label{classVertex_a3379c6cbcf1eaacc098381e3557a0b52}
+\index{Vertex@{Vertex}!get\+Edges@{get\+Edges}}
+\index{get\+Edges@{get\+Edges}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{get\+Edges()}{getEdges()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ vector$<${\bf Edge}$<$T$>$ $>$ {\bf Vertex}$<$ T $>$\+::get\+Edges (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classVertex_afc92f748469ed118f4a850cff31ae5b9}{}\label{classVertex_afc92f748469ed118f4a850cff31ae5b9}
+\index{Vertex@{Vertex}!get\+Info@{get\+Info}}
+\index{get\+Info@{get\+Info}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{get\+Info() const }{getInfo() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ T {\bf Vertex}$<$ T $>$\+::get\+Info (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classVertex_a5880b4b252ae6818819c2f9645784b59}{}\label{classVertex_a5880b4b252ae6818819c2f9645784b59}
+\index{Vertex@{Vertex}!is\+Glass\+Full@{is\+Glass\+Full}}
+\index{is\+Glass\+Full@{is\+Glass\+Full}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{is\+Glass\+Full() const }{isGlassFull() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ bool {\bf Vertex}$<$ T $>$\+::is\+Glass\+Full (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classVertex_aba8dc4e4450dbd6d697062ebd0ce17b1}{}\label{classVertex_aba8dc4e4450dbd6d697062ebd0ce17b1}
+\index{Vertex@{Vertex}!is\+Paper\+Full@{is\+Paper\+Full}}
+\index{is\+Paper\+Full@{is\+Paper\+Full}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{is\+Paper\+Full() const }{isPaperFull() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ bool {\bf Vertex}$<$ T $>$\+::is\+Paper\+Full (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classVertex_ab96d7c8040c493d263993597b1cfad1f}{}\label{classVertex_ab96d7c8040c493d263993597b1cfad1f}
+\index{Vertex@{Vertex}!is\+Plastic\+Full@{is\+Plastic\+Full}}
+\index{is\+Plastic\+Full@{is\+Plastic\+Full}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{is\+Plastic\+Full() const }{isPlasticFull() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ bool {\bf Vertex}$<$ T $>$\+::is\+Plastic\+Full (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classVertex_a89b18f6ce97bc743e50a1552c44fa336}{}\label{classVertex_a89b18f6ce97bc743e50a1552c44fa336}
+\index{Vertex@{Vertex}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{operator$<$(const Vertex$<$ T $>$ vertex)}{operator<(const Vertex< T > vertex)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf Vertex}$<$ T $>$\+::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Vertex}$<$ T $>$}]{vertex}
+\end{DoxyParamCaption}
+)}\hypertarget{classVertex_a7091b26f281a5041b1775a3d3f9cb7a6}{}\label{classVertex_a7091b26f281a5041b1775a3d3f9cb7a6}
+\index{Vertex@{Vertex}!set\+Glass\+Full@{set\+Glass\+Full}}
+\index{set\+Glass\+Full@{set\+Glass\+Full}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{set\+Glass\+Full(bool b)}{setGlassFull(bool b)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ bool {\bf Vertex}$<$ T $>$\+::set\+Glass\+Full (
+\begin{DoxyParamCaption}
+\item[{bool}]{b}
+\end{DoxyParamCaption}
+)}\hypertarget{classVertex_afb52dac3ee15e789262358e2eb13b1d1}{}\label{classVertex_afb52dac3ee15e789262358e2eb13b1d1}
+\index{Vertex@{Vertex}!set\+Paper\+Full@{set\+Paper\+Full}}
+\index{set\+Paper\+Full@{set\+Paper\+Full}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{set\+Paper\+Full(bool b)}{setPaperFull(bool b)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ bool {\bf Vertex}$<$ T $>$\+::set\+Paper\+Full (
+\begin{DoxyParamCaption}
+\item[{bool}]{b}
+\end{DoxyParamCaption}
+)}\hypertarget{classVertex_abaa14f0eb05160c748f546a633d5f747}{}\label{classVertex_abaa14f0eb05160c748f546a633d5f747}
+\index{Vertex@{Vertex}!set\+Plastic\+Full@{set\+Plastic\+Full}}
+\index{set\+Plastic\+Full@{set\+Plastic\+Full}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{set\+Plastic\+Full(bool b)}{setPlasticFull(bool b)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ bool {\bf Vertex}$<$ T $>$\+::set\+Plastic\+Full (
+\begin{DoxyParamCaption}
+\item[{bool}]{b}
+\end{DoxyParamCaption}
+)}\hypertarget{classVertex_aacb83d390255533c113c36f177ecaf51}{}\label{classVertex_aacb83d390255533c113c36f177ecaf51}
+
+
+\subsection{Friends And Related Function Documentation}
+\index{Vertex@{Vertex}!Graph$<$ T $>$@{Graph$<$ T $>$}}
+\index{Graph$<$ T $>$@{Graph$<$ T $>$}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{Graph$<$ T $>$}{Graph< T >}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ friend class {\bf Graph}$<$ T $>$\hspace{0.3cm}{\ttfamily [friend]}}\hypertarget{classVertex_aefa9b76cd57411c5354e5620dc2d84dd}{}\label{classVertex_aefa9b76cd57411c5354e5620dc2d84dd}
+
+
+\subsection{Member Data Documentation}
+\index{Vertex@{Vertex}!adj@{adj}}
+\index{adj@{adj}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{adj}{adj}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ vector$<${\bf Edge}$<$T$>$ $>$ {\bf Vertex}$<$ T $>$\+::adj\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classVertex_a5d9dfdd2caee11e300ff5142799345a1}{}\label{classVertex_a5d9dfdd2caee11e300ff5142799345a1}
+\index{Vertex@{Vertex}!dist@{dist}}
+\index{dist@{dist}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{dist}{dist}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ double {\bf Vertex}$<$ T $>$\+::dist\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classVertex_a08a2b813e77f97aa8b6c1d252e5417f7}{}\label{classVertex_a08a2b813e77f97aa8b6c1d252e5417f7}
+\index{Vertex@{Vertex}!glass\+State@{glass\+State}}
+\index{glass\+State@{glass\+State}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{glass\+State}{glassState}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf Vertex}$<$ T $>$\+::glass\+State\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classVertex_ab35cb5fe44be9ef7385a2714a4b45e11}{}\label{classVertex_ab35cb5fe44be9ef7385a2714a4b45e11}
+\index{Vertex@{Vertex}!indegree@{indegree}}
+\index{indegree@{indegree}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{indegree}{indegree}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Vertex}$<$ T $>$\+::indegree\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classVertex_ab29ac1b694fc673ba26cfc6d3e9bda13}{}\label{classVertex_ab29ac1b694fc673ba26cfc6d3e9bda13}
+\index{Vertex@{Vertex}!info@{info}}
+\index{info@{info}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{info}{info}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf Vertex}$<$ T $>$\+::info\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classVertex_a415d7811eef6cdd992f0dca1f35a49cd}{}\label{classVertex_a415d7811eef6cdd992f0dca1f35a49cd}
+\index{Vertex@{Vertex}!paper\+State@{paper\+State}}
+\index{paper\+State@{paper\+State}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{paper\+State}{paperState}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf Vertex}$<$ T $>$\+::paper\+State\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classVertex_a4e60ef51bac5518a768c94cbe5e3a3a1}{}\label{classVertex_a4e60ef51bac5518a768c94cbe5e3a3a1}
+\index{Vertex@{Vertex}!path@{path}}
+\index{path@{path}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{path}{path}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Vertex}$\ast$ {\bf Vertex}$<$ T $>$\+::path}\hypertarget{classVertex_abd40febd917aa25add6bd42237c8463a}{}\label{classVertex_abd40febd917aa25add6bd42237c8463a}
+\index{Vertex@{Vertex}!plastic\+State@{plastic\+State}}
+\index{plastic\+State@{plastic\+State}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{plastic\+State}{plasticState}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf Vertex}$<$ T $>$\+::plastic\+State\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classVertex_a2eb25055ba8814fbea5d3f782b464a3c}{}\label{classVertex_a2eb25055ba8814fbea5d3f782b464a3c}
+\index{Vertex@{Vertex}!processing@{processing}}
+\index{processing@{processing}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{processing}{processing}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf Vertex}$<$ T $>$\+::processing\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classVertex_ae575d4b9a6b1ada3f9626c458c060f54}{}\label{classVertex_ae575d4b9a6b1ada3f9626c458c060f54}
+\index{Vertex@{Vertex}!visited@{visited}}
+\index{visited@{visited}!Vertex@{Vertex}}
+\subsubsection[{\texorpdfstring{visited}{visited}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf Vertex}$<$ T $>$\+::visited\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classVertex_a187a2fe4ff50261cf3c15b8cda7dfc56}{}\label{classVertex_a187a2fe4ff50261cf3c15b8cda7dfc56}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/ana/\+Dropbox/faculdade/2ano/2semestre/\+C\+A\+L/\+Smart\+Waste/src/\hyperlink{Graph_8h}{Graph.\+h}\end{DoxyCompactItemize}

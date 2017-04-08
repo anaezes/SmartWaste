@@ -1,0 +1,772 @@
+\hypertarget{classSmartWaste}{}\section{Smart\+Waste Class Reference}
+\label{classSmartWaste}\index{Smart\+Waste@{Smart\+Waste}}
+
+
+{\ttfamily \#include $<$Smart\+Waste.\+h$>$}
+
+
+
+Collaboration diagram for Smart\+Waste\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=153pt]{classSmartWaste__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSmartWaste_a9160cb643ea818e93ac5f129ca753372}{Smart\+Waste} (\hyperlink{classGraphViewer}{Graph\+Viewer} $\ast$gv)
+\begin{DoxyCompactList}\small\item\em constructor of class \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_ae42e3c99877f4651f931a68c34526398}{init\+Garages\+And\+Centrals} ()
+\begin{DoxyCompactList}\small\item\em Generate random places for the garages and the centrals. \end{DoxyCompactList}\item 
+\hyperlink{classGraph}{Graph}$<$ int $>$ $\ast$ \hyperlink{classSmartWaste_a01f8a0d4c232b6e25c8a31299cbfd3ea}{get\+Graph} ()
+\begin{DoxyCompactList}\small\item\em Get the graph. \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_a418a6bbfd147448293d26f8269a52a7a}{paint\+Nodes} (const vector$<$ int $>$ \&full\+Nodes, const string \&color)
+\begin{DoxyCompactList}\small\item\em Paint all nodes of the vector. \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_ac22248b6006d50c9a5a4c930fcdde56e}{generate\+Random\+Cases} (vector$<$ int $>$ \&full\+Nodes)
+\begin{DoxyCompactList}\small\item\em Generate random test cases. \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_aeefe2c284d3a3a83589a0a3118af0f05}{set\+Nodes\+State} (const vector$<$ int $>$ \&full\+Nodes, string color)
+\begin{DoxyCompactList}\small\item\em Generate random test cases. \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_ad794e60b6202dc3a1e38d028be2195d1}{generate\+Random\+Cases\+Recycling} (vector$<$ int $>$ \&full\+Nodes\+Paper, vector$<$ int $>$ \&full\+Nodes\+Glass, vector$<$ int $>$ \&full\+Nodes\+Plastic)
+\begin{DoxyCompactList}\small\item\em Generate random test cases. \end{DoxyCompactList}\item 
+int \hyperlink{classSmartWaste_a5d8ac088738eff0f301a44468e64cd1a}{compute\+Next\+Vertex} (vector$<$ int $>$ \&full\+Nodes)
+\begin{DoxyCompactList}\small\item\em Return the next garbage colector to visit (closest the current souce) \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_aa55aa107bef64f322ea140103888c40b}{add\+Path} (vector$<$ int $>$ \&path\+Solution, const vector$<$ int $>$ \&new\+Path)
+\begin{DoxyCompactList}\small\item\em Add computed path so the solution. \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_a08307d41711fbdeb0993c146201f0e39}{reset\+Node} (int current\+Node, string color)
+\begin{DoxyCompactList}\small\item\em Method to reset a node or change its color if it is full of another residue. \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_ace7f7f1d899892011914180c52dd1d9b}{display\+Solution} (vector$<$ int $>$ path\+Solution, int last\+Node\+Id, int truck\+Contains, string color\+Edge)
+\begin{DoxyCompactList}\small\item\em Display solution. \end{DoxyCompactList}\item 
+int \hyperlink{classSmartWaste_a12ed73d4cb4116b279676f0393aa6c3b}{switch\+Central\+Dikstra} () const 
+\begin{DoxyCompactList}\small\item\em Choose the nearest recycling central with Dikstra algorithm. \end{DoxyCompactList}\item 
+int \hyperlink{classSmartWaste_aae9728f175078ad6323c67fb0b0afce0}{switch\+Garage\+Dikstra} (const vector$<$ int $>$ \&full\+Nodes)
+\begin{DoxyCompactList}\small\item\em Choose the closest garage of trucks depending on the full containers with Dikstra algorithm. \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_ac97fb07911f6728e6d8593daa5699188}{compute\+Solution\+Dikstra} (vector$<$ int $>$ \&full\+Nodes, string color\+Edge)
+\begin{DoxyCompactList}\small\item\em main of compute solution with Dikstra algorithm \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_a633d96a03ef0aa2252d6f5fb104af863}{compute\+Solution\+Recycling} (vector$<$ int $>$ \&full\+Nodes\+Paper, vector$<$ int $>$ \&full\+Nodes\+Glass, vector$<$ int $>$ \&full\+Nodes\+Plastic)
+\begin{DoxyCompactList}\small\item\em Chooses which algorithm will be used, sending the vectors of the nodes according to the type of waste. \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_a9d2f0d30f5162dca774e5138b71d5130}{reset\+Display} ()
+\begin{DoxyCompactList}\small\item\em clear the display \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_a4b2e5cf812f4fcb7ffffabbd507f4e2e}{reset\+Graph} (vector$<$ int $>$ \&full\+Nodes, vector$<$ int $>$ \&full\+Nodes\+Paper, vector$<$ int $>$ \&full\+Nodes\+Glass, vector$<$ int $>$ \&full\+Nodes\+Plastic)
+\begin{DoxyCompactList}\small\item\em clear the display and reset variables for new tests \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_ad13fe762051a627f7c91e18b56b5871c}{paint\+Nodes} (vector$<$ int $>$ nodes, int source)
+\begin{DoxyCompactList}\small\item\em Auxiliary method of analyze the connectivity of the graph. \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_adc740c52afb954d4781555c2a24b095f}{verify\+Connectivity} ()
+\begin{DoxyCompactList}\small\item\em Analyze and displays the connectivity of the graph. \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_a8b92a14b2fc83e86d9fa797dec00ae0e}{aux\+Time\+Comparison\+Dijkstra} (vector$<$ int $>$ full\+Nodes)
+\begin{DoxyCompactList}\small\item\em Auxiliary method of analyze time of Dikstra algorithm. \end{DoxyCompactList}\item 
+int \hyperlink{classSmartWaste_a69c3a37338ea2c3c49b3e600d45a7afa}{switch\+Central\+Floyd\+Warshall} (int source\+Id)
+\begin{DoxyCompactList}\small\item\em Choose the nearest recycling central with Floyd Warshall algorithm. \end{DoxyCompactList}\item 
+int \hyperlink{classSmartWaste_a3440495b88d51595261af349753c3b4e}{switch\+Garage\+Floyd\+Warshall} (const vector$<$ int $>$ \&full\+Nodes)
+\begin{DoxyCompactList}\small\item\em Choose the closest garage of trucks depending on the full containers with Floyd Warshall algorithm. \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_a0cd6a174d186a2cf5e4d4de10df0b48c}{aux\+Time\+Comparison\+Floyd\+Warshal} (vector$<$ int $>$ full\+Nodes)
+\begin{DoxyCompactList}\small\item\em Auxiliary method of analyze time of Floyd Warshall algorithm. \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_a9afdadb947d0c2fcb979e3470c4e2721}{time\+Comparison} ()
+\begin{DoxyCompactList}\small\item\em Method to compare execution times of the Floyd Warshall and the Dikstra algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classGraph}{Graph}$<$ int $>$ \hyperlink{classSmartWaste_a653f3e0a3fb2148fb3e59ec9532f6d04}{graph}
+\item 
+vector$<$ int $>$ \hyperlink{classSmartWaste_aac31f2b8c6bd3f931346024435e36f5f}{centrals}
+\item 
+vector$<$ int $>$ \hyperlink{classSmartWaste_a624a2893edb7c0e00e4fefe635a0c597}{garages}
+\end{DoxyCompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{Smart\+Waste@{Smart\+Waste}!Smart\+Waste@{Smart\+Waste}}
+\index{Smart\+Waste@{Smart\+Waste}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{Smart\+Waste(\+Graph\+Viewer $\ast$gv)}{SmartWaste(GraphViewer *gv)}}]{\setlength{\rightskip}{0pt plus 5cm}Smart\+Waste\+::\+Smart\+Waste (
+\begin{DoxyParamCaption}
+\item[{{\bf Graph\+Viewer} $\ast$}]{gv}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a9160cb643ea818e93ac5f129ca753372}{}\label{classSmartWaste_a9160cb643ea818e93ac5f129ca753372}
+
+
+constructor of class 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gv} & \+: graph viewer for the display \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\index{Smart\+Waste@{Smart\+Waste}!add\+Path@{add\+Path}}
+\index{add\+Path@{add\+Path}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{add\+Path(vector$<$ int $>$ \&path\+Solution, const vector$<$ int $>$ \&new\+Path)}{addPath(vector< int > &pathSolution, const vector< int > &newPath)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::add\+Path (
+\begin{DoxyParamCaption}
+\item[{vector$<$ int $>$ \&}]{path\+Solution, }
+\item[{const vector$<$ int $>$ \&}]{new\+Path}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_aa55aa107bef64f322ea140103888c40b}{}\label{classSmartWaste_aa55aa107bef64f322ea140103888c40b}
+
+
+Add computed path so the solution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path\+Solution} & \+: path solution already computed \\
+\hline
+{\em new\+Path} & \+: new part of the path to add \\
+\hline
+\end{DoxyParams}
+\index{Smart\+Waste@{Smart\+Waste}!aux\+Time\+Comparison\+Dijkstra@{aux\+Time\+Comparison\+Dijkstra}}
+\index{aux\+Time\+Comparison\+Dijkstra@{aux\+Time\+Comparison\+Dijkstra}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{aux\+Time\+Comparison\+Dijkstra(vector$<$ int $>$ full\+Nodes)}{auxTimeComparisonDijkstra(vector< int > fullNodes)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::aux\+Time\+Comparison\+Dijkstra (
+\begin{DoxyParamCaption}
+\item[{vector$<$ int $>$}]{full\+Nodes}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a8b92a14b2fc83e86d9fa797dec00ae0e}{}\label{classSmartWaste_a8b92a14b2fc83e86d9fa797dec00ae0e}
+
+
+Auxiliary method of analyze time of Dikstra algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+Nodes} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_a8b92a14b2fc83e86d9fa797dec00ae0e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!aux\+Time\+Comparison\+Floyd\+Warshal@{aux\+Time\+Comparison\+Floyd\+Warshal}}
+\index{aux\+Time\+Comparison\+Floyd\+Warshal@{aux\+Time\+Comparison\+Floyd\+Warshal}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{aux\+Time\+Comparison\+Floyd\+Warshal(vector$<$ int $>$ full\+Nodes)}{auxTimeComparisonFloydWarshal(vector< int > fullNodes)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::aux\+Time\+Comparison\+Floyd\+Warshal (
+\begin{DoxyParamCaption}
+\item[{vector$<$ int $>$}]{full\+Nodes}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a0cd6a174d186a2cf5e4d4de10df0b48c}{}\label{classSmartWaste_a0cd6a174d186a2cf5e4d4de10df0b48c}
+
+
+Auxiliary method of analyze time of Floyd Warshall algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+Nodes} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_a0cd6a174d186a2cf5e4d4de10df0b48c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!compute\+Next\+Vertex@{compute\+Next\+Vertex}}
+\index{compute\+Next\+Vertex@{compute\+Next\+Vertex}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{compute\+Next\+Vertex(vector$<$ int $>$ \&full\+Nodes)}{computeNextVertex(vector< int > &fullNodes)}}]{\setlength{\rightskip}{0pt plus 5cm}int Smart\+Waste\+::compute\+Next\+Vertex (
+\begin{DoxyParamCaption}
+\item[{vector$<$ int $>$ \&}]{full\+Nodes}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a5d8ac088738eff0f301a44468e64cd1a}{}\label{classSmartWaste_a5d8ac088738eff0f301a44468e64cd1a}
+
+
+Return the next garbage colector to visit (closest the current souce) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+Nodes} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+index of the next node 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_a5d8ac088738eff0f301a44468e64cd1a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!compute\+Solution\+Dikstra@{compute\+Solution\+Dikstra}}
+\index{compute\+Solution\+Dikstra@{compute\+Solution\+Dikstra}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{compute\+Solution\+Dikstra(vector$<$ int $>$ \&full\+Nodes, string color\+Edge)}{computeSolutionDikstra(vector< int > &fullNodes, string colorEdge)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::compute\+Solution\+Dikstra (
+\begin{DoxyParamCaption}
+\item[{vector$<$ int $>$ \&}]{full\+Nodes, }
+\item[{string}]{color\+Edge}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_ac97fb07911f6728e6d8593daa5699188}{}\label{classSmartWaste_ac97fb07911f6728e6d8593daa5699188}
+
+
+main of compute solution with Dikstra algorithm 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+Nodes} & \\
+\hline
+{\em color} & of the edge \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_ac97fb07911f6728e6d8593daa5699188_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!compute\+Solution\+Recycling@{compute\+Solution\+Recycling}}
+\index{compute\+Solution\+Recycling@{compute\+Solution\+Recycling}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{compute\+Solution\+Recycling(vector$<$ int $>$ \&full\+Nodes\+Paper, vector$<$ int $>$ \&full\+Nodes\+Glass, vector$<$ int $>$ \&full\+Nodes\+Plastic)}{computeSolutionRecycling(vector< int > &fullNodesPaper, vector< int > &fullNodesGlass, vector< int > &fullNodesPlastic)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::compute\+Solution\+Recycling (
+\begin{DoxyParamCaption}
+\item[{vector$<$ int $>$ \&}]{full\+Nodes\+Paper, }
+\item[{vector$<$ int $>$ \&}]{full\+Nodes\+Glass, }
+\item[{vector$<$ int $>$ \&}]{full\+Nodes\+Plastic}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a633d96a03ef0aa2252d6f5fb104af863}{}\label{classSmartWaste_a633d96a03ef0aa2252d6f5fb104af863}
+
+
+Chooses which algorithm will be used, sending the vectors of the nodes according to the type of waste. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full} & nodes of paper \\
+\hline
+{\em full} & nodes of glass \\
+\hline
+{\em full} & nodes of plastic \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_a633d96a03ef0aa2252d6f5fb104af863_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!display\+Solution@{display\+Solution}}
+\index{display\+Solution@{display\+Solution}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{display\+Solution(vector$<$ int $>$ path\+Solution, int last\+Node\+Id, int truck\+Contains, string color\+Edge)}{displaySolution(vector< int > pathSolution, int lastNodeId, int truckContains, string colorEdge)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::display\+Solution (
+\begin{DoxyParamCaption}
+\item[{vector$<$ int $>$}]{path\+Solution, }
+\item[{int}]{last\+Node\+Id, }
+\item[{int}]{truck\+Contains, }
+\item[{string}]{color\+Edge}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_ace7f7f1d899892011914180c52dd1d9b}{}\label{classSmartWaste_ace7f7f1d899892011914180c52dd1d9b}
+
+
+Display solution. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em path\+Solution} & \+: vector of path solution \\
+\hline
+{\em last\+Node\+Id} & \+: Auxiliary id for verify if need reset this node \\
+\hline
+{\em truck\+Contains} & \+: Truck contents \\
+\hline
+{\em color\+Edge} & \+: Color to paint the edge \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_ace7f7f1d899892011914180c52dd1d9b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!generate\+Random\+Cases@{generate\+Random\+Cases}}
+\index{generate\+Random\+Cases@{generate\+Random\+Cases}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{generate\+Random\+Cases(vector$<$ int $>$ \&full\+Nodes)}{generateRandomCases(vector< int > &fullNodes)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::generate\+Random\+Cases (
+\begin{DoxyParamCaption}
+\item[{vector$<$ int $>$ \&}]{full\+Nodes}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_ac22248b6006d50c9a5a4c930fcdde56e}{}\label{classSmartWaste_ac22248b6006d50c9a5a4c930fcdde56e}
+
+
+Generate random test cases. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+Nodes} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_ac22248b6006d50c9a5a4c930fcdde56e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!generate\+Random\+Cases\+Recycling@{generate\+Random\+Cases\+Recycling}}
+\index{generate\+Random\+Cases\+Recycling@{generate\+Random\+Cases\+Recycling}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{generate\+Random\+Cases\+Recycling(vector$<$ int $>$ \&full\+Nodes\+Paper, vector$<$ int $>$ \&full\+Nodes\+Glass, vector$<$ int $>$ \&full\+Nodes\+Plastic)}{generateRandomCasesRecycling(vector< int > &fullNodesPaper, vector< int > &fullNodesGlass, vector< int > &fullNodesPlastic)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::generate\+Random\+Cases\+Recycling (
+\begin{DoxyParamCaption}
+\item[{vector$<$ int $>$ \&}]{full\+Nodes\+Paper, }
+\item[{vector$<$ int $>$ \&}]{full\+Nodes\+Glass, }
+\item[{vector$<$ int $>$ \&}]{full\+Nodes\+Plastic}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_ad794e60b6202dc3a1e38d028be2195d1}{}\label{classSmartWaste_ad794e60b6202dc3a1e38d028be2195d1}
+
+
+Generate random test cases. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+Nodes\+Glass} & \\
+\hline
+{\em full\+Nodes\+Paper} & \\
+\hline
+{\em full\+Nodes\+Plastic} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_ad794e60b6202dc3a1e38d028be2195d1_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!get\+Graph@{get\+Graph}}
+\index{get\+Graph@{get\+Graph}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{get\+Graph()}{getGraph()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Graph}$<$ int $>$ $\ast$ Smart\+Waste\+::get\+Graph (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a01f8a0d4c232b6e25c8a31299cbfd3ea}{}\label{classSmartWaste_a01f8a0d4c232b6e25c8a31299cbfd3ea}
+
+
+Get the graph. 
+
+\begin{DoxyReturn}{Returns}
+the graph 
+\end{DoxyReturn}
+\index{Smart\+Waste@{Smart\+Waste}!init\+Garages\+And\+Centrals@{init\+Garages\+And\+Centrals}}
+\index{init\+Garages\+And\+Centrals@{init\+Garages\+And\+Centrals}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{init\+Garages\+And\+Centrals()}{initGaragesAndCentrals()}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::init\+Garages\+And\+Centrals (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_ae42e3c99877f4651f931a68c34526398}{}\label{classSmartWaste_ae42e3c99877f4651f931a68c34526398}
+
+
+Generate random places for the garages and the centrals. 
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_ae42e3c99877f4651f931a68c34526398_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!paint\+Nodes@{paint\+Nodes}}
+\index{paint\+Nodes@{paint\+Nodes}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{paint\+Nodes(const vector$<$ int $>$ \&full\+Nodes, const string \&color)}{paintNodes(const vector< int > &fullNodes, const string &color)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::paint\+Nodes (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ int $>$ \&}]{full\+Nodes, }
+\item[{const string \&}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a418a6bbfd147448293d26f8269a52a7a}{}\label{classSmartWaste_a418a6bbfd147448293d26f8269a52a7a}
+
+
+Paint all nodes of the vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+Nodes} & \\
+\hline
+{\em color} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_a418a6bbfd147448293d26f8269a52a7a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!paint\+Nodes@{paint\+Nodes}}
+\index{paint\+Nodes@{paint\+Nodes}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{paint\+Nodes(vector$<$ int $>$ nodes, int source)}{paintNodes(vector< int > nodes, int source)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::paint\+Nodes (
+\begin{DoxyParamCaption}
+\item[{vector$<$ int $>$}]{nodes, }
+\item[{int}]{source}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_ad13fe762051a627f7c91e18b56b5871c}{}\label{classSmartWaste_ad13fe762051a627f7c91e18b56b5871c}
+
+
+Auxiliary method of analyze the connectivity of the graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nodes} & \\
+\hline
+{\em source} & node id for init the analyze, therefore it is not to paint \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_ad13fe762051a627f7c91e18b56b5871c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!reset\+Display@{reset\+Display}}
+\index{reset\+Display@{reset\+Display}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{reset\+Display()}{resetDisplay()}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::reset\+Display (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a9d2f0d30f5162dca774e5138b71d5130}{}\label{classSmartWaste_a9d2f0d30f5162dca774e5138b71d5130}
+
+
+clear the display 
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_a9d2f0d30f5162dca774e5138b71d5130_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!reset\+Graph@{reset\+Graph}}
+\index{reset\+Graph@{reset\+Graph}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{reset\+Graph(vector$<$ int $>$ \&full\+Nodes, vector$<$ int $>$ \&full\+Nodes\+Paper, vector$<$ int $>$ \&full\+Nodes\+Glass, vector$<$ int $>$ \&full\+Nodes\+Plastic)}{resetGraph(vector< int > &fullNodes, vector< int > &fullNodesPaper, vector< int > &fullNodesGlass, vector< int > &fullNodesPlastic)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::reset\+Graph (
+\begin{DoxyParamCaption}
+\item[{vector$<$ int $>$ \&}]{full\+Nodes, }
+\item[{vector$<$ int $>$ \&}]{full\+Nodes\+Paper, }
+\item[{vector$<$ int $>$ \&}]{full\+Nodes\+Glass, }
+\item[{vector$<$ int $>$ \&}]{full\+Nodes\+Plastic}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a4b2e5cf812f4fcb7ffffabbd507f4e2e}{}\label{classSmartWaste_a4b2e5cf812f4fcb7ffffabbd507f4e2e}
+
+
+clear the display and reset variables for new tests 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+Nodes} & \\
+\hline
+{\em full\+Nodes\+Paper} & \\
+\hline
+{\em full\+Nodes\+Glass} & \\
+\hline
+{\em full\+Nodes\+Plastic} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_a4b2e5cf812f4fcb7ffffabbd507f4e2e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!reset\+Node@{reset\+Node}}
+\index{reset\+Node@{reset\+Node}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{reset\+Node(int current\+Node, string color)}{resetNode(int currentNode, string color)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::reset\+Node (
+\begin{DoxyParamCaption}
+\item[{int}]{current\+Node, }
+\item[{string}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a08307d41711fbdeb0993c146201f0e39}{}\label{classSmartWaste_a08307d41711fbdeb0993c146201f0e39}
+
+
+Method to reset a node or change its color if it is full of another residue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+Node} & \+: current node id \\
+\hline
+{\em color} & current color of this node \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_a08307d41711fbdeb0993c146201f0e39_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!set\+Nodes\+State@{set\+Nodes\+State}}
+\index{set\+Nodes\+State@{set\+Nodes\+State}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{set\+Nodes\+State(const vector$<$ int $>$ \&full\+Nodes, string color)}{setNodesState(const vector< int > &fullNodes, string color)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::set\+Nodes\+State (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ int $>$ \&}]{full\+Nodes, }
+\item[{string}]{color}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_aeefe2c284d3a3a83589a0a3118af0f05}{}\label{classSmartWaste_aeefe2c284d3a3a83589a0a3118af0f05}
+
+
+Generate random test cases. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+Nodes} & \\
+\hline
+{\em color} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_aeefe2c284d3a3a83589a0a3118af0f05_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!switch\+Central\+Dikstra@{switch\+Central\+Dikstra}}
+\index{switch\+Central\+Dikstra@{switch\+Central\+Dikstra}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{switch\+Central\+Dikstra() const }{switchCentralDikstra() const }}]{\setlength{\rightskip}{0pt plus 5cm}int Smart\+Waste\+::switch\+Central\+Dikstra (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classSmartWaste_a12ed73d4cb4116b279676f0393aa6c3b}{}\label{classSmartWaste_a12ed73d4cb4116b279676f0393aa6c3b}
+
+
+Choose the nearest recycling central with Dikstra algorithm. 
+
+\begin{DoxyReturn}{Returns}
+central node id 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classSmartWaste_a12ed73d4cb4116b279676f0393aa6c3b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!switch\+Central\+Floyd\+Warshall@{switch\+Central\+Floyd\+Warshall}}
+\index{switch\+Central\+Floyd\+Warshall@{switch\+Central\+Floyd\+Warshall}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{switch\+Central\+Floyd\+Warshall(int source\+Id)}{switchCentralFloydWarshall(int sourceId)}}]{\setlength{\rightskip}{0pt plus 5cm}int Smart\+Waste\+::switch\+Central\+Floyd\+Warshall (
+\begin{DoxyParamCaption}
+\item[{int}]{source\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a69c3a37338ea2c3c49b3e600d45a7afa}{}\label{classSmartWaste_a69c3a37338ea2c3c49b3e600d45a7afa}
+
+
+Choose the nearest recycling central with Floyd Warshall algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+Id} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+central node id 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_a69c3a37338ea2c3c49b3e600d45a7afa_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!switch\+Garage\+Dikstra@{switch\+Garage\+Dikstra}}
+\index{switch\+Garage\+Dikstra@{switch\+Garage\+Dikstra}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{switch\+Garage\+Dikstra(const vector$<$ int $>$ \&full\+Nodes)}{switchGarageDikstra(const vector< int > &fullNodes)}}]{\setlength{\rightskip}{0pt plus 5cm}int Smart\+Waste\+::switch\+Garage\+Dikstra (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ int $>$ \&}]{full\+Nodes}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_aae9728f175078ad6323c67fb0b0afce0}{}\label{classSmartWaste_aae9728f175078ad6323c67fb0b0afce0}
+
+
+Choose the closest garage of trucks depending on the full containers with Dikstra algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+Nodes} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+garage node id 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_aae9728f175078ad6323c67fb0b0afce0_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!switch\+Garage\+Floyd\+Warshall@{switch\+Garage\+Floyd\+Warshall}}
+\index{switch\+Garage\+Floyd\+Warshall@{switch\+Garage\+Floyd\+Warshall}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{switch\+Garage\+Floyd\+Warshall(const vector$<$ int $>$ \&full\+Nodes)}{switchGarageFloydWarshall(const vector< int > &fullNodes)}}]{\setlength{\rightskip}{0pt plus 5cm}int Smart\+Waste\+::switch\+Garage\+Floyd\+Warshall (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ int $>$ \&}]{full\+Nodes}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a3440495b88d51595261af349753c3b4e}{}\label{classSmartWaste_a3440495b88d51595261af349753c3b4e}
+
+
+Choose the closest garage of trucks depending on the full containers with Floyd Warshall algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+Nodes} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+garage node id 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_a3440495b88d51595261af349753c3b4e_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!time\+Comparison@{time\+Comparison}}
+\index{time\+Comparison@{time\+Comparison}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{time\+Comparison()}{timeComparison()}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::time\+Comparison (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a9afdadb947d0c2fcb979e3470c4e2721}{}\label{classSmartWaste_a9afdadb947d0c2fcb979e3470c4e2721}
+
+
+Method to compare execution times of the Floyd Warshall and the Dikstra algorithm. 
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_a9afdadb947d0c2fcb979e3470c4e2721_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!verify\+Connectivity@{verify\+Connectivity}}
+\index{verify\+Connectivity@{verify\+Connectivity}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{verify\+Connectivity()}{verifyConnectivity()}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::verify\+Connectivity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_adc740c52afb954d4781555c2a24b095f}{}\label{classSmartWaste_adc740c52afb954d4781555c2a24b095f}
+
+
+Analyze and displays the connectivity of the graph. 
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_adc740c52afb954d4781555c2a24b095f_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\index{Smart\+Waste@{Smart\+Waste}!centrals@{centrals}}
+\index{centrals@{centrals}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{centrals}{centrals}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$int$>$ Smart\+Waste\+::centrals\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classSmartWaste_aac31f2b8c6bd3f931346024435e36f5f}{}\label{classSmartWaste_aac31f2b8c6bd3f931346024435e36f5f}
+\index{Smart\+Waste@{Smart\+Waste}!garages@{garages}}
+\index{garages@{garages}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{garages}{garages}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$int$>$ Smart\+Waste\+::garages\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classSmartWaste_a624a2893edb7c0e00e4fefe635a0c597}{}\label{classSmartWaste_a624a2893edb7c0e00e4fefe635a0c597}
+\index{Smart\+Waste@{Smart\+Waste}!graph@{graph}}
+\index{graph@{graph}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{graph}{graph}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Graph}$<$int$>$ Smart\+Waste\+::graph\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classSmartWaste_a653f3e0a3fb2148fb3e59ec9532f6d04}{}\label{classSmartWaste_a653f3e0a3fb2148fb3e59ec9532f6d04}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/ana/\+Dropbox/faculdade/2ano/2semestre/\+C\+A\+L/\+Smart\+Waste/src/\hyperlink{SmartWaste_8h}{Smart\+Waste.\+h}\item 
+/home/ana/\+Dropbox/faculdade/2ano/2semestre/\+C\+A\+L/\+Smart\+Waste/src/\hyperlink{SmartWaste_8cpp}{Smart\+Waste.\+cpp}\end{DoxyCompactItemize}

@@ -1,0 +1,12 @@
+<map id="SmartWaste::auxTimeComparisonFloydWarshal" name="SmartWaste::auxTimeComparisonFloydWarshal">
+<area shape="rect" id="node2" href="$classGraph.html#ae5161f4408bf1ead2b29d19d67fb04ee" title="Graph::floydWarshallShortestPath" alt="" coords="276,5,496,32"/>
+<area shape="rect" id="node4" href="$classSmartWaste.html#a3440495b88d51595261af349753c3b4e" title="Choose the closest garage of trucks depending on the full containers with Floyd Warshall algorithm..." alt="" coords="295,107,477,149"/>
+<area shape="rect" id="node6" href="$classSmartWaste.html#a5d8ac088738eff0f301a44468e64cd1a" title="Return the next garbage colector to visit (closest the current souce) " alt="" coords="277,56,495,83"/>
+<area shape="rect" id="node8" href="$classSmartWaste.html#aa55aa107bef64f322ea140103888c40b" title="Add computed path so the solution. " alt="" coords="311,173,461,200"/>
+<area shape="rect" id="node9" href="$classGraph.html#ab23d1dae92a7f2b29dcb91a94336674c" title="Graph::getfloydWarshallPath" alt="" coords="291,291,481,317"/>
+<area shape="rect" id="node11" href="$classSmartWaste.html#a69c3a37338ea2c3c49b3e600d45a7afa" title="Choose the nearest recycling central with Floyd Warshall algorithm. " alt="" coords="295,225,477,266"/>
+<area shape="rect" id="node3" href="$classGraph.html#a7e137f1ef838395ac1044a944fa54448" title="Graph::edgeCost" alt="" coords="589,5,711,32"/>
+<area shape="rect" id="node5" href="$classGraph.html#ab314d60da32e5e0080e51c9c17f06f85" title="Graph::getWeightFloydWarshall" alt="" coords="547,173,753,200"/>
+<area shape="rect" id="node7" href="$classGraph.html#a08a95472b0d9bd7321660940807af060" title="Graph::getVertex" alt="" coords="589,56,711,83"/>
+<area shape="rect" id="node10" href="$classGraph.html#aad1eda4beb8425d03ed1f3b8af397563" title="Graph::getfloydWarshallPathAux" alt="" coords="544,291,756,317"/>
+</map>

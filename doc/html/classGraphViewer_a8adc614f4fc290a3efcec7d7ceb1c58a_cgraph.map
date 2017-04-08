@@ -1,0 +1,6 @@
+<map id="GraphViewer::GraphViewer" name="GraphViewer::GraphViewer">
+<area shape="rect" id="node2" href="$classGraphViewer.html#a1ce9dff4903c650d3b2d33a3ef1d1f61" title="GraphViewer::initialize" alt="" coords="233,31,385,57"/>
+<area shape="rect" id="node3" href="$classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="433,31,583,57"/>
+<area shape="rect" id="node4" href="$connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="670,5,737,32"/>
+<area shape="rect" id="node5" href="$classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="631,56,776,83"/>
+</map>

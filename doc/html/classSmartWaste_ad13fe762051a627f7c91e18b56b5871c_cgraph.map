@@ -1,0 +1,9 @@
+<map id="SmartWaste::paintNodes" name="SmartWaste::paintNodes">
+<area shape="rect" id="node2" href="$classGraph.html#a8cfc98c097359592094c27f2118dc6a7" title="Graph::getGV" alt="" coords="267,5,370,32"/>
+<area shape="rect" id="node3" href="$classGraphViewer.html#a8b542d7e09e81a45a74760c19233beb0" title="GraphViewer::setVertexColor" alt="" coords="223,56,415,83"/>
+<area shape="rect" id="node7" href="$namespaceUtils.html#a71478c18b3a127080dcb2bb1717aff47" title="Do sleep according to the operating system. " alt="" coords="267,107,371,133"/>
+<area shape="rect" id="node8" href="$classGraphViewer.html#a3009a66958686ccb7e78b68e37c3c423" title="GraphViewer::rearrange" alt="" coords="239,157,398,184"/>
+<area shape="rect" id="node4" href="$classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="463,107,612,133"/>
+<area shape="rect" id="node5" href="$connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="699,81,766,108"/>
+<area shape="rect" id="node6" href="$classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="660,132,805,159"/>
+</map>

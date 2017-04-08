@@ -1,0 +1,9 @@
+<map id="SmartWaste::initGaragesAndCentrals" name="SmartWaste::initGaragesAndCentrals">
+<area shape="rect" id="node2" href="$classGraph.html#a295932f117d92c825a97ec458e0fb332" title="Graph::getNumVertex" alt="" coords="264,5,413,32"/>
+<area shape="rect" id="node3" href="$classGraph.html#a8cfc98c097359592094c27f2118dc6a7" title="Graph::getGV" alt="" coords="287,56,390,83"/>
+<area shape="rect" id="node4" href="$classGraphViewer.html#a02d5f7393eab9a2d1b66719039597a64" title="GraphViewer::setVertexIcon" alt="" coords="245,107,432,133"/>
+<area shape="rect" id="node8" href="$classGraphViewer.html#a3009a66958686ccb7e78b68e37c3c423" title="GraphViewer::rearrange" alt="" coords="259,157,418,184"/>
+<area shape="rect" id="node5" href="$classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="480,132,629,159"/>
+<area shape="rect" id="node6" href="$connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="717,107,783,133"/>
+<area shape="rect" id="node7" href="$classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="677,157,823,184"/>
+</map>

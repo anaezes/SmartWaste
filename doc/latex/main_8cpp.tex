@@ -1,0 +1,325 @@
+\hypertarget{main_8cpp}{}\section{/home/ana/\+Dropbox/faculdade/2ano/2semestre/\+C\+A\+L/\+Smart\+Waste/src/main.cpp File Reference}
+\label{main_8cpp}\index{/home/ana/\+Dropbox/faculdade/2ano/2semestre/\+C\+A\+L/\+Smart\+Waste/src/main.\+cpp@{/home/ana/\+Dropbox/faculdade/2ano/2semestre/\+C\+A\+L/\+Smart\+Waste/src/main.\+cpp}}
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include $<$sstream$>$}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$map$>$}\\*
+{\ttfamily \#include $<$limits$>$}\\*
+{\ttfamily \#include $<$ctime$>$}\\*
+{\ttfamily \#include $<$algorithm$>$}\\*
+{\ttfamily \#include $<$chrono$>$}\\*
+{\ttfamily \#include \char`\"{}graphviewer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Graph.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Smart\+Waste.\+h\char`\"{}}\\*
+Include dependency graph for main.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{main_8cpp_a9b1ce9209046afc1c50bf945642e8608}{read\+File} (const string \&file\+Name, vector$<$ string $>$ \&file\+Lines)
+\begin{DoxyCompactList}\small\item\em Read a file to a vector of lines. \end{DoxyCompactList}\item 
+bool \hyperlink{main_8cpp_a85d589688404bb7c03364fe0244b7b9a}{read\+Nodes\+File} (string nodes\+File, map$<$ int, std\+::pair$<$ int, int $>$$>$ \&node\+Coordinates, \hyperlink{classSmartWaste}{Smart\+Waste} \&smart\+Waste)
+\begin{DoxyCompactList}\small\item\em Read a txt file of nodes. \end{DoxyCompactList}\item 
+bool \hyperlink{main_8cpp_a41d649de20d26f6e90244a7537c2592b}{read\+Roads\+File} (string roads\+File, map$<$ int, bool $>$ \&roads\+Info\+Map)
+\begin{DoxyCompactList}\small\item\em Reads a text file of information of edges\+: saves edge id and if it\textquotesingle{}s undirected or not. \end{DoxyCompactList}\item 
+bool \hyperlink{main_8cpp_a8d19d9f443bb1d6bfec7805db5ef1a5d}{read\+Info\+File} (string info\+File, \hyperlink{classSmartWaste}{Smart\+Waste} \&smart\+Waste, map$<$ int, bool $>$ \&roads\+Info\+Map, const map$<$ int, std\+::pair$<$ int, int $>$$>$ \&node\+Coordinates)
+\begin{DoxyCompactList}\small\item\em Read a txt file -\/ add edge to a graph. \end{DoxyCompactList}\item 
+\hyperlink{classGraphViewer}{Graph\+Viewer} $\ast$ \hyperlink{main_8cpp_a90f27ae1b7904932ccdc4c59e730903c}{init\+Viewer} ()
+\begin{DoxyCompactList}\small\item\em Init \hyperlink{classGraphViewer}{Graph\+Viewer}. \end{DoxyCompactList}\item 
+bool \hyperlink{main_8cpp_a035058b2f2cde5fdbfcd279049db6053}{init\+Graph} (\hyperlink{classSmartWaste}{Smart\+Waste} \&smart\+Waste, map$<$ int, std\+::pair$<$ int, int $>$$>$ \&node\+Coordinates, map$<$ int, bool $>$ \&roads\+Info\+Map, int option)
+\begin{DoxyCompactList}\small\item\em charge txt files in graph \end{DoxyCompactList}\item 
+int \hyperlink{main_8cpp_a0be44243f30672c846deedaf6b3660f9}{show\+Menu} ()
+\begin{DoxyCompactList}\small\item\em show menu to user \end{DoxyCompactList}\item 
+int \hyperlink{main_8cpp_a5646547d2e0635f444b662313a344dc3}{main\+Smart\+Waste} (int option\+Graph)
+\begin{DoxyCompactList}\small\item\em main menu \end{DoxyCompactList}\item 
+int \hyperlink{main_8cpp_afee9e80d0b9980326a5021e867c015f5}{choose\+Graph\+Menu} ()
+\begin{DoxyCompactList}\small\item\em first menu to choose graph\+: 1 if small, 2 if medium and 3 if the big graph \end{DoxyCompactList}\item 
+int \hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\begin{DoxyCompactList}\small\item\em main menu \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{main.\+cpp@{main.\+cpp}!choose\+Graph\+Menu@{choose\+Graph\+Menu}}
+\index{choose\+Graph\+Menu@{choose\+Graph\+Menu}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{choose\+Graph\+Menu()}{chooseGraphMenu()}}]{\setlength{\rightskip}{0pt plus 5cm}int choose\+Graph\+Menu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_afee9e80d0b9980326a5021e867c015f5}{}\label{main_8cpp_afee9e80d0b9980326a5021e867c015f5}
+
+
+first menu to choose graph\+: 1 if small, 2 if medium and 3 if the big graph 
+
+\begin{DoxyReturn}{Returns}
+option 
+\end{DoxyReturn}
+\index{main.\+cpp@{main.\+cpp}!init\+Graph@{init\+Graph}}
+\index{init\+Graph@{init\+Graph}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{init\+Graph(\+Smart\+Waste \&smart\+Waste, map$<$ int, std\+::pair$<$ int, int $>$$>$ \&node\+Coordinates, map$<$ int, bool $>$ \&roads\+Info\+Map, int option)}{initGraph(SmartWaste &smartWaste, map< int, std::pair< int, int >> &nodeCoordinates, map< int, bool > &roadsInfoMap, int option)}}]{\setlength{\rightskip}{0pt plus 5cm}bool init\+Graph (
+\begin{DoxyParamCaption}
+\item[{{\bf Smart\+Waste} \&}]{smart\+Waste, }
+\item[{map$<$ int, std\+::pair$<$ int, int $>$$>$ \&}]{node\+Coordinates, }
+\item[{map$<$ int, bool $>$ \&}]{roads\+Info\+Map, }
+\item[{int}]{option}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a035058b2f2cde5fdbfcd279049db6053}{}\label{main_8cpp_a035058b2f2cde5fdbfcd279049db6053}
+
+
+charge txt files in graph 
+
+
+\begin{DoxyParams}{Parameters}
+{\em smart\+Waste} & \\
+\hline
+{\em node\+Coordinates} & \\
+\hline
+{\em roads\+Info\+Map} & \\
+\hline
+{\em option} & \+: 1 if the smallest, 2 if the medium and 3 if the biggest \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if was success 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp_a035058b2f2cde5fdbfcd279049db6053_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{main.\+cpp@{main.\+cpp}!init\+Viewer@{init\+Viewer}}
+\index{init\+Viewer@{init\+Viewer}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{init\+Viewer()}{initViewer()}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Graph\+Viewer}$\ast$ init\+Viewer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a90f27ae1b7904932ccdc4c59e730903c}{}\label{main_8cpp_a90f27ae1b7904932ccdc4c59e730903c}
+
+
+Init \hyperlink{classGraphViewer}{Graph\+Viewer}. 
+
+\begin{DoxyReturn}{Returns}
+graph viewer 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp_a90f27ae1b7904932ccdc4c59e730903c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{main.\+cpp@{main.\+cpp}!main@{main}}
+\index{main@{main}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{main()}{main()}}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
+
+
+main menu 
+
+\begin{DoxyReturn}{Returns}
+0 to exit 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{main.\+cpp@{main.\+cpp}!main\+Smart\+Waste@{main\+Smart\+Waste}}
+\index{main\+Smart\+Waste@{main\+Smart\+Waste}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{main\+Smart\+Waste(int option\+Graph)}{mainSmartWaste(int optionGraph)}}]{\setlength{\rightskip}{0pt plus 5cm}int main\+Smart\+Waste (
+\begin{DoxyParamCaption}
+\item[{int}]{option\+Graph}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a5646547d2e0635f444b662313a344dc3}{}\label{main_8cpp_a5646547d2e0635f444b662313a344dc3}
+
+
+main menu 
+
+\begin{DoxyReturn}{Returns}
+option 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp_a5646547d2e0635f444b662313a344dc3_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{main.\+cpp@{main.\+cpp}!read\+File@{read\+File}}
+\index{read\+File@{read\+File}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{read\+File(const string \&file\+Name, vector$<$ string $>$ \&file\+Lines)}{readFile(const string &fileName, vector< string > &fileLines)}}]{\setlength{\rightskip}{0pt plus 5cm}bool read\+File (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{file\+Name, }
+\item[{vector$<$ string $>$ \&}]{file\+Lines}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a9b1ce9209046afc1c50bf945642e8608}{}\label{main_8cpp_a9b1ce9209046afc1c50bf945642e8608}
+
+
+Read a file to a vector of lines. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & \\
+\hline
+{\em file\+Lines} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if was success 
+\end{DoxyReturn}
+\index{main.\+cpp@{main.\+cpp}!read\+Info\+File@{read\+Info\+File}}
+\index{read\+Info\+File@{read\+Info\+File}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{read\+Info\+File(string info\+File, Smart\+Waste \&smart\+Waste, map$<$ int, bool $>$ \&roads\+Info\+Map, const map$<$ int, std\+::pair$<$ int, int $>$$>$ \&node\+Coordinates)}{readInfoFile(string infoFile, SmartWaste &smartWaste, map< int, bool > &roadsInfoMap, const map< int, std::pair< int, int >> &nodeCoordinates)}}]{\setlength{\rightskip}{0pt plus 5cm}bool read\+Info\+File (
+\begin{DoxyParamCaption}
+\item[{string}]{info\+File, }
+\item[{{\bf Smart\+Waste} \&}]{smart\+Waste, }
+\item[{map$<$ int, bool $>$ \&}]{roads\+Info\+Map, }
+\item[{const map$<$ int, std\+::pair$<$ int, int $>$$>$ \&}]{node\+Coordinates}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a8d19d9f443bb1d6bfec7805db5ef1a5d}{}\label{main_8cpp_a8d19d9f443bb1d6bfec7805db5ef1a5d}
+
+
+Read a txt file -\/ add edge to a graph. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em info\+File} & \\
+\hline
+{\em smart\+Waste} & \\
+\hline
+{\em roads\+Info\+Map} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if was success 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp_a8d19d9f443bb1d6bfec7805db5ef1a5d_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{main.\+cpp@{main.\+cpp}!read\+Nodes\+File@{read\+Nodes\+File}}
+\index{read\+Nodes\+File@{read\+Nodes\+File}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{read\+Nodes\+File(string nodes\+File, map$<$ int, std\+::pair$<$ int, int $>$$>$ \&node\+Coordinates, Smart\+Waste \&smart\+Waste)}{readNodesFile(string nodesFile, map< int, std::pair< int, int >> &nodeCoordinates, SmartWaste &smartWaste)}}]{\setlength{\rightskip}{0pt plus 5cm}bool read\+Nodes\+File (
+\begin{DoxyParamCaption}
+\item[{string}]{nodes\+File, }
+\item[{map$<$ int, std\+::pair$<$ int, int $>$$>$ \&}]{node\+Coordinates, }
+\item[{{\bf Smart\+Waste} \&}]{smart\+Waste}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a85d589688404bb7c03364fe0244b7b9a}{}\label{main_8cpp_a85d589688404bb7c03364fe0244b7b9a}
+
+
+Read a txt file of nodes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em nodes\+File} & \\
+\hline
+{\em node\+Coordinates} & \\
+\hline
+{\em smart\+Waste} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if was success 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{main_8cpp_a85d589688404bb7c03364fe0244b7b9a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{main.\+cpp@{main.\+cpp}!read\+Roads\+File@{read\+Roads\+File}}
+\index{read\+Roads\+File@{read\+Roads\+File}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{read\+Roads\+File(string roads\+File, map$<$ int, bool $>$ \&roads\+Info\+Map)}{readRoadsFile(string roadsFile, map< int, bool > &roadsInfoMap)}}]{\setlength{\rightskip}{0pt plus 5cm}bool read\+Roads\+File (
+\begin{DoxyParamCaption}
+\item[{string}]{roads\+File, }
+\item[{map$<$ int, bool $>$ \&}]{roads\+Info\+Map}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a41d649de20d26f6e90244a7537c2592b}{}\label{main_8cpp_a41d649de20d26f6e90244a7537c2592b}
+
+
+Reads a text file of information of edges\+: saves edge id and if it\textquotesingle{}s undirected or not. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em roads\+File} & \\
+\hline
+{\em roads\+Info\+Map} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if was success 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=247pt]{main_8cpp_a41d649de20d26f6e90244a7537c2592b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{main.\+cpp@{main.\+cpp}!show\+Menu@{show\+Menu}}
+\index{show\+Menu@{show\+Menu}!main.\+cpp@{main.\+cpp}}
+\subsubsection[{\texorpdfstring{show\+Menu()}{showMenu()}}]{\setlength{\rightskip}{0pt plus 5cm}int show\+Menu (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{main_8cpp_a0be44243f30672c846deedaf6b3660f9}{}\label{main_8cpp_a0be44243f30672c846deedaf6b3660f9}
+
+
+show menu to user 
+
+\begin{DoxyReturn}{Returns}
+option 
+\end{DoxyReturn}

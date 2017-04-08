@@ -1,0 +1,21 @@
+<map id="SmartWaste::timeComparison" name="SmartWaste::timeComparison">
+<area shape="rect" id="node2" href="$classSmartWaste.html#ac22248b6006d50c9a5a4c930fcdde56e" title="Generate random test cases. " alt="" coords="262,75,465,117"/>
+<area shape="rect" id="node4" href="$classSmartWaste.html#a8b92a14b2fc83e86d9fa797dec00ae0e" title="Auxiliary method of analyze time of Dikstra algorithm. " alt="" coords="252,217,475,258"/>
+<area shape="rect" id="node12" href="$classSmartWaste.html#a0cd6a174d186a2cf5e4d4de10df0b48c" title="Auxiliary method of analyze time of Floyd Warshall algorithm. " alt="" coords="252,347,475,389"/>
+<area shape="rect" id="node20" href="$namespaceUtils.html#a71478c18b3a127080dcb2bb1717aff47" title="Do sleep according to the operating system. " alt="" coords="311,413,415,440"/>
+<area shape="rect" id="node3" href="$classGraph.html#a295932f117d92c825a97ec458e0fb332" title="Graph::getNumVertex" alt="" coords="558,5,707,32"/>
+<area shape="rect" id="node5" href="$classSmartWaste.html#aae9728f175078ad6323c67fb0b0afce0" title="Choose the closest garage of trucks depending on the full containers with Dikstra algorithm..." alt="" coords="541,107,724,149"/>
+<area shape="rect" id="node6" href="$classGraph.html#a3631bce147c033119e2d328848effd43" title="Graph::dijkstraShortestPath" alt="" coords="805,68,988,95"/>
+<area shape="rect" id="node8" href="$classSmartWaste.html#a5d8ac088738eff0f301a44468e64cd1a" title="Return the next garbage colector to visit (closest the current souce) " alt="" coords="523,325,742,352"/>
+<area shape="rect" id="node9" href="$classSmartWaste.html#aa55aa107bef64f322ea140103888c40b" title="Add computed path so the solution. " alt="" coords="557,275,708,301"/>
+<area shape="rect" id="node10" href="$classGraph.html#ab4054ca572c10669dd3e05d6d41c116c" title="Graph::getPath" alt="" coords="841,169,952,196"/>
+<area shape="rect" id="node11" href="$classSmartWaste.html#a12ed73d4cb4116b279676f0393aa6c3b" title="Choose the nearest recycling central with Dikstra algorithm. " alt="" coords="805,221,988,262"/>
+<area shape="rect" id="node7" href="$classGraph.html#a08a95472b0d9bd7321660940807af060" title="Graph::getVertex" alt="" coords="1051,169,1172,196"/>
+<area shape="rect" id="node13" href="$classGraph.html#ae5161f4408bf1ead2b29d19d67fb04ee" title="Graph::floydWarshallShortestPath" alt="" coords="523,508,743,535"/>
+<area shape="rect" id="node15" href="$classSmartWaste.html#a3440495b88d51595261af349753c3b4e" title="Choose the closest garage of trucks depending on the full containers with Floyd Warshall algorithm..." alt="" coords="541,377,724,418"/>
+<area shape="rect" id="node17" href="$classGraph.html#ab23d1dae92a7f2b29dcb91a94336674c" title="Graph::getfloydWarshallPath" alt="" coords="538,559,727,585"/>
+<area shape="rect" id="node19" href="$classSmartWaste.html#a69c3a37338ea2c3c49b3e600d45a7afa" title="Choose the nearest recycling central with Floyd Warshall algorithm. " alt="" coords="541,442,724,483"/>
+<area shape="rect" id="node14" href="$classGraph.html#a7e137f1ef838395ac1044a944fa54448" title="Graph::edgeCost" alt="" coords="836,508,957,535"/>
+<area shape="rect" id="node16" href="$classGraph.html#ab314d60da32e5e0080e51c9c17f06f85" title="Graph::getWeightFloydWarshall" alt="" coords="793,417,1000,444"/>
+<area shape="rect" id="node18" href="$classGraph.html#aad1eda4beb8425d03ed1f3b8af397563" title="Graph::getfloydWarshallPathAux" alt="" coords="791,559,1003,585"/>
+</map>
