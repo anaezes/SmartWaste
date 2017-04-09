@@ -292,9 +292,9 @@ int mainSmartWaste(int optionGraph) {
                 smartWaste.getGraph()->getGV()->rearrange();
                 break;
             case 3:
-                if(!recyclingCase)
+                if(!recyclingCase && !fullNodes.empty())
                     smartWaste.computeSolutionDikstra(fullNodes, RED);
-                else
+                else if(!fullNodesPaper.empty() || !fullNodesGlass.empty() || !fullNodesPlastic.empty())
                     smartWaste.computeSolutionRecycling(fullNodesPaper, fullNodesGlass, fullNodesPlastic);
                 break;
             case 4:
