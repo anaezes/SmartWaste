@@ -52,9 +52,9 @@ public:
     bool isPaperFull() const;
     bool isGlassFull() const;
     bool isPlasticFull() const;
-    bool setPaperFull(bool b);
-    bool setGlassFull(bool b);
-    bool setPlasticFull(bool b);
+    void setPaperFull(bool b);
+    void setGlassFull(bool b);
+    void setPlasticFull(bool b);
 };
 
 
@@ -110,17 +110,17 @@ bool Vertex<T>::isPlasticFull() const{
 }
 
 template <class T>
-bool Vertex<T>::setPaperFull(bool b) {
+void Vertex<T>::setPaperFull(bool b) {
     paperState = b;
 }
 
 template <class T>
-bool Vertex<T>::setGlassFull(bool b) {
+void Vertex<T>::setGlassFull(bool b) {
     glassState = b;
 }
 
 template <class T>
-bool Vertex<T>::setPlasticFull(bool b) {
+void Vertex<T>::setPlasticFull(bool b) {
     plasticState = b;
 }
 
@@ -143,7 +143,7 @@ public:
 };
 
 template <class T>
-Edge<T>::Edge(T i, Vertex<T> *d, double w): info(i), dest(d), weight(w){}
+Edge<T>::Edge(T i, Vertex<T> *d, double w): dest(d), weight(w), info(i){}
 
 template <class T>
 T Edge<T>::getInfo(){
@@ -166,7 +166,7 @@ class Graph {
 public:
     Graph(GraphViewer*);
     bool addVertex(const T &in, std::pair< double, double> coords);
-    bool addEdge(const T &edgeId, const T &sourc, const T &dest, int w, bool isUndirected);
+    void addEdge(const T &edgeId, const T &sourc, const T &dest, int w, bool isUndirected);
     vector<T> bfs(Vertex<T> *v) const;
     int getNumVertex() const;
     Vertex<T>* getVertex(const T &v) const;
@@ -240,7 +240,7 @@ bool Graph<T>::addVertex(const T &in, std::pair<double, double> coords) {
 
 
 template <class T>
-bool Graph<T>::addEdge(const T &edgeId, const T &sourc, const T &dest, int w, bool isUndirected) {
+void Graph<T>::addEdge(const T &edgeId, const T &sourc, const T &dest, int w, bool isUndirected) {
     addEdge(edgeId, sourc, dest,  w);
     if(isUndirected) {
         addEdge(edgeId, dest, sourc, w);

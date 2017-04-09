@@ -4,12 +4,9 @@
 
 #include "SmartWaste.h"
 
-SmartWaste::SmartWaste(GraphViewer *gv) : graph(gv), garages(), centrals() {}
+SmartWaste::SmartWaste(GraphViewer *gv) : graph(gv), centrals(), garages() {}
 
 void SmartWaste::initGaragesAndCentrals() {
-    vector<int> garages;
-    vector<int> centrals;
-
     int numGarages;
     int numCentrals;
 
@@ -45,10 +42,6 @@ void SmartWaste::initGaragesAndCentrals() {
             i++;
         }
     }
-
-    this->garages = garages;
-    this->centrals = centrals;
-
     graph.getGV()->rearrange();
 }
 
@@ -84,7 +77,7 @@ void SmartWaste::generateRandomCases(vector<int> &fullNodes)
             i++;
         }
 
-        if(fullNodes.size() == graph.getNumVertex()-2)
+        if(fullNodes.size() == (uint)graph.getNumVertex()-2)
         {
             cout << "All containers are full!" << endl;
             return;
@@ -168,7 +161,7 @@ void SmartWaste::resetNode(int currentNode, string color) {
 
 
 
-void SmartWaste::displaySolution(vector<int> pathSolution, int lastNodeId, int truckContains, string colorEdge) {
+void SmartWaste::displaySolution(vector<int> pathSolution, unsigned int lastNodeId, int truckContains, string colorEdge) {
 
     cout << ">>>> An empty truck";
     if(colorEdge == BLUE)
@@ -291,7 +284,7 @@ void SmartWaste::resetDisplay() {
     }
 
     int nNodes = graph.getNumVertex();
-    for(size_t i = 0; i < nNodes; i++)
+    for(int i = 0; i < nNodes; i++)
         graph.getGV()->setVertexColor(i+1, GRAY);
     graph.getGV()->rearrange();
 }
@@ -336,7 +329,7 @@ void SmartWaste::paintNodes(vector<int> nodes, int source){
 void SmartWaste::verifyConnectivity(){
     cout << endl << "Analyzing..." << endl ;
     double average = 0;
-    for(size_t i = 0; i < graph.getNumVertex(); i++) {
+    for(int i = 0; i < graph.getNumVertex(); i++) {
         int source = graph.getVertex(i+1)->getInfo();
 
         if(graph.getNumVertex() == SMALLGRAPHSIZE)

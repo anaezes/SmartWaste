@@ -113,7 +113,7 @@ public:
     * @param truckContains : Truck contents
     * @param colorEdge : Color to paint the edge
     **/
-    void displaySolution(vector<int> pathSolution, int lastNodeId, int truckContains, string colorEdge);
+    void displaySolution(vector<int> pathSolution, unsigned int lastNodeId, int truckContains, string colorEdge);
 
     /**
      * @brief Choose the nearest recycling central with Dikstra algorithm.
