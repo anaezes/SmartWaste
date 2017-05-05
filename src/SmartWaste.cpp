@@ -501,8 +501,7 @@ int SmartWaste::chooseNodeToFull(vector<int> results) {
             cout << endl << "Node not valid! Try again. ";
 
     } while(!found);
-
-
+    
         //pintar os nos possiveis e perguntar qual deles e que quer encher
 
     return choseNode;

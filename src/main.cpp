@@ -321,7 +321,10 @@ int mainSmartWaste(int optionGraph) {
                 smartWaste.verifyConnectivity();
                 break;
             case 6:
-                smartWaste.streetSearch();
+                if(smartWaste.getGraph()->getNumVertex() == SMALLGRAPHSIZE)
+                    smartWaste.streetSearch();
+                else
+                    cout<< "Sorry... Option not available. " << endl;
             case 7:
                 smartWaste.resetGraph(fullNodes, fullNodesPaper, fullNodesGlass, fullNodesPlastic);
                 recyclingCase = false;
