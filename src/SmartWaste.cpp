@@ -3,6 +3,7 @@
 //
 
 #include "SmartWaste.h"
+#include "Search.h"
 
 SmartWaste::SmartWaste(GraphViewer *gv) : graph(gv), centrals(), garages() {}
 
@@ -10,17 +11,17 @@ void SmartWaste::initGaragesAndCentrals() {
     int numGarages;
     int numCentrals;
 
-    if(graph.getNumVertex() == SMALLGRAPHSIZE) {
-        numGarages = rand() % 2 + 1;
-        numCentrals = rand() % 2 + 1;
+    if(graph.getNumVertex() == BIGGRAPHSIZE) {
+        numGarages = rand() % 20 + 10;
+        numCentrals = rand() % 20 + 10;
     }
     else if (graph.getNumVertex() == MIDDLEGRAPHSIZE) {
         numGarages = rand() % 10 + 5;
         numCentrals = rand() % 10 + 5;
     }
     else {
-        numGarages = rand() % 20 + 10;
-        numCentrals = rand() % 20 + 10;
+        numGarages = rand() % 2 + 1;
+        numCentrals = rand() % 2 + 1;
     }
 
     int i = 0;
@@ -455,4 +456,70 @@ void SmartWaste::timeComparison() {
     cout << "Average time Floyd Warshall: " << averageFloyd << endl;
 
     Utils::doSleep(2000);
+}
+
+vector<int> SmartWaste::exactSearch(string expression) {
+    vector<int> results;
+    string fileName = "file.txt";
+
+    //iterar arestas ???
+    //Search::naiveStringMatch(fileName, expression);
+
+    //pintar os resultados no graphviewer guardar em vector os nos e retornar vetor com os nos que ligam essas arestas??
+    //fazer display dos nos encontrados e respectivas ruas na consola
+
+    return results;
+}
+
+vector<int> SmartWaste::approximateSearch(string expression){
+    vector<int> results;
+    string fileName = "file.txt";
+
+    //iterar arestas ???
+    //float dist1 = Search::numApproximateStringMatching(fileName, expression);
+
+    //pintar os resultados no graphviewer guardar em vector os nos e retornar vetor com os nos que ligam essas arestas??
+    //fazer display dos nos encontrados e respectivas ruas na consola
+
+
+
+    return results;
+}
+
+int SmartWaste::chooseNodeToFull(vector<int> results) {
+    int choseNode;
+    bool found = false;
+
+    do {
+        cout << endl << "Node: ";
+        cin >> choseNode;
+
+        for(int i = 0; i < results.size(); i++)
+            if (results[i] == choseNode)
+                found = true;
+        if(!found)
+            cout << endl << "Node not valid! Try again. ";
+
+    } while(!found);
+
+
+        //pintar os nos possiveis e perguntar qual deles e que quer encher
+
+    return choseNode;
+}
+
+void SmartWaste::streetSearch() {
+    string expression;
+    cout << endl << "Expression for search: ";
+    cin.ignore();
+    getline(cin, expression);
+    std::transform(expression.begin(), expression.end(), expression.begin(), ::tolower);
+
+    cout << expression << endl;
+
+    // TODO PESQUISA EXATA : se pesquisa exata != 0 -> dar a escolher os nos que quer encher
+    // Senao:
+    // TODO PESQUISA APROXIMADA : se pesquisa aproximada != 0 -> dar a escolher os nos que quer encher
+
+    //se resultados de qualquer pesquisa != 0 -> questionar quais os nos a "encher"
 }

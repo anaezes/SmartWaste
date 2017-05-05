@@ -43,7 +43,7 @@ class Vertex {
 public:
     Vertex(T in);
     friend class Graph<T>;
-    Edge<T> addEdge(T infoEdge, Vertex<T> *dest, double w);
+    Edge<T> addEdge(T infoEdge, const string &name, Vertex<T> *dest, double w);
     T getInfo() const;
     int getDist() const;
     bool operator<(const Vertex<T> vertex);
@@ -76,8 +76,8 @@ Vertex<T>::Vertex(T in): info(in), visited(false), processing(false), indegree(0
 
 
 template <class T>
-Edge<T> Vertex<T>::addEdge(T info, Vertex<T> *dest, double w) {
-    Edge<T> edgeD(info, dest,w);
+Edge<T> Vertex<T>::addEdge(T info, const string &roadName, Vertex<T> *dest, double w) {
+    Edge<T> edgeD(info, roadName, dest, w);
     adj.push_back(edgeD);
     return edgeD;
 }
@@ -135,15 +135,23 @@ class Edge {
     Vertex<T> * dest;
     double weight;
     T info;
+    string roadName;
 public:
-    Edge(T i, Vertex<T> *d, double w);
+    Edge(T i, const string &roadName, Vertex<T> *d, double w);
     T getInfo();
     friend class Graph<T>;
     friend class Vertex<T>;
 };
 
 template <class T>
-Edge<T>::Edge(T i, Vertex<T> *d, double w): dest(d), weight(w), info(i){}
+Edge<T>::Edge(T i, const string &roadName, Vertex<T> *d, double w) {
+
+    this->dest= dest;
+    this->weight = weight;
+    this->roadName = roadName;
+    this->info= info;
+
+}
 
 template <class T>
 T Edge<T>::getInfo(){
@@ -162,11 +170,11 @@ class Graph {
     vector<Edge<T>> edges;
     int ** W;
     int ** P;
-    bool addEdge(const T &edgeId, const T &sourc, const T &dest, double w);
+    bool addEdge(const T &edgeId, const string &roadName, const T &sourc, const T &dest, double w);
 public:
     Graph(GraphViewer*);
     bool addVertex(const T &in, std::pair< double, double> coords);
-    void addEdge(const T &edgeId, const T &sourc, const T &dest, int w, bool isUndirected);
+    void addEdge(const T &edgeId, const string &roadName, const T &sourc, const T &dest, int w, bool isUndirected);
     vector<T> bfs(Vertex<T> *v) const;
     int getNumVertex() const;
     Vertex<T>* getVertex(const T &v) const;
@@ -240,21 +248,24 @@ bool Graph<T>::addVertex(const T &in, std::pair<double, double> coords) {
 
 
 template <class T>
-void Graph<T>::addEdge(const T &edgeId, const T &sourc, const T &dest, int w, bool isUndirected) {
-    addEdge(edgeId, sourc, dest,  w);
+void Graph<T>::addEdge(const T &edgeId, const string &roadName, const T &sourc, const T &dest, int w, bool isUndirected) {
+
+    addEdge(edgeId, roadName, sourc, dest,  w);
+    gv->setEdgeLabel(edgeId, roadName);
+
     if(isUndirected) {
-        addEdge(edgeId, dest, sourc, w);
+        addEdge(edgeId, roadName, dest, sourc, w);
         gv->addEdge(edgeId, sourc, dest, EdgeType::UNDIRECTED);
-        gv->setEdgeLabel(edgeId, to_string(w));
+        //gv->setEdgeLabel(edgeId, to_string(w));
     }
     else {
         gv->addEdge(edgeId, sourc, dest, EdgeType::DIRECTED);
-        gv->setEdgeLabel(edgeId, to_string(w));
+        //gv->setEdgeLabel(edgeId, to_string(w));
     }
 }
 
 template <class T>
-bool Graph<T>::addEdge(const T &edgeId, const T &sourc, const T &dest, double w) {
+bool Graph<T>::addEdge(const T &edgeId, const string &roadName, const T &sourc, const T &dest, double w) {
     typename vector<Vertex<T>*>::iterator it= vertexSet.begin();
     typename vector<Vertex<T>*>::iterator ite= vertexSet.end();
     int found=0;
@@ -268,7 +279,7 @@ bool Graph<T>::addEdge(const T &edgeId, const T &sourc, const T &dest, double w)
     }
     if (found!=2) return false;
     vD->indegree++;
-    Edge<T> aux = vS->addEdge(edgeId, vD,w);
+    Edge<T> aux = vS->addEdge(edgeId, roadName, vD, w);
     this->edges.push_back(aux);
 
     return true;

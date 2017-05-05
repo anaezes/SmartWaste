@@ -90,7 +90,7 @@ bool readNodesFile(string nodesFile, map<int, std::pair< int, int>> &nodeCoordin
 * @param roadsInfoMap
 * @return true if was success
 **/
-bool readRoadsFile(string roadsFile, map<int, bool> &roadsInfoMap) {
+bool readRoadsFile(string roadsFile, map<int, bool> &roadsInfoMap, map<int, string> &roadsNameMap) {
     vector<string> roadsLines;
     if (!readFile(roadsFile, roadsLines))
         return false;
@@ -103,6 +103,7 @@ bool readRoadsFile(string roadsFile, map<int, bool> &roadsInfoMap) {
         size_t pos;
         size_t j = 0;
         string substring;
+        string roadName;
         string line = roadsLines[i];
 
         long edgeId;
@@ -115,14 +116,18 @@ bool readRoadsFile(string roadsFile, map<int, bool> &roadsInfoMap) {
 
             if(j==0)
                 ss >> edgeId;
+            else if(j==1)
+                roadName = substring;
 
             line = line.substr(pos + 1, line.length());
             j++;
             pos  = line.find(';');
         }
+
         substring = line.substr(0, pos);
         isUndirected = (substring == "True");
         roadsInfoMap.insert(pair<long,bool>(edgeId,isUndirected));
+        roadsNameMap.insert(pair<long,string>(edgeId,roadName));
     }
     return true;
 }
@@ -134,7 +139,7 @@ bool readRoadsFile(string roadsFile, map<int, bool> &roadsInfoMap) {
 * @param roadsInfoMap
 * @return true if was success
 **/
-bool readInfoFile(string infoFile, SmartWaste &smartWaste, map<int, bool> &roadsInfoMap,
+bool readInfoFile(string infoFile, SmartWaste &smartWaste, map<int, bool> &roadsInfoMap, map<int, string> &roadsNameMap,
                   const map<int, std::pair< int, int>> &nodeCoordinates) {
     vector<string> infoLines;
     if (!readFile(infoFile, infoLines))
@@ -168,9 +173,11 @@ bool readInfoFile(string infoFile, SmartWaste &smartWaste, map<int, bool> &roads
 
             std::pair<int, int> destCoords = nodeCoordinates.find(nodeSourceId)->second;
             std::pair<int, int> sourceCoords = nodeCoordinates.find(nodeDestId)->second;
+            string roadName = roadsNameMap.find(edgeId)->second;
+            bool value = roadsInfoMap.find(edgeId)->second;
             int weight = Utils::distance(sourceCoords.first, sourceCoords.second, destCoords.first, destCoords.second);
 
-            smartWaste.getGraph()->addEdge(edgeId, nodeSourceId, nodeDestId, weight, roadsInfoMap.find(edgeId)->second);
+            smartWaste.getGraph()->addEdge(edgeId, roadName, nodeSourceId, nodeDestId, weight, value);
         }
     }
     return true;
@@ -199,7 +206,8 @@ GraphViewer* initViewer() {
 * @param option : 1 if the smallest, 2 if the medium and 3 if the biggest
 * @return true if was success
 **/
-bool initGraph(SmartWaste &smartWaste, map<int, std::pair<int, int>> &nodeCoordinates, map<int, bool> &roadsInfoMap, int option) {
+bool initGraph(SmartWaste &smartWaste, map<int, std::pair<int, int>> &nodeCoordinates, map<int, bool> &roadsInfoMap,
+               map<int, string> &roadsNameMap, int option) {
 
     string nodesFile;
     string roadsFile;
@@ -209,6 +217,11 @@ bool initGraph(SmartWaste &smartWaste, map<int, std::pair<int, int>> &nodeCoordi
         nodesFile = "./data/A_smallGraph.txt";
         roadsFile = "./data/B_smallGraph.txt";
         infoFile  = "./data/C_smallGraph.txt";
+
+        /* Testar graph nao 100 % conexo
+        nodesFile = "./data/A1.txt";
+        roadsFile = "./data/B1.txt";
+        infoFile  = "./data/C1.txt"; */
     }
     else if(option == 2) {
         nodesFile = "./data/A_mediumGraph.txt";
@@ -221,8 +234,8 @@ bool initGraph(SmartWaste &smartWaste, map<int, std::pair<int, int>> &nodeCoordi
         infoFile  = "./data/C_bigGraph.txt";
     }
 
-    if(!readNodesFile(nodesFile, nodeCoordinates, smartWaste) || !readRoadsFile(roadsFile, roadsInfoMap)
-       || !readInfoFile(infoFile, smartWaste, roadsInfoMap, nodeCoordinates))
+    if(!readNodesFile(nodesFile, nodeCoordinates, smartWaste) || !readRoadsFile(roadsFile, roadsInfoMap, roadsNameMap)
+       || !readInfoFile(infoFile, smartWaste, roadsInfoMap, roadsNameMap, nodeCoordinates))
     {
         cout << "Error to read a file!";
         return false;
@@ -230,6 +243,7 @@ bool initGraph(SmartWaste &smartWaste, map<int, std::pair<int, int>> &nodeCoordi
 
     return true;
 }
+
 
 /**
 * @brief show menu to user
@@ -239,15 +253,15 @@ int showMenu() {
     cout << endl << "Please choose an option: " << endl << endl;
     cout << "Generate a test case:" << endl;
     cout << "  1. Simple case" << endl;
-    cout << "  2. Recycling case" << endl << endl;
-
+    cout << "  2. Recycling case" << endl;
     cout << "  3. Compute solution: Dijkstra" << endl;
+    cout << "  4. Time comparison of Dijkstra and Floyd Warshall" << endl;
+    cout << "  5. Graph connectivity" << endl << endl;
 
-    cout << "  4. Time comparison of Dijkstra and Floyd Warshall" << endl << endl;
+    cout << "  6. Street Search" << endl << endl;
 
-    cout << "  5. Graph connectivity" << endl;
-    cout << "  6. Reset" << endl;
-    cout << "  7. Back " << endl << endl;
+    cout << "  7. Reset" << endl;
+    cout << "  8. Back " << endl << endl;
 
     cout << ">";
     int option;
@@ -265,8 +279,9 @@ int mainSmartWaste(int optionGraph) {
     SmartWaste smartWaste(gv);
     std::map<int, std::pair< int, int>> nodeCoordinates;
     std::map<int, bool> roadsInfoMap;
+    std::map<int, string> roadsNameMap;
 
-    if(!initGraph(smartWaste, nodeCoordinates, roadsInfoMap, optionGraph))
+    if(!initGraph(smartWaste, nodeCoordinates, roadsInfoMap, roadsNameMap, optionGraph))
         return 1;
 
     vector<int> fullNodes;
@@ -306,10 +321,12 @@ int mainSmartWaste(int optionGraph) {
                 smartWaste.verifyConnectivity();
                 break;
             case 6:
+                smartWaste.streetSearch();
+            case 7:
                 smartWaste.resetGraph(fullNodes, fullNodesPaper, fullNodesGlass, fullNodesPlastic);
                 recyclingCase = false;
                 break;
-            case 7:
+            case 8:
                 smartWaste.getGraph()->getGV()->closeWindow();
                 return 0;
             default:
