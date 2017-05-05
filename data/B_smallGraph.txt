@@ -1,60 +1,62 @@
-59
-1;a ;True
-2;a ;True
-3;a ;True
-4;a ;True
-5;a ;True
-6;a ;True
-7;a ;False
-8;a ;True
-9;a ;False
-10;a ;False
-11;a ;False
-12;a ;False
-13;a ;True
-14;a ;True
-15;a ;True
-16;a ;True
-17;a ;True
-18;a ;False
-19;a ;True
-20;a ;False
-21;a ;True
-22;a ;False
-23;a ;True
-24;a ;True
-25;a ;True
-26;a ;True
-27;a ;True
-28;a ;True
-29;a ;True
-30;a ;False
-31;a ;True
-32;a ;True
-33;a ;False
-34;a ;True
-35;a ;True
-36;a ;False
-37;a ;False
-38;a ;True
-39;a ;False
-40;a ;False
-41;a ;True
-42;a ;True
-43;a ;True
-44;a ;True
-45;a ;False
-46;a ;True
-47;a ;True
-48;a ;True
-49;a ;True
-50;a ;False
-51;a ;False
-52;a ;True
-53;a ;True
-54;a ;True
-55;a ;False
-56;a ;False
-57;a ;True
-58;a ;True
-59;a ;True
+61
+1;avenida dos aliados;True
+2;rua do almada;True
+3;rua da bainharia;True
+4;rua de belomonte;True
+5;avenida da boavista;True
+6;rua do breiner;True
+7;rua dos caldeireiros;False
+8;rua de candido dos reis;True
+9;rua das carmelitas;False
+10;rua do carvalhido;False
+11;rua de cedofeita;False
+12;rua dos clerigos;False
+13;rua do comercio do porto;True
+14;rua da constituiçao;True
+15;rua de costa cabral;True
+16;rua de d. hugo;True
+17;rua de sao bento da vitoria;True
+18;rua das flores;False
+19;alameda das fontainhas;True
+20;avenida da frança;False
+21;rua da galeria de paris;True
+22;rua jose falcao;False
+23;rua do major david magno;True
+24;rua do rosario;True
+25;rua dos mercadores;True
+26;rua de Miguel bombarda;True
+27;rua de mota pinto;True
+28;rua de mouzinho da silveira;True
+29;rua de nove de julho;True
+30;rua de passos manuel;False
+31;avenida do marechal gomes da costa;True
+32;rua do loureiro;True
+33;rua de sa da bandeira;False
+34;rua de santa ana;True
+35;rua de santa catarina;True
+36;rua escura;False
+37;rua de sao miguel;False
+38;rua de sao roque da lameira;True
+39;rua das taipas;False
+40;rua de tras;False
+41;rua de trinta e um de janeiro;True
+42;avenida de Nuno alvares pereira;True
+43;rua do guadiana;True
+44;rua roberto mario frias;True
+45;rua luis camoes;False
+46;rua de nossa senhora de fatima;True
+47;viela do calvario ;True
+48;avenida do bessa;True
+49;rua jose fontes;True
+50;viela da pedreira;False
+51;calcada de godim;False
+52;rua fontes pereira de melo;True
+53;avenida do brasil;True
+54;rua luis azevedo coutinho ;True
+55;alameda de cartes;False
+56;rua dos ingleses;False
+57;avenida fernao magalhaes;True
+58;rua do calvario;True
+59;alameda das antas;True
+60;rua dr roberto frias;True;
+61;avenida do dragao;True;
