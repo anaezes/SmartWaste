@@ -324,7 +324,7 @@ int mainSmartWaste(int optionGraph) {
                 break;
             case 6:
                 if(smartWaste.getGraph()->getNumVertex() == SMALLGRAPHSIZE)
-                    smartWaste.streetSearch(roadsIdMap);
+                    smartWaste.streetSearch(roadsIdMap, fullNodes);
                 else
                     cout<< "Sorry... Option not available. " << endl;
                 break;

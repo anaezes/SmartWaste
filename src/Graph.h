@@ -45,7 +45,7 @@ class Vertex {
 public:
     Vertex(T in);
     friend class Graph<T>;
-    Edge<T> addEdge(T infoEdge, const string &name, Vertex<T> *dest, double w);
+    Edge<T> addEdge(T infoEdge, const string &name, Vertex<T> *source, Vertex<T> *dest, double w);
     T getInfo() const;
     int getDist() const;
     bool operator<(const Vertex<T> vertex);
@@ -78,8 +78,8 @@ Vertex<T>::Vertex(T in): info(in), visited(false), processing(false), indegree(0
 
 
 template <class T>
-Edge<T> Vertex<T>::addEdge(T info, const string &roadName, Vertex<T> *dest, double w) {
-    Edge<T> edgeD(info, roadName, dest, w);
+Edge<T> Vertex<T>::addEdge(T info, const string &roadName, Vertex<T> *source, Vertex<T> *dest, double w) {
+    Edge<T> edgeD(info, roadName, source, dest, w);
     adj.push_back(edgeD);
     return edgeD;
 }
@@ -135,26 +135,41 @@ void Vertex<T>::setPlasticFull(bool b) {
 template <class T>
 class Edge {
     Vertex<T> * dest;
+    Vertex<T> * source;
     double weight;
     T info;
     string roadName;
 public:
-    Edge(T i, const string &roadName, Vertex<T> *d, double w);
+    Edge(T i, const string &roadName, Vertex<T> *s, Vertex<T> *d, double w);
     T getInfo();
     string getRoadName();
+    Vertex<T>* getDest();
+    Vertex<T>* getSource();
     friend class Graph<T>;
     friend class Vertex<T>;
 };
 
 template <class T>
-Edge<T>::Edge(T i, const string &roadName, Vertex<T> *d, double w) {
+Edge<T>::Edge(T i, const string &roadName, Vertex<T> *s, Vertex<T> *d, double w) {
 
-    this->dest= dest;
+    this->source = s;
+    this->dest= d;
     this->weight = weight;
     this->roadName = roadName;
-    this->info= info;
+    this->info= i;
 
 }
+
+template <class T>
+Vertex<T>* Edge<T>::getDest() {
+  return dest;
+}
+
+template <class T>
+Vertex<T>* Edge<T>::getSource() {
+    return source;
+}
+
 
 template <class T>
 string Edge<T>::getRoadName() {
@@ -177,6 +192,7 @@ template <class T>
 class Graph {
     GraphViewer *gv;
     vector<Vertex<T> *> vertexSet;
+    vector<Edge<T> *> edgeSet;
     vector<Edge<T> > edges;
     vector<int> uniqueEdges; // TODO aponta para os indices de todas as edges unicas
     int ** W;
@@ -188,7 +204,9 @@ public:
     void addEdge(const T &edgeId, const string &roadName, const T &sourc, const T &dest, int w, bool isUndirected);
     vector<T> bfs(Vertex<T> *v) const;
     int getNumVertex() const;
+    int getNumEdge() const;
     Vertex<T>* getVertex(const T &v) const;
+    Edge<T>* getEdge(const T &v) const;
     vector<T> getPath(const T &origin, const T &dest);
     void dijkstraShortestPath(const T &s) const;
     void floydWarshallShortestPath();
@@ -242,6 +260,11 @@ Graph<T>::Graph(GraphViewer* gv) :
 template <class T>
 int Graph<T>::getNumVertex() const {
     return vertexSet.size();
+}
+
+template <class T>
+int Graph<T>::getNumEdge() const {
+    return edgeSet.size();
 }
 
 
@@ -312,8 +335,11 @@ bool Graph<T>::addEdge(const T &edgeId, const string &roadName, const T &sourc, 
     }
     if (found!=2) return false;
     vD->indegree++;
-    Edge<T> aux = vS->addEdge(edgeId, roadName, vD, w);
+    Edge<T> aux = vS->addEdge(edgeId, roadName, vS, vD, w);
     this->edges.push_back(aux);
+
+    Edge<T>* tmp = new Edge<T>(edgeId, roadName, vS, vD, w);
+    edgeSet.push_back(tmp);
 
     return true;
 }
@@ -347,6 +373,13 @@ template <class T>
 Vertex<T>* Graph<T>::getVertex(const T &v) const {
     for(unsigned int i = 0; i < vertexSet.size(); i++)
         if (vertexSet[i]->info == v) return vertexSet[i];
+    return NULL;
+}
+
+template <class T>
+Edge<T>* Graph<T>::getEdge(const T &v) const {
+    for(unsigned int i = 0; i < edgeSet.size(); i++)
+        if (edgeSet[i]->info == v) return edgeSet[i];
     return NULL;
 }
 

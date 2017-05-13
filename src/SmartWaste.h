@@ -204,9 +204,11 @@ public:
 
     vector<int> approximateSearch(string expression);
 
-    int chooseNodeToFull(vector<int> results);
+    int chooseNodeToFull(int idEdge);
 
-    void streetSearch(map<string, int> roadsIdMap);
+    void streetSearch(map<string, int> roadsIdMap, vector<int> &fullNodes);
+
+    int chooseStreet(vector<int> searchResults);
 
 };
 
