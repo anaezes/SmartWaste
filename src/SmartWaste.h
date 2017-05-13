@@ -200,13 +200,13 @@ public:
      * */
     void timeComparison();
 
-    vector<int> exactSearch(string expression);
+    vector<int> exactSearch(map<string, int> roadsIdMap, string expression);
 
     vector<int> approximateSearch(string expression);
 
     int chooseNodeToFull(vector<int> results);
 
-    void streetSearch();
+    void streetSearch(map<string, int> roadsIdMap);
 
 };
 

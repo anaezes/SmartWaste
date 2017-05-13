@@ -1,3 +1,5 @@
+
+
 /*
  * Graph.h
  */
@@ -139,6 +141,7 @@ class Edge {
 public:
     Edge(T i, const string &roadName, Vertex<T> *d, double w);
     T getInfo();
+    string getRoadName();
     friend class Graph<T>;
     friend class Vertex<T>;
 };
@@ -154,6 +157,13 @@ Edge<T>::Edge(T i, const string &roadName, Vertex<T> *d, double w) {
 }
 
 template <class T>
+string Edge<T>::getRoadName() {
+    return this->roadName;
+}
+
+
+
+template <class T>
 T Edge<T>::getInfo(){
     return info;
 }
@@ -167,7 +177,8 @@ template <class T>
 class Graph {
     GraphViewer *gv;
     vector<Vertex<T> *> vertexSet;
-    vector<Edge<T>> edges;
+    vector<Edge<T> > edges;
+    vector<int> uniqueEdges; // TODO aponta para os indices de todas as edges unicas
     int ** W;
     int ** P;
     bool addEdge(const T &edgeId, const string &roadName, const T &sourc, const T &dest, double w);
@@ -187,8 +198,10 @@ public:
     int getWeightFloydWarshall(int index1, int index2);
     GraphViewer* getGV() const;
     int getEdge(const T &source, const T &dest);
-    vector<Edge<T>> getEdges() const;
+    vector<Edge<T> > getEdges() const;
     void resetVisited() const;
+    vector<int> getUniqueEdges();
+
 };
 
 template <class T>
@@ -197,7 +210,7 @@ int Graph<T>::getWeightFloydWarshall(int index1, int index2) {
 }
 
 template <class T>
-vector<Edge<T>> Graph<T>::getEdges() const {
+vector<Edge<T>  > Graph<T>::getEdges() const {
     return edges;
 }
 
@@ -213,7 +226,7 @@ int Graph<T>::getEdge(const T &source, const T &dest) {
             return (*it).getInfo();
         it++;
     }
-return -1;
+    return -1;
 }
 
 template <class T>
@@ -246,9 +259,27 @@ bool Graph<T>::addVertex(const T &in, std::pair<double, double> coords) {
     return true;
 }
 
+template <class T>
+vector<int> Graph<T>::getUniqueEdges() {
+    return uniqueEdges;
+
+}
 
 template <class T>
 void Graph<T>::addEdge(const T &edgeId, const string &roadName, const T &sourc, const T &dest, int w, bool isUndirected) {
+
+    int x = -1;
+    for (int i = 0; i < edges.size(); i++){
+        if (roadName == edges[i].roadName) {
+            i = edges.size();
+            x = i;
+        }
+    }
+
+    if (x == -1) {
+        uniqueEdges.push_back(edges.size());
+    }
+
 
     addEdge(edgeId, roadName, sourc, dest,  w);
     gv->setEdgeLabel(edgeId, roadName);
@@ -262,12 +293,14 @@ void Graph<T>::addEdge(const T &edgeId, const string &roadName, const T &sourc, 
         gv->addEdge(edgeId, sourc, dest, EdgeType::DIRECTED);
         //gv->setEdgeLabel(edgeId, to_string(w));
     }
+
 }
 
 template <class T>
 bool Graph<T>::addEdge(const T &edgeId, const string &roadName, const T &sourc, const T &dest, double w) {
     typename vector<Vertex<T>*>::iterator it= vertexSet.begin();
     typename vector<Vertex<T>*>::iterator ite= vertexSet.end();
+
     int found=0;
     Vertex<T> *vS, *vD;
     while (found!=2 && it!=ite ) {

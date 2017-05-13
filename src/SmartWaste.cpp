@@ -458,17 +458,20 @@ void SmartWaste::timeComparison() {
     Utils::doSleep(2000);
 }
 
-vector<int> SmartWaste::exactSearch(string expression) {
-    vector<int> results;
-    string fileName = "file.txt";
+vector<int> SmartWaste::exactSearch(map<string, int> roadsIdMap, string expression) {
+    vector<int> viableOptions;
 
-    //iterar arestas ???
-    //Search::naiveStringMatch(fileName, expression);
+    auto it = roadsIdMap.begin();
+    auto ite = roadsIdMap.end();
 
-    //pintar os resultados no graphviewer guardar em vector os nos e retornar vetor com os nos que ligam essas arestas??
-    //fazer display dos nos encontrados e respectivas ruas na consola
+    while(it != ite) {
+        if (Search::kmpStringMatch( (*it).first, expression) != 0) {
+            viableOptions.push_back((*it).second);
+        }
+        it++;
+    }
 
-    return results;
+    return viableOptions;
 }
 
 vector<int> SmartWaste::approximateSearch(string expression){
@@ -507,18 +510,36 @@ int SmartWaste::chooseNodeToFull(vector<int> results) {
     return choseNode;
 }
 
-void SmartWaste::streetSearch() {
+
+void SmartWaste::streetSearch(map<string, int> roadsIdMap) {
     string expression;
     cout << endl << "Expression for search: ";
     cin.ignore();
     getline(cin, expression);
     std::transform(expression.begin(), expression.end(), expression.begin(), ::tolower);
 
-    cout << expression << endl;
+    vector<int> searchResults  = exactSearch(roadsIdMap, expression);
+    if(searchResults.size() == 0) {
+        cout << "Exact search did not match any results." << endl;
+        cout << "Trying the approximate search..." << endl;
 
-    // TODO PESQUISA EXATA : se pesquisa exata != 0 -> dar a escolher os nos que quer encher
-    // Senao:
-    // TODO PESQUISA APROXIMADA : se pesquisa aproximada != 0 -> dar a escolher os nos que quer encher
+        searchResults = approximateSearch(expression);
 
-    //se resultados de qualquer pesquisa != 0 -> questionar quais os nos a "encher"
+        if(searchResults.size() == 0)
+        {
+            cout << "Approximate search did not match any results as well..." << endl;
+            return;
+        }
+    }
+
+    for(int i =0; i < searchResults.size() ; i++)
+    {
+        cout << searchResults[i] << endl;
+        this->graph.getGV()->setEdgeColor(searchResults[i], RED);
+        this->graph.getGV()->setEdgeThickness(searchResults[i], 3);
+        this->graph.getGV()->rearrange();
+        Utils::doSleep(2000);
+    }
+
+
 }

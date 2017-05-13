@@ -90,7 +90,7 @@ bool readNodesFile(string nodesFile, map<int, std::pair< int, int>> &nodeCoordin
 * @param roadsInfoMap
 * @return true if was success
 **/
-bool readRoadsFile(string roadsFile, map<int, bool> &roadsInfoMap, map<int, string> &roadsNameMap) {
+bool readRoadsFile(string roadsFile, map<int, bool> &roadsInfoMap, map<int, string> &idRoadsMap, map<string, int> &roadsIdMap) {
     vector<string> roadsLines;
     if (!readFile(roadsFile, roadsLines))
         return false;
@@ -106,7 +106,7 @@ bool readRoadsFile(string roadsFile, map<int, bool> &roadsInfoMap, map<int, stri
         string roadName;
         string line = roadsLines[i];
 
-        long edgeId;
+        int edgeId;
         bool isUndirected;
 
         pos = line.find(';');
@@ -126,8 +126,9 @@ bool readRoadsFile(string roadsFile, map<int, bool> &roadsInfoMap, map<int, stri
 
         substring = line.substr(0, pos);
         isUndirected = (substring == "True");
-        roadsInfoMap.insert(pair<long,bool>(edgeId,isUndirected));
-        roadsNameMap.insert(pair<long,string>(edgeId,roadName));
+        roadsInfoMap.insert(pair<int,bool>(edgeId,isUndirected));
+        idRoadsMap.insert(pair<int,string>(edgeId,roadName));
+        roadsIdMap.insert(pair<string, int>(roadName, edgeId));
     }
     return true;
 }
@@ -207,7 +208,7 @@ GraphViewer* initViewer() {
 * @return true if was success
 **/
 bool initGraph(SmartWaste &smartWaste, map<int, std::pair<int, int>> &nodeCoordinates, map<int, bool> &roadsInfoMap,
-               map<int, string> &roadsNameMap, int option) {
+               map<int, string> &idRoadsMap, int option, map<string, int> &roadsNameMap) {
 
     string nodesFile;
     string roadsFile;
@@ -234,8 +235,8 @@ bool initGraph(SmartWaste &smartWaste, map<int, std::pair<int, int>> &nodeCoordi
         infoFile  = "./data/C_bigGraph.txt";
     }
 
-    if(!readNodesFile(nodesFile, nodeCoordinates, smartWaste) || !readRoadsFile(roadsFile, roadsInfoMap, roadsNameMap)
-       || !readInfoFile(infoFile, smartWaste, roadsInfoMap, roadsNameMap, nodeCoordinates))
+    if(!readNodesFile(nodesFile, nodeCoordinates, smartWaste) || !readRoadsFile(roadsFile, roadsInfoMap, idRoadsMap, roadsNameMap)
+       || !readInfoFile(infoFile, smartWaste, roadsInfoMap, idRoadsMap, nodeCoordinates))
     {
         cout << "Error to read a file!";
         return false;
@@ -279,9 +280,10 @@ int mainSmartWaste(int optionGraph) {
     SmartWaste smartWaste(gv);
     std::map<int, std::pair< int, int>> nodeCoordinates;
     std::map<int, bool> roadsInfoMap;
-    std::map<int, string> roadsNameMap;
+    std::map<int, string> idRoadsMap;
+    std::map<string, int> roadsIdMap;
 
-    if(!initGraph(smartWaste, nodeCoordinates, roadsInfoMap, roadsNameMap, optionGraph))
+    if(!initGraph(smartWaste, nodeCoordinates, roadsInfoMap, idRoadsMap, optionGraph, roadsIdMap))
         return 1;
 
     vector<int> fullNodes;
@@ -322,9 +324,10 @@ int mainSmartWaste(int optionGraph) {
                 break;
             case 6:
                 if(smartWaste.getGraph()->getNumVertex() == SMALLGRAPHSIZE)
-                    smartWaste.streetSearch();
+                    smartWaste.streetSearch(roadsIdMap);
                 else
                     cout<< "Sorry... Option not available. " << endl;
+                break;
             case 7:
                 smartWaste.resetGraph(fullNodes, fullNodesPaper, fullNodesGlass, fullNodesPlastic);
                 recyclingCase = false;
