@@ -202,7 +202,7 @@ public:
 
     vector<int> exactSearch(map<string, int> roadsIdMap, string expression);
 
-    vector<int> approximateSearch(string expression);
+    vector<int> approximateSearch(map<string, int> roadsIdMap, string expression);
 
     int chooseNodeToFull(int idEdge);
 
@@ -210,6 +210,9 @@ public:
 
     int chooseStreet(vector<int> searchResults);
 
+    void colorStreet(int edgeId);
+
+    void resetEdgeStreet(int edgeId);
 };
 
 

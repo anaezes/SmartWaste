@@ -278,7 +278,7 @@ bool Graph<T>::addVertex(const T &in, std::pair<double, double> coords) {
     vertexSet.push_back(v1);
 
     gv->addNode(in, coords.second, coords.first);
-    //gv->setVertexLabel(in, ".");
+    gv->setVertexLabel(in, to_string(in));
     return true;
 }
 
@@ -299,10 +299,8 @@ void Graph<T>::addEdge(const T &edgeId, const string &roadName, const T &sourc, 
         }
     }
 
-    if (x == -1) {
+    if (x == -1)
         uniqueEdges.push_back(edges.size());
-    }
-
 
     addEdge(edgeId, roadName, sourc, dest,  w);
     gv->setEdgeLabel(edgeId, roadName);
@@ -310,13 +308,9 @@ void Graph<T>::addEdge(const T &edgeId, const string &roadName, const T &sourc, 
     if(isUndirected) {
         addEdge(edgeId, roadName, dest, sourc, w);
         gv->addEdge(edgeId, sourc, dest, EdgeType::UNDIRECTED);
-        //gv->setEdgeLabel(edgeId, to_string(w));
     }
-    else {
+    else
         gv->addEdge(edgeId, sourc, dest, EdgeType::DIRECTED);
-        //gv->setEdgeLabel(edgeId, to_string(w));
-    }
-
 }
 
 template <class T>

@@ -474,41 +474,70 @@ vector<int> SmartWaste::exactSearch(map<string, int> roadsIdMap, string expressi
     return viableOptions;
 }
 
-vector<int> SmartWaste::approximateSearch(string expression){
-    vector<int> results;
-    string fileName = "file.txt";
 
-    //iterar arestas ???
-    //float dist1 = Search::numApproximateStringMatching(fileName, expression);
+vector<int> SmartWaste::approximateSearch(map<string, int> roadsIdMap, string expression){
+    multimap<float, int> tmp;
+    vector<int> viableOptions;
 
-    //pintar os resultados no graphviewer guardar em vector os nos e retornar vetor com os nos que ligam essas arestas??
-    //fazer display dos nos encontrados e respectivas ruas na consola
+    auto it = roadsIdMap.begin();
+    auto ite = roadsIdMap.end();
 
+    while(it != ite) {
+        float searchNew = Search::numApproximateStringMatching((*it).first, expression);
+        if(searchNew < 5)
+            tmp.insert(pair<float,int>(searchNew, (*it).second));
+        it++;
+    }
 
+    for (std::map<float,int>::iterator it = tmp.begin(); it != tmp.end(); ++it)
+        viableOptions.push_back((*it).second);
 
-    return results;
+    return viableOptions;
 }
 
 int SmartWaste::chooseNodeToFull(int idEdge) {
-    cout << "Choose node: " << endl;
-
+    int nNodes = 0;
     int source = graph.getEdge(idEdge)->getSource()->getInfo();
-    cout << source << endl;
     int dest = this->graph.getEdge(idEdge)->getDest()->getInfo();
-    cout << dest << endl;
 
+    cout << "Available containers:" << endl;
+    if(std::find(garages.begin(), garages.end(), source) == garages.end() &&
+            (std::find(centrals.begin(), centrals.end(), source) == centrals.end())) {
+        cout << " - " << source << endl;
+        nNodes++;
+    }
+    if(std::find(garages.begin(), garages.end(), dest) == garages.end() &&
+        (std::find(centrals.begin(), centrals.end(), dest) == centrals.end())) {
+        cout << " - " << dest << endl;
+        nNodes++;
+    }
+
+    if(nNodes == 0) {
+        cout << "These containers can not be filled,  try new search..." << endl;
+        resetEdgeStreet(idEdge);
+        this->graph.getGV()->rearrange();
+        return -1;
+    }
+
+    cout << "Choose node: " << endl;
     int option;
     cout << "> ";
     cin >> option;
 
-    while(option != source && option != dest ){
+    while((nNodes == 2 && option != source && option != dest)
+          || (nNodes == 1 && (option != source && option != dest))){
         cout << option << endl;
         cout << "Node not valid, try again..." << endl << "> ";
         cin >> option;
     }
 
+    cout << "Success!" << endl;
+
+    resetEdgeStreet(idEdge);
     this->graph.getGV()->setVertexColor(option, RED);
     this->graph.getGV()->rearrange();
+
+    Utils::doSleep(1000);
 
     return option;
 }
@@ -526,7 +555,7 @@ void SmartWaste::streetSearch(map<string, int> roadsIdMap, vector<int> &fullNode
         cout << "Exact search did not match any results." << endl;
         cout << "Trying the approximate search..." << endl;
 
-        searchResults = approximateSearch(expression);
+        searchResults = approximateSearch(roadsIdMap, expression);
 
         if(searchResults.size() == 0)
         {
@@ -537,21 +566,31 @@ void SmartWaste::streetSearch(map<string, int> roadsIdMap, vector<int> &fullNode
 
     int street = chooseStreet(searchResults);
 
-    cout << "Do you want to choose any container to fill? (y/n)  " << endl;
+    cout << "Do you want to choose any container to fill? (y/n)  " << endl << "> ";
     char option;
     cin >> option;
-    if(option == 'y' || option == 'Y')
-        fullNodes.push_back(chooseNodeToFull(street));
+
+    while(!isalpha(option)){
+        cout << "Option not valid, try again..." << endl << "> ";
+        cin >> option;
+    }
+
+    if(option == 'y' || option == 'Y') {
+        int nodeId = chooseNodeToFull(street);
+        if(nodeId != -1)
+            fullNodes.push_back(nodeId);
+    }
 }
 
 int SmartWaste::chooseStreet(vector<int> searchResults) {
-
     cout << "Results: " << endl;
     for(int i =0; i < searchResults.size() ; i++)
         cout << i+1 << " - " << this->graph.getEdge(searchResults[i])->getRoadName() << endl;
 
-    if(searchResults.size() == 1)
+    if(searchResults.size() == 1) {
+        colorStreet(searchResults[0]);
         return searchResults[0];
+    }
 
     int option;
     cout << endl << "Which street you want to choose ? " << endl;
@@ -564,9 +603,19 @@ int SmartWaste::chooseStreet(vector<int> searchResults) {
         cin >> option;
     }
 
-    this->graph.getGV()->setEdgeColor(searchResults[option-1], RED);
-    this->graph.getGV()->setEdgeThickness(searchResults[option-1], 3);
-    this->graph.getGV()->rearrange();
+    colorStreet(searchResults[option-1]);
 
     return searchResults[option-1];
+}
+
+void SmartWaste::colorStreet(int edgeId) {
+    this->graph.getGV()->setEdgeColor(edgeId, RED);
+    this->graph.getGV()->setEdgeThickness(edgeId, 5);
+    this->graph.getGV()->rearrange();
+}
+
+void SmartWaste::resetEdgeStreet(int idEdge) {
+    this->graph.getGV()->clearEdgeColor(idEdge);
+    this->graph.getGV()->setEdgeThickness(idEdge, 1);
+    this->graph.getGV()->rearrange();
 }

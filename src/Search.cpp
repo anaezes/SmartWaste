@@ -1,8 +1,5 @@
 #include "Search.h"
 
-
-
-
 int Search::naiveStringMatch(string input, string toSearch) {
     unsigned int occ = 0;
 
@@ -23,7 +20,7 @@ int Search::naiveStringMatch(string input, string toSearch) {
 }
 
 vector<unsigned int> Search::computePrefix(string toSearch) {
-    unsigned int         m = toSearch.size();
+    unsigned int m = toSearch.size();
     vector<unsigned int> pi(m + 1, 0);
 
     unsigned int k = 0;
@@ -62,97 +59,45 @@ unsigned int Search::kmpStringMatch(string input, string toSearch) {
     return occ;
 }
 
-int Search::numStringMatching(string filename, string toSearch) {
-    ifstream file(filename.c_str());
 
-    if (!file.is_open()) {
-        return 0;
-    }
-
-    unsigned int occ = 0;
-
-    string line;
-
-    while (getline(file, line)) {
-        occ += kmpStringMatch(line, toSearch);
-    }
-
-    return occ;
-}
-
-int Search::editDistance(string pattern, string text) {
-    vector<vector<int>> D(pattern.size() + 1, vector<int>(text.size() + 1, 0));
-
-    for (unsigned int i = 0; i <= pattern.size(); i++)
-        D[i][0]         = i;
-    for (unsigned int j = 0; j <= text.size(); j++)
-        D[0][j]         = j;
-
-    for (unsigned int i = 1; i <= pattern.size(); i++) {
-        for (unsigned int j = 1; j <= text.size(); j++) {
-            if (pattern[i - 1] == text[j - 1]) {
-                D[i][j] = D[i - 1][j - 1];
-            } else {
-
-                D[i][j] = 1 + min(min(D[i - 1][j - 1], D[i - 1][j]), D[i][j - 1]);
+int Search::editDistance(string pattern, string text)
+{
+    int n=text.length();
+    vector<int> d(n+1);
+    int old,neww;
+    for (int j=0; j<=n; j++)
+        d[j]=j;
+    int m=pattern.length();
+    for (int i=1; i<=m; i++) {
+        old = d[0];
+        d[0]=i;
+        for (int j=1; j<=n; j++) {
+            if (pattern[i-1]==text[j-1]) neww = old;
+            else {
+                neww = min(old,d[j]);
+                neww = min(neww,d[j-1]);
+                neww = neww +1;
             }
+            old = d[j];
+            d[j] = neww;
         }
     }
-
-    return D[pattern.size()][text.size()];
-
+    return d[n];
 }
 
-float Search::numApproximateStringMatching(string filename, string toSearch) {
-    unsigned int words         = 0;
-    unsigned int totalDistance = 0;
 
-    ifstream input(filename);
-    string   line;
-    string   word;
-    while (getline(input, line)) {
-        stringstream lineStream(line);
-        while (lineStream >> word) {
-            words++;
-            totalDistance += editDistance(toSearch, word);
-        }
+float Search::numApproximateStringMatching(string roadName,string expression)
+{
 
+    string word;
+    int num=0, nwords=0;
+
+    stringstream s1(roadName);
+    while (!s1.eof()) {
+        s1 >> word;
+        num += editDistance(expression,word);
+        nwords++;
     }
-    return (float) totalDistance / words;
+    float res=(float)num/nwords;
+    return res;
 }
-
-/*
-void test_stringMatching() {
-
-    string toSearch = "estrutura de dados";
-
-    string filename1 = "text1.txt";
-    int num1 = numStringMatching(filename1, toSearch);
-
-    ASSERT_EQUAL(3, num1);
-
-    string filename2 = "text2.txt";
-    int num2 = numStringMatching(filename2, toSearch);
-
-    ASSERT_EQUAL(2, num2);
-
-}
-
-void test_approximateStringMatching() {
-
-    string toSearch = "estrutur";
-
-    string filename1 = "text1.txt";
-    float dist1 = numApproximateStringMatching(filename1, toSearch);
-
-    ASSERT_EQUAL_DELTA(7.76, dist1, 0.01);
-
-    string filename2 = "text2.txt";
-    float dist2 = numApproximateStringMatching(filename2, toSearch);
-
-    ASSERT_EQUAL_DELTA(7.49, dist2, 0.01);
-
-}
-
-
-}*/
