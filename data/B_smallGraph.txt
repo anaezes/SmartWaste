@@ -34,7 +34,7 @@
 33;rua de sa da bandeira;False
 34;rua de santa ana;True
 35;rua de santa catarina;True
-36;rua escura;False
+36;rua da silva escura;False
 37;rua de sao miguel;False
 38;rua de sao roque da lameira;True
 39;rua das taipas;False

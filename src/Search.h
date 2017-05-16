@@ -1,6 +1,7 @@
 #ifndef SMARTWASTE_SEARCH_H
 #define SMARTWASTE_SEARCH_H
 
+#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <vector>
@@ -14,8 +15,6 @@ namespace Search {
     vector<unsigned int> computePrefix(string toSearch);
 
     unsigned int kmpStringMatch(string input, string toSearch);
-
-    int numStringMatching(string filename, string toSearch);
 
     int editDistance(string pattern, string text);
 

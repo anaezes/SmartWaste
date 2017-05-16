@@ -269,9 +269,9 @@ void SmartWaste::computeSolutionDikstra(vector<int> &fullNodes, string colorEdge
 
 
 void SmartWaste::computeSolutionRecycling(vector<int> &fullNodesPaper, vector<int> &fullNodesGlass, vector<int> &fullNodesPlastic) {
-        computeSolutionDikstra(fullNodesPaper, BLUE);
-        computeSolutionDikstra(fullNodesGlass, GREEN);
-        computeSolutionDikstra(fullNodesPlastic, YELLOW);
+    computeSolutionDikstra(fullNodesPaper, BLUE);
+    computeSolutionDikstra(fullNodesGlass, GREEN);
+    computeSolutionDikstra(fullNodesPlastic, YELLOW);
 }
 
 
@@ -450,24 +450,38 @@ void SmartWaste::timeComparison() {
     }
 
     double averageDijkstra = elapsedDijkstra/num_tests;
-    cout << "Average time Dijkstra: " << averageDijkstra << endl;
+    cout << "Average time Dijkstra: " << averageDijkstra << " ms" << endl;
 
     double averageFloyd = elapsedFloyd/num_tests;
-    cout << "Average time Floyd Warshall: " << averageFloyd << endl;
+    cout << "Average time Floyd Warshall: " << averageFloyd << " ms" <<endl;
 
     Utils::doSleep(2000);
 }
 
-vector<int> SmartWaste::exactSearch(map<string, int> roadsIdMap, string expression) {
+vector<int> SmartWaste::exactSearchKmp(map<string, int> roadsIdMap, string expression) {
     vector<int> viableOptions;
 
     auto it = roadsIdMap.begin();
     auto ite = roadsIdMap.end();
 
     while(it != ite) {
-        if (Search::kmpStringMatch( (*it).first, expression) != 0) {
+        if (Search::kmpStringMatch( (*it).first, expression) != 0)
             viableOptions.push_back((*it).second);
-        }
+        it++;
+    }
+
+    return viableOptions;
+}
+
+vector<int> SmartWaste::exactSearchNaive(map<string, int> roadsIdMap, string expression) {
+    vector<int> viableOptions;
+
+    auto it = roadsIdMap.begin();
+    auto ite = roadsIdMap.end();
+
+    while(it != ite) {
+        if (Search::naiveStringMatch( (*it).first, expression) != 0)
+            viableOptions.push_back((*it).second);
         it++;
     }
 
@@ -502,12 +516,12 @@ int SmartWaste::chooseNodeToFull(int idEdge) {
 
     cout << "Available containers:" << endl;
     if(std::find(garages.begin(), garages.end(), source) == garages.end() &&
-            (std::find(centrals.begin(), centrals.end(), source) == centrals.end())) {
+       (std::find(centrals.begin(), centrals.end(), source) == centrals.end())) {
         cout << " - " << source << endl;
         nNodes++;
     }
     if(std::find(garages.begin(), garages.end(), dest) == garages.end() &&
-        (std::find(centrals.begin(), centrals.end(), dest) == centrals.end())) {
+       (std::find(centrals.begin(), centrals.end(), dest) == centrals.end())) {
         cout << " - " << dest << endl;
         nNodes++;
     }
@@ -519,9 +533,8 @@ int SmartWaste::chooseNodeToFull(int idEdge) {
         return -1;
     }
 
-    cout << "Choose node: " << endl;
+    cout << "Choose node: " << endl << "> ";
     int option;
-    cout << "> ";
     cin >> option;
 
     while((nNodes == 2 && option != source && option != dest)
@@ -550,7 +563,7 @@ void SmartWaste::streetSearch(map<string, int> roadsIdMap, vector<int> &fullNode
     getline(cin, expression);
     std::transform(expression.begin(), expression.end(), expression.begin(), ::tolower);
 
-    vector<int> searchResults  = exactSearch(roadsIdMap, expression);
+    vector<int> searchResults  = exactSearchKmp(roadsIdMap, expression);
     if(searchResults.size() == 0) {
         cout << "Exact search did not match any results." << endl;
         cout << "Trying the approximate search..." << endl;
@@ -618,4 +631,36 @@ void SmartWaste::resetEdgeStreet(int idEdge) {
     this->graph.getGV()->clearEdgeColor(idEdge);
     this->graph.getGV()->setEdgeThickness(idEdge, 1);
     this->graph.getGV()->rearrange();
+}
+
+void SmartWaste::timeComparisonExactSearch(map<string, int> roadsIdMap) {
+
+    string expression;
+    cout << endl << "Expression for search: ";
+    cin.ignore();
+    getline(cin, expression);
+    std::transform(expression.begin(), expression.end(), expression.begin(), ::tolower);
+
+    vector<int> results;
+
+    auto elapsedKmp = 0;
+    auto startKmp = std::chrono::system_clock::now();
+    results = exactSearchKmp(roadsIdMap, expression);
+    auto endKmp = std::chrono::system_clock::now();
+    elapsedKmp = std::chrono::duration_cast<std::chrono::microseconds>(endKmp - startKmp).count();
+
+    cout << "Time kmp: " << elapsedKmp << " us"<< endl;
+    cout << "Number of results: " << results.size() << endl << endl;
+
+    auto elapsedNaive = 0;
+    auto startNaive = std::chrono::system_clock::now();
+    results = exactSearchNaive(roadsIdMap, expression);
+    auto endNaive = std::chrono::system_clock::now();
+    elapsedNaive = std::chrono::duration_cast<std::chrono::microseconds>(endNaive - startNaive).count();
+
+    cout << "Time naive: " << elapsedNaive << " us" << endl;
+    cout << "Number of results: " << results.size() << endl;
+
+
+    Utils::doSleep(2000);
 }

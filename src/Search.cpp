@@ -3,7 +3,11 @@
 int Search::naiveStringMatch(string input, string toSearch) {
     unsigned int occ = 0;
 
-    for (size_t i = 0; i < input.size() - toSearch.size() + 1; i++) {
+    int aux = input.size() - toSearch.size() + 1;
+    if(aux < 0)
+        return occ;
+
+    for (size_t i = 0; i < aux; i++) {
         bool        failed = false;
         for (size_t j      = 0; j < toSearch.size(); j++) {
             if (input.at(i + j) != toSearch.at(j)) {
@@ -44,13 +48,17 @@ unsigned int Search::kmpStringMatch(string input, string toSearch) {
     unsigned int         m   = toSearch.size();
     vector<unsigned int> pi  = computePrefix(toSearch);
     unsigned int         q   = 0;
-    for (size_t          i   = 1; i <= n; i++) {
-        while (q > 0 && toSearch.at(q) != input.at(i - 1)) {
+
+    int aux = n - m + 1;
+    if(aux < 0)
+        return occ;
+
+    for (size_t i = 1; i <= n; i++) {
+        while (q > 0 && toSearch.at(q) != input.at(i - 1))
             q = pi.at(q);
-        }
-        if (toSearch.at(q) == input.at(i - 1)) {
+
+        if (toSearch.at(q) == input.at(i - 1))
             q++;
-        }
         if (q == m) {
             occ++;
             q = pi.at(q);
@@ -88,9 +96,9 @@ int Search::editDistance(string pattern, string text)
 
 float Search::numApproximateStringMatching(string roadName,string expression)
 {
-
     string word;
-    int num=0, nwords=0;
+    int num = 0;
+    int nwords = 0;
 
     stringstream s1(roadName);
     while (!s1.eof()) {

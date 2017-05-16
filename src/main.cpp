@@ -259,10 +259,11 @@ int showMenu() {
     cout << "  4. Time comparison of Dijkstra and Floyd Warshall" << endl;
     cout << "  5. Graph connectivity" << endl << endl;
 
-    cout << "  6. Street Search" << endl << endl;
+    cout << "  6. Street Search" << endl;
+    cout << "  7. Time comparison of string comparison" << endl << endl;
 
-    cout << "  7. Reset" << endl;
-    cout << "  8. Back " << endl << endl;
+    cout << "  8. Reset" << endl;
+    cout << "  9. Back " << endl << endl;
 
     cout << ">";
     int option;
@@ -329,10 +330,16 @@ int mainSmartWaste(int optionGraph) {
                     cout<< "Sorry... Option not available. " << endl;
                 break;
             case 7:
+                if(smartWaste.getGraph()->getNumVertex() == SMALLGRAPHSIZE)
+                    smartWaste.timeComparisonExactSearch(roadsIdMap);
+                else
+                    cout<< "Sorry... Option not available. " << endl;
+                break;
+            case 8:
                 smartWaste.resetGraph(fullNodes, fullNodesPaper, fullNodesGlass, fullNodesPlastic);
                 recyclingCase = false;
                 break;
-            case 8:
+            case 9:
                 smartWaste.getGraph()->getGV()->closeWindow();
                 return 0;
             default:

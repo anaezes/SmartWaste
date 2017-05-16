@@ -200,7 +200,9 @@ public:
      * */
     void timeComparison();
 
-    vector<int> exactSearch(map<string, int> roadsIdMap, string expression);
+    vector<int> exactSearchKmp(map<string, int> roadsIdMap, string expression);
+
+    vector<int> exactSearchNaive(map<string, int> roadsIdMap, string expression);
 
     vector<int> approximateSearch(map<string, int> roadsIdMap, string expression);
 
@@ -213,6 +215,8 @@ public:
     void colorStreet(int edgeId);
 
     void resetEdgeStreet(int edgeId);
+
+    void timeComparisonExactSearch(map<string, int> roadsIdMap);
 };
 
 
