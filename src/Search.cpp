@@ -94,16 +94,16 @@ int Search::editDistance(string pattern, string text)
 }
 
 
-float Search::numApproximateStringMatching(string roadName,string expression)
+float Search::numApproximateStringMatching(string input,string toSearch)
 {
     string word;
     int num = 0;
     int nwords = 0;
 
-    stringstream s1(roadName);
+    stringstream s1(input);
     while (!s1.eof()) {
         s1 >> word;
-        num += editDistance(expression,word);
+        num += editDistance(toSearch, word);
         nwords++;
     }
     float res=(float)num/nwords;
@@ -115,7 +115,7 @@ int Search::numStringMatchingKmp(string filename, string toSearch)
     ifstream fich(filename.c_str());
     if (!fich)
     {
-        cout << "Erro a abrir ficheiro de leitura\n";
+        cout << "Error to open txt file!\n";
         return 0;
     }
 
@@ -135,7 +135,7 @@ int Search::numStringMatchingNaive(string filename, string toSearch)
     ifstream fich(filename.c_str());
     if (!fich)
     {
-        cout << "Erro a abrir ficheiro de leitura\n";
+        cout << "Error to open txt file!\n";
         return 0;
     }
 

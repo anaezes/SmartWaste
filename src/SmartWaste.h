@@ -270,7 +270,7 @@ public:
 
 
     /**
-    * @brief clean the edge
+    * @brief reset color of the edge
     * @param edgeId
     * */
     void resetEdgeStreet(int edgeId);
