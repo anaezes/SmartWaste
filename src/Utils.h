@@ -1,6 +1,3 @@
-//
-// Created by ana on 27-03-2017.
-//
 #ifndef SMARTWASTE_UTILS_H
 #define SMARTWASTE_UTILS_H
 
@@ -20,7 +17,6 @@
 #include <winsock2.h>
 #include <Windows.h>
 #endif
-
 
 namespace Utils {
 

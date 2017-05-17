@@ -16,9 +16,15 @@ namespace Search {
 
     unsigned int kmpStringMatch(string input, string toSearch);
 
+    unsigned int kmpStringMatchOptimized(string input, string toSearch, vector<unsigned int> pi);
+
     int editDistance(string pattern, string text);
 
     float numApproximateStringMatching(string filename, string toSearch);
+
+    int numStringMatchingKmp(string filename,string toSearch);
+
+    int numStringMatchingNaive(string filename,string toSearch);
 }
 
 

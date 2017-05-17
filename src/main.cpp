@@ -218,11 +218,6 @@ bool initGraph(SmartWaste &smartWaste, map<int, std::pair<int, int>> &nodeCoordi
         nodesFile = "./data/A_smallGraph.txt";
         roadsFile = "./data/B_smallGraph.txt";
         infoFile  = "./data/C_smallGraph.txt";
-
-        /* Testar graph nao 100 % conexo
-        nodesFile = "./data/A1.txt";
-        roadsFile = "./data/B1.txt";
-        infoFile  = "./data/C1.txt"; */
     }
     else if(option == 2) {
         nodesFile = "./data/A_mediumGraph.txt";

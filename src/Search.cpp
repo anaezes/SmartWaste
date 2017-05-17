@@ -8,7 +8,7 @@ int Search::naiveStringMatch(string input, string toSearch) {
         return occ;
 
     for (size_t i = 0; i < aux; i++) {
-        bool        failed = false;
+        bool failed = false;
         for (size_t j      = 0; j < toSearch.size(); j++) {
             if (input.at(i + j) != toSearch.at(j)) {
                 failed = true;
@@ -108,4 +108,44 @@ float Search::numApproximateStringMatching(string roadName,string expression)
     }
     float res=(float)num/nwords;
     return res;
+}
+
+int Search::numStringMatchingKmp(string filename, string toSearch)
+{
+    ifstream fich(filename.c_str());
+    if (!fich)
+    {
+        cout << "Erro a abrir ficheiro de leitura\n";
+        return 0;
+    }
+
+    string line1;
+    int num=0;
+
+    while (!fich.eof()) {
+        getline(fich,line1);
+        num+=kmpStringMatch(line1,toSearch);
+    }
+    fich.close();
+    return num;
+}
+
+int Search::numStringMatchingNaive(string filename, string toSearch)
+{
+    ifstream fich(filename.c_str());
+    if (!fich)
+    {
+        cout << "Erro a abrir ficheiro de leitura\n";
+        return 0;
+    }
+
+    string line1;
+    int num=0;
+
+    while (!fich.eof()) {
+        getline(fich,line1);
+        num+=naiveStringMatch(line1,toSearch);
+    }
+    fich.close();
+    return num;
 }

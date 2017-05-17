@@ -635,32 +635,153 @@ void SmartWaste::resetEdgeStreet(int idEdge) {
 
 void SmartWaste::timeComparisonExactSearch(map<string, int> roadsIdMap) {
 
-    string expression;
-    cout << endl << "Expression for search: ";
-    cin.ignore();
-    getline(cin, expression);
-    std::transform(expression.begin(), expression.end(), expression.begin(), ::tolower);
+    cout << "Average time (100 tests / 3 sizes of strings): " << endl << endl;
+    cout << " -> Knuth–Morris–Pratt" << endl;
+    timeComparisonKMPStringsSizes(roadsIdMap);
+    cout << " -> Naive" << endl;
+    timeComparisonNaiveStringsSizes(roadsIdMap);
 
-    vector<int> results;
+    Utils::doSleep(500);
 
-    auto elapsedKmp = 0;
-    auto startKmp = std::chrono::system_clock::now();
-    results = exactSearchKmp(roadsIdMap, expression);
-    auto endKmp = std::chrono::system_clock::now();
-    elapsedKmp = std::chrono::duration_cast<std::chrono::microseconds>(endKmp - startKmp).count();
 
-    cout << "Time kmp: " << elapsedKmp << " us"<< endl;
-    cout << "Number of results: " << results.size() << endl << endl;
-
-    auto elapsedNaive = 0;
-    auto startNaive = std::chrono::system_clock::now();
-    results = exactSearchNaive(roadsIdMap, expression);
-    auto endNaive = std::chrono::system_clock::now();
-    elapsedNaive = std::chrono::duration_cast<std::chrono::microseconds>(endNaive - startNaive).count();
-
-    cout << "Time naive: " << elapsedNaive << " us" << endl;
-    cout << "Number of results: " << results.size() << endl;
-
+    cout << "Average time (100 tests / 3 sizes of files): " << endl << endl;
+    cout << " -> Knuth–Morris–Pratt" << endl;
+    timeComparisonKMPFilesSizes();
+    cout << " -> Naive" << endl;
+    timeComparisonNaiveFilesSizes();
 
     Utils::doSleep(2000);
+}
+
+void SmartWaste::timeComparisonKMPStringsSizes(map<string, int> roadsIdMap) {
+    int nTests = 100;
+    string smallExpression = "de";
+    string mediumExpression = "cedofeita";
+    string bigExpression = "rua de costa cabral";
+
+    // small
+    auto elapsedKmp = 0;
+    auto startKmp = std::chrono::system_clock::now();
+    for(int i = 0; i < nTests; i++)
+        exactSearchKmp(roadsIdMap, smallExpression);
+    auto endKmp = std::chrono::system_clock::now();
+    elapsedKmp = std::chrono::duration_cast<std::chrono::microseconds>(endKmp - startKmp).count();
+    cout << "       Small expression : " << elapsedKmp/nTests << " us"<< endl;
+
+    //medium
+    startKmp = std::chrono::system_clock::now();
+    for(int i = 0; i < nTests; i++)
+        exactSearchKmp(roadsIdMap, mediumExpression);
+    endKmp = std::chrono::system_clock::now();
+    elapsedKmp = std::chrono::duration_cast<std::chrono::microseconds>(endKmp - startKmp).count();
+    cout << "       Medium expression: " << elapsedKmp/nTests << " us"<< endl;
+
+    // big
+    startKmp = std::chrono::system_clock::now();
+    for(int i = 0; i < nTests; i++)
+        exactSearchKmp(roadsIdMap, bigExpression);
+    endKmp = std::chrono::system_clock::now();
+    elapsedKmp = std::chrono::duration_cast<std::chrono::microseconds>(endKmp - startKmp).count();
+    cout << "       Big expression: " << elapsedKmp/nTests << " us"<< endl << endl;
+}
+
+
+
+void SmartWaste::timeComparisonNaiveStringsSizes(map<string, int> roadsIdMap) {
+    int nTests = 100;
+    string smallExpression = "de";
+    string mediumExpression = "cedofeita";
+    string bigExpression = "rua de costa cabral";
+
+    //small
+    auto     elapsedNaive = 0;
+    auto     startNaive   = std::chrono::system_clock::now();
+    for (int i = 0; i < 100; i++)
+        exactSearchNaive(roadsIdMap, smallExpression);
+    auto     endNaive     = std::chrono::system_clock::now();
+    elapsedNaive = std::chrono::duration_cast<std::chrono::microseconds>(endNaive - startNaive).count();
+    cout << "       Small expression: " << elapsedNaive / nTests << " us" << endl;
+
+    //medium
+    startNaive   = std::chrono::system_clock::now();
+    for (int i = 0; i < 100; i++)
+        exactSearchNaive(roadsIdMap, mediumExpression);
+    endNaive     = std::chrono::system_clock::now();
+    elapsedNaive = std::chrono::duration_cast<std::chrono::microseconds>(endNaive - startNaive).count();
+    cout << "       Medium expression: " << elapsedNaive / nTests << " us" << endl;
+
+    //big
+    startNaive   = std::chrono::system_clock::now();
+    for (int i = 0; i < 100; i++)
+        exactSearchNaive(roadsIdMap, bigExpression);
+    endNaive     = std::chrono::system_clock::now();
+    elapsedNaive = std::chrono::duration_cast<std::chrono::microseconds>(endNaive - startNaive).count();
+    cout << "       Big expression: " << elapsedNaive / nTests << " us" << endl << endl;
+}
+
+void SmartWaste::timeComparisonKMPFilesSizes(){
+    int nTests = 100;
+    string smallFile = "./data/smallFile.txt";
+    string mediumFile = "./data/mediumFile.txt";
+    string bigFile = "./data/bigFile.txt";
+    string expression = "elementum";
+
+    // small
+    auto elapsedKmp = 0;
+    auto startKmp = std::chrono::system_clock::now();
+    for(int i = 0; i < nTests; i++)
+        Search::numStringMatchingKmp(smallFile, expression);
+    auto endKmp = std::chrono::system_clock::now();
+    elapsedKmp = std::chrono::duration_cast<std::chrono::microseconds>(endKmp - startKmp).count();
+    cout << "       Small file : " << elapsedKmp/nTests << " us"<< endl;
+
+    //medium
+    elapsedKmp = 0;
+    startKmp = std::chrono::system_clock::now();
+    for(int i = 0; i < nTests; i++)
+        Search::numStringMatchingKmp(mediumFile, expression);
+    endKmp = std::chrono::system_clock::now();
+    elapsedKmp = std::chrono::duration_cast<std::chrono::microseconds>(endKmp - startKmp).count();
+    cout << "       Medium file: " << elapsedKmp/nTests << " us"<< endl;
+
+    // big
+    elapsedKmp = 0;
+    startKmp = std::chrono::system_clock::now();
+    for(int i = 0; i < nTests; i++)
+        Search::numStringMatchingKmp(bigFile, expression);
+    endKmp = std::chrono::system_clock::now();
+    elapsedKmp = std::chrono::duration_cast<std::chrono::microseconds>(endKmp - startKmp).count();
+    cout << "       Big file: " << elapsedKmp/nTests << " us"<< endl << endl;
+}
+void SmartWaste::timeComparisonNaiveFilesSizes(){
+    int nTests = 100;
+    string smallFile =  "./data/smallFile.txt";
+    string mediumFile =     "./data/mediumFile.txt";
+    string bigFile =        "./data/bigFile.txt";
+    string expression = "elementum";
+
+    //small
+    auto     elapsedNaive = 0;
+    auto     startNaive   = std::chrono::system_clock::now();
+    for (int i = 0; i < 100; i++)
+        Search::numStringMatchingNaive(smallFile, expression);
+    auto     endNaive     = std::chrono::system_clock::now();
+    elapsedNaive = std::chrono::duration_cast<std::chrono::microseconds>(endNaive - startNaive).count();
+    cout << "       Small file: " << elapsedNaive / nTests << " us" << endl;
+
+    //medium
+    startNaive   = std::chrono::system_clock::now();
+    for (int i = 0; i < 100; i++)
+        Search::numStringMatchingNaive(mediumFile, expression);
+    endNaive     = std::chrono::system_clock::now();
+    elapsedNaive = std::chrono::duration_cast<std::chrono::microseconds>(endNaive - startNaive).count();
+    cout << "       Medium file: " << elapsedNaive / nTests << " us" << endl;
+
+    //big
+    startNaive   = std::chrono::system_clock::now();
+    for (int i = 0; i < 100; i++)
+        Search::numStringMatchingNaive(bigFile, expression);
+    endNaive     = std::chrono::system_clock::now();
+    elapsedNaive = std::chrono::duration_cast<std::chrono::microseconds>(endNaive - startNaive).count();
+    cout << "       Big file: " << elapsedNaive / nTests << " us" << endl;
 }

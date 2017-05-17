@@ -217,6 +217,16 @@ public:
     void resetEdgeStreet(int edgeId);
 
     void timeComparisonExactSearch(map<string, int> roadsIdMap);
+
+    void timeComparisonKMPStringsSizes(map<string, int> roadsIdMap);
+
+    void timeComparisonNaiveStringsSizes(map<string, int> roadsIdMap);
+
+    void timeComparisonKMPFilesSizes();
+
+    void timeComparisonNaiveFilesSizes();
+
+
 };
 
 
