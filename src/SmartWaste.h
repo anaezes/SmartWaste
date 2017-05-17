@@ -32,6 +32,10 @@ private:
 
 public:
 
+    /**********************************************/
+    /**         FIRST PART OF PROJECT           **/
+    /********************************************/
+
     /**
      * @brief constructor of class
      * @param gv : graph viewer for the display
@@ -200,30 +204,108 @@ public:
      * */
     void timeComparison();
 
+
+
+
+    /**********************************************/
+    /**        SECOND PART OF PROJECT           **/
+    /********************************************/
+
+    /**
+    * @brief Separates each street from the map to be processed the exact search through the kmp algorithm
+    * @param roadsIdMap - map containing all the streets in the graph
+    * @param expression to search
+    * @return vector of results
+    * */
     vector<int> exactSearchKmp(map<string, int> roadsIdMap, string expression);
 
+
+    /**
+    * @brief Separates each street from the map to be processed the exact search through the naive algorithm
+    * @param roadsIdMap - map containing all the streets in the graph
+    * @param expression to search
+    * @return vector of results
+    * */
     vector<int> exactSearchNaive(map<string, int> roadsIdMap, string expression);
 
+
+    /**
+    * @brief Separates each street from the map to be processed the approximate search.
+    * @param roadsIdMap - map containing all the streets in the graph
+    * @param expression to search
+    * @return vector of results
+    * */
     vector<int> approximateSearch(map<string, int> roadsIdMap, string expression);
 
+
+    /**
+    * @brief Choose the node through the edge id
+    * @param idEdge
+    * @return id of the chosen node
+    * */
     int chooseNodeToFull(int idEdge);
 
+
+    /**
+    * @brief main function of street search
+    * @param roadsIdMap - map containing all the streets in the graph
+    * @param fullNodes - vector of nodes to signal as full
+    * */
     void streetSearch(map<string, int> roadsIdMap, vector<int> &fullNodes);
 
+
+    /**
+    * @brief Choose the street through the search: first with the exact search and then with the approximate search
+    * @param all search results
+    * @return id of the edge choosen (the street)
+    * */
     int chooseStreet(vector<int> searchResults);
 
+
+    /**
+    * @brief color the edge
+    * @param edgeId
+    * */
     void colorStreet(int edgeId);
 
+
+    /**
+    * @brief clean the edge
+    * @param edgeId
+    * */
     void resetEdgeStreet(int edgeId);
 
+
+    /**
+    * @brief main function of comparison time in string search.
+    * @param fullNodes
+    * */
     void timeComparisonExactSearch(map<string, int> roadsIdMap);
 
+
+    /**
+    * @brief Calculates and displays the search time of the kmp algorithm with expressions of different sizes
+    * @param fullNodes
+    * */
     void timeComparisonKMPStringsSizes(map<string, int> roadsIdMap);
 
+
+    /**
+    * @brief Calculates and displays the search time of the naive algorithm with expressions of different sizes
+    * @param fullNodes
+    * */
     void timeComparisonNaiveStringsSizes(map<string, int> roadsIdMap);
 
+
+    /**
+    * @brief Calculates and displays the search time of the kmp algorithm on files of different sizes
+    * */
     void timeComparisonKMPFilesSizes();
 
+
+    /**
+    * @brief Calculates and displays the search time of the naive algorithm on files of different sizes
+    * */
     void timeComparisonNaiveFilesSizes();
 
 
