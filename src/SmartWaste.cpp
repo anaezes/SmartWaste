@@ -463,9 +463,10 @@ vector<int> SmartWaste::exactSearchKmp(map<string, int> roadsIdMap, string expre
 
     auto it = roadsIdMap.begin();
     auto ite = roadsIdMap.end();
+    vector<unsigned int> pi  = Search::computePrefix(expression);
 
     while(it != ite) {
-        if (Search::kmpStringMatch( (*it).first, expression) != 0)
+        if (Search::kmpStringMatch( (*it).first, expression, pi) != 0)
             viableOptions.push_back((*it).second);
         it++;
     }
@@ -755,9 +756,9 @@ void SmartWaste::timeComparisonKMPFilesSizes(){
 }
 void SmartWaste::timeComparisonNaiveFilesSizes(){
     int nTests = 100;
-    string smallFile =  "./data/smallFile.txt";
-    string mediumFile =     "./data/mediumFile.txt";
-    string bigFile =        "./data/bigFile.txt";
+    string smallFile = "./data/smallFile.txt";
+    string mediumFile = "./data/mediumFile.txt";
+    string bigFile = "./data/bigFile.txt";
     string expression = "elementum";
 
     //small

@@ -32,9 +32,10 @@ namespace Search {
     * @brief Knuth-Morris-Pratt (KMP) algorithm implementation
     * @param input
     * @param toSearch
+    * @param pi - prefix
     * @return 0 if expression don't match
     **/
-    unsigned int kmpStringMatch(string input, string toSearch);
+    unsigned int kmpStringMatch(string input, string toSearch, vector<unsigned int> pi);
 
 
     /**
@@ -63,7 +64,6 @@ namespace Search {
     * @return number of matches
     **/
     int numStringMatchingKmp(string filename, string toSearch);
-
 
     /**
     * @brief Compute number of matches
