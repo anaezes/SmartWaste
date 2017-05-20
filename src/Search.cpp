@@ -42,7 +42,7 @@ vector<unsigned int> Search::computePrefix(string toSearch) {
     return pi;
 }
 
-unsigned int Search::kmpStringMatch(string input, string toSearch, vector<unsigned int> pi) {
+unsigned int Search::kmpStringMatch(string input, string toSearch) {
     unsigned int         occ = 0;
     unsigned int         n   = input.size();
     unsigned int         m   = toSearch.size();
@@ -51,6 +51,8 @@ unsigned int Search::kmpStringMatch(string input, string toSearch, vector<unsign
     int aux = n - m + 1;
     if(aux < 0)
         return occ;
+
+    vector<unsigned int> pi  = computePrefix(toSearch);
 
     for (size_t i = 1; i <= n; i++) {
         while (q > 0 && toSearch.at(q) != input.at(i - 1))
@@ -120,11 +122,11 @@ int Search::numStringMatchingKmp(string filename, string toSearch)
 
     string line1;
     int num=0;
-    vector<unsigned int> pi  = computePrefix(toSearch);
+
 
     while (!fich.eof()) {
         getline(fich,line1);
-        num+=kmpStringMatch(line1,toSearch, pi);
+        num+=kmpStringMatch(line1,toSearch);
     }
     fich.close();
     return num;
