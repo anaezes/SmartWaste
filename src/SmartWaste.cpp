@@ -498,13 +498,17 @@ vector<int> SmartWaste::approximateSearch(map<string, int> roadsIdMap, string ex
 
     while(it != ite) {
         float searchNew = Search::numApproximateStringMatching((*it).first, expression);
-        if(searchNew < 5)
             tmp.insert(pair<float,int>(searchNew, (*it).second));
         it++;
     }
-
-    for (std::map<float,int>::iterator it = tmp.begin(); it != tmp.end(); ++it)
-        viableOptions.push_back((*it).second);
+    std::map<float,int>::iterator it2 = tmp.begin();
+    int i = 0;
+    while (it2 != tmp.end() && i < 4)
+    {
+        viableOptions.push_back((*it2).second);
+        it2++;
+        i++;
+    }
 
     return viableOptions;
 }
@@ -597,7 +601,7 @@ void SmartWaste::streetSearch(map<string, int> roadsIdMap, vector<int> &fullNode
 
 int SmartWaste::chooseStreet(vector<int> searchResults) {
     cout << "Results: " << endl;
-    for(int i =0; i < searchResults.size() ; i++)
+    for(size_t i =0; i < searchResults.size() ; i++)
         cout << i+1 << " - " << this->graph.getEdge(searchResults[i])->getRoadName() << endl;
 
     if(searchResults.size() == 1) {
@@ -605,7 +609,7 @@ int SmartWaste::chooseStreet(vector<int> searchResults) {
         return searchResults[0];
     }
 
-    int option;
+    unsigned int option;
     cout << endl << "Which street you want to choose ? " << endl;
     cout << "> ";
     cin >> option;

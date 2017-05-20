@@ -292,7 +292,7 @@ template <class T>
 void Graph<T>::addEdge(const T &edgeId, const string &roadName, const T &sourc, const T &dest, int w, bool isUndirected) {
 
     int x = -1;
-    for (int i = 0; i < edges.size(); i++){
+    for (size_t i = 0; i < edges.size(); i++){
         if (roadName == edges[i].roadName) {
             i = edges.size();
             x = i;

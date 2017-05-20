@@ -7,7 +7,7 @@ int Search::naiveStringMatch(string input, string toSearch) {
     if(aux < 0)
         return occ;
 
-    for (size_t i = 0; i < aux; i++) {
+    for (int i = 0; i < aux; i++) {
         bool failed = false;
         for (size_t j      = 0; j < toSearch.size(); j++) {
             if (input.at(i + j) != toSearch.at(j)) {
@@ -68,7 +68,6 @@ unsigned int Search::kmpStringMatch(string input, string toSearch) {
     return occ;
 }
 
-
 int Search::editDistance(string pattern, string text)
 {
     int n=text.length();
@@ -93,7 +92,6 @@ int Search::editDistance(string pattern, string text)
     }
     return d[n];
 }
-
 
 float Search::numApproximateStringMatching(string input,string toSearch)
 {
