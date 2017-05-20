@@ -493,22 +493,25 @@ vector<int> SmartWaste::approximateSearch(map<string, int> roadsIdMap, string ex
     multimap<float, int> tmp;
     vector<int> viableOptions;
 
-    auto it = roadsIdMap.begin();
-    auto ite = roadsIdMap.end();
+    float delta = 5;
 
-    while(it != ite) {
-        float searchNew = Search::numApproximateStringMatching((*it).first, expression);
-            tmp.insert(pair<float,int>(searchNew, (*it).second));
-        it++;
+    while (tmp.size() == 0) {
+        auto it = roadsIdMap.begin();
+        auto ite = roadsIdMap.end();
+
+        while(it != ite) {
+            float searchNew = Search::numApproximateStringMatching((*it).first, expression);
+            if(searchNew < delta)
+                tmp.insert(pair<float,int>(searchNew, (*it).second));
+            it++;
+        }
+
+        delta += 1.8;
     }
-    std::map<float,int>::iterator it2 = tmp.begin();
-    int i = 0;
-    while (it2 != tmp.end() && i < 4)
-    {
-        viableOptions.push_back((*it2).second);
-        it2++;
-        i++;
-    }
+
+
+    for (std::map<float,int>::iterator it = tmp.begin(); it != tmp.end(); ++it)
+        viableOptions.push_back((*it).second);
 
     return viableOptions;
 }
