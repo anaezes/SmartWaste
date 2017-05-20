@@ -7,7 +7,7 @@ var searchData=
   ['definevertexicon',['defineVertexIcon',['../classGraphViewer.html#af1adb6a361457187a820e01dcf0a34b7',1,'GraphViewer']]],
   ['definevertexsize',['defineVertexSize',['../classGraphViewer.html#ac4b2a9fec74d38e64088aa79ca4b7d9b',1,'GraphViewer']]],
   ['dijkstrashortestpath',['dijkstraShortestPath',['../classGraph.html#a3631bce147c033119e2d328848effd43',1,'Graph']]],
-  ['displaysolution',['displaySolution',['../classSmartWaste.html#ace7f7f1d899892011914180c52dd1d9b',1,'SmartWaste']]],
+  ['displaysolution',['displaySolution',['../classSmartWaste.html#a56980331c1909fce91ff215c58e770d3',1,'SmartWaste']]],
   ['distance',['distance',['../namespaceUtils.html#a030e2d39f8dc5367f990ae1ae0743aa7',1,'Utils']]],
   ['dosleep',['doSleep',['../namespaceUtils.html#a71478c18b3a127080dcb2bb1717aff47',1,'Utils']]]
 ];

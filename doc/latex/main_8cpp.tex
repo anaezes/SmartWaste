@@ -27,13 +27,13 @@ bool \hyperlink{main_8cpp_a9b1ce9209046afc1c50bf945642e8608}{read\+File} (const 
 \begin{DoxyCompactList}\small\item\em Read a file to a vector of lines. \end{DoxyCompactList}\item 
 bool \hyperlink{main_8cpp_a85d589688404bb7c03364fe0244b7b9a}{read\+Nodes\+File} (string nodes\+File, map$<$ int, std\+::pair$<$ int, int $>$$>$ \&node\+Coordinates, \hyperlink{classSmartWaste}{Smart\+Waste} \&smart\+Waste)
 \begin{DoxyCompactList}\small\item\em Read a txt file of nodes. \end{DoxyCompactList}\item 
-bool \hyperlink{main_8cpp_a41d649de20d26f6e90244a7537c2592b}{read\+Roads\+File} (string roads\+File, map$<$ int, bool $>$ \&roads\+Info\+Map)
+bool \hyperlink{main_8cpp_aa710a5f2c3b8ac116835aa1dbd141e93}{read\+Roads\+File} (string roads\+File, map$<$ int, bool $>$ \&roads\+Info\+Map, map$<$ int, string $>$ \&id\+Roads\+Map, map$<$ string, int $>$ \&roads\+Id\+Map)
 \begin{DoxyCompactList}\small\item\em Reads a text file of information of edges\+: saves edge id and if it\textquotesingle{}s undirected or not. \end{DoxyCompactList}\item 
-bool \hyperlink{main_8cpp_a8d19d9f443bb1d6bfec7805db5ef1a5d}{read\+Info\+File} (string info\+File, \hyperlink{classSmartWaste}{Smart\+Waste} \&smart\+Waste, map$<$ int, bool $>$ \&roads\+Info\+Map, const map$<$ int, std\+::pair$<$ int, int $>$$>$ \&node\+Coordinates)
+bool \hyperlink{main_8cpp_a7a8e3c6c201a776698037d29a3a1b239}{read\+Info\+File} (string info\+File, \hyperlink{classSmartWaste}{Smart\+Waste} \&smart\+Waste, map$<$ int, bool $>$ \&roads\+Info\+Map, map$<$ int, string $>$ \&roads\+Name\+Map, const map$<$ int, std\+::pair$<$ int, int $>$$>$ \&node\+Coordinates)
 \begin{DoxyCompactList}\small\item\em Read a txt file -\/ add edge to a graph. \end{DoxyCompactList}\item 
 \hyperlink{classGraphViewer}{Graph\+Viewer} $\ast$ \hyperlink{main_8cpp_a90f27ae1b7904932ccdc4c59e730903c}{init\+Viewer} ()
 \begin{DoxyCompactList}\small\item\em Init \hyperlink{classGraphViewer}{Graph\+Viewer}. \end{DoxyCompactList}\item 
-bool \hyperlink{main_8cpp_a035058b2f2cde5fdbfcd279049db6053}{init\+Graph} (\hyperlink{classSmartWaste}{Smart\+Waste} \&smart\+Waste, map$<$ int, std\+::pair$<$ int, int $>$$>$ \&node\+Coordinates, map$<$ int, bool $>$ \&roads\+Info\+Map, int option)
+bool \hyperlink{main_8cpp_a2960d04cfed6ade11b094fdf697957fb}{init\+Graph} (\hyperlink{classSmartWaste}{Smart\+Waste} \&smart\+Waste, map$<$ int, std\+::pair$<$ int, int $>$$>$ \&node\+Coordinates, map$<$ int, bool $>$ \&roads\+Info\+Map, map$<$ int, string $>$ \&id\+Roads\+Map, int option, map$<$ string, int $>$ \&roads\+Name\+Map)
 \begin{DoxyCompactList}\small\item\em charge txt files in graph \end{DoxyCompactList}\item 
 int \hyperlink{main_8cpp_a0be44243f30672c846deedaf6b3660f9}{show\+Menu} ()
 \begin{DoxyCompactList}\small\item\em show menu to user \end{DoxyCompactList}\item 
@@ -62,14 +62,16 @@ option
 \end{DoxyReturn}
 \index{main.\+cpp@{main.\+cpp}!init\+Graph@{init\+Graph}}
 \index{init\+Graph@{init\+Graph}!main.\+cpp@{main.\+cpp}}
-\subsubsection[{\texorpdfstring{init\+Graph(\+Smart\+Waste \&smart\+Waste, map$<$ int, std\+::pair$<$ int, int $>$$>$ \&node\+Coordinates, map$<$ int, bool $>$ \&roads\+Info\+Map, int option)}{initGraph(SmartWaste &smartWaste, map< int, std::pair< int, int >> &nodeCoordinates, map< int, bool > &roadsInfoMap, int option)}}]{\setlength{\rightskip}{0pt plus 5cm}bool init\+Graph (
+\subsubsection[{\texorpdfstring{init\+Graph(\+Smart\+Waste \&smart\+Waste, map$<$ int, std\+::pair$<$ int, int $>$$>$ \&node\+Coordinates, map$<$ int, bool $>$ \&roads\+Info\+Map, map$<$ int, string $>$ \&id\+Roads\+Map, int option, map$<$ string, int $>$ \&roads\+Name\+Map)}{initGraph(SmartWaste &smartWaste, map< int, std::pair< int, int >> &nodeCoordinates, map< int, bool > &roadsInfoMap, map< int, string > &idRoadsMap, int option, map< string, int > &roadsNameMap)}}]{\setlength{\rightskip}{0pt plus 5cm}bool init\+Graph (
 \begin{DoxyParamCaption}
 \item[{{\bf Smart\+Waste} \&}]{smart\+Waste, }
 \item[{map$<$ int, std\+::pair$<$ int, int $>$$>$ \&}]{node\+Coordinates, }
 \item[{map$<$ int, bool $>$ \&}]{roads\+Info\+Map, }
-\item[{int}]{option}
+\item[{map$<$ int, string $>$ \&}]{id\+Roads\+Map, }
+\item[{int}]{option, }
+\item[{map$<$ string, int $>$ \&}]{roads\+Name\+Map}
 \end{DoxyParamCaption}
-)}\hypertarget{main_8cpp_a035058b2f2cde5fdbfcd279049db6053}{}\label{main_8cpp_a035058b2f2cde5fdbfcd279049db6053}
+)}\hypertarget{main_8cpp_a2960d04cfed6ade11b094fdf697957fb}{}\label{main_8cpp_a2960d04cfed6ade11b094fdf697957fb}
 
 
 charge txt files in graph 
@@ -95,7 +97,7 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{main_8cpp_a035058b2f2cde5fdbfcd279049db6053_cgraph}
+\includegraphics[width=350pt]{main_8cpp_a2960d04cfed6ade11b094fdf697957fb_cgraph}
 \end{center}
 \end{figure}
 
@@ -202,14 +204,15 @@ true if was success
 \end{DoxyReturn}
 \index{main.\+cpp@{main.\+cpp}!read\+Info\+File@{read\+Info\+File}}
 \index{read\+Info\+File@{read\+Info\+File}!main.\+cpp@{main.\+cpp}}
-\subsubsection[{\texorpdfstring{read\+Info\+File(string info\+File, Smart\+Waste \&smart\+Waste, map$<$ int, bool $>$ \&roads\+Info\+Map, const map$<$ int, std\+::pair$<$ int, int $>$$>$ \&node\+Coordinates)}{readInfoFile(string infoFile, SmartWaste &smartWaste, map< int, bool > &roadsInfoMap, const map< int, std::pair< int, int >> &nodeCoordinates)}}]{\setlength{\rightskip}{0pt plus 5cm}bool read\+Info\+File (
+\subsubsection[{\texorpdfstring{read\+Info\+File(string info\+File, Smart\+Waste \&smart\+Waste, map$<$ int, bool $>$ \&roads\+Info\+Map, map$<$ int, string $>$ \&roads\+Name\+Map, const map$<$ int, std\+::pair$<$ int, int $>$$>$ \&node\+Coordinates)}{readInfoFile(string infoFile, SmartWaste &smartWaste, map< int, bool > &roadsInfoMap, map< int, string > &roadsNameMap, const map< int, std::pair< int, int >> &nodeCoordinates)}}]{\setlength{\rightskip}{0pt plus 5cm}bool read\+Info\+File (
 \begin{DoxyParamCaption}
 \item[{string}]{info\+File, }
 \item[{{\bf Smart\+Waste} \&}]{smart\+Waste, }
 \item[{map$<$ int, bool $>$ \&}]{roads\+Info\+Map, }
+\item[{map$<$ int, string $>$ \&}]{roads\+Name\+Map, }
 \item[{const map$<$ int, std\+::pair$<$ int, int $>$$>$ \&}]{node\+Coordinates}
 \end{DoxyParamCaption}
-)}\hypertarget{main_8cpp_a8d19d9f443bb1d6bfec7805db5ef1a5d}{}\label{main_8cpp_a8d19d9f443bb1d6bfec7805db5ef1a5d}
+)}\hypertarget{main_8cpp_a7a8e3c6c201a776698037d29a3a1b239}{}\label{main_8cpp_a7a8e3c6c201a776698037d29a3a1b239}
 
 
 Read a txt file -\/ add edge to a graph. 
@@ -233,7 +236,7 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{main_8cpp_a8d19d9f443bb1d6bfec7805db5ef1a5d_cgraph}
+\includegraphics[width=350pt]{main_8cpp_a7a8e3c6c201a776698037d29a3a1b239_cgraph}
 \end{center}
 \end{figure}
 
@@ -277,12 +280,14 @@ Here is the call graph for this function\+:
 
 \index{main.\+cpp@{main.\+cpp}!read\+Roads\+File@{read\+Roads\+File}}
 \index{read\+Roads\+File@{read\+Roads\+File}!main.\+cpp@{main.\+cpp}}
-\subsubsection[{\texorpdfstring{read\+Roads\+File(string roads\+File, map$<$ int, bool $>$ \&roads\+Info\+Map)}{readRoadsFile(string roadsFile, map< int, bool > &roadsInfoMap)}}]{\setlength{\rightskip}{0pt plus 5cm}bool read\+Roads\+File (
+\subsubsection[{\texorpdfstring{read\+Roads\+File(string roads\+File, map$<$ int, bool $>$ \&roads\+Info\+Map, map$<$ int, string $>$ \&id\+Roads\+Map, map$<$ string, int $>$ \&roads\+Id\+Map)}{readRoadsFile(string roadsFile, map< int, bool > &roadsInfoMap, map< int, string > &idRoadsMap, map< string, int > &roadsIdMap)}}]{\setlength{\rightskip}{0pt plus 5cm}bool read\+Roads\+File (
 \begin{DoxyParamCaption}
 \item[{string}]{roads\+File, }
-\item[{map$<$ int, bool $>$ \&}]{roads\+Info\+Map}
+\item[{map$<$ int, bool $>$ \&}]{roads\+Info\+Map, }
+\item[{map$<$ int, string $>$ \&}]{id\+Roads\+Map, }
+\item[{map$<$ string, int $>$ \&}]{roads\+Id\+Map}
 \end{DoxyParamCaption}
-)}\hypertarget{main_8cpp_a41d649de20d26f6e90244a7537c2592b}{}\label{main_8cpp_a41d649de20d26f6e90244a7537c2592b}
+)}\hypertarget{main_8cpp_aa710a5f2c3b8ac116835aa1dbd141e93}{}\label{main_8cpp_aa710a5f2c3b8ac116835aa1dbd141e93}
 
 
 Reads a text file of information of edges\+: saves edge id and if it\textquotesingle{}s undirected or not. 
@@ -304,7 +309,7 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=247pt]{main_8cpp_a41d649de20d26f6e90244a7537c2592b_cgraph}
+\includegraphics[width=247pt]{main_8cpp_aa710a5f2c3b8ac116835aa1dbd141e93_cgraph}
 \end{center}
 \end{figure}
 

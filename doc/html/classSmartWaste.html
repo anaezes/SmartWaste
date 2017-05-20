@@ -135,9 +135,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a08307d41711fbdeb0993c146201f0e39"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSmartWaste.html#a08307d41711fbdeb0993c146201f0e39">resetNode</a> (int currentNode, string color)</td></tr>
 <tr class="memdesc:a08307d41711fbdeb0993c146201f0e39"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to reset a node or change its color if it is full of another residue.  <a href="#a08307d41711fbdeb0993c146201f0e39">More...</a><br /></td></tr>
 <tr class="separator:a08307d41711fbdeb0993c146201f0e39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace7f7f1d899892011914180c52dd1d9b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSmartWaste.html#ace7f7f1d899892011914180c52dd1d9b">displaySolution</a> (vector&lt; int &gt; pathSolution, int lastNodeId, int truckContains, string colorEdge)</td></tr>
-<tr class="memdesc:ace7f7f1d899892011914180c52dd1d9b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display solution.  <a href="#ace7f7f1d899892011914180c52dd1d9b">More...</a><br /></td></tr>
-<tr class="separator:ace7f7f1d899892011914180c52dd1d9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56980331c1909fce91ff215c58e770d3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSmartWaste.html#a56980331c1909fce91ff215c58e770d3">displaySolution</a> (vector&lt; int &gt; pathSolution, unsigned int lastNodeId, int truckContains, string colorEdge)</td></tr>
+<tr class="memdesc:a56980331c1909fce91ff215c58e770d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Display solution.  <a href="#a56980331c1909fce91ff215c58e770d3">More...</a><br /></td></tr>
+<tr class="separator:a56980331c1909fce91ff215c58e770d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12ed73d4cb4116b279676f0393aa6c3b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSmartWaste.html#a12ed73d4cb4116b279676f0393aa6c3b">switchCentralDikstra</a> () const </td></tr>
 <tr class="memdesc:a12ed73d4cb4116b279676f0393aa6c3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Choose the nearest recycling central with Dikstra algorithm.  <a href="#a12ed73d4cb4116b279676f0393aa6c3b">More...</a><br /></td></tr>
 <tr class="separator:a12ed73d4cb4116b279676f0393aa6c3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -177,6 +177,45 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a9afdadb947d0c2fcb979e3470c4e2721"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSmartWaste.html#a9afdadb947d0c2fcb979e3470c4e2721">timeComparison</a> ()</td></tr>
 <tr class="memdesc:a9afdadb947d0c2fcb979e3470c4e2721"><td class="mdescLeft">&#160;</td><td class="mdescRight">Method to compare execution times of the Floyd Warshall and the Dikstra algorithm.  <a href="#a9afdadb947d0c2fcb979e3470c4e2721">More...</a><br /></td></tr>
 <tr class="separator:a9afdadb947d0c2fcb979e3470c4e2721"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad697e11bb3f1bb7524f939f90a6fbe9c"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSmartWaste.html#ad697e11bb3f1bb7524f939f90a6fbe9c">exactSearchKmp</a> (map&lt; string, int &gt; roadsIdMap, string expression)</td></tr>
+<tr class="memdesc:ad697e11bb3f1bb7524f939f90a6fbe9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Separates each street from the map to be processed the exact search through the kmp algorithm.  <a href="#ad697e11bb3f1bb7524f939f90a6fbe9c">More...</a><br /></td></tr>
+<tr class="separator:ad697e11bb3f1bb7524f939f90a6fbe9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca7293f5975100c00c7b915354520af5"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSmartWaste.html#aca7293f5975100c00c7b915354520af5">exactSearchNaive</a> (map&lt; string, int &gt; roadsIdMap, string expression)</td></tr>
+<tr class="memdesc:aca7293f5975100c00c7b915354520af5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Separates each street from the map to be processed the exact search through the naive algorithm.  <a href="#aca7293f5975100c00c7b915354520af5">More...</a><br /></td></tr>
+<tr class="separator:aca7293f5975100c00c7b915354520af5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a72bb77116d7a8bccb121172c27a3cd9c"><td class="memItemLeft" align="right" valign="top">vector&lt; int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSmartWaste.html#a72bb77116d7a8bccb121172c27a3cd9c">approximateSearch</a> (map&lt; string, int &gt; roadsIdMap, string expression)</td></tr>
+<tr class="memdesc:a72bb77116d7a8bccb121172c27a3cd9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Separates each street from the map to be processed the approximate search.  <a href="#a72bb77116d7a8bccb121172c27a3cd9c">More...</a><br /></td></tr>
+<tr class="separator:a72bb77116d7a8bccb121172c27a3cd9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa2ba41023879d615dd60fb52126d213"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSmartWaste.html#aaa2ba41023879d615dd60fb52126d213">chooseNodeToFull</a> (int idEdge)</td></tr>
+<tr class="memdesc:aaa2ba41023879d615dd60fb52126d213"><td class="mdescLeft">&#160;</td><td class="mdescRight">Choose the node through the edge id.  <a href="#aaa2ba41023879d615dd60fb52126d213">More...</a><br /></td></tr>
+<tr class="separator:aaa2ba41023879d615dd60fb52126d213"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa78c4f2e275c9fc4d1735900f88c4fda"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSmartWaste.html#aa78c4f2e275c9fc4d1735900f88c4fda">streetSearch</a> (map&lt; string, int &gt; roadsIdMap, vector&lt; int &gt; &amp;fullNodes)</td></tr>
+<tr class="memdesc:aa78c4f2e275c9fc4d1735900f88c4fda"><td class="mdescLeft">&#160;</td><td class="mdescRight">main function of street search  <a href="#aa78c4f2e275c9fc4d1735900f88c4fda">More...</a><br /></td></tr>
+<tr class="separator:aa78c4f2e275c9fc4d1735900f88c4fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77a8207530b931703036025cea8092a4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSmartWaste.html#a77a8207530b931703036025cea8092a4">chooseStreet</a> (vector&lt; int &gt; searchResults)</td></tr>
+<tr class="memdesc:a77a8207530b931703036025cea8092a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Choose the street through the search: first with the exact search and then with the approximate search.  <a href="#a77a8207530b931703036025cea8092a4">More...</a><br /></td></tr>
+<tr class="separator:a77a8207530b931703036025cea8092a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5317d1e3b89416d622435be6100e0faf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSmartWaste.html#a5317d1e3b89416d622435be6100e0faf">colorStreet</a> (int edgeId)</td></tr>
+<tr class="memdesc:a5317d1e3b89416d622435be6100e0faf"><td class="mdescLeft">&#160;</td><td class="mdescRight">color the edge  <a href="#a5317d1e3b89416d622435be6100e0faf">More...</a><br /></td></tr>
+<tr class="separator:a5317d1e3b89416d622435be6100e0faf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac4ab9e2882b20d1e99bf4f6b8388a811"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSmartWaste.html#ac4ab9e2882b20d1e99bf4f6b8388a811">resetEdgeStreet</a> (int edgeId)</td></tr>
+<tr class="memdesc:ac4ab9e2882b20d1e99bf4f6b8388a811"><td class="mdescLeft">&#160;</td><td class="mdescRight">reset color of the edge  <a href="#ac4ab9e2882b20d1e99bf4f6b8388a811">More...</a><br /></td></tr>
+<tr class="separator:ac4ab9e2882b20d1e99bf4f6b8388a811"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac24caa86ac0a9308daf839b66ddc28ae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSmartWaste.html#ac24caa86ac0a9308daf839b66ddc28ae">timeComparisonExactSearch</a> (map&lt; string, int &gt; roadsIdMap)</td></tr>
+<tr class="memdesc:ac24caa86ac0a9308daf839b66ddc28ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">main function of comparison time in string search.  <a href="#ac24caa86ac0a9308daf839b66ddc28ae">More...</a><br /></td></tr>
+<tr class="separator:ac24caa86ac0a9308daf839b66ddc28ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d8bfbc9102640c3ec1e9e9d71338b30"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSmartWaste.html#a6d8bfbc9102640c3ec1e9e9d71338b30">timeComparisonKMPStringsSizes</a> (map&lt; string, int &gt; roadsIdMap)</td></tr>
+<tr class="memdesc:a6d8bfbc9102640c3ec1e9e9d71338b30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates and displays the search time of the kmp algorithm with expressions of different sizes.  <a href="#a6d8bfbc9102640c3ec1e9e9d71338b30">More...</a><br /></td></tr>
+<tr class="separator:a6d8bfbc9102640c3ec1e9e9d71338b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6eb1a1ed26014c2785bd880696106688"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSmartWaste.html#a6eb1a1ed26014c2785bd880696106688">timeComparisonNaiveStringsSizes</a> (map&lt; string, int &gt; roadsIdMap)</td></tr>
+<tr class="memdesc:a6eb1a1ed26014c2785bd880696106688"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates and displays the search time of the naive algorithm with expressions of different sizes.  <a href="#a6eb1a1ed26014c2785bd880696106688">More...</a><br /></td></tr>
+<tr class="separator:a6eb1a1ed26014c2785bd880696106688"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63d659670d34638ada6460912e6b1f8a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSmartWaste.html#a63d659670d34638ada6460912e6b1f8a">timeComparisonKMPFilesSizes</a> ()</td></tr>
+<tr class="memdesc:a63d659670d34638ada6460912e6b1f8a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates and displays the search time of the kmp algorithm on files of different sizes.  <a href="#a63d659670d34638ada6460912e6b1f8a">More...</a><br /></td></tr>
+<tr class="separator:a63d659670d34638ada6460912e6b1f8a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a102f65c9cd8af166e72a25de85ecc467"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSmartWaste.html#a102f65c9cd8af166e72a25de85ecc467">timeComparisonNaiveFilesSizes</a> ()</td></tr>
+<tr class="memdesc:a102f65c9cd8af166e72a25de85ecc467"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates and displays the search time of the naive algorithm on files of different sizes.  <a href="#a102f65c9cd8af166e72a25de85ecc467">More...</a><br /></td></tr>
+<tr class="separator:a102f65c9cd8af166e72a25de85ecc467"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -203,7 +242,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>constructor of class </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>FIRST PART OF PROJECT </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">gv</td><td>: graph viewer for the display </td></tr>
   </table>
@@ -245,6 +284,53 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="a72bb77116d7a8bccb121172c27a3cd9c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; int &gt; SmartWaste::approximateSearch </td>
+          <td>(</td>
+          <td class="paramtype">map&lt; string, int &gt;&#160;</td>
+          <td class="paramname"><em>roadsIdMap</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>expression</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Separates each street from the map to be processed the approximate search. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">roadsIdMap</td><td>- map containing all the streets in the graph </td></tr>
+    <tr><td class="paramname">expression</td><td>to search </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vector of results </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classSmartWaste_a72bb77116d7a8bccb121172c27a3cd9c_cgraph.png" border="0" usemap="#classSmartWaste_a72bb77116d7a8bccb121172c27a3cd9c_cgraph" alt=""/></div>
+<map name="classSmartWaste_a72bb77116d7a8bccb121172c27a3cd9c_cgraph" id="classSmartWaste_a72bb77116d7a8bccb121172c27a3cd9c_cgraph">
+<area shape="rect" id="node2" href="namespaceSearch.html#abc5fac4445a114b88b5812a045c587a9" title="Compute average of edit distances. " alt="" coords="268,5,471,47"/>
+<area shape="rect" id="node3" href="namespaceSearch.html#aaf0d5bd8cdbf3105049d269d1d3b3482" title="Compute edit distance Edit distances is the minimum number of changes needed to transform one string ..." alt="" coords="519,13,663,39"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -331,6 +417,134 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a class="anchor" id="aaa2ba41023879d615dd60fb52126d213"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SmartWaste::chooseNodeToFull </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>idEdge</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Choose the node through the edge id. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">idEdge</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>id of the chosen node </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classSmartWaste_aaa2ba41023879d615dd60fb52126d213_cgraph.png" border="0" usemap="#classSmartWaste_aaa2ba41023879d615dd60fb52126d213_cgraph" alt=""/></div>
+<map name="classSmartWaste_aaa2ba41023879d615dd60fb52126d213_cgraph" id="classSmartWaste_aaa2ba41023879d615dd60fb52126d213_cgraph">
+<area shape="rect" id="node2" href="classGraph.html#af6579aaa220d1b403cb3517266e406cf" title="Graph::getEdge" alt="" coords="307,5,421,32"/>
+<area shape="rect" id="node3" href="classSmartWaste.html#ac4ab9e2882b20d1e99bf4f6b8388a811" title="reset color of the edge " alt="" coords="265,107,463,133"/>
+<area shape="rect" id="node4" href="classGraph.html#a8cfc98c097359592094c27f2118dc6a7" title="Graph::getGV" alt="" coords="566,5,669,32"/>
+<area shape="rect" id="node10" href="classGraphViewer.html#a3009a66958686ccb7e78b68e37c3c423" title="GraphViewer::rearrange" alt="" coords="538,157,697,184"/>
+<area shape="rect" id="node11" href="classGraphViewer.html#a8b542d7e09e81a45a74760c19233beb0" title="GraphViewer::setVertexColor" alt="" coords="268,208,460,235"/>
+<area shape="rect" id="node12" href="namespaceUtils.html#a71478c18b3a127080dcb2bb1717aff47" title="Do sleep according to the operating system. " alt="" coords="312,259,416,285"/>
+<area shape="rect" id="node5" href="classGraphViewer.html#a0e3bb8f6d7290e141c141ca83c9eb67a" title="GraphViewer::clearEdgeColor" alt="" coords="520,56,715,83"/>
+<area shape="rect" id="node9" href="classGraphViewer.html#a07f598272fe3515455eab13be749604a" title="GraphViewer::setEdgeThickness" alt="" coords="511,107,724,133"/>
+<area shape="rect" id="node6" href="classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="772,132,921,159"/>
+<area shape="rect" id="node7" href="connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="1009,107,1075,133"/>
+<area shape="rect" id="node8" href="classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="969,157,1115,184"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a77a8207530b931703036025cea8092a4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int SmartWaste::chooseStreet </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>searchResults</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Choose the street through the search: first with the exact search and then with the approximate search. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">all</td><td>search results </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>id of the edge choosen (the street) </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classSmartWaste_a77a8207530b931703036025cea8092a4_cgraph.png" border="0" usemap="#classSmartWaste_a77a8207530b931703036025cea8092a4_cgraph" alt=""/></div>
+<map name="classSmartWaste_a77a8207530b931703036025cea8092a4_cgraph" id="classSmartWaste_a77a8207530b931703036025cea8092a4_cgraph">
+<area shape="rect" id="node2" href="classGraph.html#af6579aaa220d1b403cb3517266e406cf" title="Graph::getEdge" alt="" coords="260,31,373,57"/>
+<area shape="rect" id="node3" href="classSmartWaste.html#a5317d1e3b89416d622435be6100e0faf" title="color the edge " alt="" coords="233,81,400,108"/>
+<area shape="rect" id="node4" href="classGraph.html#a8cfc98c097359592094c27f2118dc6a7" title="Graph::getGV" alt="" coords="503,5,606,32"/>
+<area shape="rect" id="node5" href="classGraphViewer.html#a07ccc96707efae4aa5f3ced3dca015af" title="GraphViewer::setEdgeColor" alt="" coords="463,56,647,83"/>
+<area shape="rect" id="node9" href="classGraphViewer.html#a07f598272fe3515455eab13be749604a" title="GraphViewer::setEdgeThickness" alt="" coords="448,107,661,133"/>
+<area shape="rect" id="node10" href="classGraphViewer.html#a3009a66958686ccb7e78b68e37c3c423" title="GraphViewer::rearrange" alt="" coords="475,157,634,184"/>
+<area shape="rect" id="node6" href="classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="709,107,859,133"/>
+<area shape="rect" id="node7" href="connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="946,81,1013,108"/>
+<area shape="rect" id="node8" href="classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="907,132,1052,159"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a5317d1e3b89416d622435be6100e0faf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SmartWaste::colorStreet </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>edgeId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>color the edge </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">edgeId</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classSmartWaste_a5317d1e3b89416d622435be6100e0faf_cgraph.png" border="0" usemap="#classSmartWaste_a5317d1e3b89416d622435be6100e0faf_cgraph" alt=""/></div>
+<map name="classSmartWaste_a5317d1e3b89416d622435be6100e0faf_cgraph" id="classSmartWaste_a5317d1e3b89416d622435be6100e0faf_cgraph">
+<area shape="rect" id="node2" href="classGraph.html#a8cfc98c097359592094c27f2118dc6a7" title="Graph::getGV" alt="" coords="275,5,378,32"/>
+<area shape="rect" id="node3" href="classGraphViewer.html#a07ccc96707efae4aa5f3ced3dca015af" title="GraphViewer::setEdgeColor" alt="" coords="235,56,419,83"/>
+<area shape="rect" id="node7" href="classGraphViewer.html#a07f598272fe3515455eab13be749604a" title="GraphViewer::setEdgeThickness" alt="" coords="220,107,433,133"/>
+<area shape="rect" id="node8" href="classGraphViewer.html#a3009a66958686ccb7e78b68e37c3c423" title="GraphViewer::rearrange" alt="" coords="247,157,406,184"/>
+<area shape="rect" id="node4" href="classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="481,107,631,133"/>
+<area shape="rect" id="node5" href="connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="718,81,785,108"/>
+<area shape="rect" id="node6" href="classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="679,132,824,159"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
 <a class="anchor" id="a5d8ac088738eff0f301a44468e64cd1a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -410,9 +624,9 @@ Here is the call graph for this function:</div>
 <area shape="rect" id="node6" href="classSmartWaste.html#aa55aa107bef64f322ea140103888c40b" title="Add computed path so the solution. " alt="" coords="287,499,438,526"/>
 <area shape="rect" id="node7" href="classGraph.html#ab4054ca572c10669dd3e05d6d41c116c" title="Graph::getPath" alt="" coords="307,173,418,199"/>
 <area shape="rect" id="node8" href="classSmartWaste.html#a12ed73d4cb4116b279676f0393aa6c3b" title="Choose the nearest recycling central with Dikstra algorithm. " alt="" coords="271,224,454,265"/>
-<area shape="rect" id="node9" href="classSmartWaste.html#ace7f7f1d899892011914180c52dd1d9b" title="Display solution. " alt="" coords="267,449,458,475"/>
+<area shape="rect" id="node9" href="classSmartWaste.html#a56980331c1909fce91ff215c58e770d3" title="Display solution. " alt="" coords="267,449,458,475"/>
 <area shape="rect" id="node4" href="classGraph.html#a08a95472b0d9bd7321660940807af060" title="Graph::getVertex" alt="" coords="817,69,938,95"/>
-<area shape="rect" id="node10" href="classGraph.html#ac9ce9fbd0d125874296f2df5731e1a72" title="Graph::getEdge" alt="" coords="570,398,683,425"/>
+<area shape="rect" id="node10" href="classGraph.html#af6579aaa220d1b403cb3517266e406cf" title="Graph::getEdge" alt="" coords="570,398,683,425"/>
 <area shape="rect" id="node11" href="classGraph.html#a8cfc98c097359592094c27f2118dc6a7" title="Graph::getGV" alt="" coords="826,474,929,501"/>
 <area shape="rect" id="node12" href="classGraphViewer.html#a07ccc96707efae4aa5f3ced3dca015af" title="GraphViewer::setEdgeColor" alt="" coords="535,499,719,526"/>
 <area shape="rect" id="node16" href="classGraphViewer.html#a07f598272fe3515455eab13be749604a" title="GraphViewer::setEdgeThickness" alt="" coords="520,550,733,577"/>
@@ -423,13 +637,13 @@ Here is the call graph for this function:</div>
 <area shape="rect" id="node13" href="classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="1021,550,1171,577"/>
 <area shape="rect" id="node14" href="connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="1258,525,1325,551"/>
 <area shape="rect" id="node15" href="classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="1219,575,1364,602"/>
-<area shape="rect" id="node18" href="classVertex.html#abaa14f0eb05160c748f546a633d5f747" title="Vertex::setPaperFull" alt="" coords="807,119,948,146"/>
+<area shape="rect" id="node18" href="classVertex.html#a285594d4012da238213d66cf969d0367" title="Vertex::setPaperFull" alt="" coords="807,119,948,146"/>
 <area shape="rect" id="node19" href="classVertex.html#aba8dc4e4450dbd6d697062ebd0ce17b1" title="Vertex::isGlassFull" alt="" coords="811,170,944,197"/>
 <area shape="rect" id="node20" href="classGraphViewer.html#a8b542d7e09e81a45a74760c19233beb0" title="GraphViewer::setVertexColor" alt="" coords="781,221,973,247"/>
 <area shape="rect" id="node21" href="classVertex.html#a5880b4b252ae6818819c2f9645784b59" title="Vertex::getInfo" alt="" coords="823,271,931,298"/>
 <area shape="rect" id="node22" href="classVertex.html#a89b18f6ce97bc743e50a1552c44fa336" title="Vertex::isPlasticFull" alt="" coords="808,322,947,349"/>
-<area shape="rect" id="node23" href="classVertex.html#afb52dac3ee15e789262358e2eb13b1d1" title="Vertex::setGlassFull" alt="" coords="807,373,948,399"/>
-<area shape="rect" id="node24" href="classVertex.html#aacb83d390255533c113c36f177ecaf51" title="Vertex::setPlasticFull" alt="" coords="804,423,951,450"/>
+<area shape="rect" id="node23" href="classVertex.html#a1da3731ebf22d296ef2aaf91990650db" title="Vertex::setGlassFull" alt="" coords="807,373,948,399"/>
+<area shape="rect" id="node24" href="classVertex.html#a065f344ac82d8943df5b607efa26941e" title="Vertex::setPlasticFull" alt="" coords="804,423,951,450"/>
 </map>
 </div>
 </p>
@@ -488,9 +702,9 @@ Here is the call graph for this function:</div>
 <area shape="rect" id="node7" href="classSmartWaste.html#aa55aa107bef64f322ea140103888c40b" title="Add computed path so the solution. " alt="" coords="535,499,686,526"/>
 <area shape="rect" id="node8" href="classGraph.html#ab4054ca572c10669dd3e05d6d41c116c" title="Graph::getPath" alt="" coords="555,173,666,199"/>
 <area shape="rect" id="node9" href="classSmartWaste.html#a12ed73d4cb4116b279676f0393aa6c3b" title="Choose the nearest recycling central with Dikstra algorithm. " alt="" coords="519,224,702,265"/>
-<area shape="rect" id="node10" href="classSmartWaste.html#ace7f7f1d899892011914180c52dd1d9b" title="Display solution. " alt="" coords="515,449,706,475"/>
+<area shape="rect" id="node10" href="classSmartWaste.html#a56980331c1909fce91ff215c58e770d3" title="Display solution. " alt="" coords="515,449,706,475"/>
 <area shape="rect" id="node5" href="classGraph.html#a08a95472b0d9bd7321660940807af060" title="Graph::getVertex" alt="" coords="1065,69,1186,95"/>
-<area shape="rect" id="node11" href="classGraph.html#ac9ce9fbd0d125874296f2df5731e1a72" title="Graph::getEdge" alt="" coords="818,398,931,425"/>
+<area shape="rect" id="node11" href="classGraph.html#af6579aaa220d1b403cb3517266e406cf" title="Graph::getEdge" alt="" coords="818,398,931,425"/>
 <area shape="rect" id="node12" href="classGraph.html#a8cfc98c097359592094c27f2118dc6a7" title="Graph::getGV" alt="" coords="1074,474,1177,501"/>
 <area shape="rect" id="node13" href="classGraphViewer.html#a07ccc96707efae4aa5f3ced3dca015af" title="GraphViewer::setEdgeColor" alt="" coords="783,499,967,526"/>
 <area shape="rect" id="node17" href="classGraphViewer.html#a07f598272fe3515455eab13be749604a" title="GraphViewer::setEdgeThickness" alt="" coords="768,550,981,577"/>
@@ -501,20 +715,20 @@ Here is the call graph for this function:</div>
 <area shape="rect" id="node14" href="classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="1269,550,1419,577"/>
 <area shape="rect" id="node15" href="connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="1506,525,1573,551"/>
 <area shape="rect" id="node16" href="classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="1467,575,1612,602"/>
-<area shape="rect" id="node19" href="classVertex.html#abaa14f0eb05160c748f546a633d5f747" title="Vertex::setPaperFull" alt="" coords="1055,119,1196,146"/>
+<area shape="rect" id="node19" href="classVertex.html#a285594d4012da238213d66cf969d0367" title="Vertex::setPaperFull" alt="" coords="1055,119,1196,146"/>
 <area shape="rect" id="node20" href="classVertex.html#aba8dc4e4450dbd6d697062ebd0ce17b1" title="Vertex::isGlassFull" alt="" coords="1059,170,1192,197"/>
 <area shape="rect" id="node21" href="classGraphViewer.html#a8b542d7e09e81a45a74760c19233beb0" title="GraphViewer::setVertexColor" alt="" coords="1029,221,1221,247"/>
 <area shape="rect" id="node22" href="classVertex.html#a5880b4b252ae6818819c2f9645784b59" title="Vertex::getInfo" alt="" coords="1071,271,1179,298"/>
 <area shape="rect" id="node23" href="classVertex.html#a89b18f6ce97bc743e50a1552c44fa336" title="Vertex::isPlasticFull" alt="" coords="1056,322,1195,349"/>
-<area shape="rect" id="node24" href="classVertex.html#afb52dac3ee15e789262358e2eb13b1d1" title="Vertex::setGlassFull" alt="" coords="1055,373,1196,399"/>
-<area shape="rect" id="node25" href="classVertex.html#aacb83d390255533c113c36f177ecaf51" title="Vertex::setPlasticFull" alt="" coords="1052,423,1199,450"/>
+<area shape="rect" id="node24" href="classVertex.html#a1da3731ebf22d296ef2aaf91990650db" title="Vertex::setGlassFull" alt="" coords="1055,373,1196,399"/>
+<area shape="rect" id="node25" href="classVertex.html#a065f344ac82d8943df5b607efa26941e" title="Vertex::setPlasticFull" alt="" coords="1052,423,1199,450"/>
 </map>
 </div>
 </p>
 
 </div>
 </div>
-<a class="anchor" id="ace7f7f1d899892011914180c52dd1d9b"></a>
+<a class="anchor" id="a56980331c1909fce91ff215c58e770d3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -527,7 +741,7 @@ Here is the call graph for this function:</div>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">unsigned int&#160;</td>
           <td class="paramname"><em>lastNodeId</em>, </td>
         </tr>
         <tr>
@@ -564,9 +778,9 @@ Here is the call graph for this function:</div>
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classSmartWaste_ace7f7f1d899892011914180c52dd1d9b_cgraph.png" border="0" usemap="#classSmartWaste_ace7f7f1d899892011914180c52dd1d9b_cgraph" alt=""/></div>
-<map name="classSmartWaste_ace7f7f1d899892011914180c52dd1d9b_cgraph" id="classSmartWaste_ace7f7f1d899892011914180c52dd1d9b_cgraph">
-<area shape="rect" id="node2" href="classGraph.html#ac9ce9fbd0d125874296f2df5731e1a72" title="Graph::getEdge" alt="" coords="294,81,407,108"/>
+<div class="center"><img src="classSmartWaste_a56980331c1909fce91ff215c58e770d3_cgraph.png" border="0" usemap="#classSmartWaste_a56980331c1909fce91ff215c58e770d3_cgraph" alt=""/></div>
+<map name="classSmartWaste_a56980331c1909fce91ff215c58e770d3_cgraph" id="classSmartWaste_a56980331c1909fce91ff215c58e770d3_cgraph">
+<area shape="rect" id="node2" href="classGraph.html#af6579aaa220d1b403cb3517266e406cf" title="Graph::getEdge" alt="" coords="294,81,407,108"/>
 <area shape="rect" id="node3" href="classGraph.html#a08a95472b0d9bd7321660940807af060" title="Graph::getVertex" alt="" coords="541,5,662,32"/>
 <area shape="rect" id="node4" href="classGraph.html#a8cfc98c097359592094c27f2118dc6a7" title="Graph::getGV" alt="" coords="550,56,653,83"/>
 <area shape="rect" id="node5" href="classGraphViewer.html#a07ccc96707efae4aa5f3ced3dca015af" title="GraphViewer::setEdgeColor" alt="" coords="259,284,443,311"/>
@@ -578,13 +792,106 @@ Here is the call graph for this function:</div>
 <area shape="rect" id="node6" href="classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="745,487,895,513"/>
 <area shape="rect" id="node7" href="connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="982,461,1049,488"/>
 <area shape="rect" id="node8" href="classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="943,512,1088,539"/>
-<area shape="rect" id="node11" href="classVertex.html#abaa14f0eb05160c748f546a633d5f747" title="Vertex::setPaperFull" alt="" coords="531,157,672,184"/>
+<area shape="rect" id="node11" href="classVertex.html#a285594d4012da238213d66cf969d0367" title="Vertex::setPaperFull" alt="" coords="531,157,672,184"/>
 <area shape="rect" id="node12" href="classVertex.html#aba8dc4e4450dbd6d697062ebd0ce17b1" title="Vertex::isGlassFull" alt="" coords="535,208,668,235"/>
 <area shape="rect" id="node13" href="classGraphViewer.html#a8b542d7e09e81a45a74760c19233beb0" title="GraphViewer::setVertexColor" alt="" coords="505,259,697,285"/>
 <area shape="rect" id="node14" href="classVertex.html#a5880b4b252ae6818819c2f9645784b59" title="Vertex::getInfo" alt="" coords="547,309,655,336"/>
 <area shape="rect" id="node15" href="classVertex.html#a89b18f6ce97bc743e50a1552c44fa336" title="Vertex::isPlasticFull" alt="" coords="532,360,671,387"/>
-<area shape="rect" id="node16" href="classVertex.html#afb52dac3ee15e789262358e2eb13b1d1" title="Vertex::setGlassFull" alt="" coords="531,411,672,437"/>
-<area shape="rect" id="node17" href="classVertex.html#aacb83d390255533c113c36f177ecaf51" title="Vertex::setPlasticFull" alt="" coords="528,107,675,133"/>
+<area shape="rect" id="node16" href="classVertex.html#a1da3731ebf22d296ef2aaf91990650db" title="Vertex::setGlassFull" alt="" coords="531,411,672,437"/>
+<area shape="rect" id="node17" href="classVertex.html#a065f344ac82d8943df5b607efa26941e" title="Vertex::setPlasticFull" alt="" coords="528,107,675,133"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ad697e11bb3f1bb7524f939f90a6fbe9c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; int &gt; SmartWaste::exactSearchKmp </td>
+          <td>(</td>
+          <td class="paramtype">map&lt; string, int &gt;&#160;</td>
+          <td class="paramname"><em>roadsIdMap</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>expression</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Separates each street from the map to be processed the exact search through the kmp algorithm. </p>
+<p>SECOND PART OF PROJECT </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">roadsIdMap</td><td>- map containing all the streets in the graph </td></tr>
+    <tr><td class="paramname">expression</td><td>to search </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vector of results </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classSmartWaste_ad697e11bb3f1bb7524f939f90a6fbe9c_cgraph.png" border="0" usemap="#classSmartWaste_ad697e11bb3f1bb7524f939f90a6fbe9c_cgraph" alt=""/></div>
+<map name="classSmartWaste_ad697e11bb3f1bb7524f939f90a6fbe9c_cgraph" id="classSmartWaste_ad697e11bb3f1bb7524f939f90a6fbe9c_cgraph">
+<area shape="rect" id="node2" href="namespaceSearch.html#aeb44ffcdb7fd6b1c61a36ad2f9af5f5a" title="Knuth&#45;Morris&#45;Pratt (KMP) algorithm implementation. " alt="" coords="256,5,423,32"/>
+<area shape="rect" id="node3" href="namespaceSearch.html#a8ff541141f8795df51d47f0ecb546191" title="Computes prefix for kmp algorithm. " alt="" coords="471,5,625,32"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aca7293f5975100c00c7b915354520af5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt; int &gt; SmartWaste::exactSearchNaive </td>
+          <td>(</td>
+          <td class="paramtype">map&lt; string, int &gt;&#160;</td>
+          <td class="paramname"><em>roadsIdMap</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>expression</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Separates each street from the map to be processed the exact search through the naive algorithm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">roadsIdMap</td><td>- map containing all the streets in the graph </td></tr>
+    <tr><td class="paramname">expression</td><td>to search </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>vector of results </dd></dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classSmartWaste_aca7293f5975100c00c7b915354520af5_cgraph.png" border="0" usemap="#classSmartWaste_aca7293f5975100c00c7b915354520af5_cgraph" alt=""/></div>
+<map name="classSmartWaste_aca7293f5975100c00c7b915354520af5_cgraph" id="classSmartWaste_aca7293f5975100c00c7b915354520af5_cgraph">
+<area shape="rect" id="node2" href="namespaceSearch.html#aa55e8028834a8360d563bb8ad8ae8f3c" title="Naive algorithm implementation. " alt="" coords="264,5,436,32"/>
 </map>
 </div>
 </p>
@@ -675,9 +982,9 @@ Here is the call graph for this function:</div>
 <area shape="rect" id="node9" href="classSmartWaste.html#a418a6bbfd147448293d26f8269a52a7a" title="Paint all nodes of the vector. " alt="" coords="273,259,442,285"/>
 <area shape="rect" id="node3" href="classGraph.html#a295932f117d92c825a97ec458e0fb332" title="Graph::getNumVertex" alt="" coords="528,5,677,32"/>
 <area shape="rect" id="node5" href="classGraph.html#a08a95472b0d9bd7321660940807af060" title="Graph::getVertex" alt="" coords="542,56,663,83"/>
-<area shape="rect" id="node6" href="classVertex.html#abaa14f0eb05160c748f546a633d5f747" title="Vertex::setPaperFull" alt="" coords="532,107,673,133"/>
-<area shape="rect" id="node7" href="classVertex.html#afb52dac3ee15e789262358e2eb13b1d1" title="Vertex::setGlassFull" alt="" coords="532,157,673,184"/>
-<area shape="rect" id="node8" href="classVertex.html#aacb83d390255533c113c36f177ecaf51" title="Vertex::setPlasticFull" alt="" coords="529,208,676,235"/>
+<area shape="rect" id="node6" href="classVertex.html#a285594d4012da238213d66cf969d0367" title="Vertex::setPaperFull" alt="" coords="532,107,673,133"/>
+<area shape="rect" id="node7" href="classVertex.html#a1da3731ebf22d296ef2aaf91990650db" title="Vertex::setGlassFull" alt="" coords="532,157,673,184"/>
+<area shape="rect" id="node8" href="classVertex.html#a065f344ac82d8943df5b607efa26941e" title="Vertex::setPlasticFull" alt="" coords="529,208,676,235"/>
 <area shape="rect" id="node10" href="classGraph.html#a8cfc98c097359592094c27f2118dc6a7" title="Graph::getGV" alt="" coords="551,259,654,285"/>
 <area shape="rect" id="node11" href="classGraphViewer.html#a8b542d7e09e81a45a74760c19233beb0" title="GraphViewer::setVertexColor" alt="" coords="507,309,699,336"/>
 <area shape="rect" id="node12" href="classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="747,309,896,336"/>
@@ -876,6 +1183,46 @@ Here is the call graph for this function:</div>
 
 </div>
 </div>
+<a class="anchor" id="ac4ab9e2882b20d1e99bf4f6b8388a811"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SmartWaste::resetEdgeStreet </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>edgeId</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>reset color of the edge </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">edgeId</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classSmartWaste_ac4ab9e2882b20d1e99bf4f6b8388a811_cgraph.png" border="0" usemap="#classSmartWaste_ac4ab9e2882b20d1e99bf4f6b8388a811_cgraph" alt=""/></div>
+<map name="classSmartWaste_ac4ab9e2882b20d1e99bf4f6b8388a811_cgraph" id="classSmartWaste_ac4ab9e2882b20d1e99bf4f6b8388a811_cgraph">
+<area shape="rect" id="node2" href="classGraph.html#a8cfc98c097359592094c27f2118dc6a7" title="Graph::getGV" alt="" coords="306,5,409,32"/>
+<area shape="rect" id="node3" href="classGraphViewer.html#a0e3bb8f6d7290e141c141ca83c9eb67a" title="GraphViewer::clearEdgeColor" alt="" coords="260,56,455,83"/>
+<area shape="rect" id="node7" href="classGraphViewer.html#a07f598272fe3515455eab13be749604a" title="GraphViewer::setEdgeThickness" alt="" coords="251,107,464,133"/>
+<area shape="rect" id="node8" href="classGraphViewer.html#a3009a66958686ccb7e78b68e37c3c423" title="GraphViewer::rearrange" alt="" coords="278,157,437,184"/>
+<area shape="rect" id="node4" href="classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="512,107,661,133"/>
+<area shape="rect" id="node5" href="connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="749,81,815,108"/>
+<area shape="rect" id="node6" href="classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="709,132,855,159"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
 <a class="anchor" id="a4b2e5cf812f4fcb7ffffabbd507f4e2e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -985,14 +1332,14 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classSmartWaste_a08307d41711fbdeb0993c146201f0e39_cgraph.png" border="0" usemap="#classSmartWaste_a08307d41711fbdeb0993c146201f0e39_cgraph" alt=""/></div>
 <map name="classSmartWaste_a08307d41711fbdeb0993c146201f0e39_cgraph" id="classSmartWaste_a08307d41711fbdeb0993c146201f0e39_cgraph">
 <area shape="rect" id="node2" href="classGraph.html#a08a95472b0d9bd7321660940807af060" title="Graph::getVertex" alt="" coords="251,5,373,32"/>
-<area shape="rect" id="node3" href="classVertex.html#abaa14f0eb05160c748f546a633d5f747" title="Vertex::setPaperFull" alt="" coords="241,56,383,83"/>
+<area shape="rect" id="node3" href="classVertex.html#a285594d4012da238213d66cf969d0367" title="Vertex::setPaperFull" alt="" coords="241,56,383,83"/>
 <area shape="rect" id="node4" href="classVertex.html#aba8dc4e4450dbd6d697062ebd0ce17b1" title="Vertex::isGlassFull" alt="" coords="245,107,379,133"/>
 <area shape="rect" id="node5" href="classGraph.html#a8cfc98c097359592094c27f2118dc6a7" title="Graph::getGV" alt="" coords="261,157,363,184"/>
 <area shape="rect" id="node6" href="classGraphViewer.html#a8b542d7e09e81a45a74760c19233beb0" title="GraphViewer::setVertexColor" alt="" coords="216,208,408,235"/>
 <area shape="rect" id="node10" href="classVertex.html#a5880b4b252ae6818819c2f9645784b59" title="Vertex::getInfo" alt="" coords="258,259,366,285"/>
 <area shape="rect" id="node11" href="classVertex.html#a89b18f6ce97bc743e50a1552c44fa336" title="Vertex::isPlasticFull" alt="" coords="243,309,381,336"/>
-<area shape="rect" id="node12" href="classVertex.html#afb52dac3ee15e789262358e2eb13b1d1" title="Vertex::setGlassFull" alt="" coords="241,360,383,387"/>
-<area shape="rect" id="node13" href="classVertex.html#aacb83d390255533c113c36f177ecaf51" title="Vertex::setPlasticFull" alt="" coords="239,411,385,437"/>
+<area shape="rect" id="node12" href="classVertex.html#a1da3731ebf22d296ef2aaf91990650db" title="Vertex::setGlassFull" alt="" coords="241,360,383,387"/>
+<area shape="rect" id="node13" href="classVertex.html#a065f344ac82d8943df5b607efa26941e" title="Vertex::setPlasticFull" alt="" coords="239,411,385,437"/>
 <area shape="rect" id="node7" href="classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="456,208,605,235"/>
 <area shape="rect" id="node8" href="connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="693,183,759,209"/>
 <area shape="rect" id="node9" href="classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="653,233,799,260"/>
@@ -1041,9 +1388,74 @@ Here is the call graph for this function:</div>
 <div class="center"><img src="classSmartWaste_aeefe2c284d3a3a83589a0a3118af0f05_cgraph.png" border="0" usemap="#classSmartWaste_aeefe2c284d3a3a83589a0a3118af0f05_cgraph" alt=""/></div>
 <map name="classSmartWaste_aeefe2c284d3a3a83589a0a3118af0f05_cgraph" id="classSmartWaste_aeefe2c284d3a3a83589a0a3118af0f05_cgraph">
 <area shape="rect" id="node2" href="classGraph.html#a08a95472b0d9bd7321660940807af060" title="Graph::getVertex" alt="" coords="257,5,378,32"/>
-<area shape="rect" id="node3" href="classVertex.html#abaa14f0eb05160c748f546a633d5f747" title="Vertex::setPaperFull" alt="" coords="247,56,388,83"/>
-<area shape="rect" id="node4" href="classVertex.html#afb52dac3ee15e789262358e2eb13b1d1" title="Vertex::setGlassFull" alt="" coords="247,107,388,133"/>
-<area shape="rect" id="node5" href="classVertex.html#aacb83d390255533c113c36f177ecaf51" title="Vertex::setPlasticFull" alt="" coords="244,157,391,184"/>
+<area shape="rect" id="node3" href="classVertex.html#a285594d4012da238213d66cf969d0367" title="Vertex::setPaperFull" alt="" coords="247,56,388,83"/>
+<area shape="rect" id="node4" href="classVertex.html#a1da3731ebf22d296ef2aaf91990650db" title="Vertex::setGlassFull" alt="" coords="247,107,388,133"/>
+<area shape="rect" id="node5" href="classVertex.html#a065f344ac82d8943df5b607efa26941e" title="Vertex::setPlasticFull" alt="" coords="244,157,391,184"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="aa78c4f2e275c9fc4d1735900f88c4fda"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SmartWaste::streetSearch </td>
+          <td>(</td>
+          <td class="paramtype">map&lt; string, int &gt;&#160;</td>
+          <td class="paramname"><em>roadsIdMap</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; int &gt; &amp;&#160;</td>
+          <td class="paramname"><em>fullNodes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>main function of street search </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">roadsIdMap</td><td>- map containing all the streets in the graph </td></tr>
+    <tr><td class="paramname">fullNodes</td><td>- vector of nodes to signal as full </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classSmartWaste_aa78c4f2e275c9fc4d1735900f88c4fda_cgraph.png" border="0" usemap="#classSmartWaste_aa78c4f2e275c9fc4d1735900f88c4fda_cgraph" alt=""/></div>
+<map name="classSmartWaste_aa78c4f2e275c9fc4d1735900f88c4fda_cgraph" id="classSmartWaste_aa78c4f2e275c9fc4d1735900f88c4fda_cgraph">
+<area shape="rect" id="node2" href="classSmartWaste.html#ad697e11bb3f1bb7524f939f90a6fbe9c" title="Separates each street from the map to be processed the exact search through the kmp algorithm..." alt="" coords="237,37,439,64"/>
+<area shape="rect" id="node5" href="classSmartWaste.html#a72bb77116d7a8bccb121172c27a3cd9c" title="Separates each street from the map to be processed the approximate search. " alt="" coords="231,119,445,145"/>
+<area shape="rect" id="node8" href="classSmartWaste.html#a77a8207530b931703036025cea8092a4" title="Choose the street through the search: first with the exact search and then with the approximate searc..." alt="" coords="248,376,428,403"/>
+<area shape="rect" id="node18" href="classSmartWaste.html#aaa2ba41023879d615dd60fb52126d213" title="Choose the node through the edge id. " alt="" coords="232,224,444,251"/>
+<area shape="rect" id="node3" href="namespaceSearch.html#aeb44ffcdb7fd6b1c61a36ad2f9af5f5a" title="Knuth&#45;Morris&#45;Pratt (KMP) algorithm implementation. " alt="" coords="511,5,678,32"/>
+<area shape="rect" id="node4" href="namespaceSearch.html#a8ff541141f8795df51d47f0ecb546191" title="Computes prefix for kmp algorithm. " alt="" coords="773,5,928,32"/>
+<area shape="rect" id="node6" href="namespaceSearch.html#abc5fac4445a114b88b5812a045c587a9" title="Compute average of edit distances. " alt="" coords="493,57,696,98"/>
+<area shape="rect" id="node7" href="namespaceSearch.html#aaf0d5bd8cdbf3105049d269d1d3b3482" title="Compute edit distance Edit distances is the minimum number of changes needed to transform one string ..." alt="" coords="779,64,923,91"/>
+<area shape="rect" id="node9" href="classGraph.html#af6579aaa220d1b403cb3517266e406cf" title="Graph::getEdge" alt="" coords="538,376,651,403"/>
+<area shape="rect" id="node10" href="classSmartWaste.html#a5317d1e3b89416d622435be6100e0faf" title="color the edge " alt="" coords="511,427,678,453"/>
+<area shape="rect" id="node11" href="classGraph.html#a8cfc98c097359592094c27f2118dc6a7" title="Graph::getGV" alt="" coords="799,325,902,352"/>
+<area shape="rect" id="node12" href="classGraphViewer.html#a07ccc96707efae4aa5f3ced3dca015af" title="GraphViewer::setEdgeColor" alt="" coords="759,401,943,428"/>
+<area shape="rect" id="node16" href="classGraphViewer.html#a07f598272fe3515455eab13be749604a" title="GraphViewer::setEdgeThickness" alt="" coords="744,275,957,301"/>
+<area shape="rect" id="node17" href="classGraphViewer.html#a3009a66958686ccb7e78b68e37c3c423" title="GraphViewer::rearrange" alt="" coords="771,173,930,200"/>
+<area shape="rect" id="node13" href="classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="1005,224,1155,251"/>
+<area shape="rect" id="node14" href="connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="1242,199,1309,225"/>
+<area shape="rect" id="node15" href="classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="1203,249,1348,276"/>
+<area shape="rect" id="node19" href="classSmartWaste.html#ac4ab9e2882b20d1e99bf4f6b8388a811" title="reset color of the edge " alt="" coords="496,224,693,251"/>
+<area shape="rect" id="node21" href="classGraphViewer.html#a8b542d7e09e81a45a74760c19233beb0" title="GraphViewer::setVertexColor" alt="" coords="499,123,691,149"/>
+<area shape="rect" id="node22" href="namespaceUtils.html#a71478c18b3a127080dcb2bb1717aff47" title="Do sleep according to the operating system. " alt="" coords="543,325,647,352"/>
+<area shape="rect" id="node20" href="classGraphViewer.html#a0e3bb8f6d7290e141c141ca83c9eb67a" title="GraphViewer::clearEdgeColor" alt="" coords="753,224,948,251"/>
 </map>
 </div>
 </p>
@@ -1223,6 +1635,179 @@ Here is the call graph for this function:</div>
 <area shape="rect" id="node14" href="classGraph.html#a7e137f1ef838395ac1044a944fa54448" title="Graph::edgeCost" alt="" coords="836,508,957,535"/>
 <area shape="rect" id="node16" href="classGraph.html#ab314d60da32e5e0080e51c9c17f06f85" title="Graph::getWeightFloydWarshall" alt="" coords="793,417,1000,444"/>
 <area shape="rect" id="node18" href="classGraph.html#aad1eda4beb8425d03ed1f3b8af397563" title="Graph::getfloydWarshallPathAux" alt="" coords="791,559,1003,585"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="ac24caa86ac0a9308daf839b66ddc28ae"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SmartWaste::timeComparisonExactSearch </td>
+          <td>(</td>
+          <td class="paramtype">map&lt; string, int &gt;&#160;</td>
+          <td class="paramname"><em>roadsIdMap</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>main function of comparison time in string search. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fullNodes</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classSmartWaste_ac24caa86ac0a9308daf839b66ddc28ae_cgraph.png" border="0" usemap="#classSmartWaste_ac24caa86ac0a9308daf839b66ddc28ae_cgraph" alt=""/></div>
+<map name="classSmartWaste_ac24caa86ac0a9308daf839b66ddc28ae_cgraph" id="classSmartWaste_ac24caa86ac0a9308daf839b66ddc28ae_cgraph">
+<area shape="rect" id="node2" href="classSmartWaste.html#a6d8bfbc9102640c3ec1e9e9d71338b30" title="Calculates and displays the search time of the kmp algorithm with expressions of different sizes..." alt="" coords="252,5,451,47"/>
+<area shape="rect" id="node6" href="classSmartWaste.html#a6eb1a1ed26014c2785bd880696106688" title="Calculates and displays the search time of the naive algorithm with expressions of different sizes..." alt="" coords="252,253,451,295"/>
+<area shape="rect" id="node9" href="namespaceUtils.html#a71478c18b3a127080dcb2bb1717aff47" title="Do sleep according to the operating system. " alt="" coords="299,137,403,163"/>
+<area shape="rect" id="node10" href="classSmartWaste.html#a63d659670d34638ada6460912e6b1f8a" title="Calculates and displays the search time of the kmp algorithm on files of different sizes..." alt="" coords="252,71,451,112"/>
+<area shape="rect" id="node12" href="classSmartWaste.html#a102f65c9cd8af166e72a25de85ecc467" title="Calculates and displays the search time of the naive algorithm on files of different sizes..." alt="" coords="252,188,451,229"/>
+<area shape="rect" id="node3" href="classSmartWaste.html#ad697e11bb3f1bb7524f939f90a6fbe9c" title="Separates each street from the map to be processed the exact search through the kmp algorithm..." alt="" coords="503,17,705,43"/>
+<area shape="rect" id="node4" href="namespaceSearch.html#aeb44ffcdb7fd6b1c61a36ad2f9af5f5a" title="Knuth&#45;Morris&#45;Pratt (KMP) algorithm implementation. " alt="" coords="760,46,927,73"/>
+<area shape="rect" id="node5" href="namespaceSearch.html#a8ff541141f8795df51d47f0ecb546191" title="Computes prefix for kmp algorithm. " alt="" coords="977,46,1132,73"/>
+<area shape="rect" id="node7" href="classSmartWaste.html#aca7293f5975100c00c7b915354520af5" title="Separates each street from the map to be processed the exact search through the naive algorithm..." alt="" coords="499,258,709,285"/>
+<area shape="rect" id="node8" href="namespaceSearch.html#aa55e8028834a8360d563bb8ad8ae8f3c" title="Naive algorithm implementation. " alt="" coords="757,227,929,254"/>
+<area shape="rect" id="node11" href="namespaceSearch.html#a1d2da6bb360a97fe8ef1869e7b46ec6b" title="Compute number of matches. " alt="" coords="499,74,709,101"/>
+<area shape="rect" id="node13" href="namespaceSearch.html#a4729b5811964cdd95af9382a5804c699" title="Compute number of matches. " alt="" coords="513,189,695,231"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a63d659670d34638ada6460912e6b1f8a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SmartWaste::timeComparisonKMPFilesSizes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates and displays the search time of the kmp algorithm on files of different sizes. </p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classSmartWaste_a63d659670d34638ada6460912e6b1f8a_cgraph.png" border="0" usemap="#classSmartWaste_a63d659670d34638ada6460912e6b1f8a_cgraph" alt=""/></div>
+<map name="classSmartWaste_a63d659670d34638ada6460912e6b1f8a_cgraph" id="classSmartWaste_a63d659670d34638ada6460912e6b1f8a_cgraph">
+<area shape="rect" id="node2" href="namespaceSearch.html#a1d2da6bb360a97fe8ef1869e7b46ec6b" title="Compute number of matches. " alt="" coords="252,13,463,39"/>
+<area shape="rect" id="node3" href="namespaceSearch.html#aeb44ffcdb7fd6b1c61a36ad2f9af5f5a" title="Knuth&#45;Morris&#45;Pratt (KMP) algorithm implementation. " alt="" coords="511,13,677,39"/>
+<area shape="rect" id="node4" href="namespaceSearch.html#a8ff541141f8795df51d47f0ecb546191" title="Computes prefix for kmp algorithm. " alt="" coords="725,13,880,39"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a6d8bfbc9102640c3ec1e9e9d71338b30"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SmartWaste::timeComparisonKMPStringsSizes </td>
+          <td>(</td>
+          <td class="paramtype">map&lt; string, int &gt;&#160;</td>
+          <td class="paramname"><em>roadsIdMap</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates and displays the search time of the kmp algorithm with expressions of different sizes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fullNodes</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classSmartWaste_a6d8bfbc9102640c3ec1e9e9d71338b30_cgraph.png" border="0" usemap="#classSmartWaste_a6d8bfbc9102640c3ec1e9e9d71338b30_cgraph" alt=""/></div>
+<map name="classSmartWaste_a6d8bfbc9102640c3ec1e9e9d71338b30_cgraph" id="classSmartWaste_a6d8bfbc9102640c3ec1e9e9d71338b30_cgraph">
+<area shape="rect" id="node2" href="classSmartWaste.html#ad697e11bb3f1bb7524f939f90a6fbe9c" title="Separates each street from the map to be processed the exact search through the kmp algorithm..." alt="" coords="252,13,455,39"/>
+<area shape="rect" id="node3" href="namespaceSearch.html#aeb44ffcdb7fd6b1c61a36ad2f9af5f5a" title="Knuth&#45;Morris&#45;Pratt (KMP) algorithm implementation. " alt="" coords="503,13,669,39"/>
+<area shape="rect" id="node4" href="namespaceSearch.html#a8ff541141f8795df51d47f0ecb546191" title="Computes prefix for kmp algorithm. " alt="" coords="717,13,872,39"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a102f65c9cd8af166e72a25de85ecc467"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SmartWaste::timeComparisonNaiveFilesSizes </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates and displays the search time of the naive algorithm on files of different sizes. </p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classSmartWaste_a102f65c9cd8af166e72a25de85ecc467_cgraph.png" border="0" usemap="#classSmartWaste_a102f65c9cd8af166e72a25de85ecc467_cgraph" alt=""/></div>
+<map name="classSmartWaste_a102f65c9cd8af166e72a25de85ecc467_cgraph" id="classSmartWaste_a102f65c9cd8af166e72a25de85ecc467_cgraph">
+<area shape="rect" id="node2" href="namespaceSearch.html#a4729b5811964cdd95af9382a5804c699" title="Compute number of matches. " alt="" coords="252,5,435,47"/>
+<area shape="rect" id="node3" href="namespaceSearch.html#aa55e8028834a8360d563bb8ad8ae8f3c" title="Naive algorithm implementation. " alt="" coords="483,13,655,39"/>
+</map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a6eb1a1ed26014c2785bd880696106688"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SmartWaste::timeComparisonNaiveStringsSizes </td>
+          <td>(</td>
+          <td class="paramtype">map&lt; string, int &gt;&#160;</td>
+          <td class="paramname"><em>roadsIdMap</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculates and displays the search time of the naive algorithm with expressions of different sizes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fullNodes</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classSmartWaste_a6eb1a1ed26014c2785bd880696106688_cgraph.png" border="0" usemap="#classSmartWaste_a6eb1a1ed26014c2785bd880696106688_cgraph" alt=""/></div>
+<map name="classSmartWaste_a6eb1a1ed26014c2785bd880696106688_cgraph" id="classSmartWaste_a6eb1a1ed26014c2785bd880696106688_cgraph">
+<area shape="rect" id="node2" href="classSmartWaste.html#aca7293f5975100c00c7b915354520af5" title="Separates each street from the map to be processed the exact search through the naive algorithm..." alt="" coords="252,13,463,39"/>
+<area shape="rect" id="node3" href="namespaceSearch.html#aa55e8028834a8360d563bb8ad8ae8f3c" title="Naive algorithm implementation. " alt="" coords="511,13,683,39"/>
 </map>
 </div>
 </p>

@@ -1,8 +1,0 @@
-<map id="readInfoFile" name="readInfoFile">
-<area shape="rect" id="node2" href="$main_8cpp.html#a9b1ce9209046afc1c50bf945642e8608" title="Read a file to a vector of lines. " alt="" coords="188,5,256,32"/>
-<area shape="rect" id="node3" href="$namespaceUtils.html#ad0e14037565bd51622c72b283730a1fc" title="split one line in vector of strings " alt="" coords="169,56,275,83"/>
-<area shape="rect" id="node4" href="$namespaceUtils.html#a030e2d39f8dc5367f990ae1ae0743aa7" title="calculate distance " alt="" coords="169,107,275,133"/>
-<area shape="rect" id="node5" href="$classSmartWaste.html#a01f8a0d4c232b6e25c8a31299cbfd3ea" title="Get the graph. " alt="" coords="144,157,300,184"/>
-<area shape="rect" id="node6" href="$classGraph.html#ac377db1f43140426d26810cd6ae6f3b6" title="Graph::addEdge" alt="" coords="164,208,280,235"/>
-<area shape="rect" id="node7" href="$classVertex.html#af36d7a9c333b841815cef357be1741d9" title="Vertex::addEdge" alt="" coords="348,208,467,235"/>
-</map>

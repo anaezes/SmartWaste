@@ -37,7 +37,7 @@ void \hyperlink{classSmartWaste_aa55aa107bef64f322ea140103888c40b}{add\+Path} (v
 \begin{DoxyCompactList}\small\item\em Add computed path so the solution. \end{DoxyCompactList}\item 
 void \hyperlink{classSmartWaste_a08307d41711fbdeb0993c146201f0e39}{reset\+Node} (int current\+Node, string color)
 \begin{DoxyCompactList}\small\item\em Method to reset a node or change its color if it is full of another residue. \end{DoxyCompactList}\item 
-void \hyperlink{classSmartWaste_ace7f7f1d899892011914180c52dd1d9b}{display\+Solution} (vector$<$ int $>$ path\+Solution, int last\+Node\+Id, int truck\+Contains, string color\+Edge)
+void \hyperlink{classSmartWaste_a56980331c1909fce91ff215c58e770d3}{display\+Solution} (vector$<$ int $>$ path\+Solution, unsigned int last\+Node\+Id, int truck\+Contains, string color\+Edge)
 \begin{DoxyCompactList}\small\item\em Display solution. \end{DoxyCompactList}\item 
 int \hyperlink{classSmartWaste_a12ed73d4cb4116b279676f0393aa6c3b}{switch\+Central\+Dikstra} () const 
 \begin{DoxyCompactList}\small\item\em Choose the nearest recycling central with Dikstra algorithm. \end{DoxyCompactList}\item 
@@ -64,7 +64,33 @@ int \hyperlink{classSmartWaste_a3440495b88d51595261af349753c3b4e}{switch\+Garage
 void \hyperlink{classSmartWaste_a0cd6a174d186a2cf5e4d4de10df0b48c}{aux\+Time\+Comparison\+Floyd\+Warshal} (vector$<$ int $>$ full\+Nodes)
 \begin{DoxyCompactList}\small\item\em Auxiliary method of analyze time of Floyd Warshall algorithm. \end{DoxyCompactList}\item 
 void \hyperlink{classSmartWaste_a9afdadb947d0c2fcb979e3470c4e2721}{time\+Comparison} ()
-\begin{DoxyCompactList}\small\item\em Method to compare execution times of the Floyd Warshall and the Dikstra algorithm. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Method to compare execution times of the Floyd Warshall and the Dikstra algorithm. \end{DoxyCompactList}\item 
+vector$<$ int $>$ \hyperlink{classSmartWaste_ad697e11bb3f1bb7524f939f90a6fbe9c}{exact\+Search\+Kmp} (map$<$ string, int $>$ roads\+Id\+Map, string expression)
+\begin{DoxyCompactList}\small\item\em Separates each street from the map to be processed the exact search through the kmp algorithm. \end{DoxyCompactList}\item 
+vector$<$ int $>$ \hyperlink{classSmartWaste_aca7293f5975100c00c7b915354520af5}{exact\+Search\+Naive} (map$<$ string, int $>$ roads\+Id\+Map, string expression)
+\begin{DoxyCompactList}\small\item\em Separates each street from the map to be processed the exact search through the naive algorithm. \end{DoxyCompactList}\item 
+vector$<$ int $>$ \hyperlink{classSmartWaste_a72bb77116d7a8bccb121172c27a3cd9c}{approximate\+Search} (map$<$ string, int $>$ roads\+Id\+Map, string expression)
+\begin{DoxyCompactList}\small\item\em Separates each street from the map to be processed the approximate search. \end{DoxyCompactList}\item 
+int \hyperlink{classSmartWaste_aaa2ba41023879d615dd60fb52126d213}{choose\+Node\+To\+Full} (int id\+Edge)
+\begin{DoxyCompactList}\small\item\em Choose the node through the edge id. \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_aa78c4f2e275c9fc4d1735900f88c4fda}{street\+Search} (map$<$ string, int $>$ roads\+Id\+Map, vector$<$ int $>$ \&full\+Nodes)
+\begin{DoxyCompactList}\small\item\em main function of street search \end{DoxyCompactList}\item 
+int \hyperlink{classSmartWaste_a77a8207530b931703036025cea8092a4}{choose\+Street} (vector$<$ int $>$ search\+Results)
+\begin{DoxyCompactList}\small\item\em Choose the street through the search\+: first with the exact search and then with the approximate search. \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_a5317d1e3b89416d622435be6100e0faf}{color\+Street} (int edge\+Id)
+\begin{DoxyCompactList}\small\item\em color the edge \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_ac4ab9e2882b20d1e99bf4f6b8388a811}{reset\+Edge\+Street} (int edge\+Id)
+\begin{DoxyCompactList}\small\item\em reset color of the edge \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_ac24caa86ac0a9308daf839b66ddc28ae}{time\+Comparison\+Exact\+Search} (map$<$ string, int $>$ roads\+Id\+Map)
+\begin{DoxyCompactList}\small\item\em main function of comparison time in string search. \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_a6d8bfbc9102640c3ec1e9e9d71338b30}{time\+Comparison\+K\+M\+P\+Strings\+Sizes} (map$<$ string, int $>$ roads\+Id\+Map)
+\begin{DoxyCompactList}\small\item\em Calculates and displays the search time of the kmp algorithm with expressions of different sizes. \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_a6eb1a1ed26014c2785bd880696106688}{time\+Comparison\+Naive\+Strings\+Sizes} (map$<$ string, int $>$ roads\+Id\+Map)
+\begin{DoxyCompactList}\small\item\em Calculates and displays the search time of the naive algorithm with expressions of different sizes. \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_a63d659670d34638ada6460912e6b1f8a}{time\+Comparison\+K\+M\+P\+Files\+Sizes} ()
+\begin{DoxyCompactList}\small\item\em Calculates and displays the search time of the kmp algorithm on files of different sizes. \end{DoxyCompactList}\item 
+void \hyperlink{classSmartWaste_a102f65c9cd8af166e72a25de85ecc467}{time\+Comparison\+Naive\+Files\+Sizes} ()
+\begin{DoxyCompactList}\small\item\em Calculates and displays the search time of the naive algorithm on files of different sizes. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -88,7 +114,7 @@ vector$<$ int $>$ \hyperlink{classSmartWaste_a624a2893edb7c0e00e4fefe635a0c597}{
 
 constructor of class 
 
-
+F\+I\+R\+ST P\+A\+RT OF P\+R\+O\+J\+E\+CT 
 \begin{DoxyParams}{Parameters}
 {\em gv} & \+: graph viewer for the display \\
 \hline
@@ -115,6 +141,40 @@ Add computed path so the solution.
 {\em new\+Path} & \+: new part of the path to add \\
 \hline
 \end{DoxyParams}
+\index{Smart\+Waste@{Smart\+Waste}!approximate\+Search@{approximate\+Search}}
+\index{approximate\+Search@{approximate\+Search}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{approximate\+Search(map$<$ string, int $>$ roads\+Id\+Map, string expression)}{approximateSearch(map< string, int > roadsIdMap, string expression)}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ int $>$ Smart\+Waste\+::approximate\+Search (
+\begin{DoxyParamCaption}
+\item[{map$<$ string, int $>$}]{roads\+Id\+Map, }
+\item[{string}]{expression}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a72bb77116d7a8bccb121172c27a3cd9c}{}\label{classSmartWaste_a72bb77116d7a8bccb121172c27a3cd9c}
+
+
+Separates each street from the map to be processed the approximate search. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em roads\+Id\+Map} & -\/ map containing all the streets in the graph \\
+\hline
+{\em expression} & to search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of results 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_a72bb77116d7a8bccb121172c27a3cd9c_cgraph}
+\end{center}
+\end{figure}
+
+
 \index{Smart\+Waste@{Smart\+Waste}!aux\+Time\+Comparison\+Dijkstra@{aux\+Time\+Comparison\+Dijkstra}}
 \index{aux\+Time\+Comparison\+Dijkstra@{aux\+Time\+Comparison\+Dijkstra}!Smart\+Waste@{Smart\+Waste}}
 \subsubsection[{\texorpdfstring{aux\+Time\+Comparison\+Dijkstra(vector$<$ int $>$ full\+Nodes)}{auxTimeComparisonDijkstra(vector< int > fullNodes)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::aux\+Time\+Comparison\+Dijkstra (
@@ -167,6 +227,96 @@ Here is the call graph for this function\+:
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classSmartWaste_a0cd6a174d186a2cf5e4d4de10df0b48c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!choose\+Node\+To\+Full@{choose\+Node\+To\+Full}}
+\index{choose\+Node\+To\+Full@{choose\+Node\+To\+Full}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{choose\+Node\+To\+Full(int id\+Edge)}{chooseNodeToFull(int idEdge)}}]{\setlength{\rightskip}{0pt plus 5cm}int Smart\+Waste\+::choose\+Node\+To\+Full (
+\begin{DoxyParamCaption}
+\item[{int}]{id\+Edge}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_aaa2ba41023879d615dd60fb52126d213}{}\label{classSmartWaste_aaa2ba41023879d615dd60fb52126d213}
+
+
+Choose the node through the edge id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em id\+Edge} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+id of the chosen node 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_aaa2ba41023879d615dd60fb52126d213_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!choose\+Street@{choose\+Street}}
+\index{choose\+Street@{choose\+Street}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{choose\+Street(vector$<$ int $>$ search\+Results)}{chooseStreet(vector< int > searchResults)}}]{\setlength{\rightskip}{0pt plus 5cm}int Smart\+Waste\+::choose\+Street (
+\begin{DoxyParamCaption}
+\item[{vector$<$ int $>$}]{search\+Results}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a77a8207530b931703036025cea8092a4}{}\label{classSmartWaste_a77a8207530b931703036025cea8092a4}
+
+
+Choose the street through the search\+: first with the exact search and then with the approximate search. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em all} & search results \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+id of the edge choosen (the street) 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_a77a8207530b931703036025cea8092a4_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!color\+Street@{color\+Street}}
+\index{color\+Street@{color\+Street}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{color\+Street(int edge\+Id)}{colorStreet(int edgeId)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::color\+Street (
+\begin{DoxyParamCaption}
+\item[{int}]{edge\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a5317d1e3b89416d622435be6100e0faf}{}\label{classSmartWaste_a5317d1e3b89416d622435be6100e0faf}
+
+
+color the edge 
+
+
+\begin{DoxyParams}{Parameters}
+{\em edge\+Id} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_a5317d1e3b89416d622435be6100e0faf_cgraph}
 \end{center}
 \end{figure}
 
@@ -269,14 +419,14 @@ Here is the call graph for this function\+:
 
 \index{Smart\+Waste@{Smart\+Waste}!display\+Solution@{display\+Solution}}
 \index{display\+Solution@{display\+Solution}!Smart\+Waste@{Smart\+Waste}}
-\subsubsection[{\texorpdfstring{display\+Solution(vector$<$ int $>$ path\+Solution, int last\+Node\+Id, int truck\+Contains, string color\+Edge)}{displaySolution(vector< int > pathSolution, int lastNodeId, int truckContains, string colorEdge)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::display\+Solution (
+\subsubsection[{\texorpdfstring{display\+Solution(vector$<$ int $>$ path\+Solution, unsigned int last\+Node\+Id, int truck\+Contains, string color\+Edge)}{displaySolution(vector< int > pathSolution, unsigned int lastNodeId, int truckContains, string colorEdge)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::display\+Solution (
 \begin{DoxyParamCaption}
 \item[{vector$<$ int $>$}]{path\+Solution, }
-\item[{int}]{last\+Node\+Id, }
+\item[{unsigned int}]{last\+Node\+Id, }
 \item[{int}]{truck\+Contains, }
 \item[{string}]{color\+Edge}
 \end{DoxyParamCaption}
-)}\hypertarget{classSmartWaste_ace7f7f1d899892011914180c52dd1d9b}{}\label{classSmartWaste_ace7f7f1d899892011914180c52dd1d9b}
+)}\hypertarget{classSmartWaste_a56980331c1909fce91ff215c58e770d3}{}\label{classSmartWaste_a56980331c1909fce91ff215c58e770d3}
 
 
 Display solution. 
@@ -299,7 +449,75 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classSmartWaste_ace7f7f1d899892011914180c52dd1d9b_cgraph}
+\includegraphics[width=350pt]{classSmartWaste_a56980331c1909fce91ff215c58e770d3_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!exact\+Search\+Kmp@{exact\+Search\+Kmp}}
+\index{exact\+Search\+Kmp@{exact\+Search\+Kmp}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{exact\+Search\+Kmp(map$<$ string, int $>$ roads\+Id\+Map, string expression)}{exactSearchKmp(map< string, int > roadsIdMap, string expression)}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ int $>$ Smart\+Waste\+::exact\+Search\+Kmp (
+\begin{DoxyParamCaption}
+\item[{map$<$ string, int $>$}]{roads\+Id\+Map, }
+\item[{string}]{expression}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_ad697e11bb3f1bb7524f939f90a6fbe9c}{}\label{classSmartWaste_ad697e11bb3f1bb7524f939f90a6fbe9c}
+
+
+Separates each street from the map to be processed the exact search through the kmp algorithm. 
+
+S\+E\+C\+O\+ND P\+A\+RT OF P\+R\+O\+J\+E\+CT 
+\begin{DoxyParams}{Parameters}
+{\em roads\+Id\+Map} & -\/ map containing all the streets in the graph \\
+\hline
+{\em expression} & to search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of results 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_ad697e11bb3f1bb7524f939f90a6fbe9c_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!exact\+Search\+Naive@{exact\+Search\+Naive}}
+\index{exact\+Search\+Naive@{exact\+Search\+Naive}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{exact\+Search\+Naive(map$<$ string, int $>$ roads\+Id\+Map, string expression)}{exactSearchNaive(map< string, int > roadsIdMap, string expression)}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ int $>$ Smart\+Waste\+::exact\+Search\+Naive (
+\begin{DoxyParamCaption}
+\item[{map$<$ string, int $>$}]{roads\+Id\+Map, }
+\item[{string}]{expression}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_aca7293f5975100c00c7b915354520af5}{}\label{classSmartWaste_aca7293f5975100c00c7b915354520af5}
+
+
+Separates each street from the map to be processed the exact search through the naive algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em roads\+Id\+Map} & -\/ map containing all the streets in the graph \\
+\hline
+{\em expression} & to search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector of results 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_aca7293f5975100c00c7b915354520af5_cgraph}
 \end{center}
 \end{figure}
 
@@ -488,6 +706,34 @@ Here is the call graph for this function\+:
 \end{figure}
 
 
+\index{Smart\+Waste@{Smart\+Waste}!reset\+Edge\+Street@{reset\+Edge\+Street}}
+\index{reset\+Edge\+Street@{reset\+Edge\+Street}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{reset\+Edge\+Street(int edge\+Id)}{resetEdgeStreet(int edgeId)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::reset\+Edge\+Street (
+\begin{DoxyParamCaption}
+\item[{int}]{edge\+Id}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_ac4ab9e2882b20d1e99bf4f6b8388a811}{}\label{classSmartWaste_ac4ab9e2882b20d1e99bf4f6b8388a811}
+
+
+reset color of the edge 
+
+
+\begin{DoxyParams}{Parameters}
+{\em edge\+Id} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_ac4ab9e2882b20d1e99bf4f6b8388a811_cgraph}
+\end{center}
+\end{figure}
+
+
 \index{Smart\+Waste@{Smart\+Waste}!reset\+Graph@{reset\+Graph}}
 \index{reset\+Graph@{reset\+Graph}!Smart\+Waste@{Smart\+Waste}}
 \subsubsection[{\texorpdfstring{reset\+Graph(vector$<$ int $>$ \&full\+Nodes, vector$<$ int $>$ \&full\+Nodes\+Paper, vector$<$ int $>$ \&full\+Nodes\+Glass, vector$<$ int $>$ \&full\+Nodes\+Plastic)}{resetGraph(vector< int > &fullNodes, vector< int > &fullNodesPaper, vector< int > &fullNodesGlass, vector< int > &fullNodesPlastic)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::reset\+Graph (
@@ -583,6 +829,37 @@ Here is the call graph for this function\+:
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classSmartWaste_aeefe2c284d3a3a83589a0a3118af0f05_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!street\+Search@{street\+Search}}
+\index{street\+Search@{street\+Search}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{street\+Search(map$<$ string, int $>$ roads\+Id\+Map, vector$<$ int $>$ \&full\+Nodes)}{streetSearch(map< string, int > roadsIdMap, vector< int > &fullNodes)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::street\+Search (
+\begin{DoxyParamCaption}
+\item[{map$<$ string, int $>$}]{roads\+Id\+Map, }
+\item[{vector$<$ int $>$ \&}]{full\+Nodes}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_aa78c4f2e275c9fc4d1735900f88c4fda}{}\label{classSmartWaste_aa78c4f2e275c9fc4d1735900f88c4fda}
+
+
+main function of street search 
+
+
+\begin{DoxyParams}{Parameters}
+{\em roads\+Id\+Map} & -\/ map containing all the streets in the graph \\
+\hline
+{\em full\+Nodes} & -\/ vector of nodes to signal as full \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_aa78c4f2e275c9fc4d1735900f88c4fda_cgraph}
 \end{center}
 \end{figure}
 
@@ -725,6 +1002,136 @@ Here is the call graph for this function\+:
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classSmartWaste_a9afdadb947d0c2fcb979e3470c4e2721_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!time\+Comparison\+Exact\+Search@{time\+Comparison\+Exact\+Search}}
+\index{time\+Comparison\+Exact\+Search@{time\+Comparison\+Exact\+Search}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{time\+Comparison\+Exact\+Search(map$<$ string, int $>$ roads\+Id\+Map)}{timeComparisonExactSearch(map< string, int > roadsIdMap)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::time\+Comparison\+Exact\+Search (
+\begin{DoxyParamCaption}
+\item[{map$<$ string, int $>$}]{roads\+Id\+Map}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_ac24caa86ac0a9308daf839b66ddc28ae}{}\label{classSmartWaste_ac24caa86ac0a9308daf839b66ddc28ae}
+
+
+main function of comparison time in string search. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+Nodes} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_ac24caa86ac0a9308daf839b66ddc28ae_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!time\+Comparison\+K\+M\+P\+Files\+Sizes@{time\+Comparison\+K\+M\+P\+Files\+Sizes}}
+\index{time\+Comparison\+K\+M\+P\+Files\+Sizes@{time\+Comparison\+K\+M\+P\+Files\+Sizes}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{time\+Comparison\+K\+M\+P\+Files\+Sizes()}{timeComparisonKMPFilesSizes()}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::time\+Comparison\+K\+M\+P\+Files\+Sizes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a63d659670d34638ada6460912e6b1f8a}{}\label{classSmartWaste_a63d659670d34638ada6460912e6b1f8a}
+
+
+Calculates and displays the search time of the kmp algorithm on files of different sizes. 
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_a63d659670d34638ada6460912e6b1f8a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!time\+Comparison\+K\+M\+P\+Strings\+Sizes@{time\+Comparison\+K\+M\+P\+Strings\+Sizes}}
+\index{time\+Comparison\+K\+M\+P\+Strings\+Sizes@{time\+Comparison\+K\+M\+P\+Strings\+Sizes}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{time\+Comparison\+K\+M\+P\+Strings\+Sizes(map$<$ string, int $>$ roads\+Id\+Map)}{timeComparisonKMPStringsSizes(map< string, int > roadsIdMap)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::time\+Comparison\+K\+M\+P\+Strings\+Sizes (
+\begin{DoxyParamCaption}
+\item[{map$<$ string, int $>$}]{roads\+Id\+Map}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a6d8bfbc9102640c3ec1e9e9d71338b30}{}\label{classSmartWaste_a6d8bfbc9102640c3ec1e9e9d71338b30}
+
+
+Calculates and displays the search time of the kmp algorithm with expressions of different sizes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+Nodes} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_a6d8bfbc9102640c3ec1e9e9d71338b30_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!time\+Comparison\+Naive\+Files\+Sizes@{time\+Comparison\+Naive\+Files\+Sizes}}
+\index{time\+Comparison\+Naive\+Files\+Sizes@{time\+Comparison\+Naive\+Files\+Sizes}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{time\+Comparison\+Naive\+Files\+Sizes()}{timeComparisonNaiveFilesSizes()}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::time\+Comparison\+Naive\+Files\+Sizes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a102f65c9cd8af166e72a25de85ecc467}{}\label{classSmartWaste_a102f65c9cd8af166e72a25de85ecc467}
+
+
+Calculates and displays the search time of the naive algorithm on files of different sizes. 
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_a102f65c9cd8af166e72a25de85ecc467_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Smart\+Waste@{Smart\+Waste}!time\+Comparison\+Naive\+Strings\+Sizes@{time\+Comparison\+Naive\+Strings\+Sizes}}
+\index{time\+Comparison\+Naive\+Strings\+Sizes@{time\+Comparison\+Naive\+Strings\+Sizes}!Smart\+Waste@{Smart\+Waste}}
+\subsubsection[{\texorpdfstring{time\+Comparison\+Naive\+Strings\+Sizes(map$<$ string, int $>$ roads\+Id\+Map)}{timeComparisonNaiveStringsSizes(map< string, int > roadsIdMap)}}]{\setlength{\rightskip}{0pt plus 5cm}void Smart\+Waste\+::time\+Comparison\+Naive\+Strings\+Sizes (
+\begin{DoxyParamCaption}
+\item[{map$<$ string, int $>$}]{roads\+Id\+Map}
+\end{DoxyParamCaption}
+)}\hypertarget{classSmartWaste_a6eb1a1ed26014c2785bd880696106688}{}\label{classSmartWaste_a6eb1a1ed26014c2785bd880696106688}
+
+
+Calculates and displays the search time of the naive algorithm with expressions of different sizes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em full\+Nodes} & \\
+\hline
+\end{DoxyParams}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSmartWaste_a6eb1a1ed26014c2785bd880696106688_cgraph}
 \end{center}
 \end{figure}
 

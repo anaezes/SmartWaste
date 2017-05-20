@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['w',['W',['../classGraph.html#a20edce9af2c8ea8725ccbb5201eace38',1,'Graph']]],
-  ['weight',['weight',['../classEdge.html#af188b57b604f0d65e2da48733bd76426',1,'Edge']]],
-  ['white',['WHITE',['../graphviewer_8h.html#a87b537f5fa5c109d3c05c13d6b18f382',1,'graphviewer.h']]],
-  ['width',['width',['../classGraphViewer.html#a5de27a1d20968b8494cd4bf5a4eb27e1',1,'GraphViewer']]]
+  ['undirected',['UNDIRECTED',['../classEdgeType.html#a6533cc56d05c288a550b9980b66c9317',1,'EdgeType']]],
+  ['uniqueedges',['uniqueEdges',['../classGraph.html#a6f829bb651ea6c0b2aa45564dd4eda25',1,'Graph']]],
+  ['utils',['Utils',['../namespaceUtils.html',1,'']]],
+  ['utils_2ecpp',['Utils.cpp',['../Utils_8cpp.html',1,'']]],
+  ['utils_2eh',['Utils.h',['../Utils_8h.html',1,'']]]
 ];

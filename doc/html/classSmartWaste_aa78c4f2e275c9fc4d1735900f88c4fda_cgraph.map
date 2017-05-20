@@ -1,0 +1,23 @@
+<map id="SmartWaste::streetSearch" name="SmartWaste::streetSearch">
+<area shape="rect" id="node2" href="$classSmartWaste.html#ad697e11bb3f1bb7524f939f90a6fbe9c" title="Separates each street from the map to be processed the exact search through the kmp algorithm..." alt="" coords="237,37,439,64"/>
+<area shape="rect" id="node5" href="$classSmartWaste.html#a72bb77116d7a8bccb121172c27a3cd9c" title="Separates each street from the map to be processed the approximate search. " alt="" coords="231,119,445,145"/>
+<area shape="rect" id="node8" href="$classSmartWaste.html#a77a8207530b931703036025cea8092a4" title="Choose the street through the search: first with the exact search and then with the approximate searc..." alt="" coords="248,376,428,403"/>
+<area shape="rect" id="node18" href="$classSmartWaste.html#aaa2ba41023879d615dd60fb52126d213" title="Choose the node through the edge id. " alt="" coords="232,224,444,251"/>
+<area shape="rect" id="node3" href="$namespaceSearch.html#aeb44ffcdb7fd6b1c61a36ad2f9af5f5a" title="Knuth&#45;Morris&#45;Pratt (KMP) algorithm implementation. " alt="" coords="511,5,678,32"/>
+<area shape="rect" id="node4" href="$namespaceSearch.html#a8ff541141f8795df51d47f0ecb546191" title="Computes prefix for kmp algorithm. " alt="" coords="773,5,928,32"/>
+<area shape="rect" id="node6" href="$namespaceSearch.html#abc5fac4445a114b88b5812a045c587a9" title="Compute average of edit distances. " alt="" coords="493,57,696,98"/>
+<area shape="rect" id="node7" href="$namespaceSearch.html#aaf0d5bd8cdbf3105049d269d1d3b3482" title="Compute edit distance Edit distances is the minimum number of changes needed to transform one string ..." alt="" coords="779,64,923,91"/>
+<area shape="rect" id="node9" href="$classGraph.html#af6579aaa220d1b403cb3517266e406cf" title="Graph::getEdge" alt="" coords="538,376,651,403"/>
+<area shape="rect" id="node10" href="$classSmartWaste.html#a5317d1e3b89416d622435be6100e0faf" title="color the edge " alt="" coords="511,427,678,453"/>
+<area shape="rect" id="node11" href="$classGraph.html#a8cfc98c097359592094c27f2118dc6a7" title="Graph::getGV" alt="" coords="799,325,902,352"/>
+<area shape="rect" id="node12" href="$classGraphViewer.html#a07ccc96707efae4aa5f3ced3dca015af" title="GraphViewer::setEdgeColor" alt="" coords="759,401,943,428"/>
+<area shape="rect" id="node16" href="$classGraphViewer.html#a07f598272fe3515455eab13be749604a" title="GraphViewer::setEdgeThickness" alt="" coords="744,275,957,301"/>
+<area shape="rect" id="node17" href="$classGraphViewer.html#a3009a66958686ccb7e78b68e37c3c423" title="GraphViewer::rearrange" alt="" coords="771,173,930,200"/>
+<area shape="rect" id="node13" href="$classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="1005,224,1155,251"/>
+<area shape="rect" id="node14" href="$connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="1242,199,1309,225"/>
+<area shape="rect" id="node15" href="$classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="1203,249,1348,276"/>
+<area shape="rect" id="node19" href="$classSmartWaste.html#ac4ab9e2882b20d1e99bf4f6b8388a811" title="reset color of the edge " alt="" coords="496,224,693,251"/>
+<area shape="rect" id="node21" href="$classGraphViewer.html#a8b542d7e09e81a45a74760c19233beb0" title="GraphViewer::setVertexColor" alt="" coords="499,123,691,149"/>
+<area shape="rect" id="node22" href="$namespaceUtils.html#a71478c18b3a127080dcb2bb1717aff47" title="Do sleep according to the operating system. " alt="" coords="543,325,647,352"/>
+<area shape="rect" id="node20" href="$classGraphViewer.html#a0e3bb8f6d7290e141c141ca83c9eb67a" title="GraphViewer::clearEdgeColor" alt="" coords="753,224,948,251"/>
+</map>

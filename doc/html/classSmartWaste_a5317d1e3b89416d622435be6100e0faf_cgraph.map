@@ -1,0 +1,9 @@
+<map id="SmartWaste::colorStreet" name="SmartWaste::colorStreet">
+<area shape="rect" id="node2" href="$classGraph.html#a8cfc98c097359592094c27f2118dc6a7" title="Graph::getGV" alt="" coords="275,5,378,32"/>
+<area shape="rect" id="node3" href="$classGraphViewer.html#a07ccc96707efae4aa5f3ced3dca015af" title="GraphViewer::setEdgeColor" alt="" coords="235,56,419,83"/>
+<area shape="rect" id="node7" href="$classGraphViewer.html#a07f598272fe3515455eab13be749604a" title="GraphViewer::setEdgeThickness" alt="" coords="220,107,433,133"/>
+<area shape="rect" id="node8" href="$classGraphViewer.html#a3009a66958686ccb7e78b68e37c3c423" title="GraphViewer::rearrange" alt="" coords="247,157,406,184"/>
+<area shape="rect" id="node4" href="$classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="481,107,631,133"/>
+<area shape="rect" id="node5" href="$connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="718,81,785,108"/>
+<area shape="rect" id="node6" href="$classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="679,132,824,159"/>
+</map>

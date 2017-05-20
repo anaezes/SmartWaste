@@ -21,13 +21,17 @@ Collaboration diagram for Graph$<$ T $>$\+:
 \item 
 bool \hyperlink{classGraph_a18f099535183b37aef90bb55f4669e65}{add\+Vertex} (const T \&in, std\+::pair$<$ double, double $>$ coords)
 \item 
-bool \hyperlink{classGraph_a00dea5cb57b90bb1836040145c4dfb0a}{add\+Edge} (const T \&edge\+Id, const T \&sourc, const T \&dest, int w, bool is\+Undirected)
+void \hyperlink{classGraph_af720eb3f731732a2fafc40141f4d41c3}{add\+Edge} (const T \&edge\+Id, const string \&road\+Name, const T \&sourc, const T \&dest, int w, bool is\+Undirected)
 \item 
 vector$<$ T $>$ \hyperlink{classGraph_a0e9598b98be2570eb432690411a577e8}{bfs} (\hyperlink{classVertex}{Vertex}$<$ T $>$ $\ast$v) const 
 \item 
 int \hyperlink{classGraph_a295932f117d92c825a97ec458e0fb332}{get\+Num\+Vertex} () const 
 \item 
+int \hyperlink{classGraph_ad10eead5afadfb05a78fd8dd606238f8}{get\+Num\+Edge} () const 
+\item 
 \hyperlink{classVertex}{Vertex}$<$ T $>$ $\ast$ \hyperlink{classGraph_a08a95472b0d9bd7321660940807af060}{get\+Vertex} (const T \&v) const 
+\item 
+\hyperlink{classEdge}{Edge}$<$ T $>$ $\ast$ \hyperlink{classGraph_af6579aaa220d1b403cb3517266e406cf}{get\+Edge} (const T \&v) const 
 \item 
 vector$<$ T $>$ \hyperlink{classGraph_ab4054ca572c10669dd3e05d6d41c116c}{get\+Path} (const T \&origin, const T \&dest)
 \item 
@@ -50,11 +54,13 @@ int \hyperlink{classGraph_ac9ce9fbd0d125874296f2df5731e1a72}{get\+Edge} (const T
 vector$<$ \hyperlink{classEdge}{Edge}$<$ T $>$ $>$ \hyperlink{classGraph_aa46616d7684e3f3e69cb0d5497a8b45e}{get\+Edges} () const 
 \item 
 void \hyperlink{classGraph_a3c32b686c689011a360e7e25a76ee511}{reset\+Visited} () const 
+\item 
+vector$<$ int $>$ \hyperlink{classGraph_a6d54a3a7d9c687fa4d81af01c5ef5b75}{get\+Unique\+Edges} ()
 \end{DoxyCompactItemize}
 \subsection*{Private Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-bool \hyperlink{classGraph_ac377db1f43140426d26810cd6ae6f3b6}{add\+Edge} (const T \&edge\+Id, const T \&sourc, const T \&dest, double w)
+bool \hyperlink{classGraph_afced43fb6c491d1294b00798dd9644ad}{add\+Edge} (const T \&edge\+Id, const string \&road\+Name, const T \&sourc, const T \&dest, double w)
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -63,7 +69,11 @@ bool \hyperlink{classGraph_ac377db1f43140426d26810cd6ae6f3b6}{add\+Edge} (const 
 \item 
 vector$<$ \hyperlink{classVertex}{Vertex}$<$ T $>$ $\ast$ $>$ \hyperlink{classGraph_a73d4e735fc0a7c83c9c689a2b53fa623}{vertex\+Set}
 \item 
+vector$<$ \hyperlink{classEdge}{Edge}$<$ T $>$ $\ast$ $>$ \hyperlink{classGraph_a83ebb4fdb2b6a21d4112d4d179230e95}{edge\+Set}
+\item 
 vector$<$ \hyperlink{classEdge}{Edge}$<$ T $>$ $>$ \hyperlink{classGraph_afbdd278e1f3cb43805ef769404a3afd1}{edges}
+\item 
+vector$<$ int $>$ \hyperlink{classGraph_a6f829bb651ea6c0b2aa45564dd4eda25}{unique\+Edges}
 \item 
 int $\ast$$\ast$ \hyperlink{classGraph_a20edce9af2c8ea8725ccbb5201eace38}{W}
 \item 
@@ -84,14 +94,15 @@ int $\ast$$\ast$ \hyperlink{classGraph_a8198bca6e66c0c95e24062e40813ebba}{P}
 \subsection{Member Function Documentation}
 \index{Graph@{Graph}!add\+Edge@{add\+Edge}}
 \index{add\+Edge@{add\+Edge}!Graph@{Graph}}
-\subsubsection[{\texorpdfstring{add\+Edge(const T \&edge\+Id, const T \&sourc, const T \&dest, double w)}{addEdge(const T &edgeId, const T &sourc, const T &dest, double w)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf Graph}$<$ T $>$\+::add\+Edge (
+\subsubsection[{\texorpdfstring{add\+Edge(const T \&edge\+Id, const string \&road\+Name, const T \&sourc, const T \&dest, double w)}{addEdge(const T &edgeId, const string &roadName, const T &sourc, const T &dest, double w)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf Graph}$<$ T $>$\+::add\+Edge (
 \begin{DoxyParamCaption}
 \item[{const T \&}]{edge\+Id, }
+\item[{const string \&}]{road\+Name, }
 \item[{const T \&}]{sourc, }
 \item[{const T \&}]{dest, }
 \item[{double}]{w}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classGraph_ac377db1f43140426d26810cd6ae6f3b6}{}\label{classGraph_ac377db1f43140426d26810cd6ae6f3b6}
+)\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classGraph_afced43fb6c491d1294b00798dd9644ad}{}\label{classGraph_afced43fb6c491d1294b00798dd9644ad}
 
 
 Here is the call graph for this function\+:
@@ -99,22 +110,23 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=292pt]{classGraph_ac377db1f43140426d26810cd6ae6f3b6_cgraph}
+\includegraphics[width=292pt]{classGraph_afced43fb6c491d1294b00798dd9644ad_cgraph}
 \end{center}
 \end{figure}
 
 
 \index{Graph@{Graph}!add\+Edge@{add\+Edge}}
 \index{add\+Edge@{add\+Edge}!Graph@{Graph}}
-\subsubsection[{\texorpdfstring{add\+Edge(const T \&edge\+Id, const T \&sourc, const T \&dest, int w, bool is\+Undirected)}{addEdge(const T &edgeId, const T &sourc, const T &dest, int w, bool isUndirected)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ bool {\bf Graph}$<$ T $>$\+::add\+Edge (
+\subsubsection[{\texorpdfstring{add\+Edge(const T \&edge\+Id, const string \&road\+Name, const T \&sourc, const T \&dest, int w, bool is\+Undirected)}{addEdge(const T &edgeId, const string &roadName, const T &sourc, const T &dest, int w, bool isUndirected)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ void {\bf Graph}$<$ T $>$\+::add\+Edge (
 \begin{DoxyParamCaption}
 \item[{const T \&}]{edge\+Id, }
+\item[{const string \&}]{road\+Name, }
 \item[{const T \&}]{sourc, }
 \item[{const T \&}]{dest, }
 \item[{int}]{w, }
 \item[{bool}]{is\+Undirected}
 \end{DoxyParamCaption}
-)}\hypertarget{classGraph_a00dea5cb57b90bb1836040145c4dfb0a}{}\label{classGraph_a00dea5cb57b90bb1836040145c4dfb0a}
+)}\hypertarget{classGraph_af720eb3f731732a2fafc40141f4d41c3}{}\label{classGraph_af720eb3f731732a2fafc40141f4d41c3}
 
 
 Here is the call graph for this function\+:
@@ -122,7 +134,7 @@ Here is the call graph for this function\+:
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classGraph_a00dea5cb57b90bb1836040145c4dfb0a_cgraph}
+\includegraphics[width=350pt]{classGraph_af720eb3f731732a2fafc40141f4d41c3_cgraph}
 \end{center}
 \end{figure}
 
@@ -214,6 +226,13 @@ Here is the call graph for this function\+:
 
 \index{Graph@{Graph}!get\+Edge@{get\+Edge}}
 \index{get\+Edge@{get\+Edge}!Graph@{Graph}}
+\subsubsection[{\texorpdfstring{get\+Edge(const T \&v) const }{getEdge(const T &v) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Edge}$<$ T $>$ $\ast$ {\bf Graph}$<$ T $>$\+::get\+Edge (
+\begin{DoxyParamCaption}
+\item[{const T \&}]{v}
+\end{DoxyParamCaption}
+) const}\hypertarget{classGraph_af6579aaa220d1b403cb3517266e406cf}{}\label{classGraph_af6579aaa220d1b403cb3517266e406cf}
+\index{Graph@{Graph}!get\+Edge@{get\+Edge}}
+\index{get\+Edge@{get\+Edge}!Graph@{Graph}}
 \subsubsection[{\texorpdfstring{get\+Edge(const T \&source, const T \&dest)}{getEdge(const T &source, const T &dest)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int {\bf Graph}$<$ T $>$\+::get\+Edge (
 \begin{DoxyParamCaption}
 \item[{const T \&}]{source, }
@@ -263,6 +282,13 @@ Here is the call graph for this function\+:
 {}
 \end{DoxyParamCaption}
 ) const}\hypertarget{classGraph_a8cfc98c097359592094c27f2118dc6a7}{}\label{classGraph_a8cfc98c097359592094c27f2118dc6a7}
+\index{Graph@{Graph}!get\+Num\+Edge@{get\+Num\+Edge}}
+\index{get\+Num\+Edge@{get\+Num\+Edge}!Graph@{Graph}}
+\subsubsection[{\texorpdfstring{get\+Num\+Edge() const }{getNumEdge() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ int {\bf Graph}$<$ T $>$\+::get\+Num\+Edge (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}\hypertarget{classGraph_ad10eead5afadfb05a78fd8dd606238f8}{}\label{classGraph_ad10eead5afadfb05a78fd8dd606238f8}
 \index{Graph@{Graph}!get\+Num\+Vertex@{get\+Num\+Vertex}}
 \index{get\+Num\+Vertex@{get\+Num\+Vertex}!Graph@{Graph}}
 \subsubsection[{\texorpdfstring{get\+Num\+Vertex() const }{getNumVertex() const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ int {\bf Graph}$<$ T $>$\+::get\+Num\+Vertex (
@@ -290,6 +316,13 @@ Here is the call graph for this function\+:
 \end{figure}
 
 
+\index{Graph@{Graph}!get\+Unique\+Edges@{get\+Unique\+Edges}}
+\index{get\+Unique\+Edges@{get\+Unique\+Edges}!Graph@{Graph}}
+\subsubsection[{\texorpdfstring{get\+Unique\+Edges()}{getUniqueEdges()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ vector$<$ int $>$ {\bf Graph}$<$ T $>$\+::get\+Unique\+Edges (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classGraph_a6d54a3a7d9c687fa4d81af01c5ef5b75}{}\label{classGraph_a6d54a3a7d9c687fa4d81af01c5ef5b75}
 \index{Graph@{Graph}!get\+Vertex@{get\+Vertex}}
 \index{get\+Vertex@{get\+Vertex}!Graph@{Graph}}
 \subsubsection[{\texorpdfstring{get\+Vertex(const T \&v) const }{getVertex(const T &v) const }}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Vertex}$<$ T $>$ $\ast$ {\bf Graph}$<$ T $>$\+::get\+Vertex (
@@ -318,12 +351,18 @@ Here is the call graph for this function\+:
 \index{Graph@{Graph}!edges@{edges}}
 \index{edges@{edges}!Graph@{Graph}}
 \subsubsection[{\texorpdfstring{edges}{edges}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ vector$<${\bf Edge}$<$T$>$ $>$ {\bf Graph}$<$ T $>$\+::edges\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classGraph_afbdd278e1f3cb43805ef769404a3afd1}{}\label{classGraph_afbdd278e1f3cb43805ef769404a3afd1}
+\index{Graph@{Graph}!edge\+Set@{edge\+Set}}
+\index{edge\+Set@{edge\+Set}!Graph@{Graph}}
+\subsubsection[{\texorpdfstring{edge\+Set}{edgeSet}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ vector$<${\bf Edge}$<$T$>$ $\ast$$>$ {\bf Graph}$<$ T $>$\+::edge\+Set\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classGraph_a83ebb4fdb2b6a21d4112d4d179230e95}{}\label{classGraph_a83ebb4fdb2b6a21d4112d4d179230e95}
 \index{Graph@{Graph}!gv@{gv}}
 \index{gv@{gv}!Graph@{Graph}}
 \subsubsection[{\texorpdfstring{gv}{gv}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Graph\+Viewer}$\ast$ {\bf Graph}$<$ T $>$\+::gv\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classGraph_afbbcf226b738a3dd936173881991b31e}{}\label{classGraph_afbbcf226b738a3dd936173881991b31e}
 \index{Graph@{Graph}!P@{P}}
 \index{P@{P}!Graph@{Graph}}
 \subsubsection[{\texorpdfstring{P}{P}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ int$\ast$$\ast$ {\bf Graph}$<$ T $>$\+::P\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classGraph_a8198bca6e66c0c95e24062e40813ebba}{}\label{classGraph_a8198bca6e66c0c95e24062e40813ebba}
+\index{Graph@{Graph}!unique\+Edges@{unique\+Edges}}
+\index{unique\+Edges@{unique\+Edges}!Graph@{Graph}}
+\subsubsection[{\texorpdfstring{unique\+Edges}{uniqueEdges}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ vector$<$int$>$ {\bf Graph}$<$ T $>$\+::unique\+Edges\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classGraph_a6f829bb651ea6c0b2aa45564dd4eda25}{}\label{classGraph_a6f829bb651ea6c0b2aa45564dd4eda25}
 \index{Graph@{Graph}!vertex\+Set@{vertex\+Set}}
 \index{vertex\+Set@{vertex\+Set}!Graph@{Graph}}
 \subsubsection[{\texorpdfstring{vertex\+Set}{vertexSet}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ vector$<${\bf Vertex}$<$T$>$ $\ast$$>$ {\bf Graph}$<$ T $>$\+::vertex\+Set\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classGraph_a73d4e735fc0a7c83c9c689a2b53fa623}{}\label{classGraph_a73d4e735fc0a7c83c9c689a2b53fa623}

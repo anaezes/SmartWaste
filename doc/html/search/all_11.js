@@ -1,9 +1,10 @@
 var searchData=
 [
-  ['verifyconnectivity',['verifyConnectivity',['../classSmartWaste.html#adc740c52afb954d4781555c2a24b095f',1,'SmartWaste']]],
-  ['vertex',['Vertex',['../classVertex.html',1,'Vertex&lt; T &gt;'],['../classVertex.html#afcbdd4d4198b672356559cb8fa088408',1,'Vertex::Vertex()']]],
-  ['vertex_3c_20t_20_3e',['Vertex&lt; T &gt;',['../classEdge.html#a2e120a12dec663fa334633b4f26cbed8',1,'Edge']]],
-  ['vertex_5fgreater_5fthan',['vertex_greater_than',['../structvertex__greater__than.html',1,'']]],
-  ['vertexset',['vertexSet',['../classGraph.html#a73d4e735fc0a7c83c9c689a2b53fa623',1,'Graph']]],
-  ['visited',['visited',['../classVertex.html#a187a2fe4ff50261cf3c15b8cda7dfc56',1,'Vertex']]]
+  ['timecomparison',['timeComparison',['../classSmartWaste.html#a9afdadb947d0c2fcb979e3470c4e2721',1,'SmartWaste']]],
+  ['timecomparisonexactsearch',['timeComparisonExactSearch',['../classSmartWaste.html#ac24caa86ac0a9308daf839b66ddc28ae',1,'SmartWaste']]],
+  ['timecomparisonkmpfilessizes',['timeComparisonKMPFilesSizes',['../classSmartWaste.html#a63d659670d34638ada6460912e6b1f8a',1,'SmartWaste']]],
+  ['timecomparisonkmpstringssizes',['timeComparisonKMPStringsSizes',['../classSmartWaste.html#a6d8bfbc9102640c3ec1e9e9d71338b30',1,'SmartWaste']]],
+  ['timecomparisonnaivefilessizes',['timeComparisonNaiveFilesSizes',['../classSmartWaste.html#a102f65c9cd8af166e72a25de85ecc467',1,'SmartWaste']]],
+  ['timecomparisonnaivestringssizes',['timeComparisonNaiveStringsSizes',['../classSmartWaste.html#a6eb1a1ed26014c2785bd880696106688',1,'SmartWaste']]],
+  ['truck_5fcapacity',['TRUCK_CAPACITY',['../Graph_8h.html#af527dfb4b07e7329613c10e5656817c6',1,'Graph.h']]]
 ];

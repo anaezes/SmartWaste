@@ -1,0 +1,14 @@
+<map id="SmartWaste::timeComparisonExactSearch" name="SmartWaste::timeComparisonExactSearch">
+<area shape="rect" id="node2" href="$classSmartWaste.html#a6d8bfbc9102640c3ec1e9e9d71338b30" title="Calculates and displays the search time of the kmp algorithm with expressions of different sizes..." alt="" coords="252,5,451,47"/>
+<area shape="rect" id="node6" href="$classSmartWaste.html#a6eb1a1ed26014c2785bd880696106688" title="Calculates and displays the search time of the naive algorithm with expressions of different sizes..." alt="" coords="252,253,451,295"/>
+<area shape="rect" id="node9" href="$namespaceUtils.html#a71478c18b3a127080dcb2bb1717aff47" title="Do sleep according to the operating system. " alt="" coords="299,137,403,163"/>
+<area shape="rect" id="node10" href="$classSmartWaste.html#a63d659670d34638ada6460912e6b1f8a" title="Calculates and displays the search time of the kmp algorithm on files of different sizes..." alt="" coords="252,71,451,112"/>
+<area shape="rect" id="node12" href="$classSmartWaste.html#a102f65c9cd8af166e72a25de85ecc467" title="Calculates and displays the search time of the naive algorithm on files of different sizes..." alt="" coords="252,188,451,229"/>
+<area shape="rect" id="node3" href="$classSmartWaste.html#ad697e11bb3f1bb7524f939f90a6fbe9c" title="Separates each street from the map to be processed the exact search through the kmp algorithm..." alt="" coords="503,17,705,43"/>
+<area shape="rect" id="node4" href="$namespaceSearch.html#aeb44ffcdb7fd6b1c61a36ad2f9af5f5a" title="Knuth&#45;Morris&#45;Pratt (KMP) algorithm implementation. " alt="" coords="760,46,927,73"/>
+<area shape="rect" id="node5" href="$namespaceSearch.html#a8ff541141f8795df51d47f0ecb546191" title="Computes prefix for kmp algorithm. " alt="" coords="977,46,1132,73"/>
+<area shape="rect" id="node7" href="$classSmartWaste.html#aca7293f5975100c00c7b915354520af5" title="Separates each street from the map to be processed the exact search through the naive algorithm..." alt="" coords="499,258,709,285"/>
+<area shape="rect" id="node8" href="$namespaceSearch.html#aa55e8028834a8360d563bb8ad8ae8f3c" title="Naive algorithm implementation. " alt="" coords="757,227,929,254"/>
+<area shape="rect" id="node11" href="$namespaceSearch.html#a1d2da6bb360a97fe8ef1869e7b46ec6b" title="Compute number of matches. " alt="" coords="499,74,709,101"/>
+<area shape="rect" id="node13" href="$namespaceSearch.html#a4729b5811964cdd95af9382a5804c699" title="Compute number of matches. " alt="" coords="513,189,695,231"/>
+</map>

@@ -1,0 +1,221 @@
+\hypertarget{namespaceSearch}{}\section{Search Namespace Reference}
+\label{namespaceSearch}\index{Search@{Search}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{namespaceSearch_aa55e8028834a8360d563bb8ad8ae8f3c}{naive\+String\+Match} (string input, string to\+Search)
+\begin{DoxyCompactList}\small\item\em Naive algorithm implementation. \end{DoxyCompactList}\item 
+vector$<$ unsigned int $>$ \hyperlink{namespaceSearch_a8ff541141f8795df51d47f0ecb546191}{compute\+Prefix} (string to\+Search)
+\begin{DoxyCompactList}\small\item\em Computes prefix for kmp algorithm. \end{DoxyCompactList}\item 
+unsigned int \hyperlink{namespaceSearch_aeb44ffcdb7fd6b1c61a36ad2f9af5f5a}{kmp\+String\+Match} (string input, string to\+Search)
+\begin{DoxyCompactList}\small\item\em Knuth-\/\+Morris-\/\+Pratt (K\+MP) algorithm implementation. \end{DoxyCompactList}\item 
+int \hyperlink{namespaceSearch_aaf0d5bd8cdbf3105049d269d1d3b3482}{edit\+Distance} (string pattern, string text)
+\begin{DoxyCompactList}\small\item\em Compute edit distance Edit distances is the minimum number of changes needed to transform one string into another. \end{DoxyCompactList}\item 
+float \hyperlink{namespaceSearch_abc5fac4445a114b88b5812a045c587a9}{num\+Approximate\+String\+Matching} (string input, string to\+Search)
+\begin{DoxyCompactList}\small\item\em Compute average of edit distances. \end{DoxyCompactList}\item 
+int \hyperlink{namespaceSearch_a1d2da6bb360a97fe8ef1869e7b46ec6b}{num\+String\+Matching\+Kmp} (string filename, string to\+Search)
+\begin{DoxyCompactList}\small\item\em Compute number of matches. \end{DoxyCompactList}\item 
+int \hyperlink{namespaceSearch_a4729b5811964cdd95af9382a5804c699}{num\+String\+Matching\+Naive} (string filename, string to\+Search)
+\begin{DoxyCompactList}\small\item\em Compute number of matches. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{Search@{Search}!compute\+Prefix@{compute\+Prefix}}
+\index{compute\+Prefix@{compute\+Prefix}!Search@{Search}}
+\subsubsection[{\texorpdfstring{compute\+Prefix(string to\+Search)}{computePrefix(string toSearch)}}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ unsigned int $>$ Search\+::compute\+Prefix (
+\begin{DoxyParamCaption}
+\item[{string}]{to\+Search}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceSearch_a8ff541141f8795df51d47f0ecb546191}{}\label{namespaceSearch_a8ff541141f8795df51d47f0ecb546191}
+
+
+Computes prefix for kmp algorithm. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em to\+Search} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+vector 
+\end{DoxyReturn}
+\index{Search@{Search}!edit\+Distance@{edit\+Distance}}
+\index{edit\+Distance@{edit\+Distance}!Search@{Search}}
+\subsubsection[{\texorpdfstring{edit\+Distance(string pattern, string text)}{editDistance(string pattern, string text)}}]{\setlength{\rightskip}{0pt plus 5cm}int Search\+::edit\+Distance (
+\begin{DoxyParamCaption}
+\item[{string}]{pattern, }
+\item[{string}]{text}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceSearch_aaf0d5bd8cdbf3105049d269d1d3b3482}{}\label{namespaceSearch_aaf0d5bd8cdbf3105049d269d1d3b3482}
+
+
+Compute edit distance Edit distances is the minimum number of changes needed to transform one string into another. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pattern} & \\
+\hline
+{\em text} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the edit distance between two strings 
+\end{DoxyReturn}
+\index{Search@{Search}!kmp\+String\+Match@{kmp\+String\+Match}}
+\index{kmp\+String\+Match@{kmp\+String\+Match}!Search@{Search}}
+\subsubsection[{\texorpdfstring{kmp\+String\+Match(string input, string to\+Search)}{kmpStringMatch(string input, string toSearch)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Search\+::kmp\+String\+Match (
+\begin{DoxyParamCaption}
+\item[{string}]{input, }
+\item[{string}]{to\+Search}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceSearch_aeb44ffcdb7fd6b1c61a36ad2f9af5f5a}{}\label{namespaceSearch_aeb44ffcdb7fd6b1c61a36ad2f9af5f5a}
+
+
+Knuth-\/\+Morris-\/\+Pratt (K\+MP) algorithm implementation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & \\
+\hline
+{\em to\+Search} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if expression don\textquotesingle{}t match 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceSearch_aeb44ffcdb7fd6b1c61a36ad2f9af5f5a_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Search@{Search}!naive\+String\+Match@{naive\+String\+Match}}
+\index{naive\+String\+Match@{naive\+String\+Match}!Search@{Search}}
+\subsubsection[{\texorpdfstring{naive\+String\+Match(string input, string to\+Search)}{naiveStringMatch(string input, string toSearch)}}]{\setlength{\rightskip}{0pt plus 5cm}int Search\+::naive\+String\+Match (
+\begin{DoxyParamCaption}
+\item[{string}]{input, }
+\item[{string}]{to\+Search}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceSearch_aa55e8028834a8360d563bb8ad8ae8f3c}{}\label{namespaceSearch_aa55e8028834a8360d563bb8ad8ae8f3c}
+
+
+Naive algorithm implementation. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & \\
+\hline
+{\em to\+Search} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 if expression don\textquotesingle{}t match 
+\end{DoxyReturn}
+\index{Search@{Search}!num\+Approximate\+String\+Matching@{num\+Approximate\+String\+Matching}}
+\index{num\+Approximate\+String\+Matching@{num\+Approximate\+String\+Matching}!Search@{Search}}
+\subsubsection[{\texorpdfstring{num\+Approximate\+String\+Matching(string input, string to\+Search)}{numApproximateStringMatching(string input, string toSearch)}}]{\setlength{\rightskip}{0pt plus 5cm}float Search\+::num\+Approximate\+String\+Matching (
+\begin{DoxyParamCaption}
+\item[{string}]{input, }
+\item[{string}]{to\+Search}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceSearch_abc5fac4445a114b88b5812a045c587a9}{}\label{namespaceSearch_abc5fac4445a114b88b5812a045c587a9}
+
+
+Compute average of edit distances. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em input} & \\
+\hline
+{\em to\+Search} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+average edit distances 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceSearch_abc5fac4445a114b88b5812a045c587a9_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Search@{Search}!num\+String\+Matching\+Kmp@{num\+String\+Matching\+Kmp}}
+\index{num\+String\+Matching\+Kmp@{num\+String\+Matching\+Kmp}!Search@{Search}}
+\subsubsection[{\texorpdfstring{num\+String\+Matching\+Kmp(string filename, string to\+Search)}{numStringMatchingKmp(string filename, string toSearch)}}]{\setlength{\rightskip}{0pt plus 5cm}int Search\+::num\+String\+Matching\+Kmp (
+\begin{DoxyParamCaption}
+\item[{string}]{filename, }
+\item[{string}]{to\+Search}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceSearch_a1d2da6bb360a97fe8ef1869e7b46ec6b}{}\label{namespaceSearch_a1d2da6bb360a97fe8ef1869e7b46ec6b}
+
+
+Compute number of matches. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & -\/ text file where to search \\
+\hline
+{\em to\+Search} & -\/ expression to search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of matches 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceSearch_a1d2da6bb360a97fe8ef1869e7b46ec6b_cgraph}
+\end{center}
+\end{figure}
+
+
+\index{Search@{Search}!num\+String\+Matching\+Naive@{num\+String\+Matching\+Naive}}
+\index{num\+String\+Matching\+Naive@{num\+String\+Matching\+Naive}!Search@{Search}}
+\subsubsection[{\texorpdfstring{num\+String\+Matching\+Naive(string filename, string to\+Search)}{numStringMatchingNaive(string filename, string toSearch)}}]{\setlength{\rightskip}{0pt plus 5cm}int Search\+::num\+String\+Matching\+Naive (
+\begin{DoxyParamCaption}
+\item[{string}]{filename, }
+\item[{string}]{to\+Search}
+\end{DoxyParamCaption}
+)}\hypertarget{namespaceSearch_a4729b5811964cdd95af9382a5804c699}{}\label{namespaceSearch_a4729b5811964cdd95af9382a5804c699}
+
+
+Compute number of matches. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & -\/ text file where to search \\
+\hline
+{\em to\+Search} & -\/ expression to search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of matches 
+\end{DoxyReturn}
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespaceSearch_a4729b5811964cdd95af9382a5804c699_cgraph}
+\end{center}
+\end{figure}
+
+

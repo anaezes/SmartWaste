@@ -3,8 +3,9 @@
 <area shape="rect" id="node3" href="$namespaceUtils.html#ad0e14037565bd51622c72b283730a1fc" title="split one line in vector of strings " alt="" coords="185,56,291,83"/>
 <area shape="rect" id="node4" href="$classSmartWaste.html#a01f8a0d4c232b6e25c8a31299cbfd3ea" title="Get the graph. " alt="" coords="160,107,316,133"/>
 <area shape="rect" id="node5" href="$classGraph.html#a18f099535183b37aef90bb55f4669e65" title="Graph::addVertex" alt="" coords="176,157,300,184"/>
-<area shape="rect" id="node6" href="$classGraphViewer.html#a5421e86ac76433876309236ba96e70a2" title="GraphViewer::addNode" alt="" coords="364,157,521,184"/>
-<area shape="rect" id="node7" href="$classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="569,157,719,184"/>
-<area shape="rect" id="node8" href="$connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="806,132,873,159"/>
-<area shape="rect" id="node9" href="$classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="767,183,912,209"/>
+<area shape="rect" id="node6" href="$classGraphViewer.html#a5421e86ac76433876309236ba96e70a2" title="GraphViewer::addNode" alt="" coords="381,132,539,159"/>
+<area shape="rect" id="node10" href="$classGraphViewer.html#ac25d7d007022fda16799808ba136e909" title="GraphViewer::setVertexLabel" alt="" coords="364,183,556,209"/>
+<area shape="rect" id="node7" href="$classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="604,157,753,184"/>
+<area shape="rect" id="node8" href="$connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="841,132,907,159"/>
+<area shape="rect" id="node9" href="$classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="801,183,947,209"/>
 </map>

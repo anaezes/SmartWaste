@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['light_5fgray',['LIGHT_GRAY',['../graphviewer_8h.html#a9663e02e20b5b578e6a31adae265cb88',1,'graphviewer.h']]]
+  ['kmpstringmatch',['kmpStringMatch',['../namespaceSearch.html#aeb44ffcdb7fd6b1c61a36ad2f9af5f5a',1,'Search']]]
 ];

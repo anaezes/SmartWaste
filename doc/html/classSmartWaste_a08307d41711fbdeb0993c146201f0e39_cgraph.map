@@ -1,13 +1,13 @@
 <map id="SmartWaste::resetNode" name="SmartWaste::resetNode">
 <area shape="rect" id="node2" href="$classGraph.html#a08a95472b0d9bd7321660940807af060" title="Graph::getVertex" alt="" coords="251,5,373,32"/>
-<area shape="rect" id="node3" href="$classVertex.html#abaa14f0eb05160c748f546a633d5f747" title="Vertex::setPaperFull" alt="" coords="241,56,383,83"/>
+<area shape="rect" id="node3" href="$classVertex.html#a285594d4012da238213d66cf969d0367" title="Vertex::setPaperFull" alt="" coords="241,56,383,83"/>
 <area shape="rect" id="node4" href="$classVertex.html#aba8dc4e4450dbd6d697062ebd0ce17b1" title="Vertex::isGlassFull" alt="" coords="245,107,379,133"/>
 <area shape="rect" id="node5" href="$classGraph.html#a8cfc98c097359592094c27f2118dc6a7" title="Graph::getGV" alt="" coords="261,157,363,184"/>
 <area shape="rect" id="node6" href="$classGraphViewer.html#a8b542d7e09e81a45a74760c19233beb0" title="GraphViewer::setVertexColor" alt="" coords="216,208,408,235"/>
 <area shape="rect" id="node10" href="$classVertex.html#a5880b4b252ae6818819c2f9645784b59" title="Vertex::getInfo" alt="" coords="258,259,366,285"/>
 <area shape="rect" id="node11" href="$classVertex.html#a89b18f6ce97bc743e50a1552c44fa336" title="Vertex::isPlasticFull" alt="" coords="243,309,381,336"/>
-<area shape="rect" id="node12" href="$classVertex.html#afb52dac3ee15e789262358e2eb13b1d1" title="Vertex::setGlassFull" alt="" coords="241,360,383,387"/>
-<area shape="rect" id="node13" href="$classVertex.html#aacb83d390255533c113c36f177ecaf51" title="Vertex::setPlasticFull" alt="" coords="239,411,385,437"/>
+<area shape="rect" id="node12" href="$classVertex.html#a1da3731ebf22d296ef2aaf91990650db" title="Vertex::setGlassFull" alt="" coords="241,360,383,387"/>
+<area shape="rect" id="node13" href="$classVertex.html#a065f344ac82d8943df5b607efa26941e" title="Vertex::setPlasticFull" alt="" coords="239,411,385,437"/>
 <area shape="rect" id="node7" href="$classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="456,208,605,235"/>
 <area shape="rect" id="node8" href="$connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="693,183,759,209"/>
 <area shape="rect" id="node9" href="$classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="653,233,799,260"/>

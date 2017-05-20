@@ -1,6 +1,7 @@
 <map id="Graph::addVertex" name="Graph::addVertex">
-<area shape="rect" id="node2" href="$classGraphViewer.html#a5421e86ac76433876309236ba96e70a2" title="GraphViewer::addNode" alt="" coords="177,31,335,57"/>
-<area shape="rect" id="node3" href="$classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="383,31,532,57"/>
-<area shape="rect" id="node4" href="$connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="619,5,686,32"/>
-<area shape="rect" id="node5" href="$classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="580,56,725,83"/>
+<area shape="rect" id="node2" href="$classGraphViewer.html#a5421e86ac76433876309236ba96e70a2" title="GraphViewer::addNode" alt="" coords="195,5,352,32"/>
+<area shape="rect" id="node6" href="$classGraphViewer.html#ac25d7d007022fda16799808ba136e909" title="GraphViewer::setVertexLabel" alt="" coords="177,56,369,83"/>
+<area shape="rect" id="node3" href="$classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="417,31,567,57"/>
+<area shape="rect" id="node4" href="$connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="654,5,721,32"/>
+<area shape="rect" id="node5" href="$classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="615,56,760,83"/>
 </map>

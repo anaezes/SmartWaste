@@ -1,0 +1,17 @@
+<map id="initGraph" name="initGraph">
+<area shape="rect" id="node2" href="$main_8cpp.html#a85d589688404bb7c03364fe0244b7b9a" title="Read a txt file of nodes. " alt="" coords="128,75,235,101"/>
+<area shape="rect" id="node12" href="$main_8cpp.html#aa710a5f2c3b8ac116835aa1dbd141e93" title="Reads a text file of information of edges: saves edge id and if it&#39;s undirected or not..." alt="" coords="128,12,235,39"/>
+<area shape="rect" id="node13" href="$main_8cpp.html#a7a8e3c6c201a776698037d29a3a1b239" title="Read a txt file &#45; add edge to a graph. " alt="" coords="136,151,227,177"/>
+<area shape="rect" id="node3" href="$main_8cpp.html#a9b1ce9209046afc1c50bf945642e8608" title="Read a file to a vector of lines. " alt="" coords="327,5,395,32"/>
+<area shape="rect" id="node4" href="$namespaceUtils.html#ad0e14037565bd51622c72b283730a1fc" title="split one line in vector of strings " alt="" coords="308,157,413,184"/>
+<area shape="rect" id="node5" href="$classSmartWaste.html#a01f8a0d4c232b6e25c8a31299cbfd3ea" title="Get the graph. " alt="" coords="283,107,439,133"/>
+<area shape="rect" id="node6" href="$classGraph.html#a18f099535183b37aef90bb55f4669e65" title="Graph::addVertex" alt="" coords="299,56,423,83"/>
+<area shape="rect" id="node7" href="$classGraphViewer.html#a5421e86ac76433876309236ba96e70a2" title="GraphViewer::addNode" alt="" coords="504,31,661,57"/>
+<area shape="rect" id="node11" href="$classGraphViewer.html#ac25d7d007022fda16799808ba136e909" title="GraphViewer::setVertexLabel" alt="" coords="487,81,679,108"/>
+<area shape="rect" id="node8" href="$classConnection.html#a4b9f6db1fb42fc9857f829fa0bc52e6e" title="Connection::sendMsg" alt="" coords="727,56,876,83"/>
+<area shape="rect" id="node9" href="$connection_8cpp.html#ac8b3411018d0e5416c08938b796177ab" title="myerror" alt="" coords="963,31,1030,57"/>
+<area shape="rect" id="node10" href="$classConnection.html#a1df16b436751b686d96c24ca0c498659" title="Connection::readLine" alt="" coords="924,81,1069,108"/>
+<area shape="rect" id="node14" href="$namespaceUtils.html#a030e2d39f8dc5367f990ae1ae0743aa7" title="calculate distance " alt="" coords="307,259,414,285"/>
+<area shape="rect" id="node15" href="$classGraph.html#afced43fb6c491d1294b00798dd9644ad" title="Graph::addEdge" alt="" coords="303,208,419,235"/>
+<area shape="rect" id="node16" href="$classVertex.html#a78bc65f63d7244e6e161facdd49bd6e9" title="Vertex::addEdge" alt="" coords="523,208,642,235"/>
+</map>

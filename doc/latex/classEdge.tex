@@ -7,18 +7,28 @@
 \subsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classEdge_a96686534f9eefc8cce07582f7f38369b}{Edge} (T i, \hyperlink{classVertex}{Vertex}$<$ T $>$ $\ast$d, double w)
+\hyperlink{classEdge_a820d09b63370364928eb5f42507b4a58}{Edge} (T i, const string \&\hyperlink{classEdge_afaa271c93b0b5ac10547d196e3a6fad7}{road\+Name}, \hyperlink{classVertex}{Vertex}$<$ T $>$ $\ast$s, \hyperlink{classVertex}{Vertex}$<$ T $>$ $\ast$d, double w)
 \item 
 T \hyperlink{classEdge_a9cfd65d4ac2da66e35350e6ad7ab531e}{get\+Info} ()
+\item 
+string \hyperlink{classEdge_ae0244f82a28d938a6d620c69a157298a}{get\+Road\+Name} ()
+\item 
+\hyperlink{classVertex}{Vertex}$<$ T $>$ $\ast$ \hyperlink{classEdge_a75baa54b9c32895fbe813858ab8f27e2}{get\+Dest} ()
+\item 
+\hyperlink{classVertex}{Vertex}$<$ T $>$ $\ast$ \hyperlink{classEdge_a587df1a5480061d44796009d577e2191}{get\+Source} ()
 \end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classVertex}{Vertex}$<$ T $>$ $\ast$ \hyperlink{classEdge_ae4d65678b91bd9d814af4720ad87cd0c}{dest}
 \item 
+\hyperlink{classVertex}{Vertex}$<$ T $>$ $\ast$ \hyperlink{classEdge_aa6d3ef629128f4088d7520924ff4db9a}{source}
+\item 
 double \hyperlink{classEdge_af188b57b604f0d65e2da48733bd76426}{weight}
 \item 
 T \hyperlink{classEdge_a3c76337d535f346456b825b3cbc88b14}{info}
+\item 
+string \hyperlink{classEdge_afaa271c93b0b5ac10547d196e3a6fad7}{road\+Name}
 \end{DoxyCompactItemize}
 \subsection*{Friends}
 \begin{DoxyCompactItemize}
@@ -32,16 +42,25 @@ class \hyperlink{classEdge_a2e120a12dec663fa334633b4f26cbed8}{Vertex$<$ T $>$}
 \subsection{Constructor \& Destructor Documentation}
 \index{Edge@{Edge}!Edge@{Edge}}
 \index{Edge@{Edge}!Edge@{Edge}}
-\subsubsection[{\texorpdfstring{Edge(\+T i, Vertex$<$ T $>$ $\ast$d, double w)}{Edge(T i, Vertex< T > *d, double w)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Edge}$<$ T $>$\+::{\bf Edge} (
+\subsubsection[{\texorpdfstring{Edge(\+T i, const string \&road\+Name, Vertex$<$ T $>$ $\ast$s, Vertex$<$ T $>$ $\ast$d, double w)}{Edge(T i, const string &roadName, Vertex< T > *s, Vertex< T > *d, double w)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Edge}$<$ T $>$\+::{\bf Edge} (
 \begin{DoxyParamCaption}
 \item[{T}]{i, }
+\item[{const string \&}]{road\+Name, }
+\item[{{\bf Vertex}$<$ T $>$ $\ast$}]{s, }
 \item[{{\bf Vertex}$<$ T $>$ $\ast$}]{d, }
 \item[{double}]{w}
 \end{DoxyParamCaption}
-)}\hypertarget{classEdge_a96686534f9eefc8cce07582f7f38369b}{}\label{classEdge_a96686534f9eefc8cce07582f7f38369b}
+)}\hypertarget{classEdge_a820d09b63370364928eb5f42507b4a58}{}\label{classEdge_a820d09b63370364928eb5f42507b4a58}
 
 
 \subsection{Member Function Documentation}
+\index{Edge@{Edge}!get\+Dest@{get\+Dest}}
+\index{get\+Dest@{get\+Dest}!Edge@{Edge}}
+\subsubsection[{\texorpdfstring{get\+Dest()}{getDest()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Vertex}$<$ T $>$ $\ast$ {\bf Edge}$<$ T $>$\+::get\+Dest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classEdge_a75baa54b9c32895fbe813858ab8f27e2}{}\label{classEdge_a75baa54b9c32895fbe813858ab8f27e2}
 \index{Edge@{Edge}!get\+Info@{get\+Info}}
 \index{get\+Info@{get\+Info}!Edge@{Edge}}
 \subsubsection[{\texorpdfstring{get\+Info()}{getInfo()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ T {\bf Edge}$<$ T $>$\+::get\+Info (
@@ -49,6 +68,20 @@ class \hyperlink{classEdge_a2e120a12dec663fa334633b4f26cbed8}{Vertex$<$ T $>$}
 {}
 \end{DoxyParamCaption}
 )}\hypertarget{classEdge_a9cfd65d4ac2da66e35350e6ad7ab531e}{}\label{classEdge_a9cfd65d4ac2da66e35350e6ad7ab531e}
+\index{Edge@{Edge}!get\+Road\+Name@{get\+Road\+Name}}
+\index{get\+Road\+Name@{get\+Road\+Name}!Edge@{Edge}}
+\subsubsection[{\texorpdfstring{get\+Road\+Name()}{getRoadName()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ string {\bf Edge}$<$ T $>$\+::get\+Road\+Name (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classEdge_ae0244f82a28d938a6d620c69a157298a}{}\label{classEdge_ae0244f82a28d938a6d620c69a157298a}
+\index{Edge@{Edge}!get\+Source@{get\+Source}}
+\index{get\+Source@{get\+Source}!Edge@{Edge}}
+\subsubsection[{\texorpdfstring{get\+Source()}{getSource()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T $>$ {\bf Vertex}$<$ T $>$ $\ast$ {\bf Edge}$<$ T $>$\+::get\+Source (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}\hypertarget{classEdge_a587df1a5480061d44796009d577e2191}{}\label{classEdge_a587df1a5480061d44796009d577e2191}
 
 
 \subsection{Friends And Related Function Documentation}
@@ -67,6 +100,12 @@ class \hyperlink{classEdge_a2e120a12dec663fa334633b4f26cbed8}{Vertex$<$ T $>$}
 \index{Edge@{Edge}!info@{info}}
 \index{info@{info}!Edge@{Edge}}
 \subsubsection[{\texorpdfstring{info}{info}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ T {\bf Edge}$<$ T $>$\+::info\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classEdge_a3c76337d535f346456b825b3cbc88b14}{}\label{classEdge_a3c76337d535f346456b825b3cbc88b14}
+\index{Edge@{Edge}!road\+Name@{road\+Name}}
+\index{road\+Name@{road\+Name}!Edge@{Edge}}
+\subsubsection[{\texorpdfstring{road\+Name}{roadName}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ string {\bf Edge}$<$ T $>$\+::road\+Name\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classEdge_afaa271c93b0b5ac10547d196e3a6fad7}{}\label{classEdge_afaa271c93b0b5ac10547d196e3a6fad7}
+\index{Edge@{Edge}!source@{source}}
+\index{source@{source}!Edge@{Edge}}
+\subsubsection[{\texorpdfstring{source}{source}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ {\bf Vertex}$<$T$>$$\ast$ {\bf Edge}$<$ T $>$\+::source\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classEdge_aa6d3ef629128f4088d7520924ff4db9a}{}\label{classEdge_aa6d3ef629128f4088d7520924ff4db9a}
 \index{Edge@{Edge}!weight@{weight}}
 \index{weight@{weight}!Edge@{Edge}}
 \subsubsection[{\texorpdfstring{weight}{weight}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$class T$>$ double {\bf Edge}$<$ T $>$\+::weight\hspace{0.3cm}{\ttfamily [private]}}\hypertarget{classEdge_af188b57b604f0d65e2da48733bd76426}{}\label{classEdge_af188b57b604f0d65e2da48733bd76426}
